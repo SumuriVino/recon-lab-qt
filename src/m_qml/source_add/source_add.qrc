@@ -1,0 +1,46 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Evidence_logical.qml</file>
+        <file>Evidence_physical.qml</file>
+        <file>Evidence_type_selector.qml</file>
+        <file>Forensic_vault_fusion_image_macos.qml</file>
+        <file>Recon_mac_sharing_mode_selector.qml</file>
+        <file>Evidence_mobile.qml</file>
+        <file>Recon_logical_image_selector.qml</file>
+        <file>Forensic_vault_fusion_image_os_selector.qml</file>
+        <file>Cellebrite_ios_backup_selector.qml</file>
+        <file>Adb_android_backup_selector.qml</file>
+        <file>All_qml_agent.qml</file>
+        <file>Macos_home_directory.qml</file>
+        <file>Recon_mac_sharing_mode_sparseimage.qml</file>
+        <file>Recon_fs_block_image_sparseimage.qml</file>
+        <file>Recon_logical_image_sparseimage.qml</file>
+        <file>Recon_mac_sharing_mode_dmg.qml</file>
+        <file>Recon_mac_sharing_mode_folder.qml</file>
+        <file>Forensic_image_otheros.qml</file>
+        <file>Forensic_image_winos.qml</file>
+        <file>Recon_logical_image_folder.qml</file>
+        <file>Encase_logical_image_l01.qml</file>
+        <file>Recon_logical_image_dmg.qml</file>
+        <file>Recon_fs_block_image_selector.qml</file>
+        <file>Cellebrite_ios_backup_tar.qml</file>
+        <file>Cellebrite_ios_backup_ufdr.qml</file>
+        <file>Adb_android_backup_folder.qml</file>
+        <file>Adb_android_backup_ab.qml</file>
+        <file>Itunes_ios_backup.qml</file>
+        <file>Optical_disc_image.qml</file>
+        <file>Time_machine_backup_folder.qml</file>
+        <file>Encase_logical_image_selector.qml</file>
+        <file>Google_takeout.qml</file>
+        <file>Ram_image.qml</file>
+        <file>Evidence_network.qml</file>
+        <file>Folder.qml</file>
+        <file>File.qml</file>
+        <file>Evidence_cloud.qml</file>
+        <file>Recon_fs_block_image_dmg.qml</file>
+        <file>Graykey_ios_backup.qml</file>
+        <file>Graykey_backup_selector.qml</file>
+        <file>Graykey_android_backup.qml</file>
+        <file>Time_machine_backup_image.qml</file>
+    </qresource>
+</RCC>

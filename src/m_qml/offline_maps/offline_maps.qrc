@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>marker.png</file>
+        <file>offline_maps.qml</file>
+    </qresource>
+</RCC>

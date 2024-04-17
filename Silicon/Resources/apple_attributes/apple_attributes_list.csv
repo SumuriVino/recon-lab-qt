@@ -1,0 +1,408 @@
+kMDItemTitle,Blank Column,Blank Column,Attribute Description,Blank Column,Blank Column,Widget Type,Blank Column,Blank Column,Metadata Attribute Name,Blank Column,Blank Column,Data Type
+Latitude,,,Latitude of the item.,,,13,,,kMDItemLatitude,,,0
+Longitude,,,Longitude of the item.,,,13,,,kMDItemLongitude,,,0
+Where From,,,Describes where the item was obtained from.,,,0,,,kMDItemWhereFroms,,,0
+Date Added,,,Added date of the item.,,,8,,,kMDItemDateAdded,,,0
+Device Make,,,Manufacturer of the device used to acquire the document contents.,,,0,,,kMDItemAcquisitionMake,,,0
+Device Model,,,Model of the device used to acquire the document contents.,,,0,,,kMDItemAcquisitionModel,,,0
+Title,,,Title of the item.,,,0,,,kMDItemTitle,,,0
+Kind,,,Description of the kind of item this file represents.,,,0,,,kMDItemKind,,,0
+File Size,,,"Size, in bytes, of the file on disk.",,,4,,,kMDItemFSSize,,,2
+File System File Name,,,File Name of the item.,,,0,,,kMDItemFSName,,,0
+Created,,,Date that the contents of the file were created.,,,8,,,kMDItemFSCreationDate,,,0
+Modified,,,Date the file contents last changed.,,,8,,,kMDItemFSContentChangeDate,,,0
+Duration,,,"The duration, in seconds, of the content of the item.",,,3,,,kMDItemDurationSeconds,,,3
+Name,,,Localized version of the file name.,,,0,,,kMDItemDisplayName,,,0
+Last Modified Date,,,Date and time when the contents of this item were modified.,,,8,,,kMDItemContentModificationDate,,,0
+Created Date,,,The date and time that the content was created.,,,8,,,kMDItemContentCreationDate,,,0
+Comment,,,Comments about the item,,,0,,,kMDItemComment,,,0
+Album,,,Title for the collection containing this item.,,,0,,,kMDItemAlbum,,,0
+Audio Bit Rate,,,Bit rate of the audio in the media.,,,2,,,kMDItemAudioBitRate,,,0
+Last Opened Date,,,Date and time that the file was last used.,,,8,,,kMDItemLastUsedDate,,,0
+Contents,,,Contains a text representation of the content of the document.,,,7,,,kMDItemTextContent,,,0
+Aperture Value,,,Aperture setting used when the image was created.,,,2,,,kMDItemAperture,,,0
+Bits Per Sample,,,Number of bits per sample.,,,2,,,kMDItemBitsPerSample,,,0
+Color Space,,,Color space model used by the document contents.,,,0,,,kMDItemColorSpace,,,0
+Type Identifier,,,Uniform Type Identifier of the file.,,,0,,,kMDItemContentType,,,0
+Type Identifier hierarchy,,,Uniform Type Identifier hierarchy of the file.,,,0,,,kMDItemContentTypeTree,,,0
+Content Creator,,,Name of the application used to create the document content.,,,0,,,kMDItemCreator,,,0
+EXIF Version,,,Version of the EXIF header used to generate the metadata.,,,0,,,kMDItemEXIFVersion,,,0
+Exposure Mode,,,Exposure mode used to acquire the document contents.,,,0,,,kMDItemExposureMode,,,0
+Exposure Program,,,Type of exposure program used by the camera to acquire the document contents.,,,0,,,kMDItemExposureProgram,,,0
+Exposure Time,,,Exposure time used to capture the contents.,,,2,,,kMDItemExposureTimeSeconds,,,0
+Flash,,,Whether a camera flash was used to capture the contents.,,,1,,,kMDItemFlashOnOff,,,0
+F Number,,,Diameter of the aperture relative to the effective focal length of the lens.,,,2,,,kMDItemFNumber,,,0
+Focal Length,,,"Actual focal length of the lens, in millimeters.",,,2,,,kMDItemFocalLength,,,0
+File Invisible,,,Whether the file is invisible.,,,11,,,kMDItemFSInvisible,,,0
+File Extension Hidden,,,Whether the file extension of the file is hidden.,,,2,,,kMDItemFSIsExtensionHidden,,,0
+File System Label,,,Index of the Finder label of the file. ,,,2,,,kMDItemFSLabel,,,0
+Number of Items,,,Number of files in a directory.,,,2,,,kMDItemFSNodeCount,,,0
+Group,,,Group ID of the owner of the file.,,,2,,,kMDItemFSOwnerGroupID,,,0
+Owner,,,User ID of the owner of the file.,,,2,,,kMDItemFSOwnerUserID,,,0
+Alpha Channel,,,Whether the image has an alpha channel.,,,1,,,kMDItemHasAlphaChannel,,,0
+ISO Speed,,,ISO speed used to acquire the contents.,,,2,,,kMDItemISOSpeed,,,0
+Orientation,,,Orientation of the document contents.,,,2,,,kMDItemOrientation,,,0
+Pixel Count,,,The total number of pixels in the contents.,,,2,,,kMDItemPixelCount,,,0
+Pixel Height,,,"Height, in pixels, of the contents.",,,2,,,kMDItemPixelHeight,,,0
+Pixel Width,,,"Width, in pixels, of the contents. ",,,2,,,kMDItemPixelWidth,,,0
+Color Profile,,,Name of the color profile used for the contents.,,,0,,,kMDItemProfileName,,,0
+Red eye,,,Whether red-eye reduction was used to take the picture.,,,1,,,kMDItemRedEyeOnOff,,,0
+Resolution Height,,,"Resolution height, in DPI, of the item.",,,2,,,kMDItemResolutionHeightDPI,,,0
+Resolution Width,,,"Resolution width, in DPI, of the item.",,,2,,,kMDItemResolutionWidthDPI,,,0
+Audiences,,,The audience for which the file is intended.,,,0,,,kMDItemAudiences,,,0
+Authors,,,The author(s) of the contents of the file.,,,0,,,kMDItemAuthors,,,0
+Author Addresses,,,Indicates the author address(es) of the document.,,,0,,,kMDItemAuthorAddresses,,,0
+City,,,Identifies City of origin according to the provider.,,,0,,,kMDItemCity,,,0
+Codecs,,,Codecs used to encode/decode the media.,,,0,,,kMDItemCodecs,,,0
+Composer,,,Composer of the song in the audio file.,,,0,,,kMDItemComposer,,,0
+Contact Keywords,,,A list of contacts that are associated with the document.,,,0,,,kMDItemContactKeywords,,,0
+Copyright,,,Copyright owner of the file contents.,,,0,,,kMDItemCopyright,,,0
+Country,,,Location where IP of the item was created according to the provider.,,,0,,,kMDItemCountry,,,0
+Description,,,Description of the kind of item this file represents.,,,0,,,kMDItemDescription,,,0
+Email Addresses,,,Email addresses related to this item.,,,0,,,kMDItemEmailAddresses,,,0
+Encoding Applications,,,Applications used to convert the original content.,,,0,,,kMDItemEncodingApplications,,,0
+Finder Comments,,,Finder comments for this item.,,,0,,,kMDItemFinderComment,,,0
+Headline,,,Publishable entry providing a synopsis of the contents of the item.,,,0,,,kMDItemHeadline,,,0
+Identifier,,,References the resource within a given context.,,,0,,,kMDItemIdentifier,,,0
+Instant Message Address,,,Instant Message addresses related to the item.,,,0,,,kMDInstantMessageAddresses,,,0
+Instructions,,,Instructions concerning the use of the item.,,,0,,,kMDItemInstructions,,,0
+Keywords,,,Keywords associated with the file.,,,0,,,kMDItemKeywords,,,0
+Languages,,,Indicates the languages used by the item.,,,0,,,kMDItemLanguages,,,0
+Lyricist,,,Lyricist of the song in the audio file.,,,0,,,kMDItemLyricist,,,0
+Media Type,,,Media types present in the content.,,,0,,,kMDItemMediaTypes,,,0
+Organization,,,Organization that created the document.,,,0,,,kMDItemOrganizations,,,0
+Pages,,,Number of pages in the document.,,,2,,,kMDItemNumberOfPages,,,0
+Participants,,,List of people who are visible in an image or written about in a document.,,,0,,,kMDItemParticipants,,,0
+Phone Numbers,,,Phone numbers related to this item.,,,0,,,kMDItemPhoneNumbers,,,0
+Publishers,,,Publishers of the item.,,,0,,,kMDItemPublishers,,,0
+Recipients,,,Recipients of this item.,,,0,,,kMDItemRecipients,,,0
+Recipient Addresses,,,The recipient addresses of the document.,,,0,,,kMDItemRecipientAddresses,,,0
+Recording Date,,,Recording date of the original song or composition.,,,8,,,kMDItemRecordingDate,,,0
+Recording Year,,,Year the item was recorded.,,,0,,,kMDItemRecordingYear,,,0
+Rights,,,Provides a link to information about the rights held on the document.,,,0,,,kMDItemRights,,,0
+Security Method,,,Encryption method used to make the item secure.,,,0,,,kMDItemSecurityMethod,,,0
+State,,,Province or state of origin according to the provider.,,,0,,,kMDItemStateOrProvince,,,0
+Version,,,Version number of the item.,,,0,,,kMDItemVersion,,,0
+Video Bit Rate,,,Bit Rate of the video in the media.,,,2,,,kMDItemVideoBitRate,,,0
+Used Count,,,Used Count,,,2,,,kMDItemUseCount,,,0
+Used Dates,,,Used Dates,,,0,,,kMDItemUsedDates,,,0
+GPS Date Stamp,,,GPS Date Stamp,,,0,,,kMDItemGPSDateStamp,,,0
+GPS Dest Bearing,,,GPS Dest Bearing,,,13,,,kMDItemGPSDestBearing,,,0
+Image Direction,,,Image Direction,,,13,,,kMDItemImageDirection,,,0
+User Shared Received Recipient,,,User Shared Received Recipient,,,0,,,kMDItemUserSharedReceivedRecipient,,,0
+User Shared Received Recipient Handle,,,User Shared Received Recipient Handle,,,0,,,kMDItemUserSharedReceivedRecipientHandle,,,0
+User Shared Received Sender,,,User Shared Received Sender,,,0,,,kMDItemUserSharedReceivedSender,,,0
+User Shared Received Sender Handle,,,User Shared Received Sender Handle,,,0,,,kMDItemUserSharedReceivedSenderHandle,,,0
+User Shared Received Transport,,,User Shared Received Transport,,,0,,,kMDItemUserSharedReceivedTransport,,,0
+Alternative display names,,,Alternative names of the file,,,0,,,kMDItemAlternateNames,,,0
+Altitude,,,"The altitude of the item in metres above sea level, expressed using the WGS84 datum. Negative values lie below sea level.",,,13,,,kMDItemAltitude,,,0
+Category,,,App Store Category item is a member of,,,0,,,kMDItemAppStoreCategory,,,0
+Loop descriptors,,,Keywords describing the mood and other aspects of the loop,,,0,,,kMDItemAppleLoopDescriptors,,,0
+Loop scale type,,,"Whether the loop uses the major or minor scale, neither scale, or can be used with both",,,1,,,kMDItemAppleLoopsKeyFilterType,,,0
+Loop file type,,,"Whether the file is a looping or non-looping file. Looping files adjust their tempo to the song tempo, while non-looping files keep their recorded tempo",,,1,,,kMDItemAppleLoopsLoopMode,,,0
+Loop original key,,,"Shows the loop’s original key. The key is the root note or tonic for the loop, and does not include the scale type",,,0,,,kMDItemAppleLoopsRootKey,,,0
+Application Categories,,,Categories application is a member of,,,0,,,kMDItemApplicationCategories,,,0
+Audio channels,,,Number of channels in the file’s audio data,,,2,,,kMDItemAudioChannelCount,,,0
+Audio encoding application,,,Name of the application that encoded the data in the audio file,,,0,,,kMDItemAudioEncodingApplication,,,0
+Sample rate,,,Sample rate of the file’s audio data,,,2,,,kMDItemAudioSampleRate,,,0
+Track number,,,Track number of the song that is part of an album,,,2,,,kMDItemAudioTrackNumber,,,0
+Author Email addresses,,,Email addresses for authors of this item,,,0,,,kMDItemAuthorEmailAddresses,,,0
+Contributors,,,People or organisations contributing to the content of the document,,,0,,,kMDItemContributors,,,0
+Coverage,,,"Extent or scope of the content of the document, ",,,7,,,kMDItemCoverage,,,0
+Delivery type,,,Method used to deliver the media (Fast Start or RTSP),,,0,,,kMDItemDeliveryType,,,0
+Director,,,Director,,,0,,,kMDItemDirector,,,0
+Document Container,,,Containing folder of item,,,0,,,kMDItemDocumentContainer,,,0
+Deadline,,,Date this item is due,,,8,,,kMDItemDueDate,,,0
+EXIF GPS version,,,The version of GPSInfoIFD in EXIF used to generate the metadata,,,13,,,kMDItemEXIFGPSVersion,,,0
+Editors,,,Editors of this item,,,0,,,kMDItemEditors,,,0
+Conversation ID,,,The conversation ID assigned to the message,,,0,,,kMDItemEmailConversationID,,,0
+End date,,,Date this item ends,,,8,,,kMDItemEndDate,,,0
+Executable Architectures,,,Architectures the item requires to execute,,,0,,,kMDItemExecutableArchitectures,,,0
+Executable Platform,,,Platform the item requires to execute,,,0,,,kMDItemExecutablePlatform,,,0
+Custom Icon,,,Whether the file has a custom icon,,,1,,,kMDItemFSHasCustomIcon,,,0
+Stationery,,,Whether the file is stationery,,,1,,,kMDItemFSIsStationery,,,0
+Fonts,,,Fonts used in this item,,,0,,,kMDItemFonts,,,0
+Genre,,,Genre,,,0,,,kMDItemGenre,,,0
+Film information,,,Film information,,,0,,,kMDItemInformation,,,0
+Item Instant message addresses,,,Instant message addresses associated with this item,,,0,,,kMDItemInstantMessageAddresses,,,0
+Is Application Managed,,,The file is owned and managed by an application,,,0,,,kMDItemIsApplicationManaged,,,0
+General MIDI sequence,,,Whether the MIDI sequence contained in the file is set up for use with a General MIDI device,,,1,,,kMDItemIsGeneralMIDISequence,,,0
+Is Junk,,,Whether the file is likely to be considered a junk file,,,1,,,kMDItemIsLikelyJunk,,,0
+Key signature,,,Musical key of the song in the audio file,,,0,,,kMDItemKeySignature,,,0
+Layers,,,Names of the layers in the file,,,0,,,kMDItemLayerNames,,,0
+Lens model,,,Model of the lens used to acquire this document,,,0,,,kMDItemLensModel,,,0
+Alternatives,,,Alternatives contained in Logic project,,,0,,,kMDItemLogicSongAlternatives,,,0
+Used Audio Files,,,Audio Files used by Logic project,,,0,,,kMDItemLogicSongUsedAudioFiles,,,0
+Used Sampler Instruments,,,Sampler Instruments used by Logic project,,,0,,,kMDItemLogicSongUsedEXSInstruments,,,0
+Used Impulse Responses,,,Impulse Responses used by Logic project,,,0,,,kMDItemLogicSongUsedImpulseResponses,,,0
+Used Ultrabeat Audio Files,,,Audio Files used by Ultrabeat within Logic project,,,0,,,kMDItemLogicSongUsedUltrabeatFiles,,,0
+Used Video Files,,,Video Files used by Logic project,,,0,,,kMDItemLogicSongUsedVideoFiles,,,0
+Logical size,,,Logical size of the item in bytes,,,4,,,kMDItemLogicalSize,,,2
+Max aperture,,,"Smallest F number of the lens in APEX value units,  usually in the range of 00.00 to 99.99",,,13,,,kMDItemMaxAperture,,,0
+Metering mode,,,"The metering mode (Unknown, Average, CentreWeightedAverage, Spot, MultiSpot, Pattern, Partial)",,,10,,,kMDItemMeteringMode,,,0
+Musical genre,,,Musical genre of the song in the audio file,,,0,,,kMDItemMusicalGenre,,,0
+Instrument category,,,Instrument category to which the file belongs,,,0,,,kMDItemMusicalInstrumentCategory,,,0
+Instrument name,,,Name of instrument relative to the instrument category,,,0,,,kMDItemMusicalInstrumentName,,,0
+Location,,,Name of the location or point of interest,,,0,,,kMDItemNamedLocation,,,0
+Original Format,,,Original Format,,,0,,,kMDItemOriginalFormat,,,0
+Original Source,,,Original Source,,,0,,,kMDItemOriginalSource,,,0
+Page height,,,Height of the document page in points,,,2,,,kMDItemPageHeight,,,0
+Page width,,,Width of the document page in points,,,2,,,kMDItemPageWidth,,,0
+File pathname,,,Complete pathname of this file,,,0,,,kMDItemPath,,,0
+Performers,,,Performers,,,0,,,kMDItemPerformers,,,0
+Physical size,,,Physical size of the item in bytes,,,4,,,kMDItemPhysicalSize,,,2
+Producer,,,Producer of this item,,,0,,,kMDItemProducer,,,0
+Projects,,,Projects this item is part of,,,0,,,kMDItemProjects,,,0
+Purchase Date,,,Date this item was purchased,,,8,,,kMDItemPurchaseDate,,,0
+Recipient Email addresses,,,Email addresses for recipients of this item,,,0,,,kMDItemRecipientEmailAddresses,,,0
+Rating,,,User Rating,,,13,,,kMDItemStarRating,,,0
+Start date,,,Date this item starts,,,8,,,kMDItemStartDate,,,0
+Streamable,,,Whether the content is prepared for streaming,,,1,,,kMDItemStreamable,,,0
+Subject,,,Subject of this item,,,0,,,kMDItemSubject,,,0
+Tempo,,,Tempo of the music in the audio file in Beats Per Minute,,,0,,,kMDItemTempo,,,0
+Theme,,,Theme of this item,,,0,,,kMDItemTheme,,,0
+Time signature,,,Time signature of the song in the audio or MIDI file,,,0,,,kMDItemTimeSignature,,,0
+Total bit rate,,,Combined bit rate of the audio and video in the media,,,2,,,kMDItemTotalBitRate,,,0
+URL,,,URL of this item,,,0,,,kMDItemURL,,,0
+Tags,,,Tags associated with this item,,,0,,,kMDItemUserTags,,,0
+White balance,,,White balance setting of the camera when the picture was taken,,,2,,,kMDItemWhiteBalance,,,0
+Account Identifier,,,-,,,0,,,kMDItemAccountIdentifier,,,0
+Additional Recipient Email Addresses,,,-,,,0,,,kMDItemAdditionalRecipientEmailAddresses,,,0
+App Store Category Type,,,-,,,0,,,kMDItemAppStoreCategoryType,,,0
+Attribute Change Date,,,-,,,8,,,kMDItemAttributeChangeDate,,,0
+Author Contact Identifiers,,,-,,,0,,,kMDItemAuthorContactIdentifiers,,,0
+Bundle Identifier,,,-,,,0,,,kMDItemBundleIdentifier,,,0
+CF Bundle Identifier,,,-,,,0,,,kMDItemCFBundleIdentifier,,,0
+Calendar Delegate Identifier,,,-,,,0,,,kMDItemCalendarDelegateIdentifier,,,0
+Calendar Holiday Identifier,,,-,,,0,,,kMDItemCalendarHolidayIdentifier,,,0
+Destination Recipients,,,-,,,0,,,kMDItemDestinationRecipients,,,0
+Document Lineage,,,-,,,0,,,kMDItemDocumentLineage,,,0
+Email Category,,,-,,,0,,,kMDItemEmailCategory,,,0
+FS Exists,,,-,,,1,,,kMDItemFSExists,,,0
+FS IsReadable,,,-,,,1,,,kMDItemFSIsReadable,,,0
+FS IsWriteable,,,-,,,1,,,kMDItemFSIsWriteable,,,0
+Finder Open Date,,,-,,,8,,,kMDItemFinderOpenDate,,,0
+Hidden Additional Recipient Email Addresses,,,-,,,0,,,kMDItemHiddenAdditionalRecipientEmailAddresses,,,0
+IsQuarantined,,,-,,,1,,,kMDItemIsQuarantined,,,0
+IsScreenCapture,,,-,,,1,,,kMDItemIsScreenCapture,,,0
+Mailboxes,,,-,,,0,,,kMDItemMailboxes,,,0
+Origin Application Identifier,,,-,,,0,,,kMDItemOriginApplicationIdentifier,,,0
+Origin Message ID,,,-,,,2,,,kMDItemOriginMessageID,,,0
+Origin Sender Display Name,,,-,,,0,,,kMDItemOriginSenderDisplayName,,,0
+Origin Sender Handle,,,-,,,0,,,kMDItemOriginSenderHandle,,,0
+Origin Subject,,,-,,,0,,,kMDItemOriginSubject,,,0
+Primary Recipient Email Addresses,,,-,,,0,,,kMDItemPrimaryRecipientEmailAddresses,,,0
+Recipient Contact Identifiers,,,-,,,0,,,kMDItemRecipientContactIdentifiers,,,0
+Related Unique Identifier,,,-,,,0,,,kMDItemRelatedUniqueIdentifier,,,0
+Screen Capture Type,,,-,,,0,,,kMDItemScreenCaptureType,,,0
+Support File Type,,,-,,,0,,,kMDItemSupportFileType,,,0
+User Created Date,,,-,,,8,,,kMDItemUserCreatedDate,,,0
+User Created User Handle,,,-,,,0,,,kMDItemUserCreatedUserHandle,,,0
+User Downloaded Date,,,-,,,8,,,kMDItemUserDownloadedDate,,,0
+User Downloaded User Handle,,,-,,,0,,,kMDItemUserDownloadedUserHandle,,,0
+User Modified Date,,,-,,,8,,,kMDItemUserModifiedDate,,,0
+User Modified User Handle,,,-,,,0,,,kMDItemUserModifiedUserHandle,,,0
+User Printed Date,,,-,,,8,,,kMDItemUserPrintedDate,,,0
+User Printed User Handle,,,-,,,0,,,kMDItemUserPrintedUserHandle,,,0
+User Shared Received Date,,,-,,,8,,,kMDItemUserSharedReceivedDate,,,0
+User Shared Sent Date,,,-,,,8,,,kMDItemUserSharedSentDate,,,0
+User Shared Sent Recipient,,,-,,,0,,,kMDItemUserSharedSentRecipient,,,0
+User Shared Sent Recipient Handle,,,-,,,0,,,kMDItemUserSharedSentRecipientHandle,,,0
+User Shared Sent Sender,,,-,,,0,,,kMDItemUserSharedSentSender,,,0
+User Shared Sent Sender Handle,,,-,,,0,,,kMDItemUserSharedSentSenderHandle,,,0
+User Shared Sent Transport,,,-,,,0,,,kMDItemUserSharedSentTransport,,,0
+Weak Related Unique Identifier,,,-,,,0,,,kMDItemWeakRelatedUniqueIdentifier,,,0
+Contact Identifier,,,-,,,0,,,_kMDItemContactIdentifier,,,0
+Domain Identifier,,,-,,,0,,,_kMDItemDomainIdentifier,,,0
+Person Identifier,,,-,,,0,,,_kMDItemPersonIdentifier,,,0
+Person Identifiers,,,-,,,0,,,_kMDItemPersonIdentifiers,,,0
+Is Shared,,,Whether this file is shared via iCloud,,,1,,,_kMDItemIsShared,,,0
+Shared file owner,,,The owner of this shared file,,,0,,,_kMDItemOwnerName,,,0
+User role,,,The role of the current user pertaining to this file (owner or participant),,,0,,,_kMDItemSharedItemCurrentUserRole,,,0
+Family name,,,Font Family name,,,0,,,com_apple_ats_name_family,,,0
+FOND name,,,FOND name,,,0,,,com_apple_ats_name_fond,,,0
+Full name,,,Font Full name,,,0,,,com_apple_ats_name_full,,,0
+PostScript name,,,PostScript name,,,0,,,com_apple_ats_name_postscript,,,0
+Attachment Names,,,A list of the names of attachments associated with a message,,,0,,,com_apple_mail_attachmentNames,,,0
+Attachment Types,,,A list of the types for attachments associated with a message,,,0,,,com_apple_mail_attachmentTypes,,,0
+Date Last Viewed,,,The date a message was last viewed,,,8,,,com_apple_mail_dateLastViewed,,,0
+Date Received,,,The date a message was received,,,8,,,com_apple_mail_dateReceived,,,0
+Flag Colour,,,The colour of the flag associated with a message,,,0,,,com_apple_mail_flagColor,,,0
+Flagged,,,Whether or not a message is flagged,,,1,,,com_apple_mail_flagged,,,0
+Message ID,,,The message ID from the message header,,,0,,,com_apple_mail_messageID,,,0
+Read Status,,,Whether or not a message has been read,,,1,,,com_apple_mail_read,,,0
+Replied To,,,Whether or not a message has been replied to,,,1,,,com_apple_mail_repliedTo,,,0
+dSYM paths,,,dSYM bundle relative paths corresponding to each UUID value,,,0,,,com_apple_xcode_dsym_paths,,,0
+dSYM UUIDs,,,UUID values for all CPU types and subtypes in a dSYM bundle,,,0,,,com_apple_xcode_dsym_uuids,,,0
+Style name,,,Font Style name,,,0,,,com_apple_ats_name_style,,,0
+Real instrument tracks,,,Number of real instrument tracks in GarageBand song,,,2,,,com_apple_garageband_metadata_numberOfRITracks,,,0
+Software instrument tracks,,,Number of software instrument tracks in GarageBand song,,,2,,,com_apple_garageband_metadata_numberOfSITracks,,,0
+Parental advisory,,,GarageBand parental advisory,,,0,,,com_apple_garageband_metadata_parentalAdvisory,,,0
+Type,,,GarageBand project type,,,0,,,com_apple_garageband_metadata_projectType,,,0
+Created with version,,,The GarageBand version used to create this song,,,13,,,com_apple_garageband_metadata_songVersionNumber,,,0
+ATS Names,,,-,,,0,,,com_apple_ats_names,,,0
+iCal Bookmark Shared UID,,,-,,,2,,,com_apple_iCal_Bookmark_SharedUID,,,0
+Mail Attachment Kinds,,,-,,,0,,,com_apple_mail_attachmentKinds,,,0
+Mail Attachment Specific Types,,,-,,,0,,,com_apple_mail_attachmentSpecificTypes,,,0
+Mail Priority,,,-,,,0,,,com_apple_mail_priority,,,0
+To,,,The contact,,,2,,,com_adiumX_chatDestinations,,,0
+From,,,Your account name,,,0,,,com_adiumX_chatSource,,,0
+Service,,,The service on which the chat took place,,,0,,,com_adiumX_service,,,0
+Message GUIDs,,,-,,,2,,,MessageGUIDs,,,0
+Open Document Custom Info 1,,,-,,,0,,,org_openoffice_opendocument_custominfo1,,,0
+Open Document Custom Info 2,,,-,,,0,,,org_openoffice_opendocument_custominfo2,,,0
+Open Document Custom Info 3,,,-,,,0,,,org_openoffice_opendocument_custominfo3,,,0
+Open Document Custom Info 4,,,-,,,0,,,org_openoffice_opendocument_custominfo4,,,0
+File Application Name,,,-,,,0,,,com_corel_file_applicationname,,,0
+File Author,,,-,,,0,,,com_corel_file_author,,,0
+File Category,,,-,,,0,,,com_corel_file_category,,,0
+File Comment,,,-,,,0,,,com_corel_file_comment,,,0
+File Content type,,,-,,,0,,,com_corel_file_contenttype,,,0
+File Copyright,,,-,,,0,,,com_corel_file_copyright,,,0
+File Document Character Count,,,-,,,0,,,com_corel_file_document_charactercount,,,0
+File Document CMYK Profile,,,-,,,0,,,com_corel_file_document_cmyk_profile,,,0
+File Document Color Mode,,,-,,,0,,,com_corel_file_document_color_mode,,,0
+File Document Colors,,,-,,,0,,,com_corel_file_document_colors,,,0
+File Document Effects,,,-,,,0,,,com_corel_file_document_effects,,,0
+File Document External Bitmaps,,,-,,,2,,,com_corel_file_document_externalbitmaps,,,0
+File Document Fills,,,-,,,0,,,com_corel_file_document_fills,,,0
+File Document Fontlist,,,-,,,0,,,com_corel_file_document_fontlist,,,0
+File Document Fonts Embedded,,,-,,,0,,,com_corel_file_document_fonts_embedded,,,0
+File Document Grayscale Profile,,,-,,,0,,,com_corel_file_document_grayscale_profile,,,0
+File Document Languages,,,-,,,0,,,com_corel_file_document_languages,,,0
+File Document Last Author,,,-,,,0,,,com_corel_file_document_lastauthor,,,0
+File Document Layer Names,,,-,,,0,,,com_corel_file_document_layernames,,,0
+File Document Line Count,,,-,,,0,,,com_corel_file_document_linecount,,,0
+File Document Object Count,,,-,,,0,,,com_corel_file_document_objectcount,,,0
+File Document Object Names,,,-,,,0,,,com_corel_file_document_objectnames,,,0
+File Document Object Types,,,-,,,0,,,com_corel_file_document_objecttypes,,,0
+File Document Outlines,,,-,,,0,,,com_corel_file_document_outlines,,,0
+File Document Page Count,,,-,,,2,,,com_corel_file_document_pagecount,,,0
+File Document Page Names,,,-,,,0,,,com_corel_file_document_pagenames,,,0
+File Document Page Orientation,,,-,,,0,,,com_corel_file_document_pageorientation,,,0
+File Document Page Size Name,,,-,,,0,,,com_corel_file_document_pagesizename,,,0
+File Document Palettes,,,-,,,0,,,com_corel_file_document_palettes,,,0
+File Document Paragraph Count,,,-,,,2,,,com_corel_file_document_paragraphcount,,,0
+File Document Rendering Intent,,,-,,,0,,,com_corel_file_document_rendering_intent,,,0
+File Document Revision Number,,,-,,,2,,,com_corel_file_document_revisionnumber,,,0
+File Document RGB Profile,,,-,,,0,,,com_corel_file_document_rgb_profile,,,0
+File Document Spot Colors,,,-,,,0,,,com_corel_file_document_spotcolors,,,0
+File Document Styles,,,-,,,0,,,com_corel_file_document_styles,,,0
+File Document Word Count,,,-,,,2,,,com_corel_file_document_wordcount,,,0
+File Bitmap Compression,,,-,,,2,,,com_corel_file_file_bitmapcompression,,,0
+File Compression Ratio,,,-,,,3,,,com_corel_file_file_compressionratio,,,0
+File Graphic Compression,,,-,,,0,,,com_corel_file_file_graphiccompression,,,0
+File Version,,,-,,,0,,,com_corel_file_fileversion,,,0
+File Image Bitdepth,,,-,,,2,,,com_corel_file_image_bitdepth,,,0
+File Image Colormode,,,-,,,0,,,com_corel_file_image_colormode,,,0
+File Image Color Profile,,,-,,,0,,,com_corel_file_image_colorprofile,,,0
+File Image Dimensions,,,-,,,2,,,com_corel_file_image_dimensions,,,0
+File Image Horizontal Resolution,,,-,,,2,,,com_corel_file_image_horizontalresolution,,,0
+File Image Horizontal Size,,,-,,,4,,,com_corel_file_image_horizontalsize,,,0
+File Image Resolution Unit,,,-,,,2,,,com_corel_file_image_resolutionunit,,,0
+File Image Vertical Resolution,,,-,,,2,,,com_corel_file_image_verticalresolution,,,0
+File Image Vertical Size,,,-,,,4,,,com_corel_file_image_verticalsize,,,0
+File Keywords,,,-,,,0,,,com_corel_file_keywords,,,0
+File Media Creator Application Version,,,-,,,0,,,com_corel_file_media_creatorapplicationversion,,,0
+File Subject,,,-,,,0,,,com_corel_file_subject,,,0
+File Template Folds,,,-,,,0,,,com_corel_file_template_folds,,,0
+File Template Industry,,,-,,,0,,,com_corel_file_template_industry,,,0
+File Template Sided,,,-,,,0,,,com_corel_file_template_sided,,,0
+File Template Type,,,-,,,0,,,com_corel_file_template_type,,,0
+File Title,,,-,,,0,,,com_corel_file_title,,,0
+Account ID,,,-,,,2,,,com_microsoft_outlook_accountID,,,0
+All Day,,,-,,,0,,,com_microsoft_outlook_allDay,,,0
+Anniversary,,,-,,,0,,,com_microsoft_outlook_anniversary,,,0
+Attachments,,,-,,,0,,,com_microsoft_outlook_attachments,,,0
+Attendee Emails,,,-,,,0,,,com_microsoft_outlook_attendee_emails,,,0
+Attendees,,,-,,,0,,,com_microsoft_outlook_attendees,,,0
+BCC Email Addresses,,,-,,,0,,,com_microsoft_outlook_bccEmailAddresses,,,0
+BCC Recipients,,,-,,,0,,,com_microsoft_outlook_bccRecipients,,,0
+Birthday,,,-,,,0,,,com_microsoft_outlook_birthday,,,0
+Blood Type,,,-,,,0,,,com_microsoft_outlook_bloodType,,,0
+Categories,,,-,,,0,,,com_microsoft_outlook_categories,,,0
+CC Email Addresses,,,-,,,0,,,com_microsoft_outlook_ccEmailAddresses,,,0
+CC Recipients,,,-,,,0,,,com_microsoft_outlook_ccRecipients,,,0
+Children,,,-,,,0,,,com_microsoft_outlook_children,,,0
+Children Furigana,,,-,,,0,,,com_microsoft_outlook_childrenFurigana,,,0
+Company,,,-,,,0,,,com_microsoft_outlook_company,,,0
+Company Furigana,,,-,,,0,,,com_microsoft_outlook_companyFurigana,,,0
+Completed,,,-,,,0,,,com_microsoft_outlook_completed,,,0
+Completed Date,,,-,,,8,,,com_microsoft_outlook_completedDate,,,0
+Custom Date 1,,,-,,,8,,,com_microsoft_outlook_customDate1,,,0
+Custom Date 2,,,-,,,8,,,com_microsoft_outlook_customDate2,,,0
+Custom FLD 1,,,-,,,0,,,com_microsoft_outlook_customFld1,,,0
+Custom FLD 2,,,-,,,0,,,com_microsoft_outlook_customFld2,,,0
+Custom FLD 3,,,-,,,0,,,com_microsoft_outlook_customFld3,,,0
+Custom FLD 4,,,-,,,0,,,com_microsoft_outlook_customFld4,,,0
+Custom FLD 5,,,-,,,0,,,com_microsoft_outlook_customFld5,,,0
+Custom FLD 6,,,-,,,0,,,com_microsoft_outlook_customFld6,,,0
+Custom FLD 7,,,-,,,0,,,com_microsoft_outlook_customFld7,,,0
+Custom FLD 8,,,-,,,0,,,com_microsoft_outlook_customFld8,,,0
+Department,,,-,,,0,,,com_microsoft_outlook_department,,,0
+Outlook End Date,,,-,,,8,,,com_microsoft_outlook_endDate,,,0
+First Name,,,-,,,0,,,com_microsoft_outlook_firstName,,,0
+First Name Furigana,,,-,,,0,,,com_microsoft_outlook_firstNameFurigana,,,0
+Flag,,,-,,,0,,,com_microsoft_outlook_flag,,,0
+Folder ID,,,-,,,2,,,com_microsoft_outlook_folderID,,,0
+Forwarded,,,-,,,0,,,com_microsoft_outlook_forwarded,,,0
+Free Busy,,,-,,,0,,,com_microsoft_outlook_freeBusy,,,0
+Free Busy Value,,,-,,,2,,,com_microsoft_outlook_free_busy_value,,,0
+Furigana Full Name,,,-,,,0,,,com_microsoft_outlook_furigana_full_name,,,0
+Has Due Date,,,-,,,8,,,com_microsoft_outlook_hasDueDate,,,0
+Has Start Date,,,-,,,8,,,com_microsoft_outlook_hasStartDate,,,0
+Has Attachments,,,-,,,1,,,com_microsoft_outlook_has_attachments,,,0
+Has Mentioned Me,,,-,,,1,,,com_microsoft_outlook_has_mentioned_me,,,0
+Has Reminder,,,-,,,1,,,com_microsoft_outlook_has_reminder,,,0
+Has Text Content,,,-,,,1,,,com_microsoft_outlook_has_text_content,,,0
+Home City,,,-,,,0,,,com_microsoft_outlook_homeCity,,,0
+Home Country,,,-,,,0,,,com_microsoft_outlook_homeCountry,,,0
+Home State,,,-,,,0,,,com_microsoft_outlook_homeState,,,0
+Home Street,,,-,,,0,,,com_microsoft_outlook_homeStreet,,,0
+Home URL,,,-,,,0,,,com_microsoft_outlook_homeURL,,,0
+Home Zip,,,-,,,0,,,com_microsoft_outlook_homeZip,,,0
+Interests,,,-,,,0,,,com_microsoft_outlook_interests,,,0
+Is From Mailing List,,,-,,,1,,,com_microsoft_outlook_isFromMailingList,,,0
+Is Group,,,-,,,1,,,com_microsoft_outlook_isgroup,,,0
+Japanese,,,-,,,0,,,com_microsoft_outlook_japanese,,,0
+Job Title,,,-,,,0,,,com_microsoft_outlook_jobTitle,,,0
+Junk Likelihood,,,-,,,0,,,com_microsoft_outlook_junkLikelihood,,,0
+Last Name,,,-,,,0,,,com_microsoft_outlook_lastName,,,0
+Last Name Furigana,,,-,,,0,,,com_microsoft_outlook_lastNameFurigana,,,0
+Message Received,,,-,,,0,,,com_microsoft_outlook_messageReceived,,,0
+Message Sent,,,-,,,0,,,com_microsoft_outlook_messageSent,,,0
+News AccountID,,,-,,,2,,,com_microsoft_outlook_newsAccountID,,,0
+Nickname,,,-,,,0,,,com_microsoft_outlook_nickname,,,0
+Notes,,,-,,,0,,,com_microsoft_outlook_notes,,,0
+Other City,,,-,,,0,,,com_microsoft_outlook_otherCity,,,0
+Other Country,,,-,,,0,,,com_microsoft_outlook_otherCountry,,,0
+Other State,,,-,,,0,,,com_microsoft_outlook_otherState,,,0
+Other Street,,,-,,,0,,,com_microsoft_outlook_otherStreet,,,0
+Other Zip,,,-,,,0,,,com_microsoft_outlook_otherZip,,,0
+Parent RecordID,,,-,,,0,,,com_microsoft_outlook_parentRecordID,,,0
+Primary Category,,,-,,,0,,,com_microsoft_outlook_primaryCategory,,,0
+Priority,,,-,,,0,,,com_microsoft_outlook_priority,,,0
+Outlook Projects,,,-,,,0,,,com_microsoft_outlook_projects,,,0
+Record ID,,,-,,,2,,,com_microsoft_outlook_recordID,,,0
+Recpient Email Addresses,,,-,,,0,,,com_microsoft_outlook_recpient_email_addresses,,,0
+Recurrence,,,-,,,0,,,com_microsoft_outlook_recurrence,,,0
+Recurrence Type,,,-,,,0,,,com_microsoft_outlook_recurrence_type,,,0
+Recurring,,,-,,,0,,,com_microsoft_outlook_recurring,,,0
+Redirected,,,-,,,0,,,com_microsoft_outlook_redirected,,,0
+Outlook Replied To,,,-,,,0,,,com_microsoft_outlook_repliedTo,,,0
+Size,,,-,,,4,,,com_microsoft_outlook_size,,,0
+Spouse,,,-,,,0,,,com_microsoft_outlook_spouse,,,0
+Spouse Furigana,,,-,,,0,,,com_microsoft_outlook_spouseFurigana,,,0
+Outlook Start Date,,,-,,,8,,,com_microsoft_outlook_startDate,,,0
+Suffix,,,-,,,0,,,com_microsoft_outlook_suffix,,,0
+Time Zone,,,-,,,0,,,com_microsoft_outlook_timeZone,,,0
+Outlook Title,,,-,,,0,,,com_microsoft_outlook_title,,,0
+To Email Addresses,,,-,,,0,,,com_microsoft_outlook_toEmailAddresses,,,0
+To Recipients,,,-,,,0,,,com_microsoft_outlook_toRecipients,,,0
+Unread,,,-,,,0,,,com_microsoft_outlook_unread,,,0
+Work City,,,-,,,0,,,com_microsoft_outlook_workCity,,,0
+Work Country,,,-,,,0,,,com_microsoft_outlook_workCountry,,,0
+Work State,,,-,,,0,,,com_microsoft_outlook_workState,,,0
+Work Street,,,-,,,0,,,com_microsoft_outlook_workStreet,,,0
+Work URL,,,-,,,0,,,com_microsoft_outlook_workURL,,,0
+Work Zip,,,-,,,0,,,com_microsoft_outlook_workZip,,,0

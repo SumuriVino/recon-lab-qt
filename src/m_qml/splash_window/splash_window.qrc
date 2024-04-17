@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>splash_window.qml</file>
+    </qresource>
+</RCC>

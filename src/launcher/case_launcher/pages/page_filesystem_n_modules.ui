@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>page_filesystem_n_modules</class>
+ <widget class="QWidget" name="page_filesystem_n_modules">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>490</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QStackedWidget" name="stackedWidget_display_seperate_gui">
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="page">
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_for_config_display"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page_2">
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <property name="leftMargin">
+            <number>4</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_filesystem_modules">
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Filesystem Modules&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="Line" name="line">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <property name="spacing">
+              <number>6</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="pushButton_apple_metadata">
+               <property name="minimumSize">
+                <size>
+                 <width>130</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+	margin: 1px;
+     border-color: #7f7f7f;
+     border-style: solid;
+     border-radius: 1px;
+     border-width: 1px;
+      }
+QPushButton:pressed {
+                border-color: #000000;
+}
+
+QPushButton:checked {
+                border-color: #484848;
+}
+
+</string>
+               </property>
+               <property name="text">
+                <string>Apple Metadata</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_mime_type">
+               <property name="minimumSize">
+                <size>
+                 <width>130</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+	margin: 1px;
+     border-color: #7f7f7f;
+     border-style: solid;
+     border-radius: 1px;
+     border-width: 1px;
+        }
+QPushButton:pressed {
+                border-color: #000000;
+}
+
+QPushButton:checked {
+                border-color: #484848;
+}
+
+
+</string>
+               </property>
+               <property name="text">
+                <string>Mime Types</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_signature_analysis">
+               <property name="minimumSize">
+                <size>
+                 <width>130</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+	margin: 1px;
+     border-color: #7f7f7f;
+     border-style: solid;
+     border-radius: 1px;
+     border-width: 1px;
+     }
+QPushButton:pressed {
+                border-color: #000000;
+}
+
+QPushButton:checked {
+                border-color: #484848;
+}
+
+</string>
+               </property>
+               <property name="text">
+                <string>Signature Analysis</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_exif_metadata">
+               <property name="minimumSize">
+                <size>
+                 <width>130</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+	margin: 1px;
+     border-color: #7f7f7f;
+     border-style: solid;
+     border-radius: 1px;
+     border-width: 1px;
+     }
+QPushButton:pressed {
+                border-color: #000000;
+}
+
+QPushButton:checked {
+                border-color: #484848;
+}
+
+
+</string>
+               </property>
+               <property name="text">
+                <string>Exif Metadata</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_hashes">
+               <property name="minimumSize">
+                <size>
+                 <width>130</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+	margin: 1px;
+     border-color: #7f7f7f;
+     border-style: solid;
+     border-radius: 1px;
+     border-width: 1px;
+      }
+QPushButton:pressed {
+                border-color: #000000;
+}
+
+QPushButton:checked {
+                border-color: #484848;
+}
+
+</string>
+               </property>
+               <property name="text">
+                <string>Hashes</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="flat">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_unified_logs">
+               <property name="minimumSize">
+                <size>
+                 <width>130</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+	margin: 1px;
+     border-color: #7f7f7f;
+     border-style: solid;
+     border-radius: 1px;
+     border-width: 1px;
+      }
+QPushButton:pressed {
+                border-color: #000000;
+}
+
+QPushButton:checked {
+                border-color: #484848;
+}
+
+</string>
+               </property>
+               <property name="text">
+                <string>Unified Logs</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_face_analysis">
+               <property name="minimumSize">
+                <size>
+                 <width>130</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+	margin: 1px;
+     border-color: #7f7f7f;
+     border-style: solid;
+     border-radius: 1px;
+     border-width: 1px;
+     }
+QPushButton:pressed {
+                border-color: #000000;
+}
+
+QPushButton:checked {
+                border-color: #484848;
+}
+
+</string>
+               </property>
+               <property name="text">
+                <string>Face Analysis</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_optical_character_recognition">
+               <property name="minimumSize">
+                <size>
+                 <width>130</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+	margin: 1px;
+     border-color: #7f7f7f;
+     border-style: solid;
+     border-radius: 1px;
+     border-width: 1px;
+      }
+QPushButton:pressed {
+                border-color: #000000;
+}
+
+QPushButton:checked {
+                border-color: #484848;
+}
+
+</string>
+               </property>
+               <property name="text">
+                <string>  Optical Character Recognition  </string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_skin_tone_detection">
+               <property name="minimumSize">
+                <size>
+                 <width>130</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+	margin: 1px;
+     border-color: #7f7f7f;
+     border-style: solid;
+     border-radius: 1px;
+     border-width: 1px;
+      }
+QPushButton:pressed {
+                border-color: #000000;
+}
+
+QPushButton:checked {
+                border-color: #484848;
+}
+
+</string>
+               </property>
+               <property name="text">
+                <string>Skin Tone Detection</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_weapons">
+               <property name="minimumSize">
+                <size>
+                 <width>130</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+	margin: 1px;
+     border-color: #7f7f7f;
+     border-style: solid;
+     border-radius: 1px;
+     border-width: 1px;
+      }
+QPushButton:pressed {
+                border-color: #000000;
+}
+
+QPushButton:checked {
+                border-color: #484848;
+}
+
+</string>
+               </property>
+               <property name="text">
+                <string>Weapons</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_fire_analysis">
+               <property name="minimumSize">
+                <size>
+                 <width>130</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+	margin: 1px;
+     border-color: #7f7f7f;
+     border-style: solid;
+     border-radius: 1px;
+     border-width: 1px;
+      }
+QPushButton:pressed {
+                border-color: #000000;
+}
+
+QPushButton:checked {
+                border-color: #484848;
+}
+</string>
+               </property>
+               <property name="text">
+                <string>Fire Analysis</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="verticalSpacer">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QStackedWidget" name="stackedWidget_fs_options">
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

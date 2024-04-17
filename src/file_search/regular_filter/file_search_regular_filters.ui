@@ -1,0 +1,1062 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>file_search_regular_filters</class>
+ <widget class="QDialog" name="file_search_regular_filters">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>740</width>
+    <height>695</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>File Search</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>-1</number>
+       </property>
+       <item>
+        <widget class="QCheckBox" name="checkBox_file_name">
+         <property name="text">
+          <string>File Name</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_file_name"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_file_name_select_category">
+         <property name="minimumSize">
+          <size>
+           <width>120</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Category</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_file_name_options">
+         <property name="minimumSize">
+          <size>
+           <width>120</width>
+           <height>0</height>
+          </size>
+         </property>
+         <item>
+          <property name="text">
+           <string>Contains</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Matches</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Starts with</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Ends with</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="Line" name="line">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_9">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QCheckBox" name="checkBox_file_size">
+         <property name="text">
+          <string>File Size</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_file_size_options">
+         <property name="minimumSize">
+          <size>
+           <width>120</width>
+           <height>0</height>
+          </size>
+         </property>
+         <item>
+          <property name="text">
+           <string>Greater than</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Less than</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Exact</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Between</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_file_size_1"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_file_size_2"/>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_file_size_units">
+         <item>
+          <property name="text">
+           <string>Bytes</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>KB</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>MB</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>GB</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_13">
+       <item>
+        <widget class="QCheckBox" name="checkBox_ocr_text">
+         <property name="text">
+          <string>OCR Text</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_ocr_text"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="Line" name="line_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QCheckBox" name="checkBox_date_change">
+         <property name="text">
+          <string>Date Change</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_date_change_options">
+         <item>
+          <property name="text">
+           <string>Between</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Before</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>After</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="dateTimeEdit_date_change_1">
+         <property name="dateTime">
+          <datetime>
+           <hour>6</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2017</year>
+           <month>12</month>
+           <day>30</day>
+          </datetime>
+         </property>
+         <property name="date">
+          <date>
+           <year>2017</year>
+           <month>12</month>
+           <day>30</day>
+          </date>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MM/yyyy h:mm:ss</string>
+         </property>
+         <property name="timeSpec">
+          <enum>Qt::UTC</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="dateTimeEdit_date_change_2">
+         <property name="dateTime">
+          <datetime>
+           <hour>6</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2018</year>
+           <month>12</month>
+           <day>29</day>
+          </datetime>
+         </property>
+         <property name="date">
+          <date>
+           <year>2018</year>
+           <month>12</month>
+           <day>29</day>
+          </date>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MM/yyyy h:mm:ss</string>
+         </property>
+         <property name="timeSpec">
+          <enum>Qt::UTC</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QCheckBox" name="checkBox_date_modified">
+         <property name="text">
+          <string>Date Modified</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_date_modified_options">
+         <item>
+          <property name="text">
+           <string>Between</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Before</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>After</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="dateTimeEdit_date_modified_1">
+         <property name="dateTime">
+          <datetime>
+           <hour>6</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2017</year>
+           <month>12</month>
+           <day>30</day>
+          </datetime>
+         </property>
+         <property name="date">
+          <date>
+           <year>2017</year>
+           <month>12</month>
+           <day>30</day>
+          </date>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MM/yyyy h:mm:ss</string>
+         </property>
+         <property name="timeSpec">
+          <enum>Qt::UTC</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="dateTimeEdit_date_modified_2">
+         <property name="dateTime">
+          <datetime>
+           <hour>6</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2018</year>
+           <month>12</month>
+           <day>29</day>
+          </datetime>
+         </property>
+         <property name="date">
+          <date>
+           <year>2018</year>
+           <month>12</month>
+           <day>29</day>
+          </date>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MM/yyyy h:mm:ss</string>
+         </property>
+         <property name="timeSpec">
+          <enum>Qt::UTC</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QCheckBox" name="checkBox_date_accessed">
+         <property name="text">
+          <string>Date Accessed</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_date_accessed_options">
+         <item>
+          <property name="text">
+           <string>Between</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Before</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>After</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="dateTimeEdit_date_accessed_1">
+         <property name="dateTime">
+          <datetime>
+           <hour>6</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2017</year>
+           <month>12</month>
+           <day>30</day>
+          </datetime>
+         </property>
+         <property name="date">
+          <date>
+           <year>2017</year>
+           <month>12</month>
+           <day>30</day>
+          </date>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MM/yyyy h:mm:ss</string>
+         </property>
+         <property name="timeSpec">
+          <enum>Qt::UTC</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="dateTimeEdit_date_accessed_2">
+         <property name="dateTime">
+          <datetime>
+           <hour>6</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2018</year>
+           <month>12</month>
+           <day>29</day>
+          </datetime>
+         </property>
+         <property name="date">
+          <date>
+           <year>2018</year>
+           <month>12</month>
+           <day>29</day>
+          </date>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MM/yyyy h:mm:ss</string>
+         </property>
+         <property name="timeSpec">
+          <enum>Qt::UTC</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_14">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QCheckBox" name="checkBox_date_created">
+         <property name="text">
+          <string>Date Created</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_date_created_options">
+         <item>
+          <property name="text">
+           <string>Between</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Before</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>After</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="dateTimeEdit_date_created_1">
+         <property name="dateTime">
+          <datetime>
+           <hour>6</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2017</year>
+           <month>12</month>
+           <day>30</day>
+          </datetime>
+         </property>
+         <property name="date">
+          <date>
+           <year>2017</year>
+           <month>12</month>
+           <day>30</day>
+          </date>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MM/yyyy h:mm:ss</string>
+         </property>
+         <property name="timeSpec">
+          <enum>Qt::UTC</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="dateTimeEdit_date_created_2">
+         <property name="dateTime">
+          <datetime>
+           <hour>6</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2018</year>
+           <month>12</month>
+           <day>29</day>
+          </datetime>
+         </property>
+         <property name="date">
+          <date>
+           <year>2018</year>
+           <month>12</month>
+           <day>29</day>
+          </date>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MM/yyyy h:mm:ss</string>
+         </property>
+         <property name="timeSpec">
+          <enum>Qt::UTC</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QCheckBox" name="checkBox_date_added">
+         <property name="text">
+          <string>Date Added</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_date_added_options">
+         <item>
+          <property name="text">
+           <string>Between</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Before</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>After</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="dateTimeEdit_date_added_1">
+         <property name="dateTime">
+          <datetime>
+           <hour>6</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2017</year>
+           <month>12</month>
+           <day>30</day>
+          </datetime>
+         </property>
+         <property name="date">
+          <date>
+           <year>2017</year>
+           <month>12</month>
+           <day>30</day>
+          </date>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MM/yyyy h:mm:ss</string>
+         </property>
+         <property name="timeSpec">
+          <enum>Qt::UTC</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="dateTimeEdit_date_added_2">
+         <property name="dateTime">
+          <datetime>
+           <hour>6</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2018</year>
+           <month>12</month>
+           <day>29</day>
+          </datetime>
+         </property>
+         <property name="date">
+          <date>
+           <year>2018</year>
+           <month>12</month>
+           <day>29</day>
+          </date>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MM/yyyy h:mm:ss</string>
+         </property>
+         <property name="timeSpec">
+          <enum>Qt::UTC</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QCheckBox" name="checkBox_content_creation">
+         <property name="text">
+          <string>Date Content Creation</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_content_creation_options">
+         <item>
+          <property name="text">
+           <string>Between</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Before</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>After</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="dateTimeEdit_content_creation_1">
+         <property name="dateTime">
+          <datetime>
+           <hour>6</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2017</year>
+           <month>12</month>
+           <day>30</day>
+          </datetime>
+         </property>
+         <property name="date">
+          <date>
+           <year>2017</year>
+           <month>12</month>
+           <day>30</day>
+          </date>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MM/yyyy h:mm:ss</string>
+         </property>
+         <property name="timeSpec">
+          <enum>Qt::UTC</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="dateTimeEdit_content_creation_2">
+         <property name="dateTime">
+          <datetime>
+           <hour>6</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2018</year>
+           <month>12</month>
+           <day>29</day>
+          </datetime>
+         </property>
+         <property name="date">
+          <date>
+           <year>2018</year>
+           <month>12</month>
+           <day>29</day>
+          </date>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MM/yyyy h:mm:ss</string>
+         </property>
+         <property name="timeSpec">
+          <enum>Qt::UTC</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_8">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QCheckBox" name="checkBox_content_modification">
+         <property name="text">
+          <string>Date Content Modification</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_content_modification_options">
+         <item>
+          <property name="text">
+           <string>Between</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Before</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>After</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="dateTimeEdit_content_modification_1">
+         <property name="dateTime">
+          <datetime>
+           <hour>6</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2017</year>
+           <month>12</month>
+           <day>30</day>
+          </datetime>
+         </property>
+         <property name="date">
+          <date>
+           <year>2017</year>
+           <month>12</month>
+           <day>30</day>
+          </date>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MM/yyyy h:mm:ss</string>
+         </property>
+         <property name="timeSpec">
+          <enum>Qt::UTC</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="dateTimeEdit_content_modification_2">
+         <property name="dateTime">
+          <datetime>
+           <hour>6</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2018</year>
+           <month>12</month>
+           <day>29</day>
+          </datetime>
+         </property>
+         <property name="date">
+          <date>
+           <year>2018</year>
+           <month>12</month>
+           <day>29</day>
+          </date>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MM/yyyy h:mm:ss</string>
+         </property>
+         <property name="timeSpec">
+          <enum>Qt::UTC</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <item>
+        <widget class="QCheckBox" name="checkBox_last_used">
+         <property name="text">
+          <string>Date Last Used</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_last_used_options">
+         <item>
+          <property name="text">
+           <string>Between</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Before</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>After</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="dateTimeEdit_last_used_1">
+         <property name="dateTime">
+          <datetime>
+           <hour>6</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2017</year>
+           <month>12</month>
+           <day>30</day>
+          </datetime>
+         </property>
+         <property name="date">
+          <date>
+           <year>2017</year>
+           <month>12</month>
+           <day>30</day>
+          </date>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MM/yyyy h:mm:ss</string>
+         </property>
+         <property name="timeSpec">
+          <enum>Qt::UTC</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="dateTimeEdit_last_used_2">
+         <property name="dateTime">
+          <datetime>
+           <hour>6</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2018</year>
+           <month>12</month>
+           <day>29</day>
+          </datetime>
+         </property>
+         <property name="date">
+          <date>
+           <year>2018</year>
+           <month>12</month>
+           <day>29</day>
+          </date>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MM/yyyy h:mm:ss</string>
+         </property>
+         <property name="timeSpec">
+          <enum>Qt::UTC</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="Line" name="line_4">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_12">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QRadioButton" name="radioButton_all_source">
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="text">
+          <string>All Source</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="radioButton_select_source">
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="text">
+          <string>Select Source</string>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_select_source_list">
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="text">
+          <string>Select</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="Line" name="line_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_11">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QRadioButton" name="radioButton_all_filters">
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="text">
+          <string>All Filters</string>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_2</string>
+         </attribute>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="radioButton_any_filter">
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="text">
+          <string>Any Filter</string>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_2</string>
+         </attribute>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>13</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="Line" name="line_5">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_10">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_search_label">
+         <property name="placeholderText">
+          <string>Search Label</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_search">
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="text">
+          <string>Search</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
+</ui>

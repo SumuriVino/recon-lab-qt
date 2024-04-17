@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>918</width>
+    <height>558</height>
+   </rect>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::StrongFocus</enum>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <property name="unifiedTitleAndToolBarOnMac">
+   <bool>true</bool>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>918</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuProcess">
+    <property name="title">
+     <string>Process</string>
+    </property>
+    <addaction name="action_run_artifacts_mainmenu"/>
+    <addaction name="action_ram_analysis_mainmenu"/>
+    <addaction name="action_text_indexing_mainmenu"/>
+    <addaction name="action_hashset_mainmenu"/>
+   </widget>
+   <widget class="QMenu" name="menuSearch">
+    <property name="title">
+     <string>Search</string>
+    </property>
+    <addaction name="action_file_search_mainmenu"/>
+    <addaction name="action_content_search_mainmenu"/>
+    <addaction name="action_exif_metadata_search_mainmenu"/>
+    <addaction name="action_apple_metadata_search_mainmenu"/>
+    <addaction name="action_artifacts_keyword_search_mainmenu"/>
+    <addaction name="action_recognize_face_mainmenu"/>
+   </widget>
+   <widget class="QMenu" name="menuTimeline">
+    <property name="title">
+     <string>Timeline</string>
+    </property>
+    <addaction name="action_artifacts_timeline_mainmenu"/>
+    <addaction name="action_super_timeline_mainmenu"/>
+   </widget>
+   <widget class="QMenu" name="menuExport">
+    <property name="title">
+     <string>Export</string>
+    </property>
+    <addaction name="action_tagged_file_export_mainmenu"/>
+    <addaction name="action_export_case_mainmenu"/>
+   </widget>
+   <widget class="QMenu" name="menuReport">
+    <property name="title">
+     <string>Report</string>
+    </property>
+    <addaction name="action_global_report_mainmenu"/>
+    <addaction name="action_story_board_mainmenu"/>
+   </widget>
+   <addaction name="menuProcess"/>
+   <addaction name="menuSearch"/>
+   <addaction name="menuTimeline"/>
+   <addaction name="menuExport"/>
+   <addaction name="menuReport"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::TopToolBarArea</set>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>32</width>
+     <height>32</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonIconOnly</enum>
+   </property>
+   <property name="floatable">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionShow_Sidebar">
+   <property name="text">
+    <string>Show Sidebar</string>
+   </property>
+  </action>
+  <action name="actionHide_Sidebar">
+   <property name="text">
+    <string>Hide Sidebar</string>
+   </property>
+  </action>
+  <action name="actionShow_Detailed_Information">
+   <property name="text">
+    <string>Show Detailed Information</string>
+   </property>
+  </action>
+  <action name="actionHide_Detailed_Information">
+   <property name="text">
+    <string>Hide Detailed Information</string>
+   </property>
+  </action>
+  <action name="actionSend_To_Bucket">
+   <property name="text">
+    <string>Send To Bucket</string>
+   </property>
+  </action>
+  <action name="actionRedefined_Result">
+   <property name="text">
+    <string>Redifine Result</string>
+   </property>
+  </action>
+  <action name="actionPlugin_Summary">
+   <property name="text">
+    <string>Plugin Summary</string>
+   </property>
+  </action>
+  <action name="action_run_artifacts_mainmenu">
+   <property name="text">
+    <string>Run Artifacts</string>
+   </property>
+  </action>
+  <action name="action_ram_analysis_mainmenu">
+   <property name="text">
+    <string>RAM Analysis</string>
+   </property>
+  </action>
+  <action name="action_text_indexing_mainmenu">
+   <property name="text">
+    <string>Text Indexing</string>
+   </property>
+  </action>
+  <action name="action_hashset_mainmenu">
+   <property name="text">
+    <string>Hashset</string>
+   </property>
+  </action>
+  <action name="action_file_search_mainmenu">
+   <property name="text">
+    <string>File Search</string>
+   </property>
+  </action>
+  <action name="action_content_search_mainmenu">
+   <property name="text">
+    <string>Content Search</string>
+   </property>
+  </action>
+  <action name="action_exif_metadata_search_mainmenu">
+   <property name="text">
+    <string>Exif Metadata Search</string>
+   </property>
+  </action>
+  <action name="action_apple_metadata_search_mainmenu">
+   <property name="text">
+    <string>Apple Metadata Search</string>
+   </property>
+  </action>
+  <action name="action_artifacts_keyword_search_mainmenu">
+   <property name="text">
+    <string>Artifacts Keyword Search</string>
+   </property>
+  </action>
+  <action name="action_artifacts_timeline_mainmenu">
+   <property name="text">
+    <string>Artifacts Timeline</string>
+   </property>
+  </action>
+  <action name="action_super_timeline_mainmenu">
+   <property name="text">
+    <string>Super Timeline</string>
+   </property>
+  </action>
+  <action name="action_tagged_file_export_mainmenu">
+   <property name="text">
+    <string>Tagged File Export</string>
+   </property>
+  </action>
+  <action name="action_export_case_mainmenu">
+   <property name="text">
+    <string>Export Case</string>
+   </property>
+  </action>
+  <action name="action_global_report_mainmenu">
+   <property name="text">
+    <string>Global Report</string>
+   </property>
+  </action>
+  <action name="action_story_board_mainmenu">
+   <property name="text">
+    <string>Story Board</string>
+   </property>
+  </action>
+  <action name="action_recognize_face_mainmenu">
+   <property name="text">
+    <string>Recognize Face</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
