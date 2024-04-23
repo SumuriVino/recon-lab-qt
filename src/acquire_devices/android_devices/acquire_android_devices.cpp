@@ -1,6 +1,11 @@
 #include "acquire_android_devices.h"
 #include "ui_acquire_android_devices.h"
 
+/*
+ This Class is all about Acquiring the android backup, We have disabled this function from recon lab because it starts failing for lot of companies mobile,
+as every company has different security features. So, This needs research and only here if we can optimise it or not
+ */
+
 acquire_android_devices::acquire_android_devices(QWidget *parent) :
     QFrame(parent),
     ui(new Ui::acquire_android_devices)

@@ -15,7 +15,7 @@ remove_multiple_tag_selecotor::~remove_multiple_tag_selecotor()
     delete ui;
 }
 
-void remove_multiple_tag_selecotor::pub_set_initialisation(QStringList tag_list, QStringList icons_list, QString table, QString record_INT)
+void remove_multiple_tag_selecotor::pub_set_initialisation(QStringList tag_list, QStringList icons_list, QString table, QString record_INT) //set tags list, icons in private variable
 {
     recived_tag_list = tag_list;
     recived_icons_list = icons_list;
@@ -24,8 +24,8 @@ void remove_multiple_tag_selecotor::pub_set_initialisation(QStringList tag_list,
     display_tag_table();
 }
 
-void remove_multiple_tag_selecotor::on_pushButton_remove_tag_clicked()
-{
+void remove_multiple_tag_selecotor::on_pushButton_remove_tag_clicked() //This button remove tags from records which displayed on tableview and tablewidget.
+{                                                                       //also hide tag window after removing tag
     QStringList list_remaining_tags;
     QStringList list_removed_tags;
     for(int i = 0; i < ui->tableWidget_remove_tag_list->rowCount(); i++)
@@ -49,7 +49,7 @@ void remove_multiple_tag_selecotor::on_pushButton_remove_tag_clicked()
     this->hide();
 }
 
-void remove_multiple_tag_selecotor::display_tag_table()
+void remove_multiple_tag_selecotor::display_tag_table() // display tag table on right click
 {
     while(ui->tableWidget_remove_tag_list->rowCount())
         ui->tableWidget_remove_tag_list->removeRow(0);
@@ -75,7 +75,7 @@ void remove_multiple_tag_selecotor::display_tag_table()
     }
 }
 
-void remove_multiple_tag_selecotor::on_tableWidget_remove_tag_list_cellClicked(int row, int column)
+void remove_multiple_tag_selecotor::on_tableWidget_remove_tag_list_cellClicked(int row, int column) // when clicked on remove tag
 {
     if(row == 0)
     {

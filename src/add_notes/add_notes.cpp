@@ -17,12 +17,12 @@ add_notes::~add_notes()
     delete ui;
 }
 
-void add_notes::set_notes(QString data)
+void add_notes::set_notes(QString data) // Add notes on text edit whatever user write
 {
     ui->textEdit_notes->setText(data);
 }
 
-void add_notes::on_pushButton_add_clicked()
+void add_notes::on_pushButton_add_clicked() // Send that data to save in database through signal when we click on add button
 {
     if(ui->textEdit_notes->toPlainText().trimmed().isEmpty())
     {

@@ -44,7 +44,7 @@ acquire_iOS_devices::~acquire_iOS_devices()
     delete ui;
 }
 
-void acquire_iOS_devices::slot_stop_acquire(bool status)
+void acquire_iOS_devices::slot_stop_acquire(bool status) //This is to stop acquiring while acquisitation iOS Backup
 {
     bool_device_acquired_cancelled = true;
     // proc_acquire_ios_devices->terminate();
@@ -52,7 +52,7 @@ void acquire_iOS_devices::slot_stop_acquire(bool status)
 
 }
 
-void acquire_iOS_devices::slot_proc_acquire_ios_devices_readyread()
+void acquire_iOS_devices::slot_proc_acquire_ios_devices_readyread() //This will show the counter on display while acquisitation. Ready read function most of time we use to get counter & show.
 {
 
     QByteArray arr = proc_acquire_ios_devices->readLine();
@@ -71,13 +71,13 @@ void acquire_iOS_devices::slot_proc_acquire_ios_devices_readyread()
 
 }
 
-void acquire_iOS_devices::pub_set_id_and_name(int id,QString name)
+void acquire_iOS_devices::pub_set_id_and_name(int id,QString name) //This function is not in use
 {
     received_id = id;
     received_name = name;
 }
 
-void acquire_iOS_devices::closeEvent(QCloseEvent *)
+void acquire_iOS_devices::closeEvent(QCloseEvent *) //when we close the iOS Acquire window, this function get calls and hide the window
 {
     emit signal_attached_ios_devices_selected(QStringList());
     this->hide();
@@ -85,8 +85,8 @@ void acquire_iOS_devices::closeEvent(QCloseEvent *)
 }
 
 
-void acquire_iOS_devices::pub_extract_idevice_info()
-{
+void acquire_iOS_devices::pub_extract_idevice_info() //When we attach iPhone, we extract all info from that like name, serial number, list of iphone detected
+{                                                   // and display it on the table widget. we do this with the help of command idevice_id
 
     QString cmd_list_id = "./iOS_devices/idevice_id";
 
@@ -140,7 +140,7 @@ void acquire_iOS_devices::pub_extract_idevice_info()
     set_gui_essentials();
 }
 
-void acquire_iOS_devices::prepare_display()
+void acquire_iOS_devices::prepare_display() // Display list of iphones, their serial number and other info detected on the table widget so user can select which one he wants to take backup of.
 {
 
     ui->tableWidget_device_list->setRowCount(0);
@@ -208,7 +208,7 @@ void acquire_iOS_devices::prepare_display()
 
 }
 
-void acquire_iOS_devices::set_gui_essentials()
+void acquire_iOS_devices::set_gui_essentials() //This is columns order of iphone info's.
 {
     ui->tableWidget_device_list->hideColumn(enum_idevice_list_bookmark);
     ui->tableWidget_device_list->setColumnWidth(enum_idevice_list_sr_no, 35);
@@ -218,8 +218,8 @@ void acquire_iOS_devices::set_gui_essentials()
     ui->tableWidget_device_list->setColumnWidth(enum_idevice_list_device_uuid, 290);
 }
 
-void acquire_iOS_devices::on_tableWidget_device_list_cellClicked(int row_number, int column)
-{
+void acquire_iOS_devices::on_tableWidget_device_list_cellClicked(int row_number, int column) //Here we have list of iPhones and we output here, on which iphone user clicked
+{                                                                                   // and which one to take backup according to user.
 
     if(row_number < 0)
         return;
@@ -252,7 +252,7 @@ void acquire_iOS_devices::on_tableWidget_device_list_cellClicked(int row_number,
 
 }
 
-void acquire_iOS_devices::on_pushButton_refresh_list_clicked()
+void acquire_iOS_devices::on_pushButton_refresh_list_clicked() //This is button to refresh the detected list of iphones which displayed on tablewidget
 {
     ui->label_message->clear();
     ui->tableWidget_device_list->setRowCount(0);
@@ -262,12 +262,12 @@ void acquire_iOS_devices::on_pushButton_refresh_list_clicked()
 }
 
 
-void acquire_iOS_devices::on_pushButton_back_clicked()
+void acquire_iOS_devices::on_pushButton_back_clicked() // When we click on back button, signal emitted and send us back to the previous window
 {
     emit signal_bring_recon_lab_banner_page_in_front();
 }
 
-void acquire_iOS_devices::slot_proc_acquire_ios_devices_finished(int status)
+void acquire_iOS_devices::slot_proc_acquire_ios_devices_finished(int status) //When acquisitation of backup finished, and display message accordingly if it success or failed
 {
 
     display_loading_progress_bar_obj->hide();
@@ -341,8 +341,8 @@ void acquire_iOS_devices::slot_proc_acquire_ios_devices_finished(int status)
 
 
 
-void acquire_iOS_devices::on_pushButton_acquire_clicked()
-{
+void acquire_iOS_devices::on_pushButton_acquire_clicked() // when we click on acuire button to take backup of iphone, idevicebackup2 command got executed here with some arguments
+{                                                       // and display message accordingly
 
     if(ui->tableWidget_device_list->rowCount() < 1)
     {

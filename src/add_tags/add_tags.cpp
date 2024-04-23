@@ -29,16 +29,16 @@ add_tags::~add_tags()
     delete ui;
 }
 
-void add_tags::pub_set_essentials()
+void add_tags::pub_set_essentials() // tags database path where some tags color and other information already stored
 {
     tags_db_path =  global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Case_Configuration_In_Result_QString).toString() + "case_configuration.sqlite";
 
     fill_colours_to_select();
 }
 
-void add_tags::on_pushButton_save_tag_clicked()
-{
-    recon_static_functions::app_debug(" -Start " , Q_FUNC_INFO);
+void add_tags::on_pushButton_save_tag_clicked() // When we tag any record and click on save, that information will save in database to display it directly from database.
+{                                               // also it checks if that tag is already stored on that particluar record. Accordingly it modify the database if we perform multiple
+    recon_static_functions::app_debug(" -Start " , Q_FUNC_INFO); //tags on single record.
 
     QString new_tag = ui->lineEdit->text().trimmed();
 
@@ -116,7 +116,7 @@ void add_tags::on_pushButton_save_tag_clicked()
 
 }
 
-QString add_tags::get_color_hex_from_colour_name(QString colour ,  QString destination_db_path , QString caller_func)
+QString add_tags::get_color_hex_from_colour_name(QString colour ,  QString destination_db_path , QString caller_func) // returns the colour hex which we select, to save that in database
 {
     QString command = "select color_hex from 'colors' where color_name = '" + colour + "'";
     QString color_hex = recon_helper_standard_obj->get_string_from_db_by_dbpath(command,0,destination_db_path,caller_func);
@@ -124,8 +124,8 @@ QString add_tags::get_color_hex_from_colour_name(QString colour ,  QString desti
     return color_hex;
 }
 
-void add_tags::add_new_tag_to_tags_database(QString new_tag , QString colour)
-{
+void add_tags::add_new_tag_to_tags_database(QString new_tag , QString colour) // if you want to create your own color tags rather than default tags
+{                                                                           // it works when we click on create new tag on right click on any record
 
     recon_static_functions::app_debug(" -Start " , Q_FUNC_INFO);
 
@@ -174,7 +174,7 @@ void add_tags::add_new_tag_to_tags_database(QString new_tag , QString colour)
 }
 
 ///fill colours in the combobox
-void add_tags::fill_colours_to_select()
+void add_tags::fill_colours_to_select() // when we create new color and select that, this function will set that color in combobox (where listed all the other colors)
 {
     recon_static_functions::app_debug(" -Start " , Q_FUNC_INFO);
 
@@ -216,7 +216,7 @@ void add_tags::fill_colours_to_select()
 }
 
 
-QStringList add_tags::get_tags_and_colours_list_from_db(QString command,QString destination_db_file)
+QStringList add_tags::get_tags_and_colours_list_from_db(QString command,QString destination_db_file) //returns colors and tags list from database
 {
     recon_static_functions::app_debug(" -Start " , Q_FUNC_INFO);
 
