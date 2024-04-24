@@ -40,7 +40,7 @@ add_new_source::~add_new_source()
 }
 
 
-void add_new_source::on_pushButton_next_clicked()
+void add_new_source::on_pushButton_next_clicked() //when we click on next button after adding source, it will update source path list in db & set in variable
 {
     int index = ui->stackedWidget_multi_source_selection->currentIndex();
 
@@ -65,14 +65,14 @@ void add_new_source::on_pushButton_next_clicked()
     }
 }
 
-void add_new_source::get_data_from_the_multisource_launcher_pages()
+void add_new_source::get_data_from_the_multisource_launcher_pages() //collect selected sources path and set in private variable
 {
     source_selector_obj->pub_get_essential_value_from_all_roots();
     list_root_info = source_selector_obj->pub_get_root_info_list_from_gui();
 }
 
 
-void add_new_source::slot_source_selected(bool is_source_selected)
+void add_new_source::slot_source_selected(bool is_source_selected) //source selected or not, act accordingly to hide/show window OR enable/disbale the next/back button
 {
     this->show();
 
@@ -91,17 +91,17 @@ void add_new_source::slot_source_selected(bool is_source_selected)
 }
 
 
-void add_new_source::slot_added_root_details_list(QList<struct_GLOBAL_witness_info_root> target_list)
+void add_new_source::slot_added_root_details_list(QList<struct_GLOBAL_witness_info_root> target_list) //Selected sources list from root
 {
     list_root_info = target_list;
 }
 
-void add_new_source::slot_hide_source_selector_parent_window()
+void add_new_source::slot_hide_source_selector_parent_window() //hide source selecter parent window after selection
 {
     this->hide();
 }
 
-void add_new_source::slot_qml_button_initial_back_clicked()
+void add_new_source::slot_qml_button_initial_back_clicked() //when click on back button of QML, backs on widget (add source window)
 {
     this->show();
 }

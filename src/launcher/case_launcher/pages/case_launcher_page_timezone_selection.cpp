@@ -38,7 +38,7 @@ case_launcher_page_timezone_selection::~case_launcher_page_timezone_selection()
     delete ui;
 }
 
-void case_launcher_page_timezone_selection::create_time_zone_list_combobox()
+void case_launcher_page_timezone_selection::create_time_zone_list_combobox() // Set all the timezones available in database on combobox
 {
     recon_static_functions::app_debug(" - Start",Q_FUNC_INFO);
 
@@ -82,7 +82,7 @@ void case_launcher_page_timezone_selection::create_time_zone_list_combobox()
 }
 
 
-void case_launcher_page_timezone_selection::pub_initialise_timezone_details()
+void case_launcher_page_timezone_selection::pub_initialise_timezone_details() // set database path of timezone in private variable (destination_db_file)
 {
     if(page_caller_string == MACRO_TIMEZONE_SELECTION_CASE_LAUNCHER)
     {
@@ -103,7 +103,7 @@ void case_launcher_page_timezone_selection::pub_initialise_timezone_details()
 }
 
 
-void case_launcher_page_timezone_selection::pub_update_timezone_info()
+void case_launcher_page_timezone_selection::pub_update_timezone_info() // Update timezone according to examiner in database.
 {
     recon_static_functions::app_debug("START",Q_FUNC_INFO);
 
@@ -194,12 +194,12 @@ void case_launcher_page_timezone_selection::pub_update_timezone_info()
     recon_static_functions::app_debug("Ends",Q_FUNC_INFO);
 }
 
-void case_launcher_page_timezone_selection::pub_set_page_caller(QString caller_name)
-{
+void case_launcher_page_timezone_selection::pub_set_page_caller(QString caller_name) // Get value in page_caller_string -> From where exaimner select time timezone, from pre launcher or
+{                                                                                   // post launcher from configuration
     page_caller_string = caller_name;
 }
 
-void case_launcher_page_timezone_selection::pub_get_timezone_details()
+void case_launcher_page_timezone_selection::pub_get_timezone_details() // Get timezone details from database and fill that info in global variable and structures
 {
     recon_static_functions::app_debug(" - Start",Q_FUNC_INFO);
 
@@ -301,7 +301,7 @@ void case_launcher_page_timezone_selection::pub_get_timezone_details()
 }
 
 
-void case_launcher_page_timezone_selection::display_timezone_from_db()
+void case_launcher_page_timezone_selection::display_timezone_from_db() // Display the timezone from database in line edit on widget or window
 {
     recon_static_functions::app_debug(" - Start",Q_FUNC_INFO);
 
@@ -361,21 +361,21 @@ void case_launcher_page_timezone_selection::display_timezone_from_db()
 }
 
 
-void case_launcher_page_timezone_selection::on_radioButton_utc_timezone_toggled(bool checked)
+void case_launcher_page_timezone_selection::on_radioButton_utc_timezone_toggled(bool checked) // Status of radio button utc timezone pass by signal if it clicks or not
 {
     ui->lineEdit_system_time_zone->setEnabled(!checked);
     ui->comboBox_user_time_zone->setEnabled(!checked);
     emit signal_enable_disable_next_button_in_launcher_page(true);
 }
 
-void case_launcher_page_timezone_selection::on_radioButton_system_timezone_toggled(bool checked)
+void case_launcher_page_timezone_selection::on_radioButton_system_timezone_toggled(bool checked) // Status of radio button System timezone pass by signal if it clicks or not
 {
     ui->lineEdit_utc_timezone->setEnabled(!checked);
     ui->comboBox_user_time_zone->setEnabled(!checked);
     emit signal_enable_disable_next_button_in_launcher_page(true);
 }
 
-void case_launcher_page_timezone_selection::on_radioButton_select_timezone_toggled(bool checked)
+void case_launcher_page_timezone_selection::on_radioButton_select_timezone_toggled(bool checked) //Status of radio button select timezone pass by signal if it clicks or not
 {
     ui->lineEdit_utc_timezone->setEnabled(!checked);
     ui->lineEdit_system_time_zone->setEnabled(!checked);
@@ -386,7 +386,7 @@ void case_launcher_page_timezone_selection::on_radioButton_select_timezone_toggl
         emit signal_enable_disable_next_button_in_launcher_page(true);
 }
 
-void case_launcher_page_timezone_selection::on_comboBox_user_time_zone_currentIndexChanged(int index)
+void case_launcher_page_timezone_selection::on_comboBox_user_time_zone_currentIndexChanged(int index) //Status of combobox user timezone pass by signal if it clicks or not
 {
     if(index == 0)
         emit signal_enable_disable_next_button_in_launcher_page(false);

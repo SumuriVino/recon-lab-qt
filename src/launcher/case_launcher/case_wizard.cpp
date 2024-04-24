@@ -183,7 +183,7 @@ case_wizard::~case_wizard()
     delete ui;
 }
 
-void case_wizard::closeEvent(QCloseEvent *event)
+void case_wizard::closeEvent(QCloseEvent *event) // when we close recon lab, it delete all the mount points, fuse directories from backend
 {
 
 
@@ -200,13 +200,13 @@ void case_wizard::closeEvent(QCloseEvent *event)
     exit(0);
 }
 
-void case_wizard::pub_set_window_title(QString title)
+void case_wizard::pub_set_window_title(QString title) // Here we set window title
 {
     setWindowTitle(title);
 }
 
 
-void case_wizard::set_initialise_pages_information()
+void case_wizard::set_initialise_pages_information() // Launch other functionality like select timezones, result directory, pre launcher features, plugins etc
 {
     recon_static_functions::app_debug("- Start",Q_FUNC_INFO);
     create_copy_for_case_configuration_dir();
@@ -227,7 +227,7 @@ void case_wizard::set_initialise_pages_information()
 }
 
 
-void case_wizard::create_copy_for_case_configuration_dir()
+void case_wizard::create_copy_for_case_configuration_dir() // copy recon config database in library folder and rename it. replace if already exists
 {
     recon_static_functions::app_debug("- START",Q_FUNC_INFO);
 
@@ -258,7 +258,7 @@ void case_wizard::create_copy_for_case_configuration_dir()
 }
 
 
-void case_wizard::on_pushButton_next_clicked()
+void case_wizard::on_pushButton_next_clicked() // set source selection, directory selection window on widget when we click next click, set according to index(enum)
 {
     int index = ui->stackedWidget_case_launcher->currentIndex();
 
@@ -381,7 +381,7 @@ void case_wizard::on_pushButton_next_clicked()
 
 }
 
-void case_wizard::on_pushButton_previous_clicked()
+void case_wizard::on_pushButton_previous_clicked() // when we click back button, show previous window according to index
 {
     bool_treewidget_navigated = true;
 
@@ -417,7 +417,7 @@ void case_wizard::on_pushButton_previous_clicked()
     ui->treeWidget->topLevelItem(item_index - 1)->setSelected(true);
 }
 
-void case_wizard::on_pushButton_new_case_clicked(bool checked)
+void case_wizard::on_pushButton_new_case_clicked(bool checked) //when we click new case button
 {
     ui->stackedWidget_RECON_wallpaper_and_case_launcher->setCurrentIndex(enum_case_wizard_stack_main_new_case_selections_stack);
 
@@ -451,7 +451,7 @@ void case_wizard::on_pushButton_new_case_clicked(bool checked)
 
 }
 
-void case_wizard::on_pushButton_load_case_clicked(bool checked)
+void case_wizard::on_pushButton_load_case_clicked(bool checked) // function work when we click on load case button, opens result directory to load case. Result dir path takes from db
 {
     QString lib_config_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_RECON_Library_Version_Dir_Path_Recon_Configuration_QString).toString() + "/recon_configuration.sqlite";
 
@@ -486,14 +486,14 @@ void case_wizard::on_pushButton_load_case_clicked(bool checked)
 
 }
 
-void case_wizard::display_treewidget_item()
+void case_wizard::display_treewidget_item() // Treewidget fonts (left side after clicking on new case)
 {
     QFont font;
     font.setPixelSize(13);
     ui->treeWidget->setFont(font);
 }
 
-void case_wizard::on_stackedWidget_case_launcher_currentChanged(int arg1)
+void case_wizard::on_stackedWidget_case_launcher_currentChanged(int arg1) // change index of window(source selection, dir selection, timezone selection etc) according to clicking next or back button
 {
     ui->pushButton_previous->setEnabled(true);
     if(arg1 == enum_common_case_wizard_page_case_info_selction)
@@ -536,7 +536,7 @@ void case_wizard::on_stackedWidget_case_launcher_currentChanged(int arg1)
 
 }
 
-void case_wizard::on_treeWidget_itemClicked(QTreeWidgetItem *item, int column)
+void case_wizard::on_treeWidget_itemClicked(QTreeWidgetItem *item, int column) //Jump on that window which user clicks in treewidget(left side)
 {
     bool_treewidget_navigated = true;
 
@@ -570,7 +570,7 @@ void case_wizard::on_treeWidget_itemClicked(QTreeWidgetItem *item, int column)
     }
 }
 
-void case_wizard::slot_result_dir_path_selected(QString path)
+void case_wizard::slot_result_dir_path_selected(QString path) //check weather result dir path selected or empty
 {
     result_dir_path = path;
 
@@ -583,7 +583,7 @@ void case_wizard::slot_result_dir_path_selected(QString path)
         bool_case_dir_selected = false;
 }
 
-void case_wizard::slot_case_info_essentials_filled(QString str)
+void case_wizard::slot_case_info_essentials_filled(QString str) // case info/examiner info filled or not
 {
     if(str == "")
     {
@@ -599,7 +599,7 @@ void case_wizard::slot_case_info_essentials_filled(QString str)
 }
 
 
-void case_wizard::slot_total_plugins_selected(bool status)
+void case_wizard::slot_total_plugins_selected(bool status) // plugins selected or not
 {
     if(!status)
     {
@@ -613,13 +613,13 @@ void case_wizard::slot_total_plugins_selected(bool status)
     }
 }
 
-void case_wizard::slot_added_root_details_list(QList<struct_GLOBAL_witness_info_root> target_list)
+void case_wizard::slot_added_root_details_list(QList<struct_GLOBAL_witness_info_root> target_list) //root sources list which we added using add source button
 {
     list_root_info = target_list;
 
 }
 
-void case_wizard::slot_source_selected(bool is_source_selected)
+void case_wizard::slot_source_selected(bool is_source_selected) //source selected or not after clicing on add source
 {
     this->show();
 
@@ -637,32 +637,32 @@ void case_wizard::slot_source_selected(bool is_source_selected)
 
 }
 
-void case_wizard::slot_hide_source_selector_parent_window()
+void case_wizard::slot_hide_source_selector_parent_window() // after selection, hide previous window
 {
     this->hide();
 }
 
-void case_wizard::slot_qml_button_initial_back_clicked()
+void case_wizard::slot_qml_button_initial_back_clicked() // when click on back button, show previous window
 {
     this->show();
 }
 
-void case_wizard::comman_case_info_essentials_filled(QString str)
+void case_wizard::comman_case_info_essentials_filled(QString str) // case info filled function
 {
     slot_case_info_essentials_filled(str);
 }
 
-void case_wizard::on_pushButton_about_recon_clicked()
+void case_wizard::on_pushButton_about_recon_clicked() // when we click on about button, about window index set on stackwidget and display the same
 {
     ui->stackedWidget_RECON_wallpaper_and_case_launcher->setCurrentIndex(enum_case_wizard_stack_main_about_recon);
 }
 
-void case_wizard::on_pushButton_back_from_about_recon_clicked()
+void case_wizard::on_pushButton_back_from_about_recon_clicked() // when we click back from about button, splash window index set on stackwidget and display the same
 {
     ui->stackedWidget_RECON_wallpaper_and_case_launcher->setCurrentIndex(enum_case_wizard_stack_qml_splash_screen);
 }
 
-void case_wizard::on_pushButton_recon_configuration_clicked()
+void case_wizard::on_pushButton_recon_configuration_clicked() //when click on configuration button
 {
     delete recon_configuration_obj;
 
@@ -676,13 +676,13 @@ void case_wizard::on_pushButton_recon_configuration_clicked()
     ui->stackedWidget_RECON_wallpaper_and_case_launcher->setCurrentIndex(enum_case_wizard_stack_recon_configuration);
 }
 
-void case_wizard::slot_backup_locater_source_selected(bool status)
+void case_wizard::slot_backup_locater_source_selected(bool status) // function not in use
 {
     bool_backup_source_selected = status;
     ui->pushButton_next->setEnabled(status);
 }
 
-void case_wizard::main_stack_widget_functionality()
+void case_wizard::main_stack_widget_functionality() //set RECON LAB logo on splash window
 {
     ui->stackedWidget_RECON_wallpaper_and_case_launcher->setCurrentIndex(0);
     QImage img("../icons/sumuri_logo/recon_lab_splash.png");
@@ -693,7 +693,7 @@ void case_wizard::main_stack_widget_functionality()
 }
 
 
-void case_wizard::collect_page_details_from_all_pages()
+void case_wizard::collect_page_details_from_all_pages() // Collect all the page details like what tiemzone selected, what result dir selected, plugins etc
 {
     // source_selector_obj->pub_get_essential_value_from_all_source();
     source_selector_obj->pub_get_essential_value_from_all_roots();
@@ -718,7 +718,7 @@ void case_wizard::collect_page_details_from_all_pages()
     plugin_selector_obj->pub_get_selected_plugins_from_main_case_launcher();
 }
 
-void case_wizard::pub_set_message_in_label_for_unmounting_and_enable_disable_ui(QString message_str, bool value)
+void case_wizard::pub_set_message_in_label_for_unmounting_and_enable_disable_ui(QString message_str, bool value) //During unmounting, enable or dispable other ui accordingly
 {
     ui->label_umounting_message->setText(message_str);
     ui->pushButton_new_case->setEnabled(value);
@@ -728,7 +728,7 @@ void case_wizard::pub_set_message_in_label_for_unmounting_and_enable_disable_ui(
     ui->stackedWidget_RECON_wallpaper_and_case_launcher->setEnabled(value);
 }
 
-void case_wizard::slot_enable_disable_next_button_from_timezone_selection_page(bool value)
+void case_wizard::slot_enable_disable_next_button_from_timezone_selection_page(bool value) // enable/disable ui while selecting timezone
 {
     if(value)
         ui->pushButton_next->setEnabled(true);
@@ -737,17 +737,17 @@ void case_wizard::slot_enable_disable_next_button_from_timezone_selection_page(b
 }
 
 
-void case_wizard::on_pushButton_acquire_device_clicked()
+void case_wizard::on_pushButton_acquire_device_clicked() // set acquire window index when we click in acquire button
 {
     ui->stackedWidget_RECON_wallpaper_and_case_launcher->setCurrentIndex(enum_case_wizard_stack_acquie_ios_device);
 }
 
-void case_wizard::slot_bring_recon_lab_banner_page_in_front()
+void case_wizard::slot_bring_recon_lab_banner_page_in_front() //show recon lab splash window on front when this slot calls
 {
     ui->stackedWidget_RECON_wallpaper_and_case_launcher->setCurrentIndex(enum_case_wizard_stack_qml_splash_screen);
 }
 
-void case_wizard::slot_set_license_label_text(QString name, qint64 pd, qint64 ed)
+void case_wizard::slot_set_license_label_text(QString name, qint64 pd, qint64 ed) //Set license info on main splash window
 {
     QDateTime dt1 = QDateTime::fromSecsSinceEpoch(pd);
     QDateTime dt2 = QDateTime::fromSecsSinceEpoch(ed);
@@ -771,7 +771,7 @@ void case_wizard::slot_set_license_label_text(QString name, qint64 pd, qint64 ed
 }
 
 
-void case_wizard::onRequestCompleted() {
+void case_wizard::onRequestCompleted() { //When we want to update, click on update button at that time this function calls
 
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
 
@@ -827,7 +827,7 @@ void case_wizard::onRequestCompleted() {
     return;
 }
 
-void case_wizard::slot_abouttoshow_acquire_devices()
+void case_wizard::slot_abouttoshow_acquire_devices() //Show acquire or attached iphones
 {
     MVAR_ACQUIRE_DEVICES_QString_iOS_Device = "iOS Device";
     MVAR_ACQUIRE_DEVICES_QString_androidOS_Device = "androidOS Device";
@@ -842,7 +842,7 @@ void case_wizard::slot_abouttoshow_acquire_devices()
 
 }
 
-void case_wizard::slot_abouttoshow_recent_result_list()
+void case_wizard::slot_abouttoshow_recent_result_list() // function not in use
 {
     qmenu_load_case_recent_result->clear();
     QString dest_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_RECON_Library_Home_Dir_Path_QString).toString() + "loaded_results_info.sqlite";
@@ -870,7 +870,7 @@ void case_wizard::slot_abouttoshow_recent_result_list()
     qmenu_load_case_recent_result->addAction(action_filters_others);
 }
 
-void case_wizard::slot_menu_triggered_acquire_devices(QAction *current_clicked_action)
+void case_wizard::slot_menu_triggered_acquire_devices(QAction *current_clicked_action) //Only display iOS acquire window as android one is disabled
 {
     if(current_clicked_action->text() == MVAR_ACQUIRE_DEVICES_QString_iOS_Device)
     {
@@ -883,7 +883,7 @@ void case_wizard::slot_menu_triggered_acquire_devices(QAction *current_clicked_a
 
 }
 
-void case_wizard::slot_menu_triggered_load_case(QAction *current_clicked_action)
+void case_wizard::slot_menu_triggered_load_case(QAction *current_clicked_action) //Function not in use
 {
     if(current_clicked_action->text() == MVAR_LOAD_RESULT_QString_Other_Case)
     {
@@ -902,13 +902,13 @@ void case_wizard::network_error(QNetworkReply::NetworkError)
     return;
 }
 
-void case_wizard::slot_label_download_link_clicked(QString str)
+void case_wizard::slot_label_download_link_clicked(QString str) // Download link up of lab
 {
     QString link = QString::fromLocal8Bit(QByteArray::fromPercentEncoding(str.toLocal8Bit()));
     QDesktopServices::openUrl(QUrl(link));
 }
 
-void case_wizard::action_load_other_case_clicked()
+void case_wizard::action_load_other_case_clicked() //not in use
 {
 
     QString path;
@@ -929,7 +929,7 @@ void case_wizard::action_load_other_case_clicked()
     set_loaded_result_path(path);
 }
 
-void case_wizard::action_load_already_added_case_clicked(QString load_case_str)
+void case_wizard::action_load_already_added_case_clicked(QString load_case_str) //function not in use
 {
     QString db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_RECON_Library_Home_Dir_Path_QString).toString() + "loaded_results_info.sqlite";
 
@@ -941,7 +941,7 @@ void case_wizard::action_load_already_added_case_clicked(QString load_case_str)
     set_loaded_result_path(loaded_result_path);
 }
 
-void case_wizard::set_loaded_result_path(QString loaded_result_path)
+void case_wizard::set_loaded_result_path(QString loaded_result_path) // set result directory path, when we click on load case, it opens result dir.
 {
     if(loaded_result_path.trimmed().isEmpty())
         return;
@@ -961,7 +961,7 @@ void case_wizard::set_loaded_result_path(QString loaded_result_path)
 
 }
 
-void case_wizard::on_pushButton_check_for_updates_clicked()
+void case_wizard::on_pushButton_check_for_updates_clicked() //check for updates button performs
 {
     //QString link = QString::fromLocal8Bit(QByteArray::fromPercentEncoding("https://goo.gl/wWm2qi"));
     QString link = QString::fromLocal8Bit(QByteArray::fromPercentEncoding("https://sumuri.com/updates/"));
@@ -983,7 +983,7 @@ void case_wizard::on_pushButton_check_for_updates_clicked()
 
 }
 
-void case_wizard::on_pushButton_support_clicked()
+void case_wizard::on_pushButton_support_clicked() //support button clicked
 {
     //QString link = QString::fromLocal8Bit(QByteArray::fromPercentEncoding("https://sumuri.freshdesk.com/support/home"));
     QString link = QString::fromLocal8Bit(QByteArray::fromPercentEncoding("https://helpdesk.sumuri.com/"));
@@ -991,7 +991,7 @@ void case_wizard::on_pushButton_support_clicked()
 
 }
 
-void case_wizard::on_pushButton_online_manual_clicked()
+void case_wizard::on_pushButton_online_manual_clicked() // want to see manual, click online manual button
 {
     //QString link = QString::fromLocal8Bit(QByteArray::fromPercentEncoding("https://sumuri.com/software/software-manuals/"));
     QString link = QString::fromLocal8Bit(QByteArray::fromPercentEncoding("https://sumuri.com/manuals/"));
@@ -1000,7 +1000,7 @@ void case_wizard::on_pushButton_online_manual_clicked()
 }
 
 
-void case_wizard::on_pushButton_disk_manager_clicked()
+void case_wizard::on_pushButton_disk_manager_clicked() // disk manager button which display the attached disks on table widget
 {
 
     if(disk_manager_obj->pub_get_disk_arbitration_started_status())
@@ -1017,12 +1017,12 @@ void case_wizard::on_pushButton_disk_manager_clicked()
     disk_manager_obj->show();
 }
 
-disk_manager * case_wizard::pub_get_disk_manager_object()
+disk_manager * case_wizard::pub_get_disk_manager_object() // disk manager class object return  to use
 {
     return  disk_manager_obj;
 }
 
-void case_wizard::pub_set_qml_on_first_main_page()
+void case_wizard::pub_set_qml_on_first_main_page() // Set RECON LAB main splash window on first screen created by QML
 {
     QUrl launcher_page_url = QUrl("qrc:/splash_window.qml");
 
@@ -1041,7 +1041,7 @@ void case_wizard::pub_set_qml_on_first_main_page()
 
 }
 
-void case_wizard::pub_set_lic_info(QString username, qint64 license_expiry_date_numeric_qint64)
+void case_wizard::pub_set_lic_info(QString username, qint64 license_expiry_date_numeric_qint64) // set license info in private variable for further use
 {
     QDateTime dt2 = QDateTime::fromSecsSinceEpoch(license_expiry_date_numeric_qint64);
 
@@ -1051,7 +1051,7 @@ void case_wizard::pub_set_lic_info(QString username, qint64 license_expiry_date_
     license_expiry_date = expiry_date;
 }
 
-void case_wizard::pbin_button_on_splash_window_clicked(QString m_value)
+void case_wizard::pbin_button_on_splash_window_clicked(QString m_value) //the button we click from qml, will perform his functionality
 {
     if(m_value == "new_case")
         on_pushButton_new_case_clicked(false);
@@ -1067,7 +1067,7 @@ void case_wizard::pbin_button_on_splash_window_clicked(QString m_value)
         on_pushButton_disk_manager_clicked();
 }
 
-QString case_wizard::pbin_get_label(QString m_value)
+QString case_wizard::pbin_get_label(QString m_value) // Show these details on main screen
 {
     if(m_value == "customer_name")
         return license_customer_name;
@@ -1077,7 +1077,7 @@ QString case_wizard::pbin_get_label(QString m_value)
         return recon_static_functions::get_app_name();
 }
 
-QString case_wizard::pbin_get_icons_path(QString icon_name )
+QString case_wizard::pbin_get_icons_path(QString icon_name ) //Set icons on main screen using qml
 {
     QString icon_path_1 = QApplication::applicationDirPath() + "/../icons/";
     QString icon_path_2 = QApplication::applicationDirPath() + "/../icons/sumuri_logo/";
@@ -1103,7 +1103,7 @@ QString case_wizard::pbin_get_icons_path(QString icon_name )
     return icon_path_3;
 }
 
-void case_wizard::on_pushButton_back_clicked()
+void case_wizard::on_pushButton_back_clicked() // Change index to qml splash window when we click on back button
 {
     ui->stackedWidget_RECON_wallpaper_and_case_launcher->setCurrentIndex(enum_case_wizard_stack_qml_splash_screen);
 }

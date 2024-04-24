@@ -47,13 +47,13 @@ page_filesystem_n_modules::~page_filesystem_n_modules()
     delete ui;
 }
 
-void page_filesystem_n_modules::extract_launcher_values()
+void page_filesystem_n_modules::extract_launcher_values() //set hashset check status
 {
     global_narad_muni_class_obj->set_field(MACRO_NARAD_Hashset_Check_Status_bool,checkbox_analyse_hashes->isChecked());
 
 }
 
-void page_filesystem_n_modules::pub_set_essentials_for_case_launcher()
+void page_filesystem_n_modules::pub_set_essentials_for_case_launcher() //function not in use
 {
     QString lib_recon_conf_dir_path =  global_narad_muni_class_obj->get_field(MACRO_NARAD_RECON_Library_Version_Dir_Path_Recon_Configuration_QString).toString();
     QString lib_result_conf_dir_path =  global_narad_muni_class_obj->get_field(MACRO_NARAD_RECON_Library_Version_Dir_Path_Result_Configuration_QString).toString();
@@ -64,7 +64,7 @@ void page_filesystem_n_modules::pub_set_essentials_for_case_launcher()
     }
 }
 
-void page_filesystem_n_modules::pub_create_ui()
+void page_filesystem_n_modules::pub_create_ui() //Here we create ui of checkboxes and names display on pre launcher page like Apple metadata, hashes, exif etc
 {
 
     create_apple_metadata_ui();
@@ -108,7 +108,7 @@ void page_filesystem_n_modules::pub_create_ui()
     ui->stackedWidget_fs_options->setCurrentIndex(enum_stack_page_apple_metatdata);
 }
 
-void page_filesystem_n_modules::create_hashset_ui()
+void page_filesystem_n_modules::create_hashset_ui() // create hashset ui and name
 {
     ///----Hashset --Start.
     hashset_widget = new QWidget(this);
@@ -145,7 +145,7 @@ void page_filesystem_n_modules::create_hashset_ui()
 
 }
 
-void page_filesystem_n_modules::create_exif_metadata_ui()
+void page_filesystem_n_modules::create_exif_metadata_ui() // create exif metadata ui and name
 {
 
     recon_configuration_page_exif_metadata_obj = new recon_configuration_page_exif_metadata(this);
@@ -188,7 +188,7 @@ void page_filesystem_n_modules::create_exif_metadata_ui()
 }
 
 
-void page_filesystem_n_modules::create_apple_metadata_ui()
+void page_filesystem_n_modules::create_apple_metadata_ui() // create apple metadata ui and name
 {
 
     recon_configuration_page_apple_metadata_obj = new recon_configuration_page_apple_metadata(this);
@@ -227,7 +227,7 @@ void page_filesystem_n_modules::create_apple_metadata_ui()
 
 }
 
-void page_filesystem_n_modules::create_signature_analysis_ui()
+void page_filesystem_n_modules::create_signature_analysis_ui() // create signature analysis ui and name
 {
 
     signature_widget_obj = new file_signature_widget(this);
@@ -276,7 +276,7 @@ void page_filesystem_n_modules::create_signature_analysis_ui()
 
 }
 
-void page_filesystem_n_modules::create_unified_logs_ui()
+void page_filesystem_n_modules::create_unified_logs_ui() // create unified logs ui and name
 {
     unified_logs_widget = new QWidget(this);
     QVBoxLayout *vbox_layout_main_unified_logs = new QVBoxLayout(unified_logs_widget);
@@ -308,12 +308,12 @@ void page_filesystem_n_modules::create_unified_logs_ui()
 
 }
 
-void page_filesystem_n_modules::slot_checkbox_unified_logs_clicked(bool checked)
+void page_filesystem_n_modules::slot_checkbox_unified_logs_clicked(bool checked) //unified logs checkbox click or not check status set in global class
 {
     global_narad_muni_class_obj->set_field(MACRO_NARAD_Unified_Logs_Check_Status_bool, checked);
 }
 
-void page_filesystem_n_modules::slot_checkbox_analyse_hashes_clicked(bool checked)
+void page_filesystem_n_modules::slot_checkbox_analyse_hashes_clicked(bool checked) //function not in use
 {
     //    if(checked)
     //    {
@@ -326,7 +326,7 @@ void page_filesystem_n_modules::slot_checkbox_analyse_hashes_clicked(bool checke
 
 }
 
-void page_filesystem_n_modules::slot_checkbox_analyse_signature_clicked(bool checked)
+void page_filesystem_n_modules::slot_checkbox_analyse_signature_clicked(bool checked) //signature analysis checkbox click or not check status set in global class or show window accordingly
 {
 
     global_narad_muni_class_obj->set_field(MACRO_NARAD_Signature_Check_Status_bool, checked);
@@ -339,7 +339,7 @@ void page_filesystem_n_modules::slot_checkbox_analyse_signature_clicked(bool che
 }
 
 
-void page_filesystem_n_modules::slot_checkbox_exif_metadata_clicked(bool checked)
+void page_filesystem_n_modules::slot_checkbox_exif_metadata_clicked(bool checked) //Exif metadata checkbox click or not check status set in global class or show window accordingly
 {
     global_narad_muni_class_obj->set_field(MACRO_NARAD_Exif_Metadata_Check_Status_bool, checked);
 
@@ -350,15 +350,15 @@ void page_filesystem_n_modules::slot_checkbox_exif_metadata_clicked(bool checked
 
 }
 
-void page_filesystem_n_modules::slot_checkbox_apple_metadata_clicked(bool checked)
-{
-    global_narad_muni_class_obj->set_field(MACRO_NARAD_Apple_Metadata_Check_Status_bool, checked);
+void page_filesystem_n_modules::slot_checkbox_apple_metadata_clicked(bool checked) //apple metadata checkbox click or not check status set in global class or hide window
+{                                                                               // because previously we give examiner to select apple metadata list which he wants to process
+    global_narad_muni_class_obj->set_field(MACRO_NARAD_Apple_Metadata_Check_Status_bool, checked); // but later on we select all metadata by default
 
     recon_configuration_page_apple_metadata_obj->hide();
 }
 
 
-void page_filesystem_n_modules::slot_exif_data_tablewidget_cellClicked(int row, int column)
+void page_filesystem_n_modules::slot_exif_data_tablewidget_cellClicked(int row, int column) // Function not in use
 {
     recon_static_functions::app_debug(" Starts" , Q_FUNC_INFO);
 
@@ -372,7 +372,7 @@ void page_filesystem_n_modules::slot_exif_data_tablewidget_cellClicked(int row, 
 }
 
 
-void page_filesystem_n_modules::on_pushButton_apple_metadata_clicked(bool checked)
+void page_filesystem_n_modules::on_pushButton_apple_metadata_clicked(bool checked) //hide other button index/widget when we click on apple metadata button here
 {
     ui->stackedWidget_fs_options->setCurrentIndex(enum_stack_page_apple_metatdata);
 
@@ -391,7 +391,7 @@ void page_filesystem_n_modules::on_pushButton_apple_metadata_clicked(bool checke
 
 }
 
-void page_filesystem_n_modules::on_pushButton_signature_analysis_clicked(bool checked)
+void page_filesystem_n_modules::on_pushButton_signature_analysis_clicked(bool checked) //hide other button index/widget when we click on Signature analysis button here
 {
     ui->stackedWidget_fs_options->setCurrentIndex(enum_stack_page_signature_analysis);
 
@@ -410,7 +410,7 @@ void page_filesystem_n_modules::on_pushButton_signature_analysis_clicked(bool ch
 
 }
 
-void page_filesystem_n_modules::on_pushButton_exif_metadata_clicked(bool checked)
+void page_filesystem_n_modules::on_pushButton_exif_metadata_clicked(bool checked) //hide other button index/widget when we click on exif metadata button here
 {
     ui->stackedWidget_fs_options->setCurrentIndex(enum_stack_page_exif_metadata);
     if(checked == false)
@@ -431,7 +431,7 @@ void page_filesystem_n_modules::on_pushButton_exif_metadata_clicked(bool checked
     ui->pushButton_unified_logs->setChecked(!checked);
 }
 
-void page_filesystem_n_modules::on_pushButton_hashes_clicked(bool checked)
+void page_filesystem_n_modules::on_pushButton_hashes_clicked(bool checked) //hide other button index/widget when we click on hashes button here
 {
     ui->stackedWidget_fs_options->setCurrentIndex(enum_stack_page_hashset);
     if(checked == false)
@@ -453,7 +453,7 @@ void page_filesystem_n_modules::on_pushButton_hashes_clicked(bool checked)
     ui->pushButton_unified_logs->setChecked(!checked);
 }
 
-void page_filesystem_n_modules::on_pushButton_face_analysis_clicked(bool checked)
+void page_filesystem_n_modules::on_pushButton_face_analysis_clicked(bool checked) //hide other button index/widget when we click on face analysis button here
 {
     ui->stackedWidget_fs_options->setCurrentIndex(enum_stack_page_face_analysis);
 
@@ -471,7 +471,7 @@ void page_filesystem_n_modules::on_pushButton_face_analysis_clicked(bool checked
     ui->pushButton_unified_logs->setChecked(!checked);
 }
 
-void page_filesystem_n_modules::create_face_analysis_ui()
+void page_filesystem_n_modules::create_face_analysis_ui() //create face analysis button and name ui
 {
     face_analysis_widget = new QWidget(this);
     QVBoxLayout *vbox_layout_main_face_analysis = new QVBoxLayout(face_analysis_widget);
@@ -502,12 +502,12 @@ void page_filesystem_n_modules::create_face_analysis_ui()
 
 }
 
-void page_filesystem_n_modules::slot_checkbox_extract_face_clicked(bool checked)
+void page_filesystem_n_modules::slot_checkbox_extract_face_clicked(bool checked) //set checkbox of face clicked or not status
 {
     global_narad_muni_class_obj->set_field(MACRO_NARAD_Face_Analysis_Check_Status_bool, checked);
 }
 
-void page_filesystem_n_modules::create_optical_character_recognition_ui()
+void page_filesystem_n_modules::create_optical_character_recognition_ui() //create OCR button and name ui
 {
     optical_character_recognition_widget = new QWidget(this);
     QVBoxLayout *vbox_layout_main_optical_character_recognition = new QVBoxLayout(optical_character_recognition_widget);
@@ -539,7 +539,7 @@ void page_filesystem_n_modules::create_optical_character_recognition_ui()
 
 }
 
-void page_filesystem_n_modules::slot_checkbox_optical_character_recognition_clicked(bool checked)
+void page_filesystem_n_modules::slot_checkbox_optical_character_recognition_clicked(bool checked) //OCR checkbox click or not check status set in global class
 {
     recon_static_functions::app_debug(" Starts" , Q_FUNC_INFO);
 
@@ -548,7 +548,7 @@ void page_filesystem_n_modules::slot_checkbox_optical_character_recognition_clic
     recon_static_functions::app_debug(" Ends" , Q_FUNC_INFO);
 }
 
-void page_filesystem_n_modules::on_pushButton_optical_character_recognition_clicked(bool checked)
+void page_filesystem_n_modules::on_pushButton_optical_character_recognition_clicked(bool checked) //hide other button index/widget when we click on ocr button here
 {
     ui->stackedWidget_fs_options->setCurrentIndex(enum_stack_page_optical_character_recognition);
 
@@ -566,7 +566,7 @@ void page_filesystem_n_modules::on_pushButton_optical_character_recognition_clic
     ui->pushButton_unified_logs->setChecked(!checked);
 }
 
-void page_filesystem_n_modules::on_pushButton_skin_tone_detection_clicked(bool checked)
+void page_filesystem_n_modules::on_pushButton_skin_tone_detection_clicked(bool checked) //hide other button index/widget when we click on skin tone button here
 {
     ui->stackedWidget_fs_options->setCurrentIndex(enum_stack_page_skin_tone_detection);
 
@@ -584,7 +584,7 @@ void page_filesystem_n_modules::on_pushButton_skin_tone_detection_clicked(bool c
     ui->pushButton_unified_logs->setChecked(!checked);
 }
 
-void page_filesystem_n_modules::create_skin_tone_detection_ui()
+void page_filesystem_n_modules::create_skin_tone_detection_ui() //create skin tone button and name ui
 {
     skin_tone_detection_widget = new QWidget(this);
     QVBoxLayout *vbox_layout_main_skin_tone_detection = new QVBoxLayout(skin_tone_detection_widget);
@@ -615,13 +615,13 @@ void page_filesystem_n_modules::create_skin_tone_detection_ui()
 
 }
 
-void page_filesystem_n_modules::slot_checkbox_skin_tone_detection_clicked(bool checked)
+void page_filesystem_n_modules::slot_checkbox_skin_tone_detection_clicked(bool checked) //skin tone checkbox click or not check status set in global class
 {
 
     global_narad_muni_class_obj->set_field(MACRO_NARAD_Skin_Tone_Detection_Check_Status_bool, checked);
 }
 
-void page_filesystem_n_modules::create_weapons_ui()
+void page_filesystem_n_modules::create_weapons_ui() //create Weapon analysis button and name ui
 {
     weapons_widget = new QWidget(this);
     QVBoxLayout *vbox_layout_main_weapons = new QVBoxLayout(weapons_widget);
@@ -651,14 +651,14 @@ void page_filesystem_n_modules::create_weapons_ui()
     global_narad_muni_class_obj->set_field(MACRO_NARAD_Weapons_Check_Status_bool, false);
 }
 
-void page_filesystem_n_modules::slot_checkbox_weapons_clicked(bool checked)
+void page_filesystem_n_modules::slot_checkbox_weapons_clicked(bool checked) //Weapon analysis checkbox click or not check status set in global class
 {
 
    global_narad_muni_class_obj->set_field(MACRO_NARAD_Weapons_Check_Status_bool, checked);
 
 }
 
-void page_filesystem_n_modules::on_pushButton_weapons_clicked(bool checked)
+void page_filesystem_n_modules::on_pushButton_weapons_clicked(bool checked) //hide other button index/widget when we click on Weapons button here
 {
 
     ui->stackedWidget_fs_options->setCurrentIndex(enum_stack_page_weapons);
@@ -678,7 +678,7 @@ void page_filesystem_n_modules::on_pushButton_weapons_clicked(bool checked)
 
 }
 
-void page_filesystem_n_modules::create_fire_analysis_ui()
+void page_filesystem_n_modules::create_fire_analysis_ui() //create fire analysis button and name ui
 {
     fire_analysis_widget = new QWidget(this);
     QVBoxLayout *vbox_layout_main_fire_analysis = new QVBoxLayout(fire_analysis_widget);
@@ -707,13 +707,13 @@ void page_filesystem_n_modules::create_fire_analysis_ui()
     global_narad_muni_class_obj->set_field(MACRO_NARAD_Fire_Analysis_Check_Status_bool, false);
 }
 
-void page_filesystem_n_modules::slot_checkbox_fire_analysis_clicked(bool checked)
+void page_filesystem_n_modules::slot_checkbox_fire_analysis_clicked(bool checked) //fire analysis checkbox click or not check status set in global class
 {
 
     global_narad_muni_class_obj->set_field(MACRO_NARAD_Fire_Analysis_Check_Status_bool, checked);
 }
 
-void page_filesystem_n_modules::on_pushButton_fire_analysis_clicked(bool checked)
+void page_filesystem_n_modules::on_pushButton_fire_analysis_clicked(bool checked) //hide other button index/widget when we click on fire analysis button here
 {
 
     ui->stackedWidget_fs_options->setCurrentIndex(enum_stack_page_fire_analysis);
@@ -732,7 +732,7 @@ void page_filesystem_n_modules::on_pushButton_fire_analysis_clicked(bool checked
 
 }
 
-void page_filesystem_n_modules::on_pushButton_unified_logs_clicked(bool checked)
+void page_filesystem_n_modules::on_pushButton_unified_logs_clicked(bool checked) //hide other button index/widget when we click on unified logs button here
 {
     ui->stackedWidget_fs_options->setCurrentIndex(enum_stack_page_unified_logs);
     ui->pushButton_unified_logs->setChecked(checked);

@@ -23,13 +23,13 @@ load_case_source_displayer::~load_case_source_displayer()
     delete ui;
 }
 
-void load_case_source_displayer::pub_set_list_of_source_path_and_type_in_page(QStringList source_path_with_type_list)
+void load_case_source_displayer::pub_set_list_of_source_path_and_type_in_page(QStringList source_path_with_type_list) //Set source path and type for source selection if load case button clicked
 {
     source_selector_obj->pub_set_root_info_in_page(source_path_with_type_list);
 }
 
 
-void load_case_source_displayer::on_pushButton_ok_clicked()
+void load_case_source_displayer::on_pushButton_ok_clicked() //Prepare all sources list and asks if any changes needed
 {
     source_selector_obj->pub_get_essential_value_from_all_roots();
 
@@ -39,14 +39,14 @@ void load_case_source_displayer::on_pushButton_ok_clicked()
 
 
 
-void load_case_source_displayer::on_pushButton_cancel_clicked()
+void load_case_source_displayer::on_pushButton_cancel_clicked() // Hit when ok clicked
 {
     QList<struct_GLOBAL_witness_info_source> list_target_info = global_witness_info_manager_class_obj->pub_get_source_structure_QList();
     emit signal_load_case_set_sources_path(list_target_info, false);
 }
 
 
-void load_case_source_displayer::prepare_all_sources_list_from_root_source()
+void load_case_source_displayer::prepare_all_sources_list_from_root_source() // Prepare all sources list from databases and update them
 {
     //==============Root Update Start =================//
 
@@ -145,7 +145,7 @@ void load_case_source_displayer::prepare_all_sources_list_from_root_source()
 }
 
 
-QStringList load_case_source_displayer::get_source_count_name_list_from_root_source(QString root_count_name)
+QStringList load_case_source_displayer::get_source_count_name_list_from_root_source(QString root_count_name) // Get source count name list from databases
 {
 
     QStringList src_cnt_list;

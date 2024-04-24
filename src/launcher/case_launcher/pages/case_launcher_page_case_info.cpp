@@ -48,8 +48,8 @@ page_case_info::~page_case_info()
     delete ui;
 }
 
-void page_case_info::pub_set_case_info()
-{
+void page_case_info::pub_set_case_info() // Here we set case id, case name,examiner name etc details in global class so we can save it in database and use it in anywhere in code
+{                                       // Functions hits initially when recon lab asks from user to fill all these details
     global_narad_muni_class_obj->set_field(MACRO_NARAD_Case_ID_QString,ui->lineEdit_case_no->text().trimmed());
     global_narad_muni_class_obj->set_field(MACRO_NARAD_Case_Name_QString,ui->lineEdit_case_name->text().trimmed());
     global_narad_muni_class_obj->set_field(MACRO_NARAD_Case_Location_QString,ui->lineEdit_location->text().trimmed());
@@ -66,13 +66,13 @@ void page_case_info::pub_set_case_info()
     update_case_info_in_db();
 }
 
-void page_case_info::pub_set_initialise_case_info()
+void page_case_info::pub_set_initialise_case_info() // Some information of examiner we only takes one time like agaency name, examiner email etc, next time we use to get it from database
 {
     display_case_details_data();
 }
 
 
-void page_case_info::on_lineEdit_case_no_textChanged(const QString &arg1)
+void page_case_info::on_lineEdit_case_no_textChanged(const QString &arg1) // If user modify case no then these info again update in database accordingly
 {
     if(ui->lineEdit_case_name->text().trimmed() == "" || ui->lineEdit_case_no->text().trimmed() == "" || ui->lineEdit_examiner->text().trimmed() == "")
         emit signal_case_info_essentials_filled("");
@@ -80,7 +80,7 @@ void page_case_info::on_lineEdit_case_no_textChanged(const QString &arg1)
         emit signal_case_info_essentials_filled(ui->lineEdit_case_name->text().trimmed());
 }
 
-void page_case_info::on_lineEdit_case_name_textChanged(const QString &arg1)
+void page_case_info::on_lineEdit_case_name_textChanged(const QString &arg1) // If user modify case Name then these info again update in database accordingly
 {
     if(ui->lineEdit_case_name->text().trimmed() == "" || ui->lineEdit_case_no->text().trimmed() == "" || ui->lineEdit_examiner->text().trimmed() == "")
         emit signal_case_info_essentials_filled("");
@@ -88,7 +88,7 @@ void page_case_info::on_lineEdit_case_name_textChanged(const QString &arg1)
         emit signal_case_info_essentials_filled(ui->lineEdit_case_name->text().trimmed());
 }
 
-void page_case_info::display_case_details_data()
+void page_case_info::display_case_details_data() //If user has already filled info via configuration, then it will show their directly from database
 {
     recon_static_functions::app_debug(" START" ,Q_FUNC_INFO);
 
@@ -131,7 +131,7 @@ void page_case_info::display_case_details_data()
     recon_static_functions::app_debug(" - END" ,Q_FUNC_INFO);
 }
 
-void page_case_info::update_case_info_in_db()
+void page_case_info::update_case_info_in_db() // This update all the examiner details in database
 {
     QString destination_db_file = global_narad_muni_class_obj->get_field(MACRO_NARAD_RECON_Library_Version_Dir_Path_Result_Configuration_QString).toString() + "case_configuration/case_configuration.sqlite";
 
@@ -149,7 +149,7 @@ void page_case_info::update_case_info_in_db()
     }
 }
 
-void page_case_info::on_lineEdit_examiner_textChanged(const QString &arg1)
+void page_case_info::on_lineEdit_examiner_textChanged(const QString &arg1) // If user modify case examiner name then these info again update in database accordingly
 {
     if(ui->lineEdit_case_name->text().trimmed() == "" || ui->lineEdit_case_no->text().trimmed() == "" || ui->lineEdit_examiner->text().trimmed() == "")
         emit signal_case_info_essentials_filled("");

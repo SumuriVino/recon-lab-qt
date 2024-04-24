@@ -30,12 +30,12 @@ page_case_directory::~page_case_directory()
 }
 
 
-void page_case_directory::pub_set_output_dir_path()
+void page_case_directory::pub_set_output_dir_path() // Here we set the result directory path in global class so we can access it anywhere in the code globally.
 {
     global_narad_muni_class_obj->set_field(MACRO_NARAD_Output_Directory_QString,ui->lineEdit_case_dir_path->text().trimmed());
 }
 
-void page_case_directory::pub_set_stored_output_path()
+void page_case_directory::pub_set_stored_output_path() //If we have selected the result directory path earlier, so next time it directly show their from database
 {
     QString db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_RECON_Library_Version_Dir_Path_Recon_Configuration_QString).toString() + "recon_configuration.sqlite";
 
@@ -56,7 +56,7 @@ void page_case_directory::pub_set_stored_output_path()
 
 }
 
-bool page_case_directory::pub_check_output_path_exist()
+bool page_case_directory::pub_check_output_path_exist() //This checks in the backend that the result directory path exists or not
 {
     QString path = ui->lineEdit_case_dir_path->text().trimmed();
 
@@ -70,8 +70,8 @@ bool page_case_directory::pub_check_output_path_exist()
     return false;
 }
 
-void page_case_directory::on_pushButton_case_dir_path_clicked()
-{
+void page_case_directory::on_pushButton_case_dir_path_clicked() // When we click on browse button to select the result directory path, this function hits
+{                                                               // and send that path through signal to save in database later
     // QString home_dir = getenv("HOME");
     QString path;// = QFileDialog::getExistingDirectory(this, "Case", home_dir, QFileDialog::ShowDirsOnly);
 
