@@ -31,7 +31,7 @@ app_related_files::~app_related_files()
     delete ui;
 }
 
-void app_related_files::contextMenuEvent(QContextMenuEvent *event)
+void app_related_files::contextMenuEvent(QContextMenuEvent *event) //right click menu
 {
     if(event == NULL)
         return;
@@ -46,7 +46,7 @@ void app_related_files::contextMenuEvent(QContextMenuEvent *event)
 
 }
 
-bool app_related_files::pub_set_data_in_table(QString db_path, QString searched_app_identifier,QString app_name)
+bool app_related_files::pub_set_data_in_table(QString db_path, QString searched_app_identifier,QString app_name) //dislay app realted data in table view
 {
     //searched_app _identifier = Chrome or Google Chrome.app
     //app_name = Google Chrome.app (Right_clicked for search)
@@ -169,7 +169,7 @@ bool app_related_files::pub_set_data_in_table(QString db_path, QString searched_
     return true;
 }
 
-void app_related_files::slot_action_goto_record_triggered(bool status)
+void app_related_files::slot_action_goto_record_triggered(bool status) // go to record action on right click
 {
 
     int selected_row_no = ui->tableWidget_related_files->currentRow();
@@ -190,12 +190,12 @@ void app_related_files::slot_action_goto_record_triggered(bool status)
 
 }
 
-void app_related_files::slot_action_goto_record_double_clicked(QTableWidgetItem *item)
+void app_related_files::slot_action_goto_record_double_clicked(QTableWidgetItem *item) // go to record triggered when we double click on any record
 {
     slot_action_goto_record_triggered(true);
 }
 
-bool app_related_files::pub_set_source_count_name(QString src_cnt_name)
+bool app_related_files::pub_set_source_count_name(QString src_cnt_name) // set source count name
 {
     source_cnt_name = src_cnt_name;
 }

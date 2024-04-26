@@ -25,7 +25,7 @@ apple_attributes::~apple_attributes()
     delete ui;
 }
 
-void apple_attributes::set_essentials()
+void apple_attributes::set_essentials() // set configuration database path
 {
 
     if(page_caller == MACRO_CONFIGURATION_CALLER_TYPE_RECON_CONFIG)
@@ -48,13 +48,13 @@ void apple_attributes::set_essentials()
     display_attributes();
 
 }
-void apple_attributes::pub_set_page_caller(QString caller_name)
+void apple_attributes::pub_set_page_caller(QString caller_name) //set caller type eg pre or post launcher
 {
     page_caller = caller_name;
 }
 
 
-void apple_attributes::display_attributes()
+void apple_attributes::display_attributes() //display all the apple attributes in the display so user can select which one to process
 {
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
@@ -149,7 +149,7 @@ void apple_attributes::display_attributes()
     recon_static_functions::app_debug(" -Ends " , Q_FUNC_INFO);
 }
 
-void apple_attributes::on_pushButton_ok_clicked()
+void apple_attributes::on_pushButton_ok_clicked() //update status of selected apple attributes in the database
 {
     recon_static_functions::app_debug(" -Start " , Q_FUNC_INFO);
 
@@ -192,7 +192,7 @@ void apple_attributes::on_pushButton_ok_clicked()
     emit signal_workdone_complete(true);
 }
 
-void apple_attributes::on_lineEdit_textChanged(const QString &arg1)
+void apple_attributes::on_lineEdit_textChanged(const QString &arg1) //search in search box and change in display accordingly
 {
     for(int m_row = 0; m_row < item_model->rowCount(); m_row++)
     {
@@ -227,7 +227,7 @@ void apple_attributes::on_lineEdit_textChanged(const QString &arg1)
     }
 }
 
-void apple_attributes::on_pushButton_cancel_clicked()
+void apple_attributes::on_pushButton_cancel_clicked() // cancel if cancel button pressed
 {
     emit signal_workdone_complete(false);
 }

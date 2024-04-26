@@ -39,48 +39,48 @@ source_widgets::~source_widgets()
     delete ui;
 }
 
-void source_widgets::pub_set_widget_id(int id)
+void source_widgets::pub_set_widget_id(int id) //set received id/ source id
 {
     received_root_count_name.clear();
 
     received_id = id;
 }
 
-void source_widgets::pub_set_root_type(QString name)
+void source_widgets::pub_set_root_type(QString name) // set root type/root name of Source type
 {
     received_root_type = name;
 }
 
-QString source_widgets::pub_get_root_type()
+QString source_widgets::pub_get_root_type() //get root type
 {
     return received_root_type;
 }
 
-void source_widgets::pub_set_source_type_internal(QString source_type_internal)
+void source_widgets::pub_set_source_type_internal(QString source_type_internal) //what type of source type
 {
     received_source_type_internal = source_type_internal;
 }
 
-QString source_widgets::pub_get_source_type_internal()
+QString source_widgets::pub_get_source_type_internal() // get type of source
 {
     return received_source_type_internal;
 }
 
-void source_widgets::pub_set_source_type_display(QString source_type_display)
+void source_widgets::pub_set_source_type_display(QString source_type_display) // source type, which display to user
 {
     received_source_type_display = source_type_display;
 }
 
-QString source_widgets::pub_get_source_type_display()
+QString source_widgets::pub_get_source_type_display() // get source type which display to user
 {
     return received_source_type_display;
 }
-QString source_widgets::pub_get_root_count_name()
+QString source_widgets::pub_get_root_count_name() // root count name eg root1, root2
 {
     return received_root_count_name;
 }
 
-void source_widgets::pub_set_is_load_case(bool status)
+void source_widgets::pub_set_is_load_case(bool status) //status of load case
 {
     bool_is_load_case = status;
 
@@ -94,7 +94,7 @@ void source_widgets::pub_set_is_load_case(bool status)
 }
 
 
-void source_widgets::pub_set_media_path(QString path)
+void source_widgets::pub_set_media_path(QString path) // filepath of source which we select display to the exaimer initially
 {
     ui->label_media_type->setText(global_lang_tr_obj.get_translated_string(received_root_type));
 
@@ -154,7 +154,7 @@ void source_widgets::pub_set_media_path(QString path)
 
 }
 
-void source_widgets::pub_ask_for_eveidence_no(QString source_path)
+void source_widgets::pub_ask_for_eveidence_no(QString source_path) // ask evidence number after adding source
 {
     if(received_root_type == MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_RootType_ForensicsImage
             || received_root_type == MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_RootType_FileVaultImage
@@ -189,71 +189,71 @@ void source_widgets::pub_ask_for_eveidence_no(QString source_path)
     source_evidencer_obj->exec();
 }
 
-int source_widgets::pub_get_id()
+int source_widgets::pub_get_id() // get receive id
 {
     return received_id;
 }
 
-int source_widgets::pub_get_window_height()
+int source_widgets::pub_get_window_height() //get minimum height of window
 {
     return this->minimumHeight();
 }
 
-void source_widgets::pub_set_password_string(QString passwd)
+void source_widgets::pub_set_password_string(QString passwd) // set password
 {
     password_string = passwd;
 }
 
-QString source_widgets::pub_get_password_string()
+QString source_widgets::pub_get_password_string() //get password
 {
     return password_string;
 }
 
-void source_widgets::pub_set_username_string(QString usr_nm)
+void source_widgets::pub_set_username_string(QString usr_nm) // set username
 {
     username_string = usr_nm;
 }
-void source_widgets::pub_set_evidence_type(QString evidence_type)
+void source_widgets::pub_set_evidence_type(QString evidence_type) // evidence type
 {
     recevied_evidence_type_string = evidence_type;
 }
 
-QString source_widgets::pub_get_evidence_type()
+QString source_widgets::pub_get_evidence_type() // evidence type
 {
     return recevied_evidence_type_string;
 }
-void source_widgets::pub_set_root_count_name(QString rt_count_name)
+void source_widgets::pub_set_root_count_name(QString rt_count_name) //root count name
 {
     received_root_count_name = rt_count_name;
 }
 
-QString source_widgets::pub_get_user_name_string()
+QString source_widgets::pub_get_user_name_string() //username
 {
     return username_string;
 }
 
-QString source_widgets::pub_get_path_1_string()
+QString source_widgets::pub_get_path_1_string() //source path 1
 {
     return ui->lineEdit_media_path->text().trimmed();
 }
 
-QString source_widgets::pub_get_path_2_string()
+QString source_widgets::pub_get_path_2_string() // source path 2 in case of fusion drive
 {
     return ui->lineEdit_media_path_2->text().trimmed();
 }
 
-struct_global_source_evidencer source_widgets::get_source_evidence_info()
+struct_global_source_evidencer source_widgets::get_source_evidence_info() // evidence info
 {
     return source_evidencer_obj->get_evicencer_info();
 }
 
-void source_widgets::on_pushButton_close_clicked()
+void source_widgets::on_pushButton_close_clicked() // close button
 {
     emit signal_remove_button_clicked(received_id,received_source_type_internal);
 
 }
 
-void source_widgets::on_pushButton_repoint_clicked()
+void source_widgets::on_pushButton_repoint_clicked() // repoint the image path if changes incase of load case
 {
     QString previous_file_path = ui->lineEdit_media_path->text().trimmed();
 
@@ -472,7 +472,7 @@ void source_widgets::on_pushButton_repoint_clicked()
     ui->lineEdit_media_path->setText(file_path);
 }
 
-void source_widgets::on_pushButton_repoint_2_clicked()
+void source_widgets::on_pushButton_repoint_2_clicked() // point the source path in case of changes in load case (fusion drive)
 {
 
     QString file_path;

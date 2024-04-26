@@ -16,29 +16,29 @@ Mounted_Volumes_Class::~Mounted_Volumes_Class()
     delete ui;
 }
 
-void Mounted_Volumes_Class::pub_set_id_and_name(int id,QString name)
+void Mounted_Volumes_Class::pub_set_id_and_name(int id,QString name) //set receive id and name/source name
 {
     received_id = id;
     received_name = name;
 }
 
-int Mounted_Volumes_Class::pub_get_id()
+int Mounted_Volumes_Class::pub_get_id() //set receive id
 {
     return received_id;
 }
 
-int Mounted_Volumes_Class::pub_get_window_height()
+int Mounted_Volumes_Class::pub_get_window_height() //get minimum window height
 {
     return this->minimumHeight();
 }
 
-void Mounted_Volumes_Class::pub_set_essentials()
+void Mounted_Volumes_Class::pub_set_essentials() //prepare mounted volume list
 {
     prepare_mounted_volumes_list();
 }
 
 
-void Mounted_Volumes_Class::prepare_mounted_volumes_list()
+void Mounted_Volumes_Class::prepare_mounted_volumes_list() // Prepare mounted volumes list and display in tablewidget
 {
     while(ui->tableWidget_media_list->rowCount())
         ui->tableWidget_media_list->removeRow(0);
@@ -82,7 +82,7 @@ void Mounted_Volumes_Class::prepare_mounted_volumes_list()
     ui->tableWidget_media_list->selectRow(0);
 }
 
-void Mounted_Volumes_Class::on_pushButton_Add_clicked()
+void Mounted_Volumes_Class::on_pushButton_Add_clicked() // add mounted volume by clicking on add button after selection
 {
     QStringList list_media;
     for(int i = 0; i < ui->tableWidget_media_list->rowCount(); i++)
@@ -96,7 +96,7 @@ void Mounted_Volumes_Class::on_pushButton_Add_clicked()
     this->hide();
 }
 
-void Mounted_Volumes_Class::on_pushButton_Cancel_clicked()
+void Mounted_Volumes_Class::on_pushButton_Cancel_clicked()  //if don't want to add mounted volume, hit cancel
 {
     this->hide();
 }

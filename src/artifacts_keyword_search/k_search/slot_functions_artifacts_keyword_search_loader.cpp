@@ -1,7 +1,7 @@
 #include "artifacts_keyword_search_loader.h"
 
 void artifacts_keyword_search_loader::slot_link_label_keywords_list(QString text)
-{
+{ //
     if(text == "Show")
     {
         link_label->setText("<a href = "+ QString("Hide") + " > " + QString("Searched Keywords") + " </a>");

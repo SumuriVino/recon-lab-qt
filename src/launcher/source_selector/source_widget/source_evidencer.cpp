@@ -36,14 +36,14 @@ source_evidencer::~source_evidencer()
     delete ui;
 }
 
-void source_evidencer::set_source_message(QString message)
+void source_evidencer::set_source_message(QString message) // Set source message on this window
 {
     ui->textEdit_description->clear();
     ui->lineEdit_evidence->clear();
     ui->label_message->setText(global_lang_tr_obj.get_translated_string("Please fill the info for source ") + "'" + message  + "'");
 }
 
-struct_global_source_evidencer source_evidencer::get_evicencer_info()
+struct_global_source_evidencer source_evidencer::get_evicencer_info() //Get evidence info like number, description etc and fill that in structure
 {
     struct_global_source_evidencer obj;
     QString evidence_no = ui->lineEdit_evidence->text();
@@ -68,12 +68,12 @@ struct_global_source_evidencer source_evidencer::get_evicencer_info()
     return obj;
 }
 
-void source_evidencer::closeEvent(QCloseEvent *)
+void source_evidencer::closeEvent(QCloseEvent *) // click on close button of this window
 {
     // pub_bool_operation_ok = false;
 }
 
-void source_evidencer::on_pushButton_ok_clicked()
+void source_evidencer::on_pushButton_ok_clicked() //Click ok after adding all the required info
 {
 
     if(ui->lineEdit_evidence->text().trimmed().isEmpty() && ui->lineEdit_evidence->placeholderText().isEmpty())
@@ -89,42 +89,42 @@ void source_evidencer::on_pushButton_ok_clicked()
 }
 
 
-void source_evidencer::on_pushButton_cancel_clicked()
+void source_evidencer::on_pushButton_cancel_clicked() //click on cancel button
 {
     bool_evidence_operation_ok = false;
     hide();
 
 }
 
-bool source_evidencer::pub_check_evidence_opertion_status()
+bool source_evidencer::pub_check_evidence_opertion_status() // Evidence number and other info enter status, true if enters. false if cancel
 {
     return bool_evidence_operation_ok;
 }
 
-void source_evidencer::pub_hide_cancel_button(bool status)
+void source_evidencer::pub_hide_cancel_button(bool status) // cancel button
 {
     ui->pushButton_cancel->setHidden(status);
 
 }
 
-void source_evidencer::pub_disable_evidence_no_and_description_widgets(bool status)
+void source_evidencer::pub_disable_evidence_no_and_description_widgets(bool status) // enable/disable evidence no according to status
 {
     ui->lineEdit_evidence->setDisabled(status);
     ui->textEdit_description->setDisabled(status);
 }
 
-void source_evidencer::pub_set_evidence_no_and_description(QString evidence_no, QString description)
+void source_evidencer::pub_set_evidence_no_and_description(QString evidence_no, QString description) // set evidence no and discription on widget line edit
 {
     ui->lineEdit_evidence->setText(global_lang_tr_obj.get_translated_string(evidence_no));
     ui->textEdit_description->setText(global_lang_tr_obj.get_translated_string(description));
 }
 
-void source_evidencer::reject()
+void source_evidencer::reject() //not in use
 {
     return;
 }
 
-void source_evidencer::pub_set_evidence_number(QString source_file_path)
+void source_evidencer::pub_set_evidence_number(QString source_file_path) // set evidence number. we use to name on result directory output
 {
     QString image_case_directory_path = source_file_path.remove(source_file_path.lastIndexOf("/"),source_file_path.size());
     if(!image_case_directory_path.endsWith("/"))
@@ -163,7 +163,7 @@ void source_evidencer::pub_set_evidence_number(QString source_file_path)
     }
 }
 
-void source_evidencer::on_pushButton_src_password_show_hide_clicked(bool checked)
+void source_evidencer::on_pushButton_src_password_show_hide_clicked(bool checked) //show/hide source password on button
 {
     if(checked)
     {

@@ -225,7 +225,7 @@ source_selector::~source_selector()
     delete ui;
 }
 
-void source_selector::create_submenu_actions(QMenu *mainMenu , QStringList submenuList)
+void source_selector::create_submenu_actions(QMenu *mainMenu , QStringList submenuList) // not in use
 {
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
@@ -244,7 +244,7 @@ void source_selector::create_submenu_actions(QMenu *mainMenu , QStringList subme
     recon_static_functions::app_debug(" -Ends " , Q_FUNC_INFO);
 }
 
-void source_selector::pub_get_essential_value_from_all_roots()
+void source_selector::pub_get_essential_value_from_all_roots() // set root type, source type , path etc for the evidence we select
 {
     recon_static_functions::app_debug("Start",Q_FUNC_INFO);
 
@@ -306,7 +306,7 @@ void source_selector::pub_get_essential_value_from_all_roots()
 }
 
 
-void source_selector::slot_toolButton_add_source_clicked()
+void source_selector::slot_toolButton_add_source_clicked() // not in use
 {
     QAction *action = qobject_cast<QAction*>(sender());
 
@@ -372,7 +372,7 @@ void source_selector::slot_toolButton_add_source_clicked()
 
 }
 
-void source_selector::slot_toolButton_add_source_clicked_with_menu(QAction *current_clicked_action)
+void source_selector::slot_toolButton_add_source_clicked_with_menu(QAction *current_clicked_action) //not in use
 {
     QWidget *widget = current_clicked_action->parentWidget();
     if(widget)
@@ -492,7 +492,7 @@ void source_selector::slot_toolButton_add_source_clicked_with_menu(QAction *curr
 
 }
 
-void source_selector::function_RAM_image_triggered()
+void source_selector::function_RAM_image_triggered() // when we select ram image as a source
 {
     QString ram_path_str;// = QFileDialog::getOpenFileName(this,"Select Any File",getenv("HOME"));
 
@@ -516,7 +516,7 @@ void source_selector::function_RAM_image_triggered()
 }
 
 
-void source_selector::function_mounted_volumes_triggered()
+void source_selector::function_mounted_volumes_triggered() // when we select mounted volume as a source
 {
     prnt_widget_id = prnt_widget_id + 1;
 
@@ -529,7 +529,7 @@ void source_selector::function_mounted_volumes_triggered()
 }
 
 
-void source_selector::function_forensics_image_triggered()
+void source_selector::function_forensics_image_triggered() // when we select forensics image as a source
 {
 
     QString image_path;
@@ -552,7 +552,7 @@ void source_selector::function_forensics_image_triggered()
 
 }
 
-void source_selector::function_recon_fs_block_image_triggered()
+void source_selector::function_recon_fs_block_image_triggered() // when we select fs block image as a source
 {
     QString image_path;
     file_dialog_obj.setNameFilter(("*.Sparseimage *.sparseimage"));
@@ -574,7 +574,7 @@ void source_selector::function_recon_fs_block_image_triggered()
 
 }
 
-void source_selector::function_file_vault_triggered()
+void source_selector::function_file_vault_triggered() // when we select file vault image as a source
 {
 
     file_vault_path.clear();
@@ -601,7 +601,7 @@ void source_selector::function_file_vault_triggered()
     File_Vault_image_Class_obj->show();
 }
 
-void source_selector::function_fusion_drive_triggered()
+void source_selector::function_fusion_drive_triggered() // when we select fusion drive image as a source
 {
     prnt_widget_id = prnt_widget_id + 1;
     Fusion_Drive_Class *Fusion_Drive_Class_obj = new Fusion_Drive_Class(this);
@@ -610,7 +610,7 @@ void source_selector::function_fusion_drive_triggered()
     Fusion_Drive_Class_obj->show();
 }
 
-void source_selector::function_home_directory_triggered()
+void source_selector::function_home_directory_triggered() // when we select macos home directory as a source
 {
     prnt_widget_id = prnt_widget_id + 1;
 
@@ -621,7 +621,7 @@ void source_selector::function_home_directory_triggered()
 
 }
 
-void source_selector::function_optical_disk_image_triggered()
+void source_selector::function_optical_disk_image_triggered() // when we select optical disk image as a source
 {
     QString image_path;
     file_dialog_obj.setNameFilter(("*.iso *.ISO *.cdr *.CDR"));
@@ -642,7 +642,7 @@ void source_selector::function_optical_disk_image_triggered()
     set_info_for_sources_widgets(MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_EvidenceType_Physical,MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_RootType_OpticalDiscImage,MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_SourceType_OpticalDiscImage_Display,MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_SourceType_OpticalDiscImage_Internal,image_path,"","");
 }
 
-void source_selector::function_google_takeout_triggered()
+void source_selector::function_google_takeout_triggered() // when we select google takeout as a source
 {
     QString takeout_path;
 
@@ -665,7 +665,7 @@ void source_selector::function_google_takeout_triggered()
 
 }
 
-void source_selector::function_rcn_logical_image_sparseimage_triggered()
+void source_selector::function_rcn_logical_image_sparseimage_triggered() // when we select recon logical sparseimage image as a source
 {
     QString image_path;
     file_dialog_obj.setNameFilter(("*.sparseimage .SPARSEIMAGE"));
@@ -686,7 +686,7 @@ void source_selector::function_rcn_logical_image_sparseimage_triggered()
 
 }
 
-void source_selector::function_recon_mac_sharing_mode_sparseimage_triggered()
+void source_selector::function_recon_mac_sharing_mode_sparseimage_triggered() // when we select recon sharing sparseimage image as a source
 {
     QString image_path;
     file_dialog_obj.setNameFilter(("*.sparseimage .SPARSEIMAGE"));
@@ -706,7 +706,7 @@ void source_selector::function_recon_mac_sharing_mode_sparseimage_triggered()
     set_info_for_sources_widgets(MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_EvidenceType_Network,MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_RootType_RECONMACSharingMode,MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_SourceType_RECONMACSharingMode_Sparseimage_Display,MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_SourceType_RECONMACSharingMode_Sparseimage_Internal,image_path,"","");
 }
 
-void source_selector::function_recon_mac_sharing_mode_dmg_triggered()
+void source_selector::function_recon_mac_sharing_mode_dmg_triggered() // when we select recon sharing dmg image as a source
 {
     QString image_path;
     file_dialog_obj.setNameFilter(("*.dmg *DMG"));
@@ -727,7 +727,7 @@ void source_selector::function_recon_mac_sharing_mode_dmg_triggered()
     set_info_for_sources_widgets(MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_EvidenceType_Network,MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_RootType_RECONMACSharingMode,MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_SourceType_RECONMACSharingMode_DMG_Display,MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_SourceType_RECONMACSharingMode_DMG_Internal,image_path,"","");
 }
 
-void source_selector::function_recon_mac_sharing_mode_folder_triggered()
+void source_selector::function_recon_mac_sharing_mode_folder_triggered() // when we select recon sharing folder as a source
 {
     QString folder_path;// = QFileDialog::getExistingDirectory(this,"Select Folder",getenv("HOME"));
 
@@ -748,7 +748,7 @@ void source_selector::function_recon_mac_sharing_mode_folder_triggered()
     set_info_for_sources_widgets(MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_EvidenceType_Network,MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_RootType_RECONMACSharingMode,MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_SourceType_RECONMACSharingMode_Folder_Display,MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_SourceType_RECONMACSharingMode_Folder_Internal,folder_path,"","");
 }
 
-void source_selector::function_adb_android_backup_ab_file_triggered()
+void source_selector::function_adb_android_backup_ab_file_triggered() // when we select adb android backup ab as a source
 {
     QString andrd_path;
     file_dialog_obj.setNameFilter(("*.ab *AB"));
@@ -775,7 +775,7 @@ void source_selector::function_adb_android_backup_ab_file_triggered()
 
 }
 
-void source_selector::function_adb_android_backup_folder_triggered()
+void source_selector::function_adb_android_backup_folder_triggered()// when we select android backup folder as a source
 {
     QString andrd_path;
 
@@ -799,7 +799,7 @@ void source_selector::function_adb_android_backup_folder_triggered()
 
 }
 
-void source_selector::function_rcn_logical_image_dmg_triggered()
+void source_selector::function_rcn_logical_image_dmg_triggered() // when we select recon logical dmg image as a source
 {
     QString image_path;
     file_dialog_obj.setNameFilter(("*.dmg *DMG"));
@@ -821,7 +821,7 @@ void source_selector::function_rcn_logical_image_dmg_triggered()
 
 }
 
-void source_selector::function_rcn_logical_image_folder_triggered()
+void source_selector::function_rcn_logical_image_folder_triggered() // when we select recon logical folder as a source
 {
     QString folder_path;// = QFileDialog::getExistingDirectory(this,"Select Folder",getenv("HOME"));
 
@@ -843,7 +843,7 @@ void source_selector::function_rcn_logical_image_folder_triggered()
 
 }
 
-void source_selector::function_encase_logical_image_triggered()
+void source_selector::function_encase_logical_image_triggered() // when we select encase logical image as a source
 {
     QString image_path;// = QFileDialog::getExistingDirectory(this,"Select Folder",getenv("HOME"));
 
@@ -866,7 +866,7 @@ void source_selector::function_encase_logical_image_triggered()
 
 }
 
-void source_selector::function_folder_triggered()
+void source_selector::function_folder_triggered() // when we select folder as a source
 {
     QString folder_path;
 
@@ -888,7 +888,7 @@ void source_selector::function_folder_triggered()
 
 }
 
-void source_selector::function_file_triggered()
+void source_selector::function_file_triggered() // when we select file as a source
 {
 
     QString filepath_str;// = QFileDialog::getOpenFileName(this,"Select Any File",getenv("HOME"));
@@ -912,7 +912,7 @@ void source_selector::function_file_triggered()
 
 }
 
-void source_selector::function_time_machine_triggered()
+void source_selector::function_time_machine_triggered() // when we select time machine folder as a source
 {
     QString tm_path;// = QFileDialog::getExistingDirectory(this,"Select Time Machine Backup",getenv("HOME"));
 
@@ -936,7 +936,7 @@ void source_selector::function_time_machine_triggered()
 
 }
 
-void source_selector::function_ios_uid_backup_triggered()
+void source_selector::function_ios_uid_backup_triggered() // when we select ios backup as a source
 {
     QString mbdb_file_path;// = QFileDialog::getOpenFileName(this, tr("Select iOS Backup"),getenv("HOME"), tr("Files (Manifest.db Manifest.mbdb)"));
 
@@ -962,7 +962,7 @@ void source_selector::function_ios_uid_backup_triggered()
 
 }
 
-void source_selector::function_cellebrite_ios_backup_ufdr_file_triggered()
+void source_selector::function_cellebrite_ios_backup_ufdr_file_triggered() // when we select cellebrite ios backup ufdr as a source
 {
     QString ufdr_file_path;
     file_dialog_obj.setNameFilter(("*.ufdr *.UFDR"));
@@ -988,7 +988,7 @@ void source_selector::function_cellebrite_ios_backup_ufdr_file_triggered()
 }
 
 
-void source_selector::function_cellebrite_ios_backup_tar_file_triggered()
+void source_selector::function_cellebrite_ios_backup_tar_file_triggered() // when we select cellebrite ios backup tar as a source
 {
     QString tar_file_path;
     file_dialog_obj.setNameFilter(("*.tar *.TAR"));
@@ -1015,7 +1015,7 @@ void source_selector::function_cellebrite_ios_backup_tar_file_triggered()
 
 
 
-void source_selector::slot_remove_button_clicked(int id,QString name)
+void source_selector::slot_remove_button_clicked(int id,QString name) //if want to remove the selected path of source
 {
     for(int ii = 0; ii < ui->tableWidget_source_scroll_area->rowCount(); ii++)
     {
@@ -1055,7 +1055,7 @@ void source_selector::slot_remove_button_clicked(int id,QString name)
         emit signal_source_selected(false);
 }
 
-void source_selector::slot_mounted_volumes_selected(QStringList media_list)
+void source_selector::slot_mounted_volumes_selected(QStringList media_list) // when we select mounted volume as a source
 {
 
     for(int li = 0; li < media_list.size(); li++)
@@ -1069,7 +1069,7 @@ void source_selector::slot_mounted_volumes_selected(QStringList media_list)
         emit signal_source_selected(false);
 }
 
-void source_selector::slot_file_vault_password_inserted(QString passwd)
+void source_selector::slot_file_vault_password_inserted(QString passwd) // when we select file vault image as a source
 {
     set_info_for_sources_widgets(MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_EvidenceType_Physical,MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_RootType_FileVaultImage,MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_SourceType_FileVaultImage_Display,MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_SourceType_FileVaultImage_Internal,file_vault_path,passwd,"");
 
@@ -1080,7 +1080,7 @@ void source_selector::slot_file_vault_password_inserted(QString passwd)
 
 }
 
-void source_selector::slot_home_directory_user_name_inserted(QString username)
+void source_selector::slot_home_directory_user_name_inserted(QString username) // when we select home directory macos as a source
 {
 
     home_directory_path.clear();
@@ -1111,7 +1111,7 @@ void source_selector::slot_home_directory_user_name_inserted(QString username)
 
 }
 
-void source_selector::slot_fusion_drives_selected(QStringList fusion_drives)
+void source_selector::slot_fusion_drives_selected(QStringList fusion_drives) // when we select fusion drive as a source
 {
     QString fusn_path_str =  fusion_drives.join(MACRO_RECON_Splitter_6_comma);
 
@@ -1124,19 +1124,19 @@ void source_selector::slot_fusion_drives_selected(QStringList fusion_drives)
 
 }
 
-void source_selector::slot_source_submenu_action_triggered(QAction *current_clicked_action)
+void source_selector::slot_source_submenu_action_triggered(QAction *current_clicked_action) // not in use
 {
     slot_toolButton_add_source_clicked_with_menu(current_clicked_action);
 }
 
 
-void source_selector::pub_hide_widgets_for_load_case()
+void source_selector::pub_hide_widgets_for_load_case() //hide widgets in case of load case
 {
     ui->pushButton_add_source->hide();
     ui->pushButton_add_source_qml->hide();
 }
 
-void source_selector::pub_set_root_info_in_page(QStringList root_path_with_type_list)
+void source_selector::pub_set_root_info_in_page(QStringList root_path_with_type_list) //send root info, source info for further usage
 {
 
     for(int li = 0; li < root_path_with_type_list.size(); li++)
@@ -1189,7 +1189,7 @@ void source_selector::pub_set_root_info_in_page(QStringList root_path_with_type_
 }
 
 void source_selector::set_info_for_sources_widgets(QString evidence_type,QString root_type, QString source_type_display, QString source_type_internal, QString source_path, QString password, QString username)
-{
+{ //set info for source widget class
     recon_static_functions::app_debug("Start", Q_FUNC_INFO);
 
     src_widget_id = src_widget_id + 1;
@@ -1241,7 +1241,7 @@ void source_selector::set_info_for_sources_widgets(QString evidence_type,QString
 
 }
 
-void source_selector::update_root_count_index()
+void source_selector::update_root_count_index() // update root info while adding and removing the path from widgets
 {
     recon_static_functions::app_debug("Start" ,Q_FUNC_INFO);
 
@@ -1292,7 +1292,7 @@ void source_selector::update_root_count_index()
 }
 
 
-QList<struct_GLOBAL_witness_info_root> source_selector::pub_get_root_info_list_from_gui()
+QList<struct_GLOBAL_witness_info_root> source_selector::pub_get_root_info_list_from_gui() // root info list return
 {
     return list_struct_root_info;
 }

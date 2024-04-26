@@ -13,7 +13,7 @@ artifacts_keyword_search_loader::~artifacts_keyword_search_loader()
 }
 
 void artifacts_keyword_search_loader::configure_keyword_search_loader(QString result_dir_path, QString item_text,qint64 time_offset , QString search_name)
-{
+{ //prepare the result of keyword search
     setWindowFlags(Qt::Window);
 
     lineEdit_search->hide();
@@ -97,12 +97,12 @@ void artifacts_keyword_search_loader::configure_keyword_search_loader(QString re
 
 }
 
-void artifacts_keyword_search_loader::set_display_db_path(QString db_path)
+void artifacts_keyword_search_loader::set_display_db_path(QString db_path) //set the display path
 {
     keyword_search_detination_db_path = db_path;
 }
 
-void artifacts_keyword_search_loader::pub_populate_data_in_table()
+void artifacts_keyword_search_loader::pub_populate_data_in_table() //populate or load data in table widget to display
 {
     //set_csv_for_display(plugin_and_tab_name_list_for_csv);
 
@@ -132,7 +132,7 @@ void artifacts_keyword_search_loader::pub_populate_data_in_table()
 
 }
 
-void artifacts_keyword_search_loader::create_keywordsearch_info_on_top_display()
+void artifacts_keyword_search_loader::create_keywordsearch_info_on_top_display() //keyword search info to display single keyword or show all on right side
 {
     hbox_search_info_layout = new QHBoxLayout;
     label_keywordsearch_name = new QLabel;
@@ -154,7 +154,7 @@ void artifacts_keyword_search_loader::create_keywordsearch_info_on_top_display()
 
 }
 
-void artifacts_keyword_search_loader::get_creation_timestamp(QString search_name , QString destination_db_file)
+void artifacts_keyword_search_loader::get_creation_timestamp(QString search_name , QString destination_db_file) //creation timestamp
 {
     recon_static_functions::app_debug(" : STARTS",Q_FUNC_INFO);
 
@@ -202,7 +202,7 @@ void artifacts_keyword_search_loader::get_creation_timestamp(QString search_name
 
 }
 
-int artifacts_keyword_search_loader::populate_data_in_tablewidget(QSqlDatabase &received_db_obj, QSqlQuery &query_index)
+int artifacts_keyword_search_loader::populate_data_in_tablewidget(QSqlDatabase &received_db_obj, QSqlQuery &query_index) // populate data in tablewidget to display
 {
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
@@ -383,7 +383,7 @@ int artifacts_keyword_search_loader::populate_data_in_tablewidget(QSqlDatabase &
     return 0;
 }
 
-void artifacts_keyword_search_loader::display_searched_keywords_table(QString search_name , QString result_dir)
+void artifacts_keyword_search_loader::display_searched_keywords_table(QString search_name , QString result_dir) // searched keywords display in table
 {
     recon_static_functions::app_debug(" -START",Q_FUNC_INFO);
 
@@ -486,7 +486,7 @@ void artifacts_keyword_search_loader::display_searched_keywords_table(QString se
     recon_static_functions::app_debug(" -END",Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::contextMenuEvent(QContextMenuEvent *evt)
+void artifacts_keyword_search_loader::contextMenuEvent(QContextMenuEvent *evt) // right click action event on tablewidget
 {
 
     if(evt == NULL)
@@ -568,7 +568,7 @@ void artifacts_keyword_search_loader::contextMenuEvent(QContextMenuEvent *evt)
     mainMenu->exec(QCursor::pos());
 }
 
-void artifacts_keyword_search_loader::tablewidget_general_clicked(int row,int column)
+void artifacts_keyword_search_loader::tablewidget_general_clicked(int row,int column) // general click on tablewidget records or click on any record
 {
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -623,7 +623,7 @@ void artifacts_keyword_search_loader::tablewidget_general_clicked(int row,int co
     recon_static_functions::app_debug(" Ends " , Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::action_open_full_detailed_info_triggered()
+void artifacts_keyword_search_loader::action_open_full_detailed_info_triggered() // open metadata of that particluar record
 {
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -677,7 +677,7 @@ void artifacts_keyword_search_loader::action_open_full_detailed_info_triggered()
     recon_static_functions::app_debug(" Ends " , Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::action_open_detach_detailed_info_triggered()
+void artifacts_keyword_search_loader::action_open_detach_detailed_info_triggered() //not in use
 {
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -716,7 +716,7 @@ void artifacts_keyword_search_loader::action_open_detach_detailed_info_triggered
     recon_static_functions::app_debug(" Ends " , Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::create_action_for_goto_artifact_source_submenu()
+void artifacts_keyword_search_loader::create_action_for_goto_artifact_source_submenu() // got to record right click action, will point to particular source file
 {
     if(m_tablewidget_obj->currentRow() < 0 || m_tablewidget_obj->currentRow() >= m_tablewidget_obj->rowCount())
         return;
@@ -780,7 +780,7 @@ void artifacts_keyword_search_loader::create_action_for_goto_artifact_source_sub
     }
 }
 
-void artifacts_keyword_search_loader::action_go_to_record_triggered()
+void artifacts_keyword_search_loader::action_go_to_record_triggered() // go to record, point particular record
 {
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
@@ -803,7 +803,7 @@ void artifacts_keyword_search_loader::action_go_to_record_triggered()
     recon_static_functions::app_debug(" -Ends " , Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::action_remove_note_triggered()
+void artifacts_keyword_search_loader::action_remove_note_triggered() // remove any note if added on any record
 {
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
     display_loading_progress_bar_non_cancelable_obj->pub_set_progress_bar_indefinite_value();
@@ -847,7 +847,7 @@ void artifacts_keyword_search_loader::action_remove_note_triggered()
 }
 
 
-void artifacts_keyword_search_loader::action_sendToBucket_hex_viewer_triggered()
+void artifacts_keyword_search_loader::action_sendToBucket_hex_viewer_triggered() // right click action send to bucket for hex viewer analysis
 {
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -1001,7 +1001,7 @@ void artifacts_keyword_search_loader::action_sendToBucket_hex_viewer_triggered()
     recon_static_functions::app_debug(" Ends " , Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::action_sendToBucket_sqlite_viewer_triggered()
+void artifacts_keyword_search_loader::action_sendToBucket_sqlite_viewer_triggered() // action send to bucket for sqlite viewer analysis
 {
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -1149,7 +1149,7 @@ void artifacts_keyword_search_loader::action_sendToBucket_sqlite_viewer_triggere
     recon_static_functions::app_debug(" Ends " , Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::action_sendToBucket_plist_viewer_triggered()
+void artifacts_keyword_search_loader::action_sendToBucket_plist_viewer_triggered() // action send to bucket for plist viewer analysis
 {
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -1288,7 +1288,7 @@ void artifacts_keyword_search_loader::action_sendToBucket_plist_viewer_triggered
     recon_static_functions::app_debug(" Ends " , Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::action_open_with_plist_viewer_triggered()
+void artifacts_keyword_search_loader::action_open_with_plist_viewer_triggered() // right click action, open with plist viewer
 {
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -1383,7 +1383,7 @@ void artifacts_keyword_search_loader::action_open_with_plist_viewer_triggered()
     recon_static_functions::app_debug(" Ends " , Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::action_open_with_hex_viewer_triggered()
+void artifacts_keyword_search_loader::action_open_with_hex_viewer_triggered() // open with hex viewer
 {
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -1488,7 +1488,7 @@ void artifacts_keyword_search_loader::action_open_with_hex_viewer_triggered()
     recon_static_functions::app_debug(" Ends " , Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::action_open_with_sqlite_viewer_triggered()
+void artifacts_keyword_search_loader::action_open_with_sqlite_viewer_triggered() // open with hex viewer
 {
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -1579,7 +1579,7 @@ void artifacts_keyword_search_loader::action_open_with_sqlite_viewer_triggered()
     recon_static_functions::app_debug(" Ends " , Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::action_export_triggered()
+void artifacts_keyword_search_loader::action_export_triggered() // export anything by clicking on export action on right click
 {
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -1680,7 +1680,7 @@ void artifacts_keyword_search_loader::action_export_triggered()
     recon_static_functions::app_debug(" Ends " , Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::action_remove_note_bookmark_triggered()
+void artifacts_keyword_search_loader::action_remove_note_bookmark_triggered() // remove bookmark action
 {
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -1728,7 +1728,7 @@ void artifacts_keyword_search_loader::action_remove_note_bookmark_triggered()
     recon_static_functions::app_debug(" Ends " , Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::update_tags_value(QString tag_data,QString colour)
+void artifacts_keyword_search_loader::update_tags_value(QString tag_data,QString colour) // update tags value or add  tags on any record
 {
     recon_static_functions::debug_intensive(" -Starts " , Q_FUNC_INFO);
 
@@ -1774,7 +1774,7 @@ void artifacts_keyword_search_loader::update_tags_value(QString tag_data,QString
     recon_static_functions::debug_intensive(" -Ends " , Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::update_bookmark_value(QString status,int row, int column)
+void artifacts_keyword_search_loader::update_bookmark_value(QString status,int row, int column) // add bookmark any record
 {
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
@@ -1818,7 +1818,7 @@ void artifacts_keyword_search_loader::update_bookmark_value(QString status,int r
     recon_static_functions::app_debug(" -Ends " , Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::action_bookmark_triggered()
+void artifacts_keyword_search_loader::action_bookmark_triggered() // bookmark action clicked
 {
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
     display_loading_progress_bar_non_cancelable_obj->pub_set_progress_bar_indefinite_value();

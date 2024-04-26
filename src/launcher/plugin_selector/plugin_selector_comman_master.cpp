@@ -2,7 +2,7 @@
 #include "ui_plugin_selector.h"
 
 
-void plugin_selector::pub_initialise_multi_os_plugins_from_recon_configuration()
+void plugin_selector::pub_initialise_multi_os_plugins_from_recon_configuration() //Display multi os plugins from recon config database
 {
     recon_static_functions::app_debug(" START",Q_FUNC_INFO);
 
@@ -25,8 +25,8 @@ void plugin_selector::pub_initialise_multi_os_plugins_from_recon_configuration()
     recon_static_functions::app_debug(" END",Q_FUNC_INFO);
 }
 
-void plugin_selector::initialise_plugins_for_recon_config_and_new_case_launcher(QString destination_db_file)
-{
+void plugin_selector::initialise_plugins_for_recon_config_and_new_case_launcher(QString destination_db_file) // select all the plugin related info from database (recon_configuration.db)
+{ //like their os and types etc
     recon_static_functions::app_debug(" START",Q_FUNC_INFO);
 
     QString connection_naam = QString::number(QDateTime::currentMSecsSinceEpoch());
@@ -111,7 +111,7 @@ void plugin_selector::initialise_plugins_for_recon_config_and_new_case_launcher(
     recon_static_functions::app_debug(" END",Q_FUNC_INFO);
 }
 
-void plugin_selector::display_plugins_tree_for_multiple_os(QList<struct_report_plugin_info> &list_plugins_info)
+void plugin_selector::display_plugins_tree_for_multiple_os(QList<struct_report_plugin_info> &list_plugins_info) // display plugins tree for multiple operating system
 {
     recon_static_functions::app_debug(" START",Q_FUNC_INFO);
 
@@ -244,7 +244,7 @@ void plugin_selector::display_plugins_tree_for_multiple_os(QList<struct_report_p
     recon_static_functions::app_debug(" END",Q_FUNC_INFO);
 }
 
-void plugin_selector::display_parent_category_list_for_multiple_os( QStringList &list_plugin_parents)
+void plugin_selector::display_parent_category_list_for_multiple_os( QStringList &list_plugin_parents) // display parent category list of multiple operating system
 {
     recon_static_functions::app_debug(" START",Q_FUNC_INFO);
 
@@ -286,7 +286,7 @@ void plugin_selector::display_parent_category_list_for_multiple_os( QStringList 
 
 }
 
-void plugin_selector::set_destination_db_file_path_for_multi_os()
+void plugin_selector::set_destination_db_file_path_for_multi_os() //Database file path for multi os
 {
     if(launcher_type == MACRO_Launcher_Plugin_Selection_RECON_Configuration)
     {
@@ -304,7 +304,7 @@ void plugin_selector::set_destination_db_file_path_for_multi_os()
 }
 
 
-void plugin_selector::pub_update_default_multi_OS_plugins_db_for_recon_configuration()
+void plugin_selector::pub_update_default_multi_OS_plugins_db_for_recon_configuration() //update status in db after seelcting plugins to process
 {
     recon_static_functions::app_debug(" -Start" ,Q_FUNC_INFO);
 
@@ -403,7 +403,7 @@ bool plugin_selector::pub_bool_run_plugin_having_record()
     return true;
 }
 
-void plugin_selector::pub_initialise_plugin_info_for_main_new_case_launcher()
+void plugin_selector::pub_initialise_plugin_info_for_main_new_case_launcher() //initialise plugins which are selected
 {
     recon_static_functions::app_debug(" START",Q_FUNC_INFO);
 
@@ -431,13 +431,13 @@ void plugin_selector::pub_initialise_plugin_info_for_main_new_case_launcher()
     recon_static_functions::app_debug(" END",Q_FUNC_INFO);
 }
 
-void plugin_selector::pub_get_selected_plugins_from_main_case_launcher()
+void plugin_selector::pub_get_selected_plugins_from_main_case_launcher() // get selected plugins from pre launcher
 {
     get_selected_plugins_from_run_plugin_common();
 }
 
 //-----------------------------------------------------Global REPORT START-------------------------------------------------------//
-void plugin_selector::pub_initialise_plugin_info_for_global_report()
+void plugin_selector::pub_initialise_plugin_info_for_global_report() //display plugins in global report also
 {
     recon_static_functions::app_debug(" START",Q_FUNC_INFO);
 
@@ -462,7 +462,7 @@ void plugin_selector::pub_initialise_plugin_info_for_global_report()
     recon_static_functions::app_debug(" END",Q_FUNC_INFO);
 }
 
-void plugin_selector::initialise_plugins_for_global_report_comman_for_multi_os(QString destination_db_file)
+void plugin_selector::initialise_plugins_for_global_report_comman_for_multi_os(QString destination_db_file) // set them for global report
 {
     recon_static_functions::app_debug(" START",Q_FUNC_INFO);
 
@@ -621,7 +621,7 @@ void plugin_selector::initialise_plugins_for_global_report_comman_for_multi_os(Q
     recon_static_functions::app_debug(" END",Q_FUNC_INFO);
 }
 
-void plugin_selector::pub_put_plugin_info_for_global_report()
+void plugin_selector::pub_put_plugin_info_for_global_report() // set in narad global class about plugins info for global report
 {
     QStringList list_selected_plugins_with_os_naming;
 
@@ -630,12 +630,12 @@ void plugin_selector::pub_put_plugin_info_for_global_report()
     narad_muni_for_report_obj->set_field(MACRO_NARAD_Global_Report_Selected_Plugins_With_Tabs_AND_Export_Status_QStringList, get_plugin_info_for_global_report_common());
 }
 
-QStringList plugin_selector::pub_get_seleted_tabs_and_plugins_for_Keyword_Search()
+QStringList plugin_selector::pub_get_seleted_tabs_and_plugins_for_Keyword_Search() // selected tabs and plugins for kryword search
 {
     return get_seleted_tabs_and_plugins_for_Keyword_Search_common();
 }
 
-void plugin_selector::pub_initialise_plugin_info_for_keyword_search()
+void plugin_selector::pub_initialise_plugin_info_for_keyword_search() // plugin info when we search any keyword using search box line edit
 {
     recon_static_functions::app_debug(" START",Q_FUNC_INFO);
 
@@ -676,7 +676,7 @@ void plugin_selector::pub_initialise_plugin_info_for_keyword_search()
     recon_static_functions::app_debug(" END",Q_FUNC_INFO);
 }
 
-void plugin_selector::initialise_plugin_info_for_keyword_search_comman_for_multi_os(QString destination_db_file)
+void plugin_selector::initialise_plugin_info_for_keyword_search_comman_for_multi_os(QString destination_db_file) // plugin info when we search any keyword using search box line edit common for multi os
 {
     recon_static_functions::app_debug(" START",Q_FUNC_INFO);
 
@@ -1086,7 +1086,7 @@ void plugin_selector::on_treeWidget_plugins_itemClicked_new_case_common(QTreeWid
 
 }
 
-void plugin_selector::on_treeWidget_plugins_itemClicked_run_plugin_common(QTreeWidgetItem *item, int column)
+void plugin_selector::on_treeWidget_plugins_itemClicked_run_plugin_common(QTreeWidgetItem *item, int column) // tree widget item clicked in left side of plugins
 {
     if(column == enum_plugin_tree_column_plugin_translated_name)
     {
@@ -1349,7 +1349,7 @@ void plugin_selector::on_treeWidget_plugins_itemClicked_run_plugin_common(QTreeW
 
 }
 
-void plugin_selector::select_all_with_export_clicked_common()
+void plugin_selector::select_all_with_export_clicked_common() // select all with export
 {
     for(int i = 0; i < ui->treeWidget_plugins->topLevelItemCount(); i++)
     {
@@ -1365,7 +1365,7 @@ void plugin_selector::select_all_with_export_clicked_common()
 
 }
 
-void plugin_selector::select_all_without_export()
+void plugin_selector::select_all_without_export() // select all plugins without export from combobox
 {
     for(int i = 0; i < ui->treeWidget_plugins->topLevelItemCount(); i++)
     {
@@ -1380,7 +1380,7 @@ void plugin_selector::select_all_without_export()
 
 }
 
-void plugin_selector::remove_all_clicked_common()
+void plugin_selector::remove_all_clicked_common() // remove all plugins from selection
 {
     for(int i = 0; i < ui->treeWidget_plugins->topLevelItemCount(); i++)
     {
@@ -1456,7 +1456,7 @@ void plugin_selector::select_template_plugins_for_common(QString template_name)
     recon_static_functions::app_debug(" End",Q_FUNC_INFO);
 }
 
-void plugin_selector::lineEdit_plugin_search_textChanged_common(const QString &arg1)
+void plugin_selector::lineEdit_plugin_search_textChanged_common(const QString &arg1) // change display of plugins as we search any plugin name from search box
 {
     ui->treeWidget_plugins->collapseAll();
 
@@ -1491,7 +1491,7 @@ void plugin_selector::lineEdit_plugin_search_textChanged_common(const QString &a
     }
 }
 
-void plugin_selector::get_selected_plugins_from_main_case_launcher_common()
+void plugin_selector::get_selected_plugins_from_main_case_launcher_common() // get selected plugins for case launcher
 {
     recon_static_functions::app_debug(" START",Q_FUNC_INFO);
 
@@ -1536,7 +1536,7 @@ void plugin_selector::get_selected_plugins_from_main_case_launcher_common()
 
 }
 
-QStringList plugin_selector::get_plugin_info_for_global_report_common()
+QStringList plugin_selector::get_plugin_info_for_global_report_common() //get plugin info for global report
 {
     QStringList selected_plugin_info_list;
     QString all_plugins_and_tab_str;
@@ -1591,7 +1591,7 @@ QStringList plugin_selector::get_plugin_info_for_global_report_common()
     return selected_plugin_info_list;
 }
 
-QStringList plugin_selector::get_seleted_tabs_and_plugins_for_Keyword_Search_common()
+QStringList plugin_selector::get_seleted_tabs_and_plugins_for_Keyword_Search_common() // selected tabs of plugins runs after search
 {
     recon_static_functions::app_debug(" START",Q_FUNC_INFO);
 
@@ -1627,7 +1627,7 @@ QStringList plugin_selector::get_seleted_tabs_and_plugins_for_Keyword_Search_com
     return selected_plugins_with_tab_list;
 }
 
-bool plugin_selector::get_selected_plugins_from_run_plugin_common()
+bool plugin_selector::get_selected_plugins_from_run_plugin_common() //get selected plugins to run
 {
     recon_static_functions::app_debug(" START",Q_FUNC_INFO);
 
@@ -1715,7 +1715,7 @@ bool plugin_selector::get_selected_plugins_from_run_plugin_common()
 
 
 
-bool plugin_selector::pub_get_selected_plugins_from_launcher_for_add_source()
+bool plugin_selector::pub_get_selected_plugins_from_launcher_for_add_source() // selected plugins from pre launcher
 {
     bool bool_plugins_selected = false;
 
@@ -1725,7 +1725,7 @@ bool plugin_selector::pub_get_selected_plugins_from_launcher_for_add_source()
 }
 
 
-bool plugin_selector::pub_get_selected_plugins_from_launcher_for_run_plugin()
+bool plugin_selector::pub_get_selected_plugins_from_launcher_for_run_plugin() // get selected plugins
 {    
     return get_selected_plugins_from_run_plugin_common();
 }

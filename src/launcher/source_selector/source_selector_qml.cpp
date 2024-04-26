@@ -2,7 +2,7 @@
 #include "ui_source_selector.h"
 
 
-void source_selector::on_pushButton_add_source_qml_clicked()
+void source_selector::on_pushButton_add_source_qml_clicked() // When we click add source button, it opens the QML add source window
 {
     QUrl url_add_source_launcher_window = QUrl("qrc:/All_qml_agent.qml");
 
@@ -20,17 +20,17 @@ void source_selector::on_pushButton_add_source_qml_clicked()
 
 }
 
-void source_selector::pbin_button_back_clicked()
+void source_selector::pbin_button_back_clicked() // Click back from QML
 {
     emit signal_qml_button_initial_back_clicked();
 }
 
-void source_selector::pbin_on_close_clicked()
+void source_selector::pbin_on_close_clicked() // close qml window
 {
     emit signal_qml_button_initial_back_clicked();
 }
 
-QString source_selector::pbin_get_label(QString m_value)
+QString source_selector::pbin_get_label(QString m_value) //return display name to set on qml pages like physical evidence, logical evidence, dmg, sparseimage etc
 {
     if(m_value == "OS_SCHEME_macOS_Display")
         return MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_OS_SCHEME_macOS_Display;
@@ -273,8 +273,8 @@ QString source_selector::pbin_get_label(QString m_value)
 
 }
 
-QString source_selector::pbin_button_source_path_selection_clicked(QString rt_value, QString src_internal_value)
-{
+QString source_selector::pbin_button_source_path_selection_clicked(QString rt_value, QString src_internal_value) //when we click on browse button of qml to select source path
+{                                                                                                               // according to evidence
     QString image_path;
 
     if(rt_value == MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_RootType_ForensicsImage && src_internal_value == MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_SourceType_ForensicsImage_Internal)
@@ -422,7 +422,7 @@ QString source_selector::pbin_button_source_path_selection_clicked(QString rt_va
 }
 
 void source_selector::pbin_button_add_selected_sources(QString evdnc_type,QString rt_type,QString src_display_type,QString src_internal_type,QString src_path, QString fusion_path,QString vault_password, QString home_dir_username)
-{
+{ // After selecting source, click on add button to send that path from qml to c++ with their root type, source type etc
 
     if(rt_type == MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_RootType_FileVaultImage && src_internal_type == MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_SourceType_FileVaultImage_Internal)
     {
@@ -473,7 +473,7 @@ void source_selector::pbin_button_add_selected_sources(QString evdnc_type,QStrin
 
 }
 
-QString source_selector::pbin_get_icons_path(QString icon_name)
+QString source_selector::pbin_get_icons_path(QString icon_name) //Return icons path to set on qml window of add source
 {
     QString icon_path_1_src = QApplication::applicationDirPath() + "/../icons/source/";
     QString icon_path_2_os = QApplication::applicationDirPath() + "/../icons/os/";
@@ -577,7 +577,7 @@ QString source_selector::pbin_get_icons_path(QString icon_name)
     return icon_path_final;
 }
 
-void source_selector::pbin_set_messagebox_for_unsupported_image(QString rt_value, QString src_internal_value)
+void source_selector::pbin_set_messagebox_for_unsupported_image(QString rt_value, QString src_internal_value) //Display message of unsupport image on qml if satisfy
 {
     if(rt_value == MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_RootType_FileVaultImage && src_internal_value == MACRO_GLOBAL_COMMON_RECON_AND_ARTIFACT_SourceType_FileVaultImage_Internal)
     {
@@ -589,7 +589,7 @@ void source_selector::pbin_set_messagebox_for_unsupported_image(QString rt_value
     }
 }
 
-bool source_selector::pbin_is_image_supported(QString rt_value, QString src_internal_value, QString image_path)
+bool source_selector::pbin_is_image_supported(QString rt_value, QString src_internal_value, QString image_path) // return true if image supported
 {
 
     QString img_extn = image_path.mid(image_path.lastIndexOf("."), image_path.size());

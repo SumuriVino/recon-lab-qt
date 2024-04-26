@@ -83,22 +83,22 @@ plugin_selector::~plugin_selector()
 
 
 
-void plugin_selector::set_narad_muni_for_report(narad_muni *obj)
+void plugin_selector::set_narad_muni_for_report(narad_muni *obj) //set global narad object
 {
     narad_muni_for_report_obj = obj;
 }
 
-void plugin_selector::pub_set_launcher_type(QString launcher)
+void plugin_selector::pub_set_launcher_type(QString launcher) // set launcher type like plugins process from pre launcher or post launcher
 {
     launcher_type = launcher;
 }
 
-void plugin_selector::pub_set_widget_content_margin(int left, int top, int right, int bottom)
+void plugin_selector::pub_set_widget_content_margin(int left, int top, int right, int bottom) // set widget margin
 {
     this->setContentsMargins(left,top,right,bottom);
 }
 
-void plugin_selector::fill_template_combobox()
+void plugin_selector::fill_template_combobox() // combobox which displays on plugin selection widgets like select all plugins, select with export etc.
 {
     recon_static_functions::app_debug(" START",Q_FUNC_INFO);
 
@@ -135,7 +135,7 @@ void plugin_selector::fill_template_combobox()
 
 }
 
-void plugin_selector::set_hide_widgets(bool value)
+void plugin_selector::set_hide_widgets(bool value) //hide widgets according to status
 {
     //    ui->comboBox_device_selection->setHidden(value);
     ui->pushButton_remove_template->setHidden(value);
@@ -144,14 +144,14 @@ void plugin_selector::set_hide_widgets(bool value)
     ui->pushButton_add_template->setHidden(value);
 }
 
-void plugin_selector::on_lineEdit_plugin_search_textChanged(const QString &arg1)
+void plugin_selector::on_lineEdit_plugin_search_textChanged(const QString &arg1) // refresh the widget as we write any plugin name or something in search box of plugin selection
 {
     lineEdit_plugin_search_textChanged_common(arg1);
 
 }
 
 
-void plugin_selector::on_comboBox_template_plugins_selection_currentTextChanged(const QString &arg1)
+void plugin_selector::on_comboBox_template_plugins_selection_currentTextChanged(const QString &arg1) // refresh plugins widget according to value change in combobix
 {
     if(bool_combobox_updating)
         return;
@@ -188,7 +188,7 @@ void plugin_selector::on_comboBox_template_plugins_selection_currentTextChanged(
 
 }
 
-void plugin_selector::on_checkBox_save_template_clicked(bool checked)
+void plugin_selector::on_checkBox_save_template_clicked(bool checked) //checkbox save info according to status
 {
     if(launcher_type != MACRO_Launcher_Plugin_Selection_RECON_Configuration)
         return;
@@ -205,12 +205,12 @@ void plugin_selector::on_checkBox_save_template_clicked(bool checked)
     }
 }
 
-void plugin_selector::on_lineEdit_save_template_returnPressed()
+void plugin_selector::on_lineEdit_save_template_returnPressed() //if enters on save templates
 {
     on_pushButton_add_template_clicked();
 }
 
-void plugin_selector::on_pushButton_remove_template_clicked()
+void plugin_selector::on_pushButton_remove_template_clicked() // button if remove template clicked, it will also delete that value from database
 {
     recon_static_functions::app_debug(" START",Q_FUNC_INFO);
 
@@ -243,7 +243,7 @@ void plugin_selector::on_pushButton_remove_template_clicked()
 
 }
 
-void plugin_selector::on_lineEdit_save_template_textChanged(const QString &arg1)
+void plugin_selector::on_lineEdit_save_template_textChanged(const QString &arg1) // change value if write something in lineedit
 {
     if(arg1 != "")
     {
@@ -253,7 +253,7 @@ void plugin_selector::on_lineEdit_save_template_textChanged(const QString &arg1)
 
 
 
-void plugin_selector::on_treeWidget_plugins_itemClicked(QTreeWidgetItem *item, int column)
+void plugin_selector::on_treeWidget_plugins_itemClicked(QTreeWidgetItem *item, int column) //if clicked on any plugin display in treewidget
 {
     if(launcher_type == MACRO_Launcher_Plugin_Selection_New_Case || launcher_type == MACRO_Launcher_Plugin_Selection_G_Report
             || launcher_type == MACRO_Launcher_Plugin_Selection_G_Timeline  || launcher_type == MACRO_Launcher_Plugin_Selection_K_Search){
@@ -265,7 +265,7 @@ void plugin_selector::on_treeWidget_plugins_itemClicked(QTreeWidgetItem *item, i
 
 }
 
-void plugin_selector::on_tableWidget_parent_list_cellClicked(int row, int column)
+void plugin_selector::on_tableWidget_parent_list_cellClicked(int row, int column) // if clicked on parent of plugins in tablewidget
 {
 
     ui->comboBox_template_plugins_selection->setCurrentText(M_VAR_PLUGIN_TEMPLATE_Plugin_selection_QString);
@@ -343,12 +343,12 @@ void plugin_selector::on_tableWidget_parent_list_cellClicked(int row, int column
 
 }
 
-void plugin_selector::on_treeWidget_plugins_itemChanged(QTreeWidgetItem *item, int column)
+void plugin_selector::on_treeWidget_plugins_itemChanged(QTreeWidgetItem *item, int column) //boolean according to item change in plugins
 {
     bool_plugins_tree_updated = true;
 }
 
-void plugin_selector::on_pushButton_add_template_clicked()
+void plugin_selector::on_pushButton_add_template_clicked() // Process plugins after clicking on add button
 {
     recon_static_functions::app_debug(" START",Q_FUNC_INFO);
 

@@ -27,24 +27,24 @@ Fusion_Drive_Class::~Fusion_Drive_Class()
     delete ui;
 }
 
-void Fusion_Drive_Class::pub_set_id_and_name(int id, QString name)
+void Fusion_Drive_Class::pub_set_id_and_name(int id, QString name) //set id and received name/source name in private variable
 {
     received_id = id;
     received_name = name;
 }
 
-int Fusion_Drive_Class::pub_get_id()
+int Fusion_Drive_Class::pub_get_id() // return received id
 {
     return received_id;
 }
 
-int Fusion_Drive_Class::pub_get_window_height()
+int Fusion_Drive_Class::pub_get_window_height() // return height of window
 {
     return this->minimumHeight();
 }
 
 
-void Fusion_Drive_Class::on_pushButton_add_fusion_drives_clicked()
+void Fusion_Drive_Class::on_pushButton_add_fusion_drives_clicked() // add fusion image after adding both image in line edit, ssd or platter
 {
     if(ui->lineEdit_fusion_path_ssd->text().trimmed().isEmpty() || ui->lineEdit_fusion_path_platter->text().trimmed().isEmpty())
         return;
@@ -57,7 +57,7 @@ void Fusion_Drive_Class::on_pushButton_add_fusion_drives_clicked()
     this->hide();
 }
 
-void Fusion_Drive_Class::on_pushButton_ssd_clicked()
+void Fusion_Drive_Class::on_pushButton_ssd_clicked() // button to add ssd image
 {
 
 
@@ -81,7 +81,7 @@ void Fusion_Drive_Class::on_pushButton_ssd_clicked()
 
 }
 
-void Fusion_Drive_Class::on_pushButton_platter_clicked()
+void Fusion_Drive_Class::on_pushButton_platter_clicked() //button to add platter image
 {
 
     QString file_path;
@@ -103,7 +103,7 @@ void Fusion_Drive_Class::on_pushButton_platter_clicked()
 
 }
 
-void Fusion_Drive_Class::on_pushButton_cancel_clicked()
+void Fusion_Drive_Class::on_pushButton_cancel_clicked() // cancel if don't want to add fusion image
 {
     this->hide();
 }
