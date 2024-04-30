@@ -3,7 +3,7 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Controls.Basic 6.0
-
+/*This class has the front-end UI work behind the Mobile evidence button. When we click on Mobile evidence, the buttons you will see are like RECON MAC Sharing Mode.*/
 Rectangle
 {
     id: rectangle_network_acq_recon_mac_sharing_mode

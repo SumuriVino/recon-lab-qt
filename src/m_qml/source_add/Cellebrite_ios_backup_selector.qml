@@ -3,7 +3,7 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Controls.Basic 6.0
-
+/*This class has the front-end UI work behind the Cellebrite ios backup button. When we click on the Cellebrite iOS backup button, the buttons you will see are like tar and ufdr.*/
 Rectangle
 {
     id: rectangle_mobile_cellebrite_ios

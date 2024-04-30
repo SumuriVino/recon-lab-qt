@@ -3,7 +3,8 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Controls.Basic 6.0
-
+/*This class has the front-end UI work behind the ADB Android backup button. When we click on the ADB Android backup button,
+ the buttons you will see are like adb android backup ab, folder.*/
 Rectangle
 {
     id: rectangle_mobile_adb_android_selector

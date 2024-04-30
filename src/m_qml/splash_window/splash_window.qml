@@ -2,7 +2,9 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls.Universal 6.0
 import QtQuick.Controls 2.12
-
+/*This class is the main class which up when we open the recon lab. This is the one which includes buttons of new case, load case, acquire and other main screen buttons. We can say this
+is the front end UI work of the main splash screen of RECON LAB. This class is connected to case_wizard.cpp which has all the backend work of this UI.
+*/
 Page
 {
     width: 951

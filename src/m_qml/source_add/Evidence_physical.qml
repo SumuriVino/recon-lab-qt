@@ -3,7 +3,8 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Controls.Basic 6.0
-
+/*This class has the front-end UI work behind the Physical evidence button. When we click on physical evidence, the buttons you will see like Ram image,
+optical disk image, forensics image, time machine backup, mounted volumes, recon fs block etc. */
 Rectangle
 {
     id: rectangle_physical_evidences

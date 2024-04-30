@@ -6,7 +6,10 @@ import QtQuick.Controls.Basic 6.0
 import QtQuick.Dialogs 6.0
 import Qt.labs.platform 1.0
 import QtQml 2.3
-
+/*
+  The source add directory includes all these QML files which UI can be seen when we click on add source button. And, all_qml_agent.qml is the main class of those QML files or which
+operates all the files of source adding. This class has info of all the QML files which we use in the UI of add source.
+  */
 ApplicationWindow
 {
     id:qml_main_window_sources

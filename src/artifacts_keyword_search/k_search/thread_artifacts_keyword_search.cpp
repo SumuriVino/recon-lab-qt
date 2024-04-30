@@ -1,13 +1,13 @@
 #include "thread_artifacts_keyword_search.h"
 
-thread_artifacts_keyword_search::thread_artifacts_keyword_search(QWidget *parent)
+thread_artifacts_keyword_search::thread_artifacts_keyword_search(QWidget *parent) //initialise the records and class.
 {
     bool_cancel_search = false;
 
     timer_records_k_search = new QElapsedTimer();
     total_records = 0;
 
-    recon_helper_standard_obj = new recon_helper_standard(this);
+    recon_helper_standard_obj = new recon_helper_standard(this); // helper class which includes some of generic functions
 
 }
 
@@ -19,7 +19,7 @@ thread_artifacts_keyword_search::~thread_artifacts_keyword_search()
 
 }
 
-void thread_artifacts_keyword_search::run()
+void thread_artifacts_keyword_search::run() // start the artifact keyword search
 {
     timer_records_k_search->start();
 
@@ -28,18 +28,18 @@ void thread_artifacts_keyword_search::run()
 }
 
 
-void thread_artifacts_keyword_search::pub_set_plugin_list_for_search(QStringList list)
+void thread_artifacts_keyword_search::pub_set_plugin_list_for_search(QStringList list) // set list of plugins in which we are going to search
 {
     list_plugins_for_search = list;
 }
 
-void thread_artifacts_keyword_search::pub_set_keywords_list_for_search(QStringList keyword_list)
+void thread_artifacts_keyword_search::pub_set_keywords_list_for_search(QStringList keyword_list) //set keyword list which we are going to search
 {
     list_search_keyword = keyword_list;
 }
 
 
-void thread_artifacts_keyword_search::pub_set_essentials()
+void thread_artifacts_keyword_search::pub_set_essentials() // set some of essentials databases in private variable
 {
     result_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_RECON_Result_Dir_QString).toString();
     destination_search_db_file = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Artifacts_Keyword_Search_In_Result_QString).toString() + "artifacts_keyword_search.sqlite";
@@ -49,7 +49,7 @@ void thread_artifacts_keyword_search::pub_set_essentials()
 
 }
 
-void thread_artifacts_keyword_search::search_in_plugins()
+void thread_artifacts_keyword_search::search_in_plugins() // functionality which gonna search in plugins
 {
     recon_static_functions::app_debug(" -START -",Q_FUNC_INFO);
 
@@ -112,22 +112,22 @@ void thread_artifacts_keyword_search::search_in_plugins()
 
 }
 
-void thread_artifacts_keyword_search::pub_set_search_name(QString name)
+void thread_artifacts_keyword_search::pub_set_search_name(QString name) // set search label name
 {
     search_name = name;
 }
 
-QString thread_artifacts_keyword_search::pub_get_search_name()
+QString thread_artifacts_keyword_search::pub_get_search_name() // get search name
 {
     return search_name;
 }
 
-void thread_artifacts_keyword_search::pub_cancel_keyword_search_extraction()
+void thread_artifacts_keyword_search::pub_cancel_keyword_search_extraction() //update the boolean if cancel keyword search in between
 {
     bool_cancel_search = true;
 }
 
-void thread_artifacts_keyword_search::create_paths_for_plugins()
+void thread_artifacts_keyword_search::create_paths_for_plugins() //create database paths for plugins while searching
 {
     QString pl_name = plugin_name;
 
@@ -135,7 +135,7 @@ void thread_artifacts_keyword_search::create_paths_for_plugins()
     source_plugins_db_file = destination_file_location + "/" + pl_name.replace(" ","_") + ".sqlite";
 }
 
-void thread_artifacts_keyword_search::create_search_table()
+void thread_artifacts_keyword_search::create_search_table() // create search table in the particular plugin databases
 {
     recon_static_functions::app_debug(" start",Q_FUNC_INFO);
 
@@ -158,7 +158,7 @@ void thread_artifacts_keyword_search::create_search_table()
     recon_static_functions::app_debug(" end",Q_FUNC_INFO);
 
 }
-void thread_artifacts_keyword_search::save_current_search()
+void thread_artifacts_keyword_search::save_current_search() // save current search in database
 {
     recon_static_functions::app_debug(" start",Q_FUNC_INFO);
 
@@ -290,7 +290,7 @@ void thread_artifacts_keyword_search::save_current_search()
 
 }
 
-void thread_artifacts_keyword_search::save_current_search_with_the_keyword_hit()
+void thread_artifacts_keyword_search::save_current_search_with_the_keyword_hit() // save current search with the keyword hit in the database
 {
     recon_static_functions::app_debug(" Start",Q_FUNC_INFO);
 
@@ -463,7 +463,7 @@ void thread_artifacts_keyword_search::save_current_search_with_the_keyword_hit()
 }
 
 QString thread_artifacts_keyword_search::get_partial_command_forsearch(QStringList search_cols_list, QStringList search_string_list)
-{
+{ // prepare partial(generic or same in all cases) command for searching
 
     QString partial_command;
 
@@ -488,17 +488,17 @@ QString thread_artifacts_keyword_search::get_partial_command_forsearch(QStringLi
 }
 
 
-void thread_artifacts_keyword_search::pub_set_bool_search_on_plugin(bool val)
+void thread_artifacts_keyword_search::pub_set_bool_search_on_plugin(bool val) // set boolean of search
 {
     bool_search_on_plugin = val;
 }
 
-void thread_artifacts_keyword_search::pub_set_bool_search_on_files(bool val)
+void thread_artifacts_keyword_search::pub_set_bool_search_on_files(bool val) // boolean search on files
 {
     bool_search_on_files = val;
 }
 
-void thread_artifacts_keyword_search::insert_index_table_entry()
+void thread_artifacts_keyword_search::insert_index_table_entry() //insert indexes of search and databases in another database to get others info
 {
     recon_static_functions::app_debug(" - Start ",Q_FUNC_INFO);
 

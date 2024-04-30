@@ -46,20 +46,20 @@ artifacts_keyword_search_interface::~artifacts_keyword_search_interface()
 }
 
 
-void artifacts_keyword_search_interface::slot_label_keyword_list_clicked(QString)
+void artifacts_keyword_search_interface::slot_label_keyword_list_clicked(QString) // function not in use
 {
     keyword_list_selector_obj->show();
 }
 
 
-void artifacts_keyword_search_interface::set_keywordsearch_default_name()
+void artifacts_keyword_search_interface::set_keywordsearch_default_name() // set keyword search default name in label
 {
     QString name = "Search " + QDateTime::currentDateTime().toString(global_narad_muni_class_obj->get_field(MACRO_NARAD_Examiner_Selected_Datetime_Format_QString).toString());
     ui->lineEdit_search_name->setPlaceholderText(name);
 }
 
 void artifacts_keyword_search_interface::on_pushButton_search_clicked()
-{
+{ // peroforms when we click on search button after entring keyword, and it will display the result accordingly
     recon_static_functions::app_debug(" -START",Q_FUNC_INFO);
 
     QStringList keyword_list;
@@ -130,7 +130,7 @@ void artifacts_keyword_search_interface::on_pushButton_search_clicked()
 }
 
 
-void artifacts_keyword_search_interface::set_initialisation()
+void artifacts_keyword_search_interface::set_initialisation() // set some of essenstials things
 {
     ui->lineEdit_keywords->clear();
     ui->lineEdit_search_name->clear();

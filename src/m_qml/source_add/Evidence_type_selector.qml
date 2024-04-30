@@ -5,7 +5,8 @@ import QtQuick.Layouts 1.0
 import QtQuick.Controls.Basic 6.0
 import QtQuick.Dialogs 6.0
 import Qt.labs.platform 1.0
-
+/*This class has the frontend UI work of buttons like Physical evidence, Logical evidence, Cloud evidence, Network evidence, Mobile Evidence.
+  */
 
 Rectangle
 {

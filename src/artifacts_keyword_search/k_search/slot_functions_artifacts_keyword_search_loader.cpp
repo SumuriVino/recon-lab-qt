@@ -1,7 +1,7 @@
 #include "artifacts_keyword_search_loader.h"
 
 void artifacts_keyword_search_loader::slot_link_label_keywords_list(QString text)
-{ //
+{ // hide and show keyword list of artifacts
     if(text == "Show")
     {
         link_label->setText("<a href = "+ QString("Hide") + " > " + QString("Searched Keywords") + " </a>");
@@ -15,7 +15,7 @@ void artifacts_keyword_search_loader::slot_link_label_keywords_list(QString text
 }
 
 void artifacts_keyword_search_loader::slot_tablewidget_keywords_list_item_doubleclicked(int row, int coloum)
-{
+{ // show keyword search list in tablewidget on double click
     QString keyword_to_show = tablewidget_keywords_list->item(row,coloum)->text().trimmed();
 
     if(keyword_to_show.contains( "("))
@@ -64,7 +64,7 @@ void artifacts_keyword_search_loader::slot_tablewidget_keywords_list_item_double
 
 }
 
-void artifacts_keyword_search_loader::slot_add_notes_pushbutton_clicked(QString text)
+void artifacts_keyword_search_loader::slot_add_notes_pushbutton_clicked(QString text) // add notes on right click
 {
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
@@ -115,7 +115,7 @@ void artifacts_keyword_search_loader::slot_add_notes_pushbutton_clicked(QString 
     recon_static_functions::app_debug(" Ends " , Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::slot_goto_artifact_source_submenu_clicked(QAction *clicked_action)
+void artifacts_keyword_search_loader::slot_goto_artifact_source_submenu_clicked(QAction *clicked_action) // go to artifact source file on right click
 {
     QString source_path_goto_source = clicked_action->toolTip();
 
@@ -144,7 +144,7 @@ void artifacts_keyword_search_loader::slot_goto_artifact_source_submenu_clicked(
     emit signal_go_to_artifact_source_in_file_system_from_loader(source_path_goto_source,fs_db_path,source_count_name);
 }
 
-void artifacts_keyword_search_loader::slot_hashset_storage_workdone_clicked(QStringList list_dbs_addmenu, QString callfrom_str)
+void artifacts_keyword_search_loader::slot_hashset_storage_workdone_clicked(QStringList list_dbs_addmenu, QString callfrom_str) //store in hashset on right click
 {
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -257,7 +257,7 @@ void artifacts_keyword_search_loader::slot_hashset_storage_workdone_clicked(QStr
     recon_static_functions::app_debug(" Endds " , Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::slot_add_files_to_hashset_submenu_clicked(QAction* current_clicked_action)
+void artifacts_keyword_search_loader::slot_add_files_to_hashset_submenu_clicked(QAction* current_clicked_action) // add files to hashset to match or get duplicate files in right click
 {
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -360,7 +360,7 @@ void artifacts_keyword_search_loader::slot_add_files_to_hashset_submenu_clicked(
 }
 
 
-void artifacts_keyword_search_loader::slot_add_notes_to_bookmark_pushbutton_clicked(QString text)
+void artifacts_keyword_search_loader::slot_add_notes_to_bookmark_pushbutton_clicked(QString text) // add notes to bookmarks on right click
 {
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -421,7 +421,7 @@ void artifacts_keyword_search_loader::slot_add_notes_to_bookmark_pushbutton_clic
     recon_static_functions::app_debug(" Ends " , Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::slot_act_quick_look_triggered()
+void artifacts_keyword_search_loader::slot_act_quick_look_triggered() // quick look the record in right click menu
 {
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -430,7 +430,7 @@ void artifacts_keyword_search_loader::slot_act_quick_look_triggered()
     recon_static_functions::app_debug(" Ends " , Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::slot_act_remove_tags()
+void artifacts_keyword_search_loader::slot_act_remove_tags() // remove tags action on right click
 {
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
@@ -476,7 +476,7 @@ void artifacts_keyword_search_loader::slot_act_remove_tags()
     recon_static_functions::app_debug(" -Ends " , Q_FUNC_INFO);
 }
 
-void artifacts_keyword_search_loader::slot_main_table_widget_item_clicked(QTableWidgetItem *item)
+void artifacts_keyword_search_loader::slot_main_table_widget_item_clicked(QTableWidgetItem *item) //click on any recored of table widget
 {
     if(item == NULL)
         return;
