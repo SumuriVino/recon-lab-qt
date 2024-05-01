@@ -1,7 +1,7 @@
 #include "artifacts_timeline_full_loader.h"
 
 void artifacts_timeline_full_loader::pub_initialize_and_display_plugins_and_timestamps()
-{
+{ // display plugins and timestamps on tablewidget and treewidget
     recon_static_functions::app_debug("START",Q_FUNC_INFO);
 
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
@@ -93,7 +93,7 @@ void artifacts_timeline_full_loader::pub_initialize_and_display_plugins_and_time
 }
 
 void artifacts_timeline_full_loader::display_plugins_in_treewidget()
-{
+{ // display all the plugins in tree widget
     recon_static_functions::app_debug("START",Q_FUNC_INFO);
 
     QMap <QString, QStringList>::iterator mapiter;
@@ -152,7 +152,7 @@ void artifacts_timeline_full_loader::display_plugins_in_treewidget()
 }
 
 void artifacts_timeline_full_loader::set_essentail()
-{
+{ // set some of essentials time stamps and load in structure to fill in database
     recon_static_functions::app_debug("Starts",Q_FUNC_INFO);
 
     xaxis_title_str = "Time";
@@ -330,7 +330,7 @@ void artifacts_timeline_full_loader::set_essentail()
 }
 
 void artifacts_timeline_full_loader::set_graphs_essentials_for_plugins_data_only()
-{
+{ //
     recon_static_functions::app_debug("Start",Q_FUNC_INFO);
 
     if(start_timestamp_utc_qint64 > end_timestamp_utc_qint64)

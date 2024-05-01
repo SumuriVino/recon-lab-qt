@@ -3,7 +3,8 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Controls.Basic 6.0
-
+/*This class has the front-end UI work behind the Greykey Backup button. When we click on this button, the further buttons you will see are like GreuKey iOS backup,
+ Greykey android backup.*/
 Rectangle
 {
     id: rectangle_mobile_evidence_graykey_backup

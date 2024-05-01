@@ -3,7 +3,7 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Controls.Basic 6.0
-
+/*This class has the front-end UI work behind the Forensics images button. When we click on the Forensics image button, the buttons you will see are like WinOS, MacOS, Others.*/
 Rectangle
 {
     id: rectangle_physical_forensic_image_os_type

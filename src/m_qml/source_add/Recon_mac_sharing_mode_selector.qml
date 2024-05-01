@@ -3,7 +3,8 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Controls.Basic 6.0
-
+/*This class has the front-end UI work behind the RECON Mac Sharing mode button. When we click on this button, the further buttons you will see are like
+RECON Mac Sharing mode image dmg, sparseimage and folder.*/
 Rectangle
 {
     id: rectangle_network_acq_mac_sharing_mode

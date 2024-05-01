@@ -4,7 +4,9 @@ import QtQuick.Window 2.2
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Basic 6.0
 import QtQuick.Dialogs 6.0
-
+/*This class has the front-end ui of selecting the Google takeout as a source by clicking on browse button and when we click on add button it will send that path to c++ backend
+work for taking that path as a source path for further adding process.
+*/
 Rectangle
 {
     id: rectangle_cloud_google_takeout_path
