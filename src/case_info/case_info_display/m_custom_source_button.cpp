@@ -28,7 +28,7 @@ void m_custom_source_button::pub_set_os_scheme(QString scheme)
 //}
 
 void m_custom_source_button::mousePressEvent(QMouseEvent *event)
-{
+{ // mouse pressed event which expand area to display source info
     if(bool_expandded)
     {
         emit signal_source_button_clicked(false,source_id,source_name,os_scheme);

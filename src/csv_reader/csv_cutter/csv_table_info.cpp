@@ -7,7 +7,7 @@ csv_table_info::csv_table_info(QWidget *parent)
 }
 
 void csv_table_info::set_table_attribute(QString line)
-{
+{ // get table attributes from csv according to below enums
     recon_static_functions::debug_intensive("start ",Q_FUNC_INFO);
 
     QStringList line_list = line.split(MACRO_CSV_TEMPLATE_CSV_FILE_SEPRATOR);

@@ -1,7 +1,7 @@
 #include "carved_data_loader.h"
 
 void carved_data_loader::slot_main_table_widget_item_clicked(QTableWidgetItem * item)
-{
+{ // slot of any item clicked on tableiwdget
     recon_static_functions::app_debug("Start " , Q_FUNC_INFO);
     if(item == NULL)
         return;
@@ -35,7 +35,7 @@ void carved_data_loader::slot_main_table_widget_item_clicked(QTableWidgetItem * 
 }
 
 void carved_data_loader::slot_act_remove_tags()
-{
+{ //slot of remove tags clicked from any record
     recon_static_functions::app_debug("Start " , Q_FUNC_INFO);
 
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
@@ -98,7 +98,7 @@ void carved_data_loader::slot_act_remove_tags()
 }
 
 void carved_data_loader::slot_add_notes_pushbutton_clicked(QString text)
-{
+{ // slot of add notes clicked from any record
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     add_notes_to_singal_record_obj->hide();
@@ -198,7 +198,7 @@ void carved_data_loader::slot_add_notes_pushbutton_clicked(QString text)
 }
 
 void carved_data_loader::slot_goto_screenshot_record(QString record_str)
-{
+{ //slot of go to record clicked
     record_str = record_str.trimmed();
     if(record_str.isEmpty())
         return;
@@ -216,7 +216,7 @@ void carved_data_loader::slot_goto_screenshot_record(QString record_str)
 }
 
 void carved_data_loader::slot_pushbutton_search_clicked()
-{
+{ // slot of search button clicked
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString keyword = lineEdit_search->text().trimmed();

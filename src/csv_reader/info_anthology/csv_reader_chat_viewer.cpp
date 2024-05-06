@@ -1,7 +1,7 @@
 #include "csv_reader/csv_reader.h"
 
 void csv_reader::generate_tableinfo_chat_viewer()
-{
+{ // generate tablename, tab name chat viewer plugin info
     for(int i = 0 ; i < master_list_chat_viewer.size() ; i++)
     {
         if(i % 10 == 0)
@@ -24,7 +24,7 @@ void csv_reader::generate_tableinfo_chat_viewer()
 }
 
 void csv_reader::generate_columninfo_display_chat_viewer()
-{
+{ // generate column info to display chat viewer plugins
     for(int i = 0 ; i < master_list_chat_viewer.size() ; i++)
     {
         struct_global_csv_reader_table_detail table_struct_obj = master_list_chat_viewer.at(i);

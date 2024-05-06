@@ -45,7 +45,7 @@ disk_manager_format_disk::~disk_manager_format_disk()
 }
 
 void disk_manager_format_disk::pub_set_device_details(struct_disk_info selected_dev_obj)
-{
+{ // set device/disks details on widget
     setWindowModality(Qt::ApplicationModal);
 
 
@@ -81,7 +81,7 @@ void disk_manager_format_disk::pub_set_device_details(struct_disk_info selected_
 }
 
 void disk_manager_format_disk::disable_enable_ui_on_format_clicked(bool status)
-{
+{ // disable/enable ui on format button clicked
     ui->pushButton_format->setEnabled(status);
     ui->comboBox_format->setEnabled(status);
     ui->lineEdit_label->setEnabled(status);
@@ -97,7 +97,7 @@ void disk_manager_format_disk::disable_enable_ui_on_format_clicked(bool status)
 
 
 void disk_manager_format_disk::on_pushButton_format_clicked()
-{
+{ // format button clicked. Right now this one is hide
 
     ///=======Prepare Format essentials======///
     QString label_str = ui->lineEdit_label->text().trimmed();

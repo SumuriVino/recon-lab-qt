@@ -10,7 +10,7 @@ QString csv_column_info::get_export_path()
 }
 
 void csv_column_info::set_column_attribute(QString line)
-{
+{ // set CSV Column names/attributes
     recon_static_functions::debug_intensive("start ",Q_FUNC_INFO);
 
     QStringList line_list = line.split(MACRO_CSV_TEMPLATE_CSV_FILE_SEPRATOR);
@@ -136,7 +136,7 @@ void csv_column_info::set_column_attribute(QString line)
     recon_static_functions::debug_intensive(" end ",Q_FUNC_INFO);
 
 }
-
+// return all the column names/ atrributes
 QString csv_column_info::get_column_name()
 {
     return col_name;

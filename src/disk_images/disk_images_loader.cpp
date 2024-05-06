@@ -13,7 +13,7 @@ disk_images_loader::~disk_images_loader()
 }
 
 void disk_images_loader::pub_populate_data_in_table()
-{
+{ // populate data in disk images loader where we show the disk images(dmg,sparse etc) if found in current source
     destination_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Disk_Images_In_Result_QString).toString() + "disk_images.sqlite";
 
     bookmark_col_index = 0;
@@ -78,7 +78,7 @@ void disk_images_loader::pub_populate_data_in_table()
 }
 
 int  disk_images_loader::populate_data_in_tablewidget(QSqlDatabase &received_db_obj, QSqlQuery &query_index)
-{
+{ // populate disk images data in tablewidget
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     if(display_header_name_list.isEmpty())
@@ -269,7 +269,7 @@ int  disk_images_loader::populate_data_in_tablewidget(QSqlDatabase &received_db_
 }
 
 void disk_images_loader::contextMenuEvent(QContextMenuEvent *evt)
-{
+{ // right click menu creation
     if(evt == NULL)
         return;
 
@@ -310,7 +310,7 @@ void disk_images_loader::contextMenuEvent(QContextMenuEvent *evt)
 }
 
 void disk_images_loader::tablewidget_general_clicked(int row, int column)
-{
+{ // generally clicked on any record of tablewidget
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     if(row < 0 || column < 0)
@@ -349,7 +349,7 @@ void disk_images_loader::tablewidget_general_clicked(int row, int column)
 }
 
 void disk_images_loader::action_extract_source_triggered()
-{
+{ // action extract source on right click of disk images. Add that image as a source
     recon_static_functions::app_debug(" start " , Q_FUNC_INFO);
 
     int current_row = m_tablewidget_obj->currentRow();
@@ -502,7 +502,7 @@ void disk_images_loader::action_extract_source_triggered()
 }
 
 void disk_images_loader::action_bookmark_triggered()
-{
+{ // action add bookmark clicked
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int bookmark_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_BOOKMARK_QString,0);
@@ -561,7 +561,7 @@ void disk_images_loader::action_bookmark_triggered()
 }
 
 void disk_images_loader::action_remove_bookmark_triggered()
-{
+{ // action remove bookmark clicked
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int bookmark_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_BOOKMARK_QString,0);
@@ -609,7 +609,7 @@ void disk_images_loader::action_remove_bookmark_triggered()
 }
 
 void disk_images_loader::action_remove_note_triggered()
-{
+{ // action remove note clicked
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int notes_column_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_NOTES_ICON_QString,0);
@@ -650,7 +650,7 @@ void disk_images_loader::action_remove_note_triggered()
 }
 
 void disk_images_loader::update_bookmark_value(QString status,int row, int column)
-{
+{ // update bookmark value in database according to status
     if(column != 0)
         return;
 
@@ -702,7 +702,7 @@ void disk_images_loader::update_bookmark_value(QString status,int row, int colum
 }
 
 void disk_images_loader::update_tags_value(QString tag_data, QString colour)
-{
+{ // update tags value according to status
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int tag_column_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_TAG_QString,0);
@@ -760,7 +760,7 @@ void disk_images_loader::update_tags_value(QString tag_data, QString colour)
 }
 
 void disk_images_loader::action_open_full_detailed_info_triggered()
-{
+{ // action open in full detail info metadata clicked
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     if(m_tablewidget_obj->currentRow() < 0)
@@ -789,7 +789,7 @@ void disk_images_loader::action_open_full_detailed_info_triggered()
 }
 
 void disk_images_loader::pub_bookmark_main_record_from_detailed_info_triggered(QString record_no_str)
-{
+{ // action bookmark from main data (metaedata) clicked
     if(bookmarked_records_from_table_display_list.contains(record_no_str))
         return;
 
@@ -856,7 +856,7 @@ void disk_images_loader::pub_bookmark_main_record_from_detailed_info_triggered(Q
 }
 
 void disk_images_loader::pub_remove_main_record_bookmark_from_detailed_info_triggered(QString record_no_str)
-{
+{ // remove bookmark from main data(metadata) clicked
     if(bookmarked_records_from_table_display_list.contains(record_no_str))
         return;
 
@@ -908,7 +908,7 @@ void disk_images_loader::pub_remove_main_record_bookmark_from_detailed_info_trig
 }
 
 void disk_images_loader::slot_handle_bookmark_on_exif_or_apple_metdata_tree_item_clicked_from_open_in_detail(QString record_str, QString bookmark_status)
-{
+{ // handle bookmark on apple metadata, exif etc
     if(bookmark_status == QString(MACRO_FALSE_VALUE_NUMERIC_QString))
     {
         pub_remove_main_record_bookmark_from_detailed_info_triggered(record_str);

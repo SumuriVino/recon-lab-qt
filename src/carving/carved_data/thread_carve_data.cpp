@@ -23,7 +23,7 @@ void thread_carve_data::pub_cancel_extraction(bool status)
 }
 
 void thread_carve_data::pub_set_essentials(QString src_cnt_name, QString source_plugin_name_str, QString source_tab_name_str, QString source_record_no_str, QString source_file_path_str)
-{
+{ // set some of essentials database path
     source_plugin_name = source_plugin_name_str;
     source_tab_name  = source_tab_name_str;
     source_record_no = source_record_no_str;
@@ -53,7 +53,7 @@ void thread_carve_data::pub_set_essentials(QString src_cnt_name, QString source_
 }
 
 void thread_carve_data::run()
-{
+{ // run thread or start craving from here and we run bulk_extractor executable using this thread for carving and other signals to show counting and for display the user what's going on
     recon_static_functions::app_debug(" Start",Q_FUNC_INFO);
 
     st_source_info_obj = global_witness_info_manager_class_obj->pub_get_source_structure_according_source_count_name(source_count_name);
@@ -143,7 +143,7 @@ void thread_carve_data::run()
 }
 
 void thread_carve_data::parse_bulk_extractor_txt_files(QStringList txt_files_list)
-{
+{ // carve data from text files using bulk extractor and stoore the info in data base
 
     if(txt_files_list.isEmpty() || bool_cancel_extraction)
         return;

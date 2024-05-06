@@ -14,14 +14,14 @@ artifacts_timeline_saved_loader::~artifacts_timeline_saved_loader()
 }
 
 void artifacts_timeline_saved_loader::pub_set_display_db_path(QString db_path)
-{
+{ // set destination path
     destination_saved_timeline_db_path = db_path;
     destination_db_path = db_path;
 
 }
 
 void artifacts_timeline_saved_loader::contextMenuEvent(QContextMenuEvent *evt)
-{
+{ // right click menu create
 
     if(evt == NULL)
         return;
@@ -92,7 +92,7 @@ void artifacts_timeline_saved_loader::contextMenuEvent(QContextMenuEvent *evt)
 
 
 void artifacts_timeline_saved_loader::display_data(QString dest_db_path)
-{
+{ // display all the data from data base in table view
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     main_tab_widget_obj->setTabText(0, "Items");
@@ -166,7 +166,7 @@ void artifacts_timeline_saved_loader::display_data(QString dest_db_path)
 
 
 void artifacts_timeline_saved_loader::populate_data_in_table()
-{
+{ // populate data on table view from database
 
     bookmark_column_index = 0;
     notes_column_index    = 1;
@@ -244,7 +244,7 @@ void artifacts_timeline_saved_loader::populate_data_in_table()
 }
 
 int artifacts_timeline_saved_loader::populate_data_in_tablewidget(QSqlDatabase &received_db_obj, QSqlQuery &query_index)
-{
+{ //populate data in table widget
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
 
@@ -431,7 +431,7 @@ int artifacts_timeline_saved_loader::populate_data_in_tablewidget(QSqlDatabase &
 }
 
 void artifacts_timeline_saved_loader::tablewidget_general_clicked(int row,int column)
-{
+{ // generally clicked on any record of tablewidget
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     if(row < 0 || column < 0)
@@ -491,7 +491,7 @@ void artifacts_timeline_saved_loader::tablewidget_general_clicked(int row,int co
 }
 
 void artifacts_timeline_saved_loader::action_open_with_plist_viewer_triggered()
-{
+{ // open with plist viewer clicked for analysis from right click menu
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     if(m_tablewidget_obj->currentRow() < 0)
@@ -590,7 +590,7 @@ void artifacts_timeline_saved_loader::action_open_with_plist_viewer_triggered()
 }
 
 void artifacts_timeline_saved_loader::action_open_with_hex_viewer_triggered()
-{
+{ // open with hex viewer clicked for analysis from right click menu
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     emit signal_statusbar_progress_bar_show_hide(true, "Please wait...");
@@ -707,7 +707,7 @@ void artifacts_timeline_saved_loader::action_open_with_hex_viewer_triggered()
 }
 
 void artifacts_timeline_saved_loader::action_open_with_sqlite_viewer_triggered()
-{
+{ // open with sqlite viewer clicked for analysis from right click menu
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     emit signal_statusbar_progress_bar_show_hide(true, "Please wait...");
@@ -802,7 +802,7 @@ void artifacts_timeline_saved_loader::action_open_with_sqlite_viewer_triggered()
 }
 
 void artifacts_timeline_saved_loader::action_export_triggered()
-{
+{ // open with pexport clicked for analysis from right click menu
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     export_rsync_obj->set_rsync_copy_essentials(Q_FUNC_INFO);
@@ -898,7 +898,7 @@ void artifacts_timeline_saved_loader::action_export_triggered()
 }
 
 void artifacts_timeline_saved_loader::action_remove_note_triggered()
-{
+{// remove note clicked to remove any note
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int bookmark_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_BOOKMARK_QString,0);
@@ -960,7 +960,7 @@ void artifacts_timeline_saved_loader::action_remove_note_triggered()
 }
 
 void artifacts_timeline_saved_loader::action_remove_note_bookmark_triggered()
-{
+{ // action remove notes from bookmarks
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     add_notes_to_bookmarks_obj->hide();
@@ -1003,7 +1003,7 @@ void artifacts_timeline_saved_loader::action_remove_note_bookmark_triggered()
 }
 
 void artifacts_timeline_saved_loader::update_notes_value(QString text, int current_row)
-{
+{ // update tags value if set any tag on any record
 
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -1074,7 +1074,7 @@ void artifacts_timeline_saved_loader::update_notes_value(QString text, int curre
 }
 
 void artifacts_timeline_saved_loader::action_sendToBucket_plist_viewer_triggered()
-{
+{ // send to bucket for plist viewier analysis clicked on right click
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     emit signal_statusbar_progress_bar_show_hide(true, "Please wait...");
@@ -1194,7 +1194,7 @@ void artifacts_timeline_saved_loader::action_sendToBucket_plist_viewer_triggered
 }
 
 void artifacts_timeline_saved_loader::action_sendToBucket_hex_viewer_triggered()
-{
+{ // send to bucket for hex view analysis clicked
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     emit signal_statusbar_progress_bar_show_hide(true, "Please wait...");
@@ -1353,7 +1353,7 @@ void artifacts_timeline_saved_loader::action_sendToBucket_hex_viewer_triggered()
 }
 
 void artifacts_timeline_saved_loader::action_sendToBucket_sqlite_viewer_triggered()
-{
+{ // send to bucket for sqlite viewer analysis
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     emit signal_statusbar_progress_bar_show_hide(true, "Please wait...");
@@ -1486,7 +1486,7 @@ void artifacts_timeline_saved_loader::action_sendToBucket_sqlite_viewer_triggere
 }
 
 void artifacts_timeline_saved_loader::action_open_full_detailed_info_triggered()
-{
+{// open full detail info clicked
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     if(m_tablewidget_obj->currentRow() < 0)
@@ -1540,7 +1540,7 @@ void artifacts_timeline_saved_loader::action_open_full_detailed_info_triggered()
 }
 
 void artifacts_timeline_saved_loader::action_open_detach_detailed_info_triggered()
-{
+{ // not in use
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     //    if(m_tablewidget_obj->currentRow() < 0)
@@ -1603,7 +1603,7 @@ void artifacts_timeline_saved_loader::action_open_detach_detailed_info_triggered
 
 
 void artifacts_timeline_saved_loader::update_bookmark_value(QString status,int row, int column)
-{
+{ // update bookmark value
     if(column != 0)
         return;
 
@@ -1661,7 +1661,7 @@ void artifacts_timeline_saved_loader::update_bookmark_value(QString status,int r
 }
 
 void artifacts_timeline_saved_loader::update_tags_value(QString tag_data, QString colour)
-{
+{ // update tags on any records in database when clicked on add tags
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int bookmark_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_BOOKMARK_QString,0);
@@ -1723,7 +1723,7 @@ void artifacts_timeline_saved_loader::update_tags_value(QString tag_data, QStrin
 
 
 void artifacts_timeline_saved_loader::update_bookmarks_in_bookmark_serach(QString status,int selected_row, QString dest_db_path)
-{
+{ // update bookmarks
 
     QString plugin_name_str = m_tablewidget_obj->item(selected_row, plugin_name_index)->text().trimmed();
     QString record_no_str = m_tablewidget_obj->item(selected_row, record_no_index)->text();
@@ -1859,7 +1859,7 @@ void artifacts_timeline_saved_loader::update_bookmarks_in_bookmark_serach(QStrin
 }
 
 void artifacts_timeline_saved_loader::delete_tags_from_tag_serach_other_than_current_tag_and_for_current_record(QString current_tag , QString record_no , QString plugin_name , QString tab_name ,QString stamp_type_str , QString source_count_name)
-{
+{ // delete tags from tags search except current record
     QString current_tag_name = current_tag;
     QString tag_index_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Tag_Search_In_Result_QString).toString() + "index_tag_search.sqlite";
     QString command = "Select tag_db_name from tag_search_index";
@@ -1916,7 +1916,7 @@ void artifacts_timeline_saved_loader::delete_tags_from_tag_serach_other_than_cur
 }
 
 void artifacts_timeline_saved_loader::update_tags_in_tag_serach_db(QString current_tag , QString dest_db_path)
-{
+{ // update tags in tags search database
 
     QString tag_db_path = recon_helper_standard_obj->create_separate_tag_db_for_tag_search(current_tag,Q_FUNC_INFO);
 
@@ -2048,7 +2048,7 @@ void artifacts_timeline_saved_loader::update_tags_in_tag_serach_db(QString curre
 }
 
 void artifacts_timeline_saved_loader::update_note_in_notes_serach(QString text_str, int selected_row, QString dest_db_path)
-{
+{ // update notes in notes search
 
     QString plugin_name_str = m_tablewidget_obj->item(selected_row, plugin_name_index)->text().trimmed();
     QString record_no_str = m_tablewidget_obj->item(selected_row, record_no_index)->text();
@@ -2176,7 +2176,7 @@ void artifacts_timeline_saved_loader::update_note_in_notes_serach(QString text_s
 }
 
 void artifacts_timeline_saved_loader::action_go_to_record_triggered()
-{
+{ // action go to record clicked from right click
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     qint64 current_row = m_tablewidget_obj->currentRow();
@@ -2198,7 +2198,7 @@ void artifacts_timeline_saved_loader::action_go_to_record_triggered()
 }
 
 void artifacts_timeline_saved_loader::create_action_for_goto_artifact_source_submenu()
-{
+{ // action go to artifact source file in file system clicked from menu
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     qint64 current_row = m_tablewidget_obj->currentRow();
@@ -2288,7 +2288,7 @@ void artifacts_timeline_saved_loader::create_action_for_goto_artifact_source_sub
 }
 
 void artifacts_timeline_saved_loader::action_bookmark_triggered()
-{
+{ // action add bookmark action clicked
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int bookmark_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_BOOKMARK_QString,0);
@@ -2352,7 +2352,7 @@ void artifacts_timeline_saved_loader::action_bookmark_triggered()
 }
 
 void artifacts_timeline_saved_loader::action_remove_bookmark_triggered()
-{
+{ // action remove bookmark clicked
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int bookmark_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_BOOKMARK_QString,0);
@@ -2417,7 +2417,7 @@ void artifacts_timeline_saved_loader::action_remove_bookmark_triggered()
 }
 
 void artifacts_timeline_saved_loader::pub_bookmark_main_record_from_detailed_info_triggered(QString rec_no_str)
-{
+{ // bookmark records from detail info
     if(bookmarked_records_from_table_display_list.contains(rec_no_str))
         return;
 
@@ -2488,7 +2488,7 @@ void artifacts_timeline_saved_loader::pub_bookmark_main_record_from_detailed_inf
 }
 
 void artifacts_timeline_saved_loader::pub_remove_main_record_bookmark_from_detailed_info_triggered(QString rec_no_str)
-{
+{ // remove bookmark from detail info
     if(bookmarked_records_from_table_display_list.contains(rec_no_str))
         return;
 
@@ -2560,7 +2560,7 @@ void artifacts_timeline_saved_loader::pub_remove_main_record_bookmark_from_detai
 }
 
 void artifacts_timeline_saved_loader::slot_handle_bookmark_on_exif_or_apple_metdata_tree_item_clicked_from_open_in_detail(QString record_str, QString bookmark_status)
-{
+{ // handle bookmarks of metadata of exif, apple metadata etc
     if(bookmark_status == QString(MACRO_FALSE_VALUE_NUMERIC_QString))
     {
         pub_remove_main_record_bookmark_from_detailed_info_triggered(record_str);

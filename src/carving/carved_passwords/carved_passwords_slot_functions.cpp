@@ -2,7 +2,7 @@
 
 
 void carved_passwords_loader::slot_main_table_widget_item_clicked(QTableWidgetItem *item)
-{
+{ // slots of main tablewidget item clicked for adding/remove bookmark directly from checkbox
     int bookmark_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_BOOKMARK_QString,0);
 
     if(item == NULL)
@@ -39,7 +39,7 @@ void carved_passwords_loader::slot_main_table_widget_item_clicked(QTableWidgetIt
 }
 
 void carved_passwords_loader::slot_add_notes_pushbutton_clicked(QString text)
-{
+{ // slot of add notes clicked
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     add_notes_to_singal_record_obj->hide();
@@ -99,7 +99,7 @@ void carved_passwords_loader::slot_add_notes_pushbutton_clicked(QString text)
 }
 
 void carved_passwords_loader::slot_act_remove_tags()
-{
+{ // slot of remove note clicked
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
     int tag_column_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_TAG_QString,0);
     if(tag_column_index == -1)
@@ -147,7 +147,7 @@ void carved_passwords_loader::slot_act_remove_tags()
 }
 
 void carved_passwords_loader::slot_right_click_main_menu_triggered(QAction* current_clicked_action)
-{
+{ // slot of context menu, will hit when right click, accordingly perform further
     if(current_clicked_action->text() == QString(MACRO_Generic_Right_Click_Add_Bookmark))
     {
         action_bookmark_triggered();
@@ -183,7 +183,7 @@ void carved_passwords_loader::slot_right_click_main_menu_triggered(QAction* curr
 }
 
 void carved_passwords_loader::slot_table_data_export_dialog_ok_clicked(QString given_name, QString selected_dir_path, QString type_str)
-{
+{ // export table data file dailog open for exporting
     export_dialog_box_1_obj->hide();
 
     given_name = given_name.trimmed();
@@ -239,7 +239,7 @@ void carved_passwords_loader::slot_table_data_export_dialog_ok_clicked(QString g
 
 
 void carved_passwords_loader::slot_goto_carved_password_record(QString record_str)
-{
+{ // slot of go to record clicked to see that file
     record_str = record_str.trimmed();
 
     if(record_str.isEmpty())

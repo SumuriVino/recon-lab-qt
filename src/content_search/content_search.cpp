@@ -22,7 +22,7 @@ void content_search::pub_display_keyword_list()
 }
 
 void content_search::pub_set_essentials()
-{
+{// set caller type (pre launcher or post launcher lab)
     recon_configuration_page_keyword_list_obj->pub_set_caller_type(MACRO_CONFIGURATION_CALLER_TYPE_POST_LAUNCHER);
 }
 
@@ -33,7 +33,7 @@ void content_search::pub_display_for_popup()
 }
 
 void content_search::slot_pushButton_done_clicked()
-{
+{ // content searched with search label
     QString search_label = lineedit_search_label->text().trimmed();
     if(search_label.isEmpty())
         search_label = lineedit_search_label->placeholderText().trimmed();
@@ -44,12 +44,12 @@ void content_search::slot_pushButton_done_clicked()
 }
 
 void content_search::slot_pushButton_cancel_clicked()
-{
+{ // hide previous window if cancel the content search
     hide();
 }
 
 void content_search::create_ui()
-{
+{ // create ui stack widget and add content search window on it
     stack_widget_main = new QStackedWidget(this);
 
     create_done_cancel_button_box();
@@ -74,14 +74,14 @@ void content_search::create_ui()
 }
 
 void content_search::pub_clear_search_label()
-{
+{ // clear search label
     lineedit_search_label->clear();
     lineedit_search_label->setPlaceholderText(QString("Content Search"));
 }
 
 
 void content_search::create_done_cancel_button_box()
-{
+{ // call when we search or cancel the content search accordingly
     //pushButton_done = new QPushButton("Done", this);
     pushButton_done = new QPushButton("Start", this);
 

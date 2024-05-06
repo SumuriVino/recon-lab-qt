@@ -1,7 +1,7 @@
 #include "custom_table_header_widget.h"
 
 custom_table_header_widget::custom_table_header_widget(QWidget *parent) : QWidget(parent)
-{
+{ // public custom table header widget which used by artifact timeline, file system etc
     column_sort_order = 1; ///----- 1 meaning asscending order-----///
     hbox_upper = new QHBoxLayout;
     hbox_upper->setSpacing(2);
@@ -47,7 +47,7 @@ custom_table_header_widget::custom_table_header_widget(QWidget *parent) : QWidge
 }
 
 void custom_table_header_widget::slot_pushbutton_sort_clicked(bool)
-{
+{ // sorting function
     if(column_sort_order == 1)
     {
         emit signal_sorting_clicked(column_sequence, column_sort_order);
@@ -63,7 +63,7 @@ void custom_table_header_widget::slot_pushbutton_sort_clicked(bool)
 }
 
 void custom_table_header_widget::pub_set_column_name(QString col_name)
-{
+{ // set column name on header
     empty_label->setFixedHeight(20); 
 
     if(col_name.isEmpty())
@@ -78,7 +78,7 @@ void custom_table_header_widget::pub_set_column_name(QString col_name)
 }
 
 void custom_table_header_widget::pub_set_column_name_for_file_system(QString col_name)
-{
+{ // set column name on header for file system
     empty_label->setFixedHeight(20);
 
     if(col_name.isEmpty() || col_name.contains("seen", Qt::CaseInsensitive))
@@ -93,12 +93,12 @@ void custom_table_header_widget::pub_set_column_name_for_file_system(QString col
 }
 
 void custom_table_header_widget::pub_set_column_seq_number(int seq)
-{
+{ // set sequence number
     column_sequence = seq;
 }
 
 void custom_table_header_widget::pub_set_icon_on_bookmark_or_seen(QPixmap icon)
-{
+{ // set bookmark or seen/unseen icon on header
     int width = label_header_name->width();
 
     label_header_name->setPixmap(icon.scaled (width,15,Qt::KeepAspectRatio));
@@ -106,12 +106,12 @@ void custom_table_header_widget::pub_set_icon_on_bookmark_or_seen(QPixmap icon)
 }
 
 void custom_table_header_widget::slot_line_edit_search_field_return_pressed()
-{
+{ // enter for search
     emit search_field_return_pressed();
 }
 
 void custom_table_header_widget::slot_line_edit_search_field_text_changed(QString current_text)
-{
+{ // when we write something in lineedit for searching
     if(current_text.trimmed().size() < 1)
     {
         emit search_field_text_changed();
@@ -119,36 +119,36 @@ void custom_table_header_widget::slot_line_edit_search_field_text_changed(QStrin
 }
 
 void custom_table_header_widget::slot_line_edit_editing_finished()
-{
+{ // line edit text change for searching
     emit search_field_text_changed();
 }
 
 void custom_table_header_widget::pub_hide_search_field()
-{
+{ // hide search field for some widgets
     line_edit_search_field->hide();
 }
 
 void custom_table_header_widget::pub_hide_empty_label()
-{
+{ // hide empty label for some windows
     empty_label->hide();
 }
 
 void custom_table_header_widget::pub_clear_line_edit_search_field()
-{
+{ // clear line edit after search or refresh
     line_edit_search_field->clear();
 }
 
 void custom_table_header_widget::pub_hide_pushbutton_sort()
-{
+{ // sorting hide in some cases
     pushbutton_sort->hide();
 }
 
 QString custom_table_header_widget::pub_get_column_name()
-{
+{ // return column name
     return this->label_header_name->text();
 }
 
 QString custom_table_header_widget::pub_get_search_text()
-{
+{ // return search text
     return line_edit_search_field->text();
 }

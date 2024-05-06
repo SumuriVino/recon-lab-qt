@@ -26,7 +26,7 @@ email_search::~email_search()
 }
 
 void email_search::pub_load_defaults()
-{
+{ // load default settings for email search ui
     ui->lineEdit_search_keyword->clear();
     ui->lineEdit_subject->clear();
     ui->lineEdit_sender->clear();
@@ -51,7 +51,7 @@ void email_search::pub_load_defaults()
 
 
 void email_search::on_pushButton_search_clicked()
-{
+{ // search button clicked
 
     if(ui->checkBox_date->isChecked())
     {
@@ -116,7 +116,7 @@ void email_search::on_pushButton_search_clicked()
 }
 
 void email_search::on_checkBox_date_clicked(bool checked)
-{
+{ // checkbox date enable accordingly
     ui->comboBox_date_time_filter->setEnabled(checked);
     ui->dateTimeEdit_search_from->setEnabled(checked);
     ui->dateTimeEdit_search_to->setEnabled(false);
@@ -131,14 +131,14 @@ void email_search::on_checkBox_date_clicked(bool checked)
 }
 
 void email_search::on_checkBox_attachments_clicked(bool checked)
-{
+{ // checkbox attachment
     ui->radioButton_has_attachments->setEnabled(checked);
     ui->radioButton_has_no_attachments->setEnabled(checked);
     ui->radioButton_has_no_attachments->setChecked(checked);
 }
 
 void email_search::on_comboBox_date_time_filter_currentTextChanged(const QString &arg)
-{
+{ // date time filter line edit perform on text change/enter
     if(arg == QString(MACRO_Generic_Filter_Condition_Between))
     {
         ui->dateTimeEdit_search_to->setEnabled(true);
@@ -150,7 +150,7 @@ void email_search::on_comboBox_date_time_filter_currentTextChanged(const QString
 }
 
 QString email_search::get_email_search_sql_predicate()
-{
+{ // prepare search command from sql
     if(ui->lineEdit_search_keyword->text().trimmed() == QString(""))
         return "";
 
@@ -167,7 +167,7 @@ QString email_search::get_email_search_sql_predicate()
 }
 
 QString email_search::get_email_subject_sql_predicate()
-{
+{ // prepare search command for email subject
     if (ui->lineEdit_subject->text().trimmed() == QString(""))
         return "";
 
@@ -198,7 +198,7 @@ QString email_search::get_email_subject_sql_predicate()
 }
 
 QString email_search::get_email_sender_sql_predicate()
-{
+{ // prepare search command for sender
 
     if(ui->lineEdit_sender->text().trimmed() == QString(""))
         return "";
@@ -230,7 +230,7 @@ QString email_search::get_email_sender_sql_predicate()
 }
 
 QString email_search::get_email_receiver_sql_predicate()
-{
+{ // prepare search command for receiver
 
     if(ui->lineEdit_receiver->text().trimmed() == QString(""))
         return "";
@@ -262,7 +262,7 @@ QString email_search::get_email_receiver_sql_predicate()
 }
 
 QString email_search::get_email_cc_sql_predicate()
-{
+{ // prepare searech command for cc
     if(ui->lineEdit_cc->text().trimmed() == QString(""))
         return "";
 
@@ -293,7 +293,7 @@ QString email_search::get_email_cc_sql_predicate()
 }
 
 QString email_search::get_email_attachments_sql_predicate()
-{
+{ // prepare search command for email attachment
     QString sql_predicate_email_attachments;
 
     if(ui->radioButton_has_attachments->isChecked())
@@ -312,7 +312,7 @@ QString email_search::get_email_attachments_sql_predicate()
 }
 
 QString email_search::get_date_filter_sql_predicate()
-{
+{ // prepare search command for date filter
     QString sql_predicate_date;
     qint64 epch_from, epch_to;
     QString option = ui->comboBox_date_time_filter->currentText();

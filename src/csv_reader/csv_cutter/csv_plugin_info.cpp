@@ -11,7 +11,7 @@ csv_plugin_info::~csv_plugin_info()
 }
 
 void csv_plugin_info::set_plugin_attribute(QString line)
-{
+{ // get plugin below attributes from csv
     recon_static_functions::debug_intensive("start ",Q_FUNC_INFO);
 
     QStringList line_list = line.split(MACRO_CSV_TEMPLATE_CSV_FILE_SEPRATOR);

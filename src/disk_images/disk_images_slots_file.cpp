@@ -1,7 +1,7 @@
 #include "disk_images_loader.h"
 
 void disk_images_loader::slot_right_click_main_menu_triggered(QAction *current_clicked_action)
-{
+{ // right click action menu buttons
     if(current_clicked_action->text() == QString(MACRO_Generic_Right_Click_Add_As_Source))
     {
         action_extract_source_triggered();
@@ -38,7 +38,7 @@ void disk_images_loader::slot_right_click_main_menu_triggered(QAction *current_c
 }
 
 void disk_images_loader::slot_add_notes_pushbutton_clicked(QString text)
-{
+{ // add notes action slot
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     add_notes_to_singal_record_obj->hide();
@@ -97,7 +97,7 @@ void disk_images_loader::slot_add_notes_pushbutton_clicked(QString text)
 }
 
 void disk_images_loader::slot_main_table_widget_item_clicked(QTableWidgetItem *item)
-{
+{ // tablewidget item clicked or update bookmark on clicked direct
     int bookmark_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_BOOKMARK_QString,0);
 
     if(item == NULL)
@@ -135,7 +135,7 @@ void disk_images_loader::slot_main_table_widget_item_clicked(QTableWidgetItem *i
 }
 
 void disk_images_loader::slot_act_remove_tags()
-{
+{ // remove tags clicked
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
     int tag_column_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_TAG_QString,0);
     if(tag_column_index == -1)

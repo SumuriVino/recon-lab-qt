@@ -22,7 +22,7 @@ void carved_passwords_loader::pub_set_carved_passwords_display_db_path(QString d
 
 
 void carved_passwords_loader::populate_data_in_table()
-{
+{ // populate data in tablewidget
 
     record_no_index = 3;
     plugin_name_index = 4;
@@ -93,7 +93,7 @@ void carved_passwords_loader::populate_data_in_table()
 }
 
 void carved_passwords_loader::pub_create_ui()
-{
+{ // create ui of craved passwords like show all, search buttons, line edit search and set them in a box on widget
     main_tab_widget_obj = new QTabWidget(this);
 
     m_tablewidget_obj = new m_tablewidget(this);
@@ -165,7 +165,7 @@ void carved_passwords_loader::pub_create_ui()
 }
 
 int carved_passwords_loader::populate_data_in_tablewidget(QSqlDatabase &received_db_obj, QSqlQuery &query_index)
-{
+{ // populate/load data in tablewidget
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     if(display_header_name_list.isEmpty())
@@ -326,7 +326,7 @@ int carved_passwords_loader::populate_data_in_tablewidget(QSqlDatabase &received
 }
 
 void carved_passwords_loader::contextMenuEvent(QContextMenuEvent *evt)
-{
+{ // right click menu creation
     if(evt == NULL)
         return;
 
@@ -358,7 +358,7 @@ void carved_passwords_loader::contextMenuEvent(QContextMenuEvent *evt)
 }
 
 void carved_passwords_loader::tablewidget_general_clicked(int row,int column)
-{
+{ // generally clicked on any record of tablewidget
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     if(row < 0 || column < 0)
@@ -396,7 +396,7 @@ void carved_passwords_loader::tablewidget_general_clicked(int row,int column)
 }
 
 void carved_passwords_loader::action_bookmark_triggered()
-{
+{ // action add bookmark clicked
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int bookmark_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_BOOKMARK_QString,0);
@@ -457,7 +457,7 @@ void carved_passwords_loader::action_bookmark_triggered()
 }
 
 void carved_passwords_loader::action_remove_bookmark_triggered()
-{
+{ // action remove bookmark clicked
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int bookmark_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_BOOKMARK_QString,0);
@@ -505,7 +505,7 @@ void carved_passwords_loader::action_remove_bookmark_triggered()
 }
 
 void carved_passwords_loader::update_bookmark_value(QString status,int row, int column)
-{
+{ // update bookmark value according to add/remove 0/1
     if(column != 0)
         return;
 
@@ -558,7 +558,7 @@ void carved_passwords_loader::update_bookmark_value(QString status,int row, int 
 }
 
 void carved_passwords_loader::action_remove_note_triggered()
-{
+{ // remove note clicked from any record
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int notes_column_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_NOTES_ICON_QString,0);
@@ -600,7 +600,7 @@ void carved_passwords_loader::action_remove_note_triggered()
 }
 
 void carved_passwords_loader::action_remove_note_bookmark_triggered()
-{
+{ // action remove note from bookmark clicked
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     add_notes_to_bookmarks_obj->hide();
@@ -643,7 +643,7 @@ void carved_passwords_loader::action_remove_note_bookmark_triggered()
 }
 
 void carved_passwords_loader::action_open_full_detailed_info_triggered()
-{
+{ // open metadata info from right click menu of any record
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     if(m_tablewidget_obj->currentRow() < 0)
@@ -669,7 +669,7 @@ void carved_passwords_loader::action_open_full_detailed_info_triggered()
 }
 
 void carved_passwords_loader::action_create_word_list_triggered()
-{
+{ // action create word list clicked
     QString file_name = QString("Carved Password");
     QString dir_path = getenv("HOME") + QString("/Desktop") + "/LAB_Export";
     export_dialog_box_1_obj->pub_set_name_and_dir_path(file_name,dir_path);
@@ -679,7 +679,7 @@ void carved_passwords_loader::action_create_word_list_triggered()
 }
 
 void carved_passwords_loader::update_tags_value(QString tag_data, QString colour)
-{
+{ // update tags value according to add/remove of any record
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int tag_coulumn_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_TAG_QString,0);
@@ -737,7 +737,7 @@ void carved_passwords_loader::update_tags_value(QString tag_data, QString colour
 }
 
 void carved_passwords_loader::open_window_for_passwords_file(QString file_path)
-{
+{ // open window for password file to enter password/ run open command to open that in system
     report_status obj;
     if(obj.exec())
     {

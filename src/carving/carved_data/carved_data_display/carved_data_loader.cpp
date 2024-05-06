@@ -12,12 +12,12 @@ carved_data_loader::carved_data_loader(QWidget *parent) : table_result_loader(pa
 }
 
 void carved_data_loader::pub_set_carved_data_display_db_path(QString db_path)
-{
+{ // set carver display db path
     destination_db_path = db_path;
 }
 
 void carved_data_loader::populate_data_in_table()
-{
+{ // popualte carved data in table widget
     current_table_name = clicked_item_tab_text;
     category_name = clicked_item_tab_text;
 
@@ -84,7 +84,7 @@ void carved_data_loader::populate_data_in_table()
 }
 
 void carved_data_loader::display_data(QString dest_db_path)
-{
+{ // display the data on tablewidget from database
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     m_tablewidget_obj->setRowCount(0);
@@ -151,7 +151,7 @@ void carved_data_loader::display_data(QString dest_db_path)
 }
 
 int carved_data_loader::populate_data_in_tablewidget(QSqlDatabase &received_db_obj, QSqlQuery &query_index)
-{
+{ // populate data in tablewidget from database
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     if(display_header_name_list.isEmpty())
@@ -346,7 +346,7 @@ int carved_data_loader::populate_data_in_tablewidget(QSqlDatabase &received_db_o
 }
 
 void carved_data_loader::contextMenuEvent(QContextMenuEvent *evt)
-{
+{ // right click menu creation
     if(evt == NULL)
         return;
 
@@ -392,7 +392,7 @@ void carved_data_loader::contextMenuEvent(QContextMenuEvent *evt)
 }
 
 void carved_data_loader::tablewidget_general_clicked(int row,int column)
-{
+{ // generally clicked on tablewidget anywhere or any record
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     if(row < 0 || column < 0)
@@ -427,7 +427,7 @@ void carved_data_loader::tablewidget_general_clicked(int row,int column)
 }
 
 void carved_data_loader::update_tags_value(QString tag_name,QString colour)
-{
+{ // update tags value
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
@@ -520,7 +520,7 @@ void carved_data_loader::update_tags_value(QString tag_name,QString colour)
 }
 
 void carved_data_loader::action_remove_note_triggered()
-{
+{ // remove note action clicked from reight click menu
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
@@ -577,7 +577,7 @@ void carved_data_loader::action_remove_note_triggered()
 }
 
 void carved_data_loader::action_open_full_detailed_info_triggered()
-{
+{ // open full detail info action clicked
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     if(m_tablewidget_obj->currentRow() < 0)
@@ -604,7 +604,7 @@ void carved_data_loader::action_open_full_detailed_info_triggered()
 }
 
 void carved_data_loader::action_bookmark_triggered()
-{
+{ // action add bookmark clicked from right click menu
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
@@ -692,7 +692,7 @@ void carved_data_loader::action_bookmark_triggered()
 }
 
 void carved_data_loader::update_bookmark_value(QString status,int row, int column)
-{
+{ // update bookmark value in tags weather add(1) or remove(0)
 
     recon_static_functions::app_debug(" start " , Q_FUNC_INFO);
 
@@ -768,7 +768,7 @@ void carved_data_loader::update_bookmark_value(QString status,int row, int colum
 }
 
 void carved_data_loader::action_add_note_triggered()
-{
+{ // add note action clicked from menu
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     m_tablewidget_obj->blockSignals(true);
@@ -783,7 +783,7 @@ void carved_data_loader::action_add_note_triggered()
 }
 
 void carved_data_loader::action_remove_bookmark_triggered()
-{
+{ // remove bookmark clicked from menu
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
@@ -843,7 +843,7 @@ void carved_data_loader::action_remove_bookmark_triggered()
 }
 
 QString carved_data_loader::is_tagged_current_record_record(int selected_row_no , QString record_no , QSqlDatabase &dest_db)
-{
+{ // check if current record is tagged or not
     QString cmd = QString("select recon_tag_value from '" + current_table_name +"' where INT = '" + record_no + "'");
 
 //    QSqlQuery sql_query = recon_helper_standard_obj->get_executed_sqlquery_from_db_by_dbreference(command,*destination_db,Q_FUNC_INFO);

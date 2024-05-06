@@ -42,7 +42,7 @@ QString disk_manager_filevault_decrypt::pub_get_last_run_script_path_for_decrypt
 }
 
 void disk_manager_filevault_decrypt::pub_set_device_details(struct_disk_info dev_obj)
-{
+{ // set default device/disks details if connected or not
     selected_dev_obj = dev_obj;
 
     setWindowModality(Qt::ApplicationModal);
@@ -92,14 +92,14 @@ void disk_manager_filevault_decrypt::pub_set_device_details(struct_disk_info dev
 }
 
 void disk_manager_filevault_decrypt::pub_stop_decryption()
-{
+{ // stop decryption
     recon_helper_standard_obj->pub_set_bool_process_generic(true);
 }
 
 
 void disk_manager_filevault_decrypt::on_pushButton_decrypt_clicked()
 {
-
+// decrypt any encrypted disk if knows password, decrypt button clicked
     ui->pushButton_decrypt->setEnabled(false);
     ///=======Prepare Decrypt essentials======///
     //password_or_recovery_key_str = ui->lineEdit_password_or_recovery_key->text().trimmed();
@@ -167,7 +167,7 @@ void disk_manager_filevault_decrypt::on_pushButton_decrypt_clicked()
 }
 
 void disk_manager_filevault_decrypt::disable_enable_ui_on_decrypt_clicked(bool status)
-{
+{ // disable ui of decrypt button on particular scenario
     ui->pushButton_decrypt->setEnabled(status);
     ui->lineEdit_password_or_recovery_key->setEnabled(status);
 
@@ -181,12 +181,12 @@ void disk_manager_filevault_decrypt::disable_enable_ui_on_decrypt_clicked(bool s
 }
 
 void disk_manager_filevault_decrypt::pub_enable_ui_on_finish(bool status)
-{
+{ // enable ui of decrypt button after completion
     disable_enable_ui_on_decrypt_clicked(status);
 }
 
 QString disk_manager_filevault_decrypt::get_decrypt_script_path()
-{
+{ // get script of path decrypt which runs on decrypt button clicked
     QString tmp_dir = QString(global_variable_private_var_tmp_Dir_Path_Case_QString);
     if(!QFileInfo(tmp_dir).exists())
     {
@@ -241,7 +241,7 @@ QString disk_manager_filevault_decrypt::get_decrypt_script_path()
 
 
 void disk_manager_filevault_decrypt::on_pushButton_password_clicked(bool checked)
-{
+{ // password see/hide button clicked after decrypt button clicked
 
     if(checked)
     {
@@ -256,12 +256,12 @@ void disk_manager_filevault_decrypt::on_pushButton_password_clicked(bool checked
 }
 
 void disk_manager_filevault_decrypt::on_pushButton_cancel_clicked()
-{
+{ // cancel button clicked while decryption
     hide();
 }
 
 QStringList disk_manager_filevault_decrypt::get_apfs_users_id_list(QString disk_node_str)
-{
+{ // get apfs users id lists
 
     disk_node_str = disk_node_str.trimmed();
 
@@ -298,7 +298,7 @@ QStringList disk_manager_filevault_decrypt::get_apfs_users_id_list(QString disk_
 }
 
 void disk_manager_filevault_decrypt::pub_try_decryption_target_disk_mode_using_timer(struct_disk_info selected_dev_obj, QString last_run_scrpt_path)
-{
+{ // decryption another method using timer
     last_run_script_path = last_run_scrpt_path;
 
     disable_enable_ui_on_decrypt_clicked(false);

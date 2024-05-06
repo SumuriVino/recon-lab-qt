@@ -330,7 +330,7 @@ void artifacts_timeline_full_loader::set_essentail()
 }
 
 void artifacts_timeline_full_loader::set_graphs_essentials_for_plugins_data_only()
-{ //
+{ // set some of graphs essentials for plugins data in structures, get timelines from database and store that in data sturctures
     recon_static_functions::app_debug("Start",Q_FUNC_INFO);
 
     if(start_timestamp_utc_qint64 > end_timestamp_utc_qint64)
@@ -617,7 +617,7 @@ void artifacts_timeline_full_loader::set_graphs_essentials_for_plugins_data_only
 
 
 void artifacts_timeline_full_loader::set_graphs_essentials_for_filesystem_data_only(QStringList fs_db_list)
-{
+{ // set graphs essentials for file system data aand store that info in data structures from databases
     recon_static_functions::app_debug("Start",Q_FUNC_INFO);
 
 
@@ -825,7 +825,7 @@ void artifacts_timeline_full_loader::set_graphs_essentials_for_filesystem_data_o
 }
 
 void artifacts_timeline_full_loader::create_rightclick_options()
-{
+{ // Create right click options when we click on any particular records of plugins/file system graph results
     mainMenu->clear();
 
     QStringList menuList;
@@ -874,7 +874,7 @@ void artifacts_timeline_full_loader::create_rightclick_options()
 
 
 void artifacts_timeline_full_loader::save_timeline_data_in_case_treewidget(QString tab_to_be_saved)
-{
+{ // save all the timeline data in case treewidget to display
     QString tab_name;
     saved_db_path.clear();
     QStringList plugin_tab_list;
@@ -976,7 +976,7 @@ void artifacts_timeline_full_loader::save_timeline_data_in_case_treewidget(QStri
 }
 
 void artifacts_timeline_full_loader::create_graphs()
-{
+{ //create graphs of plugins/file system data
     recon_static_functions::app_debug("Starts",Q_FUNC_INFO);
 
     radiobutton_create_graph_yearly->setChecked(true);
@@ -1098,7 +1098,7 @@ void artifacts_timeline_full_loader::create_graphs()
 }
 
 void artifacts_timeline_full_loader::create_graph_yearly()
-{
+{ // create graphs year wise when we select yearly combobox button
     recon_static_functions::app_debug("Start",Q_FUNC_INFO);
 
     //    if(!years_list.isEmpty())
@@ -1230,7 +1230,7 @@ void artifacts_timeline_full_loader::create_graph_yearly()
 }
 
 void artifacts_timeline_full_loader::create_graph_monthly()
-{
+{ // create graphs monthly wise when we select monthly combobox button
     recon_static_functions::app_debug("Start",Q_FUNC_INFO);
 
     //    years_list.sort();
@@ -1378,7 +1378,7 @@ void artifacts_timeline_full_loader::create_graph_monthly()
 }
 
 void artifacts_timeline_full_loader::create_graph_daywise()
-{
+{ // create graphs day wise when we select day combobox button
     recon_static_functions::app_debug("Starts",Q_FUNC_INFO);
 
     //    if(!month_year_list.isEmpty())
@@ -1522,7 +1522,7 @@ void artifacts_timeline_full_loader::create_graph_daywise()
 }
 
 void artifacts_timeline_full_loader::create_graph_hourly()
-{
+{ // create graphs hour wise when we select hour combobox button
     recon_static_functions::app_debug("Starts",Q_FUNC_INFO);
 
     //    if(!day_month_year_list.isEmpty())
@@ -1682,7 +1682,7 @@ void artifacts_timeline_full_loader::create_graph_hourly()
 }
 
 void artifacts_timeline_full_loader::set_chart_in_stackwidget_after_setting_of_all_specification(artifacts_timeline_full_loader::struct_chart_detail &struct_chart_detail_obj)
-{
+{ // set all the charts on stackwidget after setting specifications
     ///Added functionality on barset
     QList<QBarSet*> list = struct_chart_detail_obj.stacked_bar_series->barSets();
     for(int i = 0; i < list.size() ; i++)
@@ -1732,7 +1732,7 @@ void artifacts_timeline_full_loader::set_chart_in_stackwidget_after_setting_of_a
 }
 
 QString artifacts_timeline_full_loader::prepare_and_get_tooltip_string_for_barset(qint64 count, QString category, QString label)
-{
+{ // get tooltip when we hower mouse on these below things
     QString tooltip = "Events - " +  QString::number(count) + "\n";
     tooltip.append("Category - "+ category + "\n");
     tooltip.append("Plugin - "+ label);
@@ -1743,7 +1743,7 @@ QString artifacts_timeline_full_loader::prepare_and_get_tooltip_string_for_barse
 
 
 QStringList artifacts_timeline_full_loader::get_sorted_months_list(QStringList month_list)
-{
+{ // Get sorted list according to months
     QStringList years_list;
     QStringList tmp_split_list;
     for(int count = 0; count < month_list.size(); count++)
@@ -1781,7 +1781,7 @@ QStringList artifacts_timeline_full_loader::get_sorted_months_list(QStringList m
 }
 
 QStringList artifacts_timeline_full_loader::sort_month_list(QStringList month_list)
-{
+{ //sort month list
     /// create all months count list
     QMap <int , int> map_months_count_and_pos;
     for(int count = 0; count < month_list.size(); count++)

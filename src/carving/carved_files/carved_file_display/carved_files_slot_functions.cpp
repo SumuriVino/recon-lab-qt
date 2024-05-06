@@ -2,7 +2,7 @@
 
 
 void carved_files_loader::action_bookmark_triggered()
-{
+{ // action bookmark clicked slot
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int bookmark_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_BOOKMARK_QString,0);
@@ -62,7 +62,7 @@ void carved_files_loader::action_bookmark_triggered()
 }
 
 void carved_files_loader::action_remove_bookmark_triggered()
-{
+{ // remove bookmark action clicked
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int bookmark_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_BOOKMARK_QString,0);
@@ -117,7 +117,7 @@ void carved_files_loader::action_remove_bookmark_triggered()
 }
 
 void carved_files_loader::slot_main_table_widget_item_clicked(QTableWidgetItem * item)
-{
+{ // main tablewidget item clicked , do this to add/remove bookmark without menu
     recon_static_functions::app_debug("Start " , Q_FUNC_INFO);
     if(item == NULL)
         return;
@@ -153,7 +153,7 @@ void carved_files_loader::slot_main_table_widget_item_clicked(QTableWidgetItem *
 }
 
 void carved_files_loader::slot_act_remove_tags()
-{
+{ // action remove tags
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
     int tag_column_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_TAG_QString,0);
     if(tag_column_index == -1)
@@ -201,7 +201,7 @@ void carved_files_loader::slot_act_remove_tags()
 }
 
 void carved_files_loader::slot_add_notes_pushbutton_clicked(QString text)
-{
+{ // add notes button clicked
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     add_notes_to_singal_record_obj->hide();
@@ -260,12 +260,12 @@ void carved_files_loader::slot_add_notes_pushbutton_clicked(QString text)
 }
 
 void carved_files_loader::slot_act_quick_look_triggered()
-{
+{ // slot of quick look of any record on spacebar clicked
     emit signal_act_quick_look_triggered();
 }
 
 void carved_files_loader::action_open_with_plist_viewer_triggered()
-{
+{ //open with plist viewer clicked
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString sqlite_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Adhoc_Path_Database_Plist_viewer_In_Result_QString).toString();
@@ -329,7 +329,7 @@ void carved_files_loader::action_open_with_plist_viewer_triggered()
 }
 
 void carved_files_loader::action_open_with_hex_viewer_triggered()
-{
+{ //open with hex viewer clicked
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString sqlite_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Adhoc_Path_Database_Hex_viewer_In_Result_QString).toString();
@@ -400,7 +400,7 @@ void carved_files_loader::action_open_with_hex_viewer_triggered()
 }
 
 void carved_files_loader::action_open_with_sqlite_viewer_triggered()
-{
+{ // open with sqlite viewer clicked
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString result_dir_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_RECON_Result_Dir_QString).toString();
@@ -465,7 +465,7 @@ void carved_files_loader::action_open_with_sqlite_viewer_triggered()
 }
 
 void carved_files_loader::action_open_with_log_viewer_triggered()
-{
+{ // open with log viewer clicked
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString adhoc_log_viewer_sqlite_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Adhoc_Path_Database_Log_viewer_In_Result_QString).toString();
@@ -524,7 +524,7 @@ void carved_files_loader::action_open_with_log_viewer_triggered()
 }
 
 void carved_files_loader::action_sendToBucket_log_viewer_triggered()
-{
+{ // send to bucker for log viewer analysis
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString log_viewer_sqlite_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Log_viewer_In_Result_QString).toString() + "log_viewer.sqlite";
@@ -618,7 +618,7 @@ void carved_files_loader::action_sendToBucket_log_viewer_triggered()
 }
 
 void carved_files_loader::action_sendToBucket_plist_viewer_triggered()
-{
+{ // send to bucket for plist viewer analysis
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString sqlite_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Plist_viewer_In_Result_QString).toString() + "plist_viewer.sqlite";
@@ -715,7 +715,7 @@ void carved_files_loader::action_sendToBucket_plist_viewer_triggered()
 }
 
 void carved_files_loader::action_sendToBucket_hex_viewer_triggered()
-{
+{ // send to bucket for hex view analysis
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString sqlite_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Hex_viewer_In_Result_QString).toString() + "hex_viewer.sqlite";
@@ -816,7 +816,7 @@ void carved_files_loader::action_sendToBucket_hex_viewer_triggered()
 }
 
 void carved_files_loader::action_sendToBucket_sqlite_viewer_triggered()
-{
+{ //action send to bucket sqlite viewer analysis
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString sqlite_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_SQlite_Viewer_In_Result_QString).toString() + "sqlite_viewer.sqlite";
@@ -909,7 +909,7 @@ void carved_files_loader::action_sendToBucket_sqlite_viewer_triggered()
 }
 
 void carved_files_loader::slot_sub_menu_open_file_with_other_app_clicked(QAction* current_clicked_action)
-{
+{ // open file with other system app from right click action
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
@@ -943,7 +943,7 @@ void carved_files_loader::slot_sub_menu_open_file_with_other_app_clicked(QAction
 }
 
 void carved_files_loader::slot_open_with_submenu_clicked(QAction* current_clicked_action)
-{
+{ // open submenu - open with to see other below options
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     if(current_clicked_action->text() == QString(MACRO_Generic_Right_Click_Open_With_External_Application))
@@ -971,12 +971,12 @@ void carved_files_loader::slot_open_with_submenu_clicked(QAction* current_clicke
 }
 
 void carved_files_loader::slot_gallery_spacebar_quicklook_pressed(struct_global_gallery_view_file_info f1)
-{
+{ // quick look on spacebar button of any record
     slot_act_quick_look_triggered();
 }
 
 void carved_files_loader::slot_gallery_view_control_e_key_pressed(struct_global_gallery_view_file_info f1)
-{
+{ // export the item on ctr + e
     recon_static_functions::app_debug(" Start",Q_FUNC_INFO);
 
     action_export_triggered();
@@ -987,7 +987,7 @@ void carved_files_loader::slot_gallery_view_control_e_key_pressed(struct_global_
 
 
 void carved_files_loader::slot_gallery_view_item_clicked(struct_global_gallery_view_file_info f1)
-{
+{// gallery view item clicked
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString record_no = f1.INT;
@@ -1026,7 +1026,7 @@ void carved_files_loader::slot_gallery_view_item_clicked(struct_global_gallery_v
 }
 
 void carved_files_loader::slot_gallery_view_item_double_clicked(struct_global_gallery_view_file_info f1)
-{
+{ // double click on gallery view item and view it
     QString record_no =   f1.INT;
     if(record_no.isEmpty())
         return;
@@ -1063,7 +1063,7 @@ void carved_files_loader::slot_gallery_view_item_double_clicked(struct_global_ga
 }
 
 void carved_files_loader::slot_gallery_bookmark_value_changed(struct_global_gallery_view_file_info f1)
-{
+{ // update bookmark value
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     if(f1.INT.isEmpty())
@@ -1116,13 +1116,13 @@ void carved_files_loader::slot_gallery_bookmark_value_changed(struct_global_gall
 
 
 void carved_files_loader::slot_gallery_view_invalid_tem_clicked()
-{
+{ // if clicked on any invalid item which doesn't supported, we clear all metadata
     m_tablewidget_obj->clearSelection();
     emit signal_clear_all_metadata();
 }
 
 void carved_files_loader::slot_table_widget_header_item_clicked(int column_index)
-{
+{ // tablewidget header item clicked
     recon_static_functions::app_debug("Start " , Q_FUNC_INFO);
 
     if(column_index < 0)
@@ -1181,7 +1181,7 @@ void carved_files_loader::slot_table_widget_header_item_clicked(int column_index
 
 
 void carved_files_loader::slot_main_tab_widget_current_changed(int index)
-{
+{ // change tab widget
     recon_static_functions::app_debug(" Start " , Q_FUNC_INFO);
     emit signal_clear_all_metadata();
     QCoreApplication::processEvents();
@@ -1220,7 +1220,7 @@ void carved_files_loader::slot_main_tab_widget_current_changed(int index)
 
 }
 void carved_files_loader::slot_pushbutton_showall_clicked()
-{
+{ // refresh or show all button clicked
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
     display_loading_progress_bar_obj->pub_set_label_messsge("Please wait....");
     display_loading_progress_bar_obj->pub_set_progress_bar_indefinite_value();
@@ -1254,7 +1254,7 @@ void carved_files_loader::slot_pushbutton_showall_clicked()
 }
 
 void carved_files_loader::slot_goto_screenshot_record(QString record_str)
-{
+{ // go to record button clicked
     record_str = record_str.trimmed();
 
     if(record_str.isEmpty())
@@ -1274,7 +1274,7 @@ void carved_files_loader::slot_goto_screenshot_record(QString record_str)
 }
 
 void carved_files_loader::slot_add_file_to_text_indexing_queue_clicked()
-{
+{ // add file/record for texT INDEXING
 
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -1354,7 +1354,7 @@ void carved_files_loader::slot_add_file_to_text_indexing_queue_clicked()
 }
 
 void carved_files_loader::pub_bookmark_main_record_from_detailed_info_triggered(QString rec_no_str)
-{
+{ // bookmark from metadata info
 
     if(bookmarked_records_from_table_display_list.contains(rec_no_str))
         return;
@@ -1426,7 +1426,7 @@ void carved_files_loader::pub_bookmark_main_record_from_detailed_info_triggered(
 }
 
 void carved_files_loader::pub_remove_main_record_bookmark_from_detailed_info_triggered(QString rec_no_str)
-{
+{ // remove bookmark from metadata
     if(bookmarked_records_from_table_display_list.contains(rec_no_str))
         return;
 

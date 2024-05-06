@@ -12,7 +12,7 @@ display_progress_dialog_box::display_progress_dialog_box(QWidget *parent) :
     this->move(QGuiApplication::primaryScreen()->availableGeometry().center() - this->rect().center());
 
 }
-
+// progress bar class to display with messages like please wait, refreshing etc. we using this class for disk manager
 display_progress_dialog_box::~display_progress_dialog_box()
 {
     delete ui;

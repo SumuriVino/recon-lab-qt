@@ -67,7 +67,7 @@ examiner_space::~examiner_space()
 
 
 void examiner_space::closeEvent(QCloseEvent *event)
-{
+{ // close examiner notes
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     examiner_notes_html_QFile.close();
@@ -76,7 +76,7 @@ void examiner_space::closeEvent(QCloseEvent *event)
 }
 
 void examiner_space::pub_set_essential()
-{
+{ // set essentials db paths
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QString examiner_notes_html_file_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Examiner_Space_In_Result_QString).toString() + "Examiner_Notes.html";
@@ -99,7 +99,7 @@ void examiner_space::pub_set_essential()
 }
 
 void examiner_space::pub_prepare_display()
-{
+{ // display examiner notes and to do list if  not empty
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     display_examiner_notes();
@@ -109,7 +109,7 @@ void examiner_space::pub_prepare_display()
 }
 
 void examiner_space::display_examiner_notes()
-{
+{ // display examiner notes from database
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     examiner_notes_html_QFile.seek(0);
@@ -122,7 +122,7 @@ void examiner_space::display_examiner_notes()
 }
 
 void examiner_space::display_to_do_list()
-{
+{ // display to do list from database
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     ui->tableWidget_to_do_list->setRowCount(0);
@@ -189,7 +189,7 @@ void examiner_space::display_to_do_list()
 }
 
 void examiner_space::slot_textedit_examiner_notes_textchanged()
-{
+{ // save in file whatever we write in text edit of examiner notes
     recon_static_functions::app_debug("Starts", Q_FUNC_INFO);
 
     examiner_notes_html_QFile.seek(0);
@@ -214,7 +214,7 @@ void examiner_space::slot_textedit_examiner_notes_textchanged()
 
 
 void examiner_space::create_examiner_notes_custom_ui()
-{
+{ // create examiner notes custom ui widgets
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QString examiner_space_icons_dir_path = QString("../icons/signs/");
@@ -320,7 +320,7 @@ void examiner_space::create_examiner_notes_custom_ui()
 
 
 void examiner_space::mergeFormatOnWordOrSelection_examiner_notes(const QTextCharFormat &format)
-{
+{ // exaimner notes display format
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QTextCursor cursor = ui->textEdit_examiner_notes->textCursor();
@@ -334,7 +334,7 @@ void examiner_space::mergeFormatOnWordOrSelection_examiner_notes(const QTextChar
 
 
 void examiner_space::colorChanged_examiner_notes(const QColor &color)
-{
+{ // color change of exaimner notes
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QPixmap pix(16, 16);
@@ -347,7 +347,7 @@ void examiner_space::colorChanged_examiner_notes(const QColor &color)
 
 
 void examiner_space::slot_pushbutton_examiner_notes_bold_clicked()
-{
+{ // examiner notes bold character function
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QTextCursor cursor = ui->textEdit_examiner_notes->textCursor();
@@ -370,7 +370,7 @@ void examiner_space::slot_pushbutton_examiner_notes_bold_clicked()
 
 
 void examiner_space::slot_pushbutton_examiner_notes_italic_clicked()
-{
+{// examiner note italic character
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QTextCursor cursor = ui->textEdit_examiner_notes->textCursor();
@@ -393,7 +393,7 @@ void examiner_space::slot_pushbutton_examiner_notes_italic_clicked()
 
 
 void examiner_space::slot_pushbutton_examiner_notes_underline_clicked()
-{
+{ // examiner notes underline character
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QTextCursor cursor = ui->textEdit_examiner_notes->textCursor();
@@ -416,7 +416,7 @@ void examiner_space::slot_pushbutton_examiner_notes_underline_clicked()
 
 
 void examiner_space::slot_pushbutton_examiner_notes_color_clicked()
-{
+{ // examiner notes color function to change the text of color
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     QColor col = QColorDialog::getColor(ui->textEdit_examiner_notes->textColor(), this);
@@ -435,7 +435,7 @@ void examiner_space::slot_pushbutton_examiner_notes_color_clicked()
 }
 
 void examiner_space::create_table_to_do_list()
-{
+{ // create table to do list
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QString command = "CREATE TABLE IF NOT EXISTS to_do_list(INT INTEGER PRIMARY KEY,bookmark VARCHAR(10),task VARCHAR(1024))";
@@ -446,7 +446,7 @@ void examiner_space::create_table_to_do_list()
 }
 
 void examiner_space::on_tableWidget_to_do_list_itemClicked(QTableWidgetItem *item)
-{
+{ // to do list any item clicked generally on tablewidget
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     if(item == NULL)
@@ -489,7 +489,7 @@ void examiner_space::on_tableWidget_to_do_list_itemClicked(QTableWidgetItem *ite
 }
 
 void examiner_space::on_pushButton_to_do_list_add_task_clicked()
-{
+{ // to do list add task button clicked to add task
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     int row_count = ui->tableWidget_to_do_list->rowCount();
@@ -513,7 +513,7 @@ void examiner_space::on_pushButton_to_do_list_add_task_clicked()
 }
 
 void examiner_space::slot_line_edit_task_add_returnpressed()
-{
+{ // task add on enter press once in edit mode
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     if(ui->tableWidget_to_do_list->currentRow() < 0)
@@ -540,7 +540,7 @@ void examiner_space::slot_line_edit_task_add_returnpressed()
 }
 
 void examiner_space::on_pushButton_to_do_list_remove_task_clicked()
-{
+{ // to do list remove task button clicked
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     int current_row = ui->tableWidget_to_do_list->currentRow();
@@ -572,7 +572,7 @@ void examiner_space::on_pushButton_to_do_list_remove_task_clicked()
 }
 
 void examiner_space::on_pushButton_to_do_list_edit_task_clicked()
-{
+{ // to do list edit task clicked
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     ui->pushButton_to_do_list_edit_task->setEnabled(false);
@@ -622,7 +622,7 @@ void examiner_space::on_pushButton_to_do_list_edit_task_clicked()
 }
 
 void examiner_space::slot_line_edit_task_edit_returnpressed()
-{
+{ // edit task on to do list by pressing enter on any task
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QString edit_task_data = line_edit_task_edit->text();
@@ -643,7 +643,7 @@ void examiner_space::slot_line_edit_task_edit_returnpressed()
 }
 
 void examiner_space::on_tabWidget_examiner_space_currentChanged(int index)
-{
+{ // change index of examiner space from todo to notes to todo
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     if(index == 0)
@@ -659,7 +659,7 @@ void examiner_space::on_tabWidget_examiner_space_currentChanged(int index)
 }
 
 void examiner_space::on_pushButton_add_timestamp_clicked()
-{
+{// add timestamps button clicked
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QString timestamp;
@@ -685,7 +685,7 @@ void examiner_space::on_pushButton_add_timestamp_clicked()
 }
 
 QString examiner_space::write_report_initials()
-{
+{ // report case info initials
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QString case_details;
@@ -704,7 +704,7 @@ QString examiner_space::write_report_initials()
 }
 
 QString examiner_space::html_header_after_title()
-{
+{ // prepare header afte title
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QString header_after_title = "<link rel=\"stylesheet\" href=\"./resources/style.css\" type=\"text/css\" /><style type=\"text/css\"> .c3{color:RGB(255,255,255)} .c4{color:RGB(128,128,128)}  .c6{color:RGB(255,0,0)}  .g1, tr.g1 td{background:RGB(51,113,163)} .g2, tr.g2 td{background:RGB(255,255,255)}  .g5, tr.g5 td{background:RGB(236,236,236)}     .g7, tr.g7 td{background:RGB(200,209,219)}    .g8, tr.g8 td{background:RGB(192,192,192)}    .s10{font-size:10pt} .s22{font-size:22pt} .s18{font-size:18pt}  .s14{font-size:14pt}    .s12{font-size:12pt}    .s11{font-size:11pt}    .p20{padding:20px}    .p10{padding:10px}  .wrapped { white-space: pre; white-space: pre-wrap; white-space: pre-line; white-space: -pre-wrap; white-space: -o-pre-wrap; white-space: -moz-pre-wrap; white-space: -hp-pre-wrap; word-wrap: break-word; width: 300px; } body { margin:0; padding:0 0 0 150px; } div#left-sidebar { position:absolute; top:20; left:0; width:150px; height:80%; } @media screen { body>div#left-sidebar { position:fixed; } } * html body { overflow:hidden; } * html div#content { height:60%; overflow:auto; } </style> </head>  <body> <div id=\"left-sidebar\"> <div class = \"stack\"> <h2 id =\"\"> <span class = \" s14\" id=\"\">" +QObject::tr(" ") + "</span> </h2> </div>";
@@ -715,7 +715,7 @@ QString examiner_space::html_header_after_title()
 }
 
 QString examiner_space::create_examiner_notes_dest_and_copy_essentials(QString dest_path)
-{
+{ // examiner notes reports destinations and assets
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QString dir_name = QString(MACRO_Tag_Name_Examiner_Comments);
@@ -743,7 +743,7 @@ QString examiner_space::create_examiner_notes_dest_and_copy_essentials(QString d
 }
 
 QString examiner_space::create_html_report_for_examiner_notes()
-{
+{ //  create html report for examiner notes
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QString select_output_dir;
@@ -833,7 +833,7 @@ QString examiner_space::create_html_report_for_examiner_notes()
 }
 
 void examiner_space::slot_action_report_html_triggered()
-{
+{ // action html report clicked
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
 
@@ -901,7 +901,7 @@ void examiner_space::slot_action_report_html_triggered()
 }
 
 void examiner_space::slot_action_report_odt_triggered()
-{
+{ // action odt report clicked
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QString select_output_dir;
@@ -1039,7 +1039,7 @@ void examiner_space::slot_action_report_odt_triggered()
 
 
 void examiner_space::slot_action_report_pdf_triggered()
-{
+{ // slot pdf report clicked
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
 
@@ -1066,7 +1066,7 @@ void examiner_space::slot_action_report_pdf_triggered()
 }
 
 void examiner_space::slot_html_to_pdf_finished(QString pdf_file_path, bool stauts)
-{
+{ // convert html to pdf report function
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
 
@@ -1130,7 +1130,7 @@ void examiner_space::slot_html_to_pdf_finished(QString pdf_file_path, bool staut
 }
 
 void examiner_space::slot_message_box_yes_no_clicked(bool yes_no_clicked)
-{
+{ // message of progress bar yes no clicked
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     bool_message_box_yes_button_clicked = yes_no_clicked;
@@ -1141,7 +1141,7 @@ void examiner_space::slot_message_box_yes_no_clicked(bool yes_no_clicked)
 
 
 QString examiner_space::write_odt_report_initials()
-{
+{ // write odt report essentials and assets
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QString case_details;
@@ -1159,7 +1159,7 @@ QString examiner_space::write_odt_report_initials()
 }
 
 void examiner_space::slot_hide_loading_display_dialog_box(bool cancel_status)
-{
+{ // hide loading display dialog box progress bar
     bool_cancel_operation = true;
 
     display_loading_progress_bar_obj->hide();

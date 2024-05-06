@@ -12,6 +12,7 @@ QString imager_static_functions::convert_cfstring_to_string_xcode_mm(CFStringRef
     QString jstr = QString::fromNSString(nsstr);
     return jstr;
 }
+//These are imager generic classes which we rarely using in LAB. These class are just for future references. Some of functions we use for disk manager only.
 
 QString imager_static_functions::get_nsstring_values_from_nsdictionary_xcode_mm(void *ptr_nsstring, void *ptr_nsdictionary, QString caller_func)
 {

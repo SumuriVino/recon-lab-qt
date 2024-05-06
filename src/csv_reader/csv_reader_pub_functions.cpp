@@ -2,7 +2,7 @@
 
 
 void csv_reader::set_csv_dir_path(QString path)
-{
+{ //  set the path of csv directory
     csv_dir_path = path;
     if(!csv_dir_path.endsWith("/"))
         csv_dir_path.append("/");
@@ -11,7 +11,7 @@ void csv_reader::set_csv_dir_path(QString path)
 
 
 void csv_reader::do_job_plugin_all()
-{
+{ // parse csv for plugins name and data
     recon_static_functions::app_debug("start  ",Q_FUNC_INFO);
 
     csv_info_list_final.clear();
@@ -51,7 +51,7 @@ void csv_reader::do_job_plugin_all()
 }
 
 void csv_reader::do_job_plugin_specific(QString csv_file_path, QString caller_func)
-{
+{ //
     recon_static_functions::app_debug(recon_static_functions::prepare_callerfun(caller_func) + " start  ",Q_FUNC_INFO);
 
     csv_info_list_final.clear();

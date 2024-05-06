@@ -11,7 +11,7 @@ void artifacts_timeline_saved_loader::slot_act_export_as_xml_triggered()
 }
 
 void artifacts_timeline_saved_loader::slot_act_remove_tags()
-{
+{ // remove tags clicked from menu
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int bookmark_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_BOOKMARK_QString,0);
@@ -74,7 +74,7 @@ void artifacts_timeline_saved_loader::slot_act_remove_tags()
 
 
 void artifacts_timeline_saved_loader::slot_add_notes_pushbutton_clicked(QString notes_value)
-{
+{ // add notes clicked from menu
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     add_notes_to_singal_record_obj->hide();
@@ -139,7 +139,7 @@ void artifacts_timeline_saved_loader::slot_add_notes_pushbutton_clicked(QString 
 }
 
 void artifacts_timeline_saved_loader::slot_main_table_widget_item_clicked(QTableWidgetItem *item)
-{
+{ // slot of generally clicked on any record on table widget
     int bookmark_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_BOOKMARK_QString,0);
 
     if(item == NULL)
@@ -175,7 +175,7 @@ void artifacts_timeline_saved_loader::slot_main_table_widget_item_clicked(QTable
 }
 
 void artifacts_timeline_saved_loader::slot_goto_artifact_source_submenu_clicked(QAction *clicked_action)
-{
+{ // slot of action go to artifact source file to see in file system clicked from menu
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString source_path_goto_source = clicked_action->toolTip();

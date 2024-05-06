@@ -9,6 +9,7 @@ imager_static_functions::imager_static_functions(QWidget *parent)
 
 }
 
+//These are imager generic classes which we rarely using in LAB. These class are just for future references. Some of functions we use for disk manager only.
 
 QString imager_static_functions::human_readable_size(qint64 size_in_qint64, QString caller_func)
 {

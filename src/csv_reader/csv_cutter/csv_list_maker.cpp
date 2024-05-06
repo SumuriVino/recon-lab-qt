@@ -6,7 +6,7 @@ csv_list_maker::csv_list_maker(QWidget *parent)
 
 
 int csv_list_maker::initialize_data(QString file_path)
-{
+{ // intilise and validate the csv path and data
     recon_static_functions::debug_intensive("start ",Q_FUNC_INFO);
 
     QString new_path = recon_static_functions::decrypt_file_1(file_path, Q_FUNC_INFO);
@@ -70,7 +70,7 @@ int csv_list_maker::initialize_data(QString file_path)
 
 
 int csv_list_maker::extract_tables_start_offset()
-{
+{ // extract tablenames from csv's.
     recon_static_functions::debug_intensive("start ",Q_FUNC_INFO);
 
     tables_start_offset_list.clear();
@@ -100,7 +100,7 @@ int csv_list_maker::extract_tables_start_offset()
 
 
 int csv_list_maker::parse_table(int index)
-{
+{ // parse all the tables from csv
     recon_static_functions::debug_intensive("start ",Q_FUNC_INFO);
 
     csv_table_info table_info_obj ;
@@ -148,7 +148,7 @@ int csv_list_maker::parse_table(int index)
 
 
 void csv_list_maker::set_tab_order()
-{
+{ // set tab order from csv
     recon_static_functions::debug_intensive("start ",Q_FUNC_INFO);
 
     csv_table_info temp_order;
@@ -185,7 +185,7 @@ void csv_list_maker::set_tab_order()
 }
 
 int csv_list_maker::parse_plugin_pub_info()
-{
+{ // parse plugin info from csv
     recon_static_functions::debug_intensive("start " ,Q_FUNC_INFO);
 
 
@@ -227,7 +227,7 @@ int csv_list_maker::parse_plugin_pub_info()
 }
 
 void csv_list_maker::clear_variables_pub_info_plugin(struct_global_csv_reader_pub_info_plugin &struct_pub_plgn_info)
-{
+{ // clear structure
     struct_pub_plgn_info.plugin_name.clear();
     struct_pub_plgn_info.plugin_category.clear();
     struct_pub_plgn_info.native_os_QStringList.clear();
@@ -241,7 +241,7 @@ void csv_list_maker::clear_variables_pub_info_plugin(struct_global_csv_reader_pu
 }
 
 void csv_list_maker::clear_variables_computed_info_plugin(struct_global_csv_reader_computed_info_plugin &struct_computed_plgn_info)
-{
+{ // clear structure
     struct_computed_plgn_info.tab_count_int = 0;
 
     struct_computed_plgn_info.tab_name_QStringList.clear();
@@ -250,17 +250,17 @@ void csv_list_maker::clear_variables_computed_info_plugin(struct_global_csv_read
 }
 
 struct_global_csv_reader_pub_info_plugin csv_list_maker::get_plugin_pub_detail()
-{
+{ // return plugin info structure object
     return st_pub_info_plugin_obj;
 }
 
 struct_global_csv_reader_computed_info_plugin csv_list_maker::get_plugin_computed_detail()
-{
+{ //return plugin tab details structure object
     return st_computed_info_plugin_obj;
 }
 
 QList<struct_global_csv_reader_table_detail> csv_list_maker::get_table_details(QString tab_type)
-{
+{ // get below table details from csv
     recon_static_functions::debug_intensive("start " + QString::number(csv_table_info_list.size()),Q_FUNC_INFO);
 
 

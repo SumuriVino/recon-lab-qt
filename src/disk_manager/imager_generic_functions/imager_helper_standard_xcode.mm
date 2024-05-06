@@ -4,7 +4,7 @@
 #include "imager_helper_standard.h"
 
 QList<struct_disk_info> imager_helper_standard::extract_all_disk_identifier()
-{
+{ // extract all the disk identifiers from system and prepare list
     QProcess::execute("killall diskutil");
 
     list_disk_full_info.clear();
@@ -235,12 +235,12 @@ QList<struct_disk_info> imager_helper_standard::extract_all_disk_identifier()
 }
 
 QList<struct_disk_info> imager_helper_standard::pub_device_list()
-{
+{ // return device lists
     return list_disk_full_info;
 }
 
 void imager_helper_standard::parse_apfs_device_details(struct_disk_info &st_obj)
-{
+{ // parse apfs device details
     QStringList args;
     args << "apfs" << "list" << "-plist";
 
@@ -379,7 +379,7 @@ void imager_helper_standard::parse_apfs_device_details(struct_disk_info &st_obj)
 }
 
 void imager_helper_standard::update_offline_device_details_in_main_disklist()
-{
+{ // update offline device details in disk list
     QStringList args;
     args << "list";
 
@@ -441,7 +441,7 @@ void imager_helper_standard::update_offline_device_details_in_main_disklist()
 }
 
 void::imager_helper_standard::clear_sources_struct_obj(struct_disk_info &st_obj)
-{
+{ // clear structure
     st_obj.device_identifier.clear();
     st_obj.model_MediaName.clear();
     st_obj.total_size_qint64_TotalSize = 0;

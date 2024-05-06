@@ -1,7 +1,7 @@
 #include "artifacts_timeline_full_loader.h"
 
 void artifacts_timeline_full_loader::slot_line_edit_go_to_page_text_changed(QString text)
-{
+{ // go to page according to text changed in search box line edit
     QPalette palette;
 
     linedit_go_to_page->setPalette(palette);
@@ -9,13 +9,13 @@ void artifacts_timeline_full_loader::slot_line_edit_go_to_page_text_changed(QStr
 }
 
 void artifacts_timeline_full_loader::slot_hide_loading_display_dialog_box(bool cancel_status)
-{
+{ // hide loading display box
     bool_cancel_loading = cancel_status;
 }
 
 
 void artifacts_timeline_full_loader::slot_pushbutton_apply_clicked(bool is_clicked)
-{
+{ //performs when button Apply filter clicked
     recon_static_functions::app_debug("", Q_FUNC_INFO);
 
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
@@ -183,7 +183,7 @@ void artifacts_timeline_full_loader::slot_pushbutton_apply_clicked(bool is_click
 }
 
 void artifacts_timeline_full_loader::slot_m_treeWidget_plugins_itemClicked(QTreeWidgetItem *item, int column)
-{
+{ //click on any plugins items in tablewidget
 
     treewidget_plugins_list->selectionModel()->clearSelection();
 
@@ -261,7 +261,7 @@ void artifacts_timeline_full_loader::slot_m_treeWidget_plugins_itemClicked(QTree
 }
 
 void artifacts_timeline_full_loader::slot_hovered_toolTip_on_barsets(bool status, int index, QBarSet *barset)
-{
+{ // see tooltip on howered
     QChart *chart = qobject_cast<QChart *>(barset->parent()->parent()->parent());
 
     m_barset *barset_m = dynamic_cast<m_barset *>(barset);
@@ -284,7 +284,7 @@ void artifacts_timeline_full_loader::slot_hovered_toolTip_on_barsets(bool status
 }
 
 void artifacts_timeline_full_loader::slot_pushbutton_previous_clicked(bool is_clicked)
-{
+{ // slot of button previous to see the previous data
 
     if(stackwidget_index <= 0)
     {
@@ -328,7 +328,7 @@ void artifacts_timeline_full_loader::slot_pushbutton_previous_clicked(bool is_cl
 }
 
 void artifacts_timeline_full_loader::slot_pushbutton_export_graph_clicked()
-{
+{ // slot of export button to export graphs
     QString export_file_path,filename ;
 
     if(plugin_name == MACRO_Plugin_Name_Artifacts_Timeline)
@@ -410,7 +410,7 @@ void artifacts_timeline_full_loader::slot_pushbutton_export_graph_clicked()
 }
 
 void artifacts_timeline_full_loader::slot_pushbutton_save_graph_clicked()
-{
+{ // save graph button clicked to save the graph
     save_graph_dialog_box_obj->pub_clear_graph_name();
 
     save_graph_dialog_box_obj->pub_set_graph_name(QString("Saved Graph PNG-") + QDateTime::currentDateTime().toString(("yyyy-MMM-ddThh-mm-ss")));
@@ -419,7 +419,7 @@ void artifacts_timeline_full_loader::slot_pushbutton_save_graph_clicked()
 }
 
 void artifacts_timeline_full_loader::slot_save_graph_name_value(QString graph_name)
-{
+{ //slot of save graph to create the seperate db on the name of new graph name
 
     save_graph_dialog_box_obj->hide();
 
@@ -522,7 +522,7 @@ void artifacts_timeline_full_loader::slot_save_graph_name_value(QString graph_na
 }
 
 void artifacts_timeline_full_loader::slot_pushbutton_next_clicked(bool is_clicked)
-{
+{ // next clicked button to see the next data
 
     if(stackwidget_index == (stackwidget_obj->count() -1))
     {
@@ -567,7 +567,7 @@ void artifacts_timeline_full_loader::slot_pushbutton_next_clicked(bool is_clicke
 }
 
 QString artifacts_timeline_full_loader::get_command_for_open_in_tableview()
-{
+{ // open in table view, prepare command here for that
 
     m_tablewidget_obj->hideColumn(os_name_index);
 
@@ -637,7 +637,7 @@ QString artifacts_timeline_full_loader::get_command_for_open_in_tableview()
 
 
 void artifacts_timeline_full_loader::slot_pushbutton_open_in_tableview_clicked()
-{
+{ // execute the command of open in tableview to see the data on table
 
     pushbutton_show_all->setHidden(true);
 
@@ -744,7 +744,7 @@ void artifacts_timeline_full_loader::slot_pushbutton_open_in_tableview_clicked()
 }
 
 void artifacts_timeline_full_loader::insert_data_in_table_on_show_in_tableview_clicked()
-{
+{ // insert data in table view on show in table view clicked
 
     bool bool_any_plugin_checked = false;
 
@@ -1145,7 +1145,7 @@ void artifacts_timeline_full_loader::insert_data_in_table_on_show_in_tableview_c
 }
 
 void artifacts_timeline_full_loader::slot_pushbutton_go_to_page_clicked()
-{
+{ // slot of button go to page clicked or to jump any page directly to write the page no in line edit search
     QString goto_page_str = linedit_go_to_page->text();
     int page = goto_page_str.toInt();
 
@@ -1193,7 +1193,7 @@ void artifacts_timeline_full_loader::slot_pushbutton_go_to_page_clicked()
 }
 
 void artifacts_timeline_full_loader::slot_radioButton_yearly_clicked(bool checked)
-{
+{ // see data year wise
     recon_static_functions::app_debug("Starts",Q_FUNC_INFO);
 
     if(!checked)
@@ -1268,7 +1268,7 @@ void artifacts_timeline_full_loader::slot_radioButton_yearly_clicked(bool checke
 }
 
 void artifacts_timeline_full_loader::slot_radioButton_monthly_clicked(bool checked)
-{
+{ // see data month wise
     recon_static_functions::app_debug("Starts",Q_FUNC_INFO);
 
     if(!checked)
@@ -1352,7 +1352,7 @@ void artifacts_timeline_full_loader::slot_radioButton_monthly_clicked(bool check
 }
 
 void artifacts_timeline_full_loader::slot_radioButton_daywise_clicked(bool checked)
-{
+{ // see data day wise
     recon_static_functions::app_debug("Starts",Q_FUNC_INFO);
 
     if(!checked)
@@ -1425,7 +1425,7 @@ void artifacts_timeline_full_loader::slot_radioButton_daywise_clicked(bool check
 }
 
 void artifacts_timeline_full_loader::slot_radioButton_hourly_clicked(bool checked)
-{
+{ // filter data hour wise
     recon_static_functions::app_debug("Starts",Q_FUNC_INFO);
 
     if(!checked)
@@ -1529,7 +1529,7 @@ void artifacts_timeline_full_loader::slot_radioButton_hourly_clicked(bool checke
 }
 
 void artifacts_timeline_full_loader::slot_tabbar_clicked(int index)
-{
+{ // modify tab bar which one adn when is to disable/enable buttons
 
     if(index < 0)
         return;
@@ -1568,7 +1568,7 @@ void artifacts_timeline_full_loader::slot_tabbar_clicked(int index)
 }
 
 void artifacts_timeline_full_loader::slot_sources_tabbar_clicked(int index)
-{
+{ // not in use
     if(index < 0)
         return;
 
@@ -1611,7 +1611,7 @@ void artifacts_timeline_full_loader::slot_sources_tabbar_clicked(int index)
 
 
 void artifacts_timeline_full_loader::slot_lineEdit_plugin_search_textChanged(const QString &arg1)
-{
+{ // plugin search from line edit search box
     treewidget_plugins_list->collapseAll();
 
     QString text = arg1;
@@ -1626,7 +1626,7 @@ void artifacts_timeline_full_loader::slot_lineEdit_plugin_search_textChanged(con
 }
 
 void artifacts_timeline_full_loader::slot_lineEdit_timestamp_search_textChanged(const QString &arg1)
-{
+{ // search according to timestamops from line edit search
     recon_static_functions::app_debug("Starts",Q_FUNC_INFO);
 
     for(int i = 0; i < tablewidget_timestamp_list->rowCount(); i++)
@@ -1657,7 +1657,7 @@ void artifacts_timeline_full_loader::slot_lineEdit_timestamp_search_textChanged(
 }
 
 void artifacts_timeline_full_loader::slot_fs_sources_horizontal_header_clicked(int column)
-{
+{ // horizontally header clicked
     if(column == 0)
     {
         if(tablewidget_filesystem_sources->horizontalHeaderItem(0)->checkState())
@@ -1690,7 +1690,7 @@ void artifacts_timeline_full_loader::slot_fs_sources_horizontal_header_clicked(i
 }
 
 void artifacts_timeline_full_loader::slot_refresh_table_data_on_show_all()
-{
+{ // refresh function works when we click on show all button
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
 
@@ -1714,7 +1714,7 @@ void artifacts_timeline_full_loader::slot_refresh_table_data_on_show_all()
 }
 
 void artifacts_timeline_full_loader::slot_timestamps_horizontal_header_clicked(int column)
-{
+{ //timestamps horizontally header clicked
 
     if(column == 0)
     {
@@ -1765,7 +1765,7 @@ void artifacts_timeline_full_loader::slot_timestamps_horizontal_header_clicked(i
 }
 
 void artifacts_timeline_full_loader::slot_checkBox_plugin_clicked(bool value)
-{
+{ // checkbox of plugins to select or unselect clicked
 
     if(value)
     {
@@ -1811,7 +1811,7 @@ void artifacts_timeline_full_loader::slot_checkBox_plugin_clicked(bool value)
 }
 
 void artifacts_timeline_full_loader::slot_barset_doubleClicked(int index)
-{
+{ // double click on graph bar
     m_barset* barset = dynamic_cast<m_barset*> (sender());
 
     QMap<int,QString>map_barset = barset->get_tooltip();
@@ -1845,7 +1845,7 @@ void artifacts_timeline_full_loader::slot_barset_doubleClicked(int index)
 }
 
 void artifacts_timeline_full_loader::slot_barset_pressed(int index)
-{
+{ // bar pressed single time with single click
 
     m_barset* barset = dynamic_cast<m_barset*> (sender());
 
@@ -1877,7 +1877,7 @@ void artifacts_timeline_full_loader::slot_barset_pressed(int index)
 }
 
 void artifacts_timeline_full_loader::slot_act_show_data_of_current_plugin_triggered()
-{
+{ //slot of show data button of current plugin
     is_clicked_to_save_all_data = false;
 
     if(current_barset_time_str.trimmed().isEmpty())
@@ -1996,7 +1996,7 @@ void artifacts_timeline_full_loader::slot_act_show_data_of_current_plugin_trigge
 }
 
 void artifacts_timeline_full_loader::slot_act_show_all_data_triggered()
-{
+{ // show all data button trigger
     is_clicked_to_save_all_data  = true;
 
     if(current_barset_time_str.trimmed().isEmpty())
@@ -2081,7 +2081,7 @@ void artifacts_timeline_full_loader::slot_act_show_all_data_triggered()
 }
 
 void artifacts_timeline_full_loader::slot_pushbutton_close_tab_clicked(bool value)
-{
+{ // close tab button clicked
     if(tabwidget_timeline_data_obj->currentIndex() <= 0)
         return;
 
@@ -2096,7 +2096,7 @@ void artifacts_timeline_full_loader::slot_pushbutton_close_tab_clicked(bool valu
 }
 
 void artifacts_timeline_full_loader::slot_pushbutton_save_clicked(bool value)
-{
+{ //save button clicked to save the graph
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
     int current_tab_index = tabwidget_timeline_data_obj->currentIndex();
     QString current_tab_name = tabwidget_timeline_data_obj->tabText(current_tab_index);
@@ -2121,7 +2121,7 @@ void artifacts_timeline_full_loader::slot_pushbutton_save_clicked(bool value)
 }
 
 void artifacts_timeline_full_loader::slot_pushbutton_export_table_data_clicked(bool value)
-{
+{ // export button clicked to export the data
     QString filename = tabwidget_timeline_data_obj->tabText(tabwidget_timeline_data_obj->currentIndex());
 
     QString lab_export_dir_path = getenv("HOME") + QString("/Desktop") + "/LAB_Export";
@@ -2131,7 +2131,7 @@ void artifacts_timeline_full_loader::slot_pushbutton_export_table_data_clicked(b
 }
 
 void artifacts_timeline_full_loader::slot_table_data_export_dialog_ok_clicked(QString given_name , QString selected_dir_path, QString export_type_str , QString export_scope)
-{
+{ // export data ok clicked button
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     export_dialog_box_2_obj->hide();
@@ -2178,7 +2178,7 @@ void artifacts_timeline_full_loader::slot_table_data_export_dialog_ok_clicked(QS
 }
 
 void artifacts_timeline_full_loader::open_exported_file(QString file_path)
-{
+{ // open exported file using file dialog after export button work successfully done
     report_status obj;
     if(obj.exec())
     {
@@ -2192,8 +2192,7 @@ void artifacts_timeline_full_loader::open_exported_file(QString file_path)
 
 
 void artifacts_timeline_full_loader::slot_save_result_name_value(QString save_name)
-{
-
+{ // save result in database and show progress bar like saved successfully and track it to open it in new window
     save_result_dialog_box_obj->hide();
 
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
@@ -2237,7 +2236,7 @@ void artifacts_timeline_full_loader::slot_save_result_name_value(QString save_na
 
 
 QString artifacts_timeline_full_loader::create_db_for_saved_artifacts(QString db_name)
-{
+{ // create command for the databases for saved artifacts
     QString  saved_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Artifacts_Timeline_Saved_In_Result_QString).toString() + db_name;
     if(QFile::exists(saved_path))
     {
@@ -2254,7 +2253,7 @@ QString artifacts_timeline_full_loader::create_db_for_saved_artifacts(QString db
 }
 
 QString artifacts_timeline_full_loader::prepare_command(QStringList tab_list)
-{
+{ // prepare generic command to select data from db according to tab list
 
     /*Select INT,bookmark,notes_icon,recon_tag_value,timestamp,stamp_type,record_no,plugin,
  * category,os_scheme_display,item1,item2,notes,source_count_name,INT From 'timeline_data'
@@ -2342,7 +2341,7 @@ QString artifacts_timeline_full_loader::prepare_command(QStringList tab_list)
 }
 
 void artifacts_timeline_full_loader::extract_and_save_result(QString plugin_str,QStringList tabs_list, QString result_name)
-{
+{ // extract the data of plugin and save that
 
     ///artifatcs timeline db used here as a source
     QSqlDatabase source_db;
@@ -2407,7 +2406,7 @@ void artifacts_timeline_full_loader::extract_and_save_result(QString plugin_str,
 }
 
 void artifacts_timeline_full_loader::insert_values_in_save_result_db(QSqlQuery &query_index, QString result_name)
-{
+{ // insert values in saved result database
 
     ///saved artifatcs timeline
     QString db_path = saved_db_path;
@@ -2477,7 +2476,7 @@ void artifacts_timeline_full_loader::insert_values_in_save_result_db(QSqlQuery &
 }
 
 void artifacts_timeline_full_loader::slot_add_notes_pushbutton_clicked(QString notes_value)
-{
+{ // slot of button add notes on right click menu
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     add_notes_to_singal_record_obj->hide();
@@ -2541,7 +2540,7 @@ void artifacts_timeline_full_loader::slot_add_notes_pushbutton_clicked(QString n
 }
 
 void artifacts_timeline_full_loader::slot_goto_artifact_source_submenu_clicked(QAction *clicked_action)
-{
+{ // slot of go to artifact source file on right click menu
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString source_path_goto_source = clicked_action->toolTip();
@@ -2579,7 +2578,7 @@ void artifacts_timeline_full_loader::slot_goto_artifact_source_submenu_clicked(Q
 
 
 void artifacts_timeline_full_loader::slot_timeline_export_as_clicked(QAction* current_clicked_action)
-{
+{ // timeline export button clicked
     if(current_clicked_action->text() == QString(MACRO_Generic_Export_As_CSV))
     {
         QString filename = tabwidget_timeline_data_obj->tabText(tabwidget_timeline_data_obj->currentIndex());
@@ -2602,7 +2601,7 @@ void artifacts_timeline_full_loader::slot_timeline_export_as_clicked(QAction* cu
 }
 
 void artifacts_timeline_full_loader::export_timeline_data_as_csv(QString filepath)
-{
+{ // export timeline data in CSV file
 
     if(report_scope_str == QString(MACRO_REPORT_SCOPE_SELECTED_ITEMS_QString))
     {
@@ -2776,7 +2775,7 @@ void artifacts_timeline_full_loader::export_timeline_data_as_csv(QString filepat
 }
 
 void artifacts_timeline_full_loader::export_timeline_data_as_sqlite(QString filepath)
-{
+{ // export timeline data in sqlite database
     if(report_scope_str == QString(MACRO_REPORT_SCOPE_SELECTED_ITEMS_QString))
     {
         QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
@@ -2985,7 +2984,7 @@ void artifacts_timeline_full_loader::export_timeline_data_as_sqlite(QString file
 }
 
 void artifacts_timeline_full_loader::slot_custom_table_header_widget_search_field_return_pressed()
-{
+{ // search anything in table header and enter/search button pressed
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     int tab_index = tabwidget_timeline_data_obj->currentIndex();
@@ -3049,7 +3048,7 @@ void artifacts_timeline_full_loader::slot_custom_table_header_widget_search_fiel
 }
 
 void artifacts_timeline_full_loader::slot_custom_table_header_widget_search_field_text_changed()
-{
+{ // text change or write anything to search in line edit search box to search
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     slot_custom_table_header_widget_search_field_return_pressed();
@@ -3060,7 +3059,7 @@ void artifacts_timeline_full_loader::slot_custom_table_header_widget_search_fiel
 }
 
 void artifacts_timeline_full_loader::slot_custom_table_header_widget_sorting_clicked(int column, int column_sort_order)
-{
+{ // sorting clicked on header to sort the data
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     int tab_index = tabwidget_timeline_data_obj->currentIndex();
@@ -3188,7 +3187,7 @@ void artifacts_timeline_full_loader::slot_custom_table_header_widget_sorting_cli
 }
 
 void artifacts_timeline_full_loader::all_column_text_search(QList<struct_search_column_text_for_artifact_timeline> search_text_all_column_list)
-{
+{ // text search from all columns using search field
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     for(int row = 0; row < m_tablewidget_obj->rowCount(); row++)

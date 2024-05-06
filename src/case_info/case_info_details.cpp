@@ -7,7 +7,7 @@ case_info_details::case_info_details(QWidget *)
 }
 
 void case_info_details::write_case_info_in_textfile()
-{
+{ //store all the case info in text file
     recon_static_functions::app_debug(" write_case_info_in_textfile start",Q_FUNC_INFO);
 
     QString file_name = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Case_Configuration_In_Result_QString).toString() + "case_info.txt";
@@ -68,7 +68,7 @@ void case_info_details::write_case_info_in_textfile()
 }
 
 void case_info_details::write_case_info_in_database()
-{
+{ // write case info in database also
     recon_static_functions::app_debug(" - Starts",Q_FUNC_INFO);
 
     QString destination_db_file = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Case_Configuration_In_Result_QString).toString() + "case_info.sqlite";
@@ -115,7 +115,7 @@ void case_info_details::write_case_info_in_database()
 
 
 void case_info_details::extract_details_for_case_info_from_db()
-{
+{ // extract case info data from database to use in code and display in software
     recon_static_functions::app_debug(" START",Q_FUNC_INFO);
 
     QString destination_db_file = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Case_Configuration_In_Result_QString).toString() + "case_configuration.sqlite";
@@ -255,7 +255,7 @@ void case_info_details::extract_details_for_case_info_from_db()
 }
 
 void case_info_details::extract_case_info_from_textfile()
-{
+{ // extract case info data from text file to use in code and display in software
     recon_static_functions::app_debug(" -START",Q_FUNC_INFO);
 
     QString file_name = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Case_Configuration_In_Result_QString).toString() + "case_info.txt";
@@ -392,13 +392,13 @@ void case_info_details::extract_case_info_from_textfile()
 
 
 void case_info_details::pub_write_case_info_in_textfile_and_db()
-{
+{ // write case info data in text file and database
     write_case_info_in_database();
     write_case_info_in_textfile();
 }
 
 void case_info_details::pub_extract_full_caseinfo()
-{
+{ // extract full case info from db and txt file
     recon_static_functions::app_debug(" -START",Q_FUNC_INFO);
 
     global_narad_muni_class_obj->set_field(MACRO_NARAD_Debug_File_Path_QString,recon_static_functions::get_debug_filepath_regular());

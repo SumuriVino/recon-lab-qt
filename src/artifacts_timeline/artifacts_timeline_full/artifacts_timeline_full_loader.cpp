@@ -35,7 +35,7 @@ artifacts_timeline_full_loader::~artifacts_timeline_full_loader()
 
 }
 void artifacts_timeline_full_loader::contextMenuEvent(QContextMenuEvent *evt)
-{
+{ // create right click menu here
     if(evt == NULL)
         return;
 
@@ -72,17 +72,17 @@ void artifacts_timeline_full_loader::contextMenuEvent(QContextMenuEvent *evt)
 }
 
 void artifacts_timeline_full_loader::pub_set_display_db_path(QString db_path)
-{
+{ // set display db path
     destination_timeline_db_path = db_path;
 }
 
 void artifacts_timeline_full_loader::pub_set_saved_events_db_path(QString db_path)
-{
+{ // set timeline saved db path
     destination_timeline_saved_db_path = db_path;
 }
 
 void artifacts_timeline_full_loader::loading_display_dialog_based_on_records(int total_records, int processed_count)
-{
+{ //Show progress count on progress bar
     QString label_text = QString("Loading...   ") + QString::number(processed_count) + "/" + QString::number(total_records);
     display_loading_progress_bar_obj->pub_set_label_messsge(label_text);
 
@@ -93,7 +93,7 @@ void artifacts_timeline_full_loader::loading_display_dialog_based_on_records(int
 }
 
 void artifacts_timeline_full_loader::action_bookmark_triggered()
-{
+{ // when we click bookmark on right click
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int bookmark_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_BOOKMARK_QString,0);
@@ -155,7 +155,7 @@ void artifacts_timeline_full_loader::action_bookmark_triggered()
 }
 
 void artifacts_timeline_full_loader::action_remove_bookmark_triggered()
-{
+{ // remove bookmark on click
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int bookmark_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_BOOKMARK_QString,0);
@@ -222,7 +222,7 @@ void artifacts_timeline_full_loader::populate_data_in_table()
 }
 
 void artifacts_timeline_full_loader::display_data(QString dest_db_path)
-{
+{ // display all the data from database and load in tablewidget
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     /// prepairing Query from CSV Parsed data (Select "tabs" from "table")
@@ -324,7 +324,7 @@ void artifacts_timeline_full_loader::display_data(QString dest_db_path)
 }
 
 int artifacts_timeline_full_loader::populate_data_in_tablewidget(QSqlDatabase &received_db_obj, QSqlQuery &query_index)
-{
+{ // load all the data in tablewidget
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
 
@@ -508,7 +508,7 @@ int artifacts_timeline_full_loader::populate_data_in_tablewidget(QSqlDatabase &r
 }
 
 void artifacts_timeline_full_loader::set_timeline()
-{
+{ // set timeline (what timelines data you want to see)
     start_timestamp_utc_qint64 = 0;
     end_timestamp_utc_qint64 = 0;
 
@@ -534,7 +534,7 @@ void artifacts_timeline_full_loader::set_timeline()
 }
 
 void artifacts_timeline_full_loader::pub_create_ui()
-{
+{ // create ui of tablewidget
     m_tablewidget_obj = new m_tablewidget();
     m_tablewidget_obj->horizontalHeader()->setStretchLastSection(true);
     m_tablewidget_obj->setSelectionMode(QAbstractItemView::ExtendedSelection);
@@ -574,7 +574,7 @@ void artifacts_timeline_full_loader::pub_create_ui()
 }
 
 void artifacts_timeline_full_loader::configure_ui_for_timeline()
-{
+{ // configure ui of tablewidget like buttons, menu list on right click etc
     recon_static_functions::app_debug("---Starts----",Q_FUNC_INFO);
 
     setWindowFlags(Qt::Window);
@@ -832,7 +832,7 @@ void artifacts_timeline_full_loader::configure_ui_for_timeline()
 }
 
 void artifacts_timeline_full_loader::prepare_timeline_groupbox()
-{
+{ // prepare timelines of group box like search plugins widget, scroll area, search timestamps, lineedit search etc
 
     ///Done for Events and Timestamp list - Start
 
@@ -1009,7 +1009,7 @@ void artifacts_timeline_full_loader::prepare_timeline_groupbox()
 
 
 void artifacts_timeline_full_loader::display_timestamps_list()
-{
+{ // display all the timestamp list
     recon_static_functions::app_debug("Starts",Q_FUNC_INFO);
 
     tablewidget_timestamp_list->setRowCount(0);
@@ -1134,7 +1134,7 @@ void artifacts_timeline_full_loader::display_timestamps_list()
 
 
 void artifacts_timeline_full_loader::update_bookmark_status_for_all(QString status)
-{
+{ // update bookmark status in database
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
 
@@ -1210,8 +1210,7 @@ void artifacts_timeline_full_loader::update_bookmark_status_for_all(QString stat
 }
 
 void artifacts_timeline_full_loader::update_note_in_notes_serach(QString text_str, int selected_row, QString dest_db_path)
-{
-
+{ // update notes in database for notes search
     if(text_str.trimmed().isEmpty())
         return ;
 
@@ -1318,7 +1317,7 @@ void artifacts_timeline_full_loader::update_note_in_notes_serach(QString text_st
 }
 
 void artifacts_timeline_full_loader::update_tags_value(QString tag_data, QString colour)
-{
+{ // update tags value in database
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int bookmark_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_BOOKMARK_QString,0);
@@ -1381,7 +1380,7 @@ void artifacts_timeline_full_loader::update_tags_value(QString tag_data, QString
 }
 
 void artifacts_timeline_full_loader::slot_act_remove_tags()
-{
+{ //action remove tags
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int bookmark_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_BOOKMARK_QString,0);
@@ -1443,7 +1442,7 @@ void artifacts_timeline_full_loader::slot_act_remove_tags()
 }
 
 void artifacts_timeline_full_loader::delete_tags_from_tag_serach_other_than_current_tag_and_for_current_record(QString current_tag , QString record_no , QString plugin_name , QString tab_name ,QString stamp_type_str, QString source_count_name)
-{
+{ // delete tags from tag search database while updating tags in database except current record/tag
     QString current_tag_name = current_tag;
     QString tag_index_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Tag_Search_In_Result_QString).toString() + "index_tag_search.sqlite";
     QString command = "Select tag_db_name from tag_search_index";
@@ -1493,7 +1492,7 @@ void artifacts_timeline_full_loader::delete_tags_from_tag_serach_other_than_curr
 }
 
 void artifacts_timeline_full_loader::update_tags_in_tag_serach_db(QString current_tag , QString dest_db_path)
-{
+{ // update tags in tags db when perform action on right click
 
     QString tag_db_path = recon_helper_standard_obj->create_separate_tag_db_for_tag_search(current_tag,Q_FUNC_INFO);
 
@@ -1627,7 +1626,7 @@ void artifacts_timeline_full_loader::update_tags_in_tag_serach_db(QString curren
 }
 
 void artifacts_timeline_full_loader::update_notes_value(QString text, int current_row)
-{
+{ // update notes value in db from right click
 
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -1698,7 +1697,7 @@ void artifacts_timeline_full_loader::update_notes_value(QString text, int curren
 }
 
 void artifacts_timeline_full_loader::tablewidget_general_clicked(int row,int column)
-{
+{ // table widget randomly click on any record. Can get info of that record
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     if((row < 0) || (column < 0) || (m_tablewidget_obj == NULL))
@@ -1766,7 +1765,7 @@ void artifacts_timeline_full_loader::tablewidget_general_clicked(int row,int col
 }
 
 void artifacts_timeline_full_loader::action_open_with_plist_viewer_triggered()
-{
+{ // action open with plist viewer click from right click
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     if(m_tablewidget_obj->currentRow() < 0)
@@ -1861,7 +1860,7 @@ void artifacts_timeline_full_loader::action_open_with_plist_viewer_triggered()
 }
 
 void artifacts_timeline_full_loader::action_open_with_hex_viewer_triggered()
-{
+{ // open with hex view from right click for hex analysis for that particluar record
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
 
@@ -1977,7 +1976,7 @@ void artifacts_timeline_full_loader::action_open_with_hex_viewer_triggered()
 }
 
 void artifacts_timeline_full_loader::action_open_with_sqlite_viewer_triggered()
-{
+{ // open that record with sqlite viewer for sql analysis
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     QString result_dir_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_RECON_Result_Dir_QString).toString();
@@ -2068,7 +2067,7 @@ void artifacts_timeline_full_loader::action_open_with_sqlite_viewer_triggered()
 }
 
 void artifacts_timeline_full_loader::action_export_triggered()
-{
+{ // action export button click from right click menu to export that record
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     export_rsync_obj->set_rsync_copy_essentials(Q_FUNC_INFO);
@@ -2163,7 +2162,7 @@ void artifacts_timeline_full_loader::action_export_triggered()
 }
 
 void artifacts_timeline_full_loader::action_sendToBucket_plist_viewer_triggered()
-{
+{ // send to bucket button from menu for plist viewer
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
 
@@ -2285,7 +2284,7 @@ void artifacts_timeline_full_loader::action_sendToBucket_plist_viewer_triggered(
 }
 
 void artifacts_timeline_full_loader::action_sendToBucket_hex_viewer_triggered()
-{
+{ // send to bucket for hex viewer analysis using menu
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
 
@@ -2425,7 +2424,7 @@ void artifacts_timeline_full_loader::action_sendToBucket_hex_viewer_triggered()
 }
 
 void artifacts_timeline_full_loader::action_sendToBucket_sqlite_viewer_triggered()
-{
+{ // send to bucket for sqlite viewer analysis from menu
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
 
@@ -2552,7 +2551,7 @@ void artifacts_timeline_full_loader::action_sendToBucket_sqlite_viewer_triggered
 }
 
 void artifacts_timeline_full_loader::action_open_full_detailed_info_triggered()
-{
+{ // open full detail info of that particlar record from right click menu
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     if(m_tablewidget_obj->currentRow() < 0)
@@ -2605,7 +2604,7 @@ void artifacts_timeline_full_loader::action_open_full_detailed_info_triggered()
 }
 
 void artifacts_timeline_full_loader::action_remove_note_triggered()
-{
+{ //remove tag of any record from right click menu
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int bookmark_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_BOOKMARK_QString,0);
@@ -2666,7 +2665,7 @@ void artifacts_timeline_full_loader::action_remove_note_triggered()
 }
 
 void artifacts_timeline_full_loader::action_remove_note_bookmark_triggered()
-{
+{ // remove note bookmark clicked
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     add_notes_to_bookmarks_obj->hide();
@@ -2709,7 +2708,7 @@ void artifacts_timeline_full_loader::action_remove_note_bookmark_triggered()
 }
 
 void artifacts_timeline_full_loader::action_open_detach_detailed_info_triggered()
-{
+{ // not in use
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     //    if(m_tablewidget_obj->currentRow() < 0)
@@ -2771,7 +2770,7 @@ void artifacts_timeline_full_loader::action_open_detach_detailed_info_triggered(
 }
 
 void artifacts_timeline_full_loader::set_bookmarked_timestamp_type_list()
-{
+{ // after filter apply to display bookmarks data, it will show bookmark timestamp type list
     recon_static_functions::app_debug("", Q_FUNC_INFO);
 
     bookmarked_timestamp_type_list.clear();
@@ -2810,7 +2809,7 @@ void artifacts_timeline_full_loader::set_bookmarked_timestamp_type_list()
 }
 
 void artifacts_timeline_full_loader::display_data_of_graph_tablewidget(QString dest_db_path)
-{
+{// display data of graph tablewidget
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     bookmark_column_index = 0;
@@ -3056,7 +3055,7 @@ void artifacts_timeline_full_loader::display_data_of_graph_tablewidget(QString d
 }
 
 int artifacts_timeline_full_loader::populate_data_of_graph_in_tablewidget(QSqlQuery &query_index)
-{
+{ // populate all the data of graph  in tablewidget from database
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     if(m_tablewidget_obj == NULL)
@@ -3266,7 +3265,7 @@ int artifacts_timeline_full_loader::populate_data_of_graph_in_tablewidget(QSqlQu
 }
 
 int artifacts_timeline_full_loader::set_graphs_data_tables_header()
-{
+{ // set headers of graphs data
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     if(table_headers_width_list.isEmpty())
@@ -3352,7 +3351,7 @@ int artifacts_timeline_full_loader::set_graphs_data_tables_header()
 }
 
 void artifacts_timeline_full_loader::saved_db_info(QString db_name)
-{
+{ // save db name and tab name in seperate db to get info later
     QString  db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Artifacts_Timeline_Saved_In_Result_QString).toString() + "index_artifacts_timeline.sqlite";
 
     QString tab_name = db_name;
@@ -3389,7 +3388,7 @@ void artifacts_timeline_full_loader::saved_db_info(QString db_name)
 }
 
 void artifacts_timeline_full_loader::update_bookmark_value(QString status,int selected_row_no, int column)
-{
+{ // update bookmark value in db to display on click
     if(column != 0)
         return;
 
@@ -3450,7 +3449,7 @@ void artifacts_timeline_full_loader::update_bookmark_value(QString status,int se
 }
 
 void artifacts_timeline_full_loader::disable_enable_initial_ui(bool status)
-{
+{ // disable/enable initial ui or accroding to status (when needs to disable/enable)
     radiobutton_create_graph_yearly->setEnabled(status);
     radiobutton_create_graph_monthly->setEnabled(status);
     radiobutton_create_graph_daywise->setEnabled(status);
@@ -3469,7 +3468,7 @@ void artifacts_timeline_full_loader::disable_enable_initial_ui(bool status)
 }
 
 void artifacts_timeline_full_loader::action_go_to_record_triggered()
-{
+{ // when we click on go to record button from menu to see that file from file system
 
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
@@ -3494,7 +3493,7 @@ void artifacts_timeline_full_loader::action_go_to_record_triggered()
 }
 
 void artifacts_timeline_full_loader::create_action_for_goto_artifact_source_submenu()
-{
+{ // go to artifact source file from right click on click
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     qint64 current_row = m_tablewidget_obj->currentRow();

@@ -23,7 +23,7 @@ void case_info_display::pub_initialise_case_info_display()
 
 
 void case_info_display::slot_toplevel_source_button_clicked(bool expand ,int id,QString src_name,QString os_scheme)
-{
+{ // source button clicked to expand to see source information
     ui->textEdit_source_info_display->clear();
     QTreeWidgetItem *item = ui->treeWidget_multiple_source->topLevelItem(id);
 
@@ -34,7 +34,7 @@ void case_info_display::slot_toplevel_source_button_clicked(bool expand ,int id,
 }
 
 void case_info_display::slot_link_label_sub_source_list(QString link_txt)
-{
+{ // set source info for display in line edit
     ui->textEdit_source_info_display->clear();
     QString source_count_name = link_txt.trimmed();
     if(source_count_name.isEmpty())
@@ -49,7 +49,7 @@ void case_info_display::slot_link_label_sub_source_list(QString link_txt)
 }
 
 void case_info_display::display_sources_in_tree()
-{
+{ // display below examiner info
     QString str;
     str += QString("<b>Case Details </b>") + "<br>";
     str += QString("<b>Case No.  :  </b>") + global_narad_muni_class_obj->get_field(MACRO_NARAD_Case_ID_QString).toString() + "<br>";
@@ -167,7 +167,7 @@ void case_info_display::display_sources_in_tree()
 
 
 QString case_info_display::get_device_detail_filled_in_source_textEdit(struct_GLOBAL_witness_info_source target_source_info)
-{
+{ //  set and display below source info
 
     QString str = QString("<br><b>Source Details </b>") + "<br>";
 

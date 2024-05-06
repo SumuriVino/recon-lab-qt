@@ -167,7 +167,7 @@ emlx_mail::~emlx_mail()
 }
 
 bool emlx_mail::eventFilter(QObject *obj, QEvent *event)
-{
+{ // creation of right click actions
     if(obj == ui->tableWidget_emails)
     {
         if(event->type() == QEvent::ContextMenu)
@@ -194,7 +194,7 @@ bool emlx_mail::eventFilter(QObject *obj, QEvent *event)
 }
 
 void emlx_mail::pub_set_essentials()
-{
+{ // set some of essentials database path
     QString featr_emails_parent_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Email_Parser_In_Result_QString).toString();
 
     case_confg_db_path =  global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Case_Configuration_In_Result_QString).toString() + "case_configuration.sqlite";
@@ -214,7 +214,7 @@ void emlx_mail::pub_set_global_connection_manager_obj(global_connection_manager 
 }
 
 void emlx_mail::pub_display_data_in_table()
-{
+{ // display emails data in table view
     emlx_show_data_table_widget();
 
 
@@ -265,7 +265,7 @@ void emlx_mail::pub_display_data_in_table()
 }
 
 void emlx_mail ::emlx_show_data_table_widget()
-{
+{ // show all the data in tablewidget
     ui->tableWidget_emails->setRowCount(0);
     //ui->tableWidget_emails->hideColumn(0);
 
@@ -630,7 +630,7 @@ void emlx_mail ::emlx_show_data_table_widget()
 
 
 void emlx_mail::on_tableWidget_emails_cellPressed(int row, int column)
-{
+{ // when we click on any email on tablewidget
 
     Q_UNUSED(column);
 
@@ -676,7 +676,7 @@ void emlx_mail::on_tableWidget_emails_cellPressed(int row, int column)
 }
 
 void emlx_mail::emlx_preview_attachment_file()
-{
+{ // emlx preview attached files view
     ui->stackedWidget_preview->setCurrentIndex(enum_no_preview_index);
 
     if(ui->tableWidget_attachments->rowCount() > 0)
@@ -713,7 +713,7 @@ void emlx_mail::emlx_preview_attachment_file()
 }
 
 void emlx_mail::emlx_show_data_text_edit()
-{
+{ // show data in text edit
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     if(global_variable_macOS_appearance_light_mode_bool)
@@ -836,7 +836,7 @@ void emlx_mail::emlx_show_data_text_edit()
 }
 
 void emlx_mail::emlx_show_data_in_raw_data_text_edit()
-{
+{ // show data in raw text edit
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
 
@@ -929,7 +929,7 @@ void emlx_mail::emlx_show_data_in_raw_data_text_edit()
 
 void emlx_mail::on_pushButton_search_clicked()
 {
-
+// search button clicked
     //=============(Temp)-Start
     //on_pushButton_advanced_search_clicked();
     //return;
@@ -1035,7 +1035,7 @@ void emlx_mail::on_pushButton_search_clicked()
 
 
 qint64 emlx_mail::get_header_column_index(QString header)
-{
+{ // get table widget header column index where emails displays
 
     int index = -1;
     for(int count = 0; count < display_header_name_list.size(); count++)
@@ -1052,7 +1052,7 @@ qint64 emlx_mail::get_header_column_index(QString header)
 
 
 void emlx_mail::on_pushButton_show_all_clicked()
-{
+{ // show all/ refresh button clicked
     highlight_searched_text_in_result.clear();
 
     ui->lineEdit_search->clear();
@@ -1073,7 +1073,7 @@ void emlx_mail::on_pushButton_show_all_clicked()
 
 
 bool emlx_mail::check_item_already_exist_in_complete_tree(QString item_text , bool parent_object)
-{
+{ // check particular item already exist in complete tree or not
     bool item_found = false;
 
     QTreeWidgetItemIterator m_iter(ui->treeWidget_accounts);
@@ -1097,7 +1097,7 @@ bool emlx_mail::check_item_already_exist_in_complete_tree(QString item_text , bo
 }
 
 bool emlx_mail::check_item_already_exist_in_specified_tree(QTreeWidgetItem *item_tree, QString item_text , bool parent_object)
-{
+{ // check particular item already exist in specified tree or not
     bool item_found = false;
 
     QTreeWidgetItemIterator m_iter(item_tree);
@@ -1118,7 +1118,7 @@ bool emlx_mail::check_item_already_exist_in_specified_tree(QTreeWidgetItem *item
 }
 
 QStringList emlx_mail::get_index_of_mbox_from_path(QStringList filepath_list)
-{
+{ // get index of mbox from path
     QStringList mboxes_index_list;
 
     for(int count = 0; count < filepath_list.size(); count++)
@@ -1134,7 +1134,7 @@ QStringList emlx_mail::get_index_of_mbox_from_path(QStringList filepath_list)
 
 
 void emlx_mail::on_treeWidget_accounts_itemClicked(QTreeWidgetItem *item, int column)
-{
+{ // click on accounts display in tablewidget
     ui->label_emlx_file_path->clear();
 
     ui->textBrowser_message->clear();
@@ -1193,7 +1193,7 @@ void emlx_mail::on_treeWidget_accounts_itemClicked(QTreeWidgetItem *item, int co
 
 ///for creating actions on right click
 void emlx_mail::create_right_click_actions(QMenu *mainMenu , QStringList submenuList)
-{
+{ // right click actions
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     for(int i = 0; i < submenuList.size(); i++)
@@ -1211,7 +1211,7 @@ void emlx_mail::create_right_click_actions(QMenu *mainMenu , QStringList submenu
 
 
 void emlx_mail::slot_quicklook_link_clicked(QString link_text)
-{
+{ // quicklook action on right click
     QString filepath = QString::fromLocal8Bit(QByteArray::fromPercentEncoding(link_text.toLocal8Bit()));
 
     emit signal_quick_look_preview_filepath_from_email_files(filepath);
@@ -1220,7 +1220,7 @@ void emlx_mail::slot_quicklook_link_clicked(QString link_text)
 }
 
 void emlx_mail::slot_open_in_finder_link_clicked(QString link_text)
-{
+{ // open with external application or by finder
     QString filepath = QString::fromLocal8Bit(QByteArray::fromPercentEncoding(link_text.toLocal8Bit()));
 
     QStringList arg;
@@ -1233,12 +1233,12 @@ void emlx_mail::slot_open_in_finder_link_clicked(QString link_text)
 
 
 void emlx_mail::on_lineEdit_message_search_returnPressed()
-{
+{ // search on enter press
     on_pushButton_search_message_clicked();
 }
 
 void emlx_mail::on_pushButton_search_message_clicked()
-{
+{ // search button clicked
     QString searchString = ui->lineEdit_message_search->text();
 
     if(searchString.trimmed().isEmpty())
@@ -1301,12 +1301,12 @@ void emlx_mail::on_pushButton_search_message_clicked()
 }
 
 void emlx_mail::on_tableWidget_emails_itemSelectionChanged()
-{
+{ // email item selection
     on_tableWidget_emails_cellPressed(ui->tableWidget_emails->currentRow(), ui->tableWidget_emails->currentColumn());
 }
 
 void emlx_mail::on_tableWidget_emails_itemClicked(QTableWidgetItem *item)
-{
+{ // any email clicked generally to do bookmark directly without right click
     if(item->column() == enum_emlx_bookmark_column)
     {
         ui->tableWidget_emails->selectRow(item->row());
@@ -1318,7 +1318,7 @@ void emlx_mail::on_tableWidget_emails_itemClicked(QTableWidgetItem *item)
 }
 
 void emlx_mail::on_lineEdit_message_search_textChanged(const QString &arg1)
-{
+{ // search on text changed
     if(arg1.trimmed().isEmpty())
     {
         QTextDocument *document = ui->textBrowser_message->document();
@@ -1327,7 +1327,7 @@ void emlx_mail::on_lineEdit_message_search_textChanged(const QString &arg1)
 }
 
 void emlx_mail::on_lineEdit_raw_data_search_textChanged(const QString &arg1)
-{
+{ // raw data search from line edit by text changed
     if(arg1.trimmed().isEmpty())
     {
         QTextDocument *document = ui->textBrowser_raw_data->document();
@@ -1337,12 +1337,12 @@ void emlx_mail::on_lineEdit_raw_data_search_textChanged(const QString &arg1)
 }
 
 void emlx_mail::on_lineEdit_raw_data_search_returnPressed()
-{
+{ // raw data search on enter press
     on_pushButton_raw_data_search_clicked();
 }
 
 void emlx_mail::on_pushButton_raw_data_search_clicked()
-{
+{ // raw data search clicked
     QString searchString = ui->lineEdit_raw_data_search->text().trimmed();
 
     if(searchString.isEmpty())
@@ -1405,7 +1405,7 @@ void emlx_mail::on_pushButton_raw_data_search_clicked()
 }
 
 void emlx_mail::on_tableWidget_attachments_itemSelectionChanged()
-{
+{ // select any attachment on tablewidget
     int row = ui->tableWidget_attachments->currentRow();
     if(row >= 0)
     {
@@ -1448,7 +1448,7 @@ void emlx_mail::on_tableWidget_attachments_itemSelectionChanged()
 }
 
 void emlx_mail::slot_sort_tablewidget_display(int column_index)
-{
+{ // sort tablewidget
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
 
@@ -1572,7 +1572,7 @@ void emlx_mail::slot_sort_tablewidget_display(int column_index)
 }
 
 QList<QTableWidgetItem*> emlx_mail::takeRow(int row)
-{
+{ // return row items
     QList<QTableWidgetItem*> rowItems;
     for (int col = 0; col < ui->tableWidget_emails->columnCount(); ++col)
     {
@@ -1591,13 +1591,13 @@ void emlx_mail::setRow(int row, const QList<QTableWidgetItem*>& rowItems)
 }
 
 void emlx_mail::slot_cancel_loading_search_results(bool status)
-{
+{ // cancel loading search result by clicking on cancel button from progress bar
     bool_cancel_loading_search_results = status;
     display_loading_progress_bar_obj->hide();
 }
 
 void emlx_mail::slot_email_search_work_done(QString command)
-{
+{ // search email slot, hits while searching
     email_search_obj->hide();
 
     ui->tableWidget_emails->setRowCount(0);
@@ -1778,7 +1778,7 @@ void emlx_mail::slot_email_search_work_done(QString command)
 }
 
 void emlx_mail::slot_highlight_searched_text(QString email_searched_text)
-{
+{ // hughtligh search text slot
     highlight_searched_text_in_result = email_searched_text;
 
     ui->lineEdit_message_search->setText(email_searched_text);
@@ -1786,7 +1786,7 @@ void emlx_mail::slot_highlight_searched_text(QString email_searched_text)
 }
 
 void emlx_mail::on_pushButton_advanced_search_clicked()
-{
+{ // advance search with more filters
     highlight_searched_text_in_result.clear();
 
     ui->label_emlx_file_path->clear();
@@ -1801,13 +1801,13 @@ void emlx_mail::on_pushButton_advanced_search_clicked()
 }
 
 void emlx_mail::slot_textBrowser_raw_data_customContextMenuRequested(const QPoint &pos)
-{
+{ //menu creation on text browser raw data
     QPoint globalPos = ui->textBrowser_raw_data->mapToGlobal(pos);
     menu_raw_data->exec(globalPos);
 }
 
 void emlx_mail::create_raw_data_tags_submenu()
-{
+{ // create raw data tags menu
     recon_static_functions::app_debug(" -Starts",Q_FUNC_INFO);
 
     if(sub_menu_raw_data_tags == NULL)
@@ -1868,7 +1868,7 @@ void emlx_mail::create_raw_data_tags_submenu()
 }
 
 void emlx_mail::action_submenu_raw_data_tag_triggered(QString tag_name)
-{
+{ // tags clicked on raw data
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     if(tag_name == QString(MACRO_Generic_Right_Click_Remove_Tag) || tag_name == QString(MACRO_Generic_Right_Click_Create_Tag))
@@ -1883,7 +1883,7 @@ void emlx_mail::action_submenu_raw_data_tag_triggered(QString tag_name)
 }
 
 void emlx_mail::update_raw_data_tags_value(QString tag_data,QString colour)
-{
+{ // update tags value in database when perform on raw data
 
     QTextCursor cursor = ui->textBrowser_raw_data->textCursor();
     QString selected_text = cursor.selectedText();
@@ -1969,7 +1969,7 @@ void emlx_mail::update_raw_data_tags_value(QString tag_data,QString colour)
 }
 
 void emlx_mail::create_table_export_content_for_raw_data_tag()
-{
+{ // create table for export content from raw data
     QString exported_content_info_db = global_narad_muni_class_obj->get_field(MACRO_NARAD_Exported_Content_Location_Email_Parser_Tag_QString).toString() + "email_tag_data.sqlite";
     QFileInfo info(exported_content_info_db);
     if(!info.exists())

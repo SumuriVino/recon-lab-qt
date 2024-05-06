@@ -11,7 +11,7 @@ thread_carve_files::~thread_carve_files()
 }
 
 void thread_carve_files::pub_set_current_source_info(struct_GLOBAL_witness_info_source obj)
-{
+{ // public functions to set object
     target_info_struct_obj = obj;
 }
 
@@ -26,7 +26,7 @@ void thread_carve_files::pub_set_essential_db_path(QString str)
 }
 
 void thread_carve_files::run()
-{
+{ // run/start file carver feature from here. we use carver lib for that
     QStringList args_list;
     args_list << essential_db_path;
 

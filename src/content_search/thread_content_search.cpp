@@ -19,7 +19,7 @@ thread_content_search::~thread_content_search()
 }
 
 void thread_content_search::run()
-{
+{ // start content search from here, we do text indexing before content search and use dt search for content search
     recon_static_functions::app_debug("Start " , Q_FUNC_INFO);
 
     total_size_processed = 0;
@@ -135,7 +135,7 @@ void thread_content_search::run()
 
 
 void thread_content_search::search_for_keywords_in_indexed_data(QSqlDatabase &destination_db)
-{
+{ // search for the keywords in indexed file/data. indexing is necessary before running content search
     QString result_dir_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_RECON_Result_Dir_QString).toString();
     QString carved_files_dir_name = QString(MACRO_Plugin_Name_Carved_Files).replace(" ", "_");
     QString lab_features_dir_name = QString("Lab_Features");
@@ -459,7 +459,7 @@ void thread_content_search::search_for_keywords_in_indexed_data(QSqlDatabase &de
 }
 
 QString thread_content_search::get_filepath_for_tar_rar_gz_and_zip_files(QString file_path)
-{
+{ // get filepath for tar,rar,gz,zip file, because after indexing dt search sometime modify the string which contains path, so we remove the extra things from path
     //RECON_LAB.zip/RECON_LAB/z_mainwindow/load_case"  = if path contains .zip/,.rar/ or .tar/
     //than remove path after .zip/, .rar/ or .tar/ to display
     if(file_path.contains(".zip/"))
@@ -508,7 +508,7 @@ QString thread_content_search::get_filepath_for_tar_rar_gz_and_zip_files(QString
 }
 
 void thread_content_search::iterate_directory_recursively_and_index_files(QString source_path)
-{
+{ // not in use
     return;
 
     if(!source_path.endsWith("/"))
@@ -616,14 +616,14 @@ QString thread_content_search::pub_get_search_label_name()
 }
 
 void thread_content_search::pub_set_dt_search_obj(dt_search_interface *obj)
-{
+{ // using dtsearch class here
     dt_search_interface_obj = obj;
     dt_search_interface_obj->pub_set_list_found_word_file_info_ptr(&list_struct_found_keyword_file_info);
     thread_index_files_obj->pub_set_dt_serach_interface_obj(dt_search_interface_obj);
 }
 
 void thread_content_search::insert_entry_in_index_db()
-{
+{ // insert entry in indexed database
     search_db_file_name = search_label_name;
     search_db_file_name = search_db_file_name.replace(" ", "_");
 
@@ -641,7 +641,7 @@ void thread_content_search::insert_entry_in_index_db()
 }
 
 QString thread_content_search::create_content_search_destination_db()
-{
+{ // create content search destination database
     QString destination_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Content_Search_In_Result_QString).toString() + search_db_file_name + ".sqlite";
 
     QString command = "CREATE TABLE files(INT INTEGER PRIMARY KEY, bookmark varchar(100), filesystem_record INTEGER, plugin_name varchar(500), tab_name varchar(500), table_name varchar(500), os_scheme_display varchar(500), file_name VARCHAR(1024), file_path VARCHAR(1024), no_of_hits INTEGER, keyword_name VARCHAR(1024), total_word_count INTEGER, hit_locations VARCHAR(1024), index_path VARCHAR(1024), source_count_name varchar(100), recon_tag_value varchar(100), notes varchar(100),notes_icon varchar(100))";

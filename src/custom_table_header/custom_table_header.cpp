@@ -13,7 +13,7 @@ custom_table_header::~custom_table_header()
 }
 
 void custom_table_header::showEvent(QShowEvent *e)
-{
+{ // visibile thw widget
     for (int ii = 0; ii < count(); ii++)
     {
         if (!m_items[ii].item)
@@ -36,7 +36,7 @@ void custom_table_header::showEvent(QShowEvent *e)
 }
 
 void custom_table_header::handle_section_resized(int i)
-{
+{ // resize and handling the header section
     int logical;
 
     for (int jj = visualIndex(i); jj < count(); jj++)
@@ -51,7 +51,7 @@ void custom_table_header::handle_section_resized(int i)
 }
 
 void custom_table_header::handle_section_moved(int logical, int oldVisualIndex, int newVisualIndex)
-{
+{ // handling the section moved according to user
     Q_UNUSED(logical);
 
     for (int ii = qMin(oldVisualIndex, newVisualIndex); ii < count(); ii++)
@@ -65,7 +65,7 @@ void custom_table_header::handle_section_moved(int logical, int oldVisualIndex, 
 }
 
 void custom_table_header::set_scroll_positions()
-{
+{ // set the scroll position
     for(int ii = 0; ii < count(); ii++)
     {
         m_items[ii].item->setGeometry(sectionViewportPosition(ii) + m_items[ii].margins.left,
@@ -74,7 +74,7 @@ void custom_table_header::set_scroll_positions()
                                       height() - m_items[ii].margins.top - m_items[ii].margins.buttom - 1);
     }
 }
-
+// set the global ui of header
 void custom_table_header::set_item_widget(int index, QWidget * widget)
 {
     m_items[index].item = widget;

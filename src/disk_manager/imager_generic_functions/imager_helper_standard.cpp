@@ -12,7 +12,7 @@ imager_helper_standard::~imager_helper_standard()
 {
 
 }
-
+//These are imager generic classes which we rarely using in LAB. These class are just for future references. Some of functions we use for disk manager only.
 void imager_helper_standard::pub_change_combobox_text_color(QComboBox &combobox, QList<struct_disk_info> list_disk_full_info)
 {
     for(int count = 0; count < combobox.count(); count++)

@@ -62,7 +62,7 @@ disk_manager::~disk_manager()
 }
 
 void disk_manager::pub_stop_disk_arbitration()
-{
+{ // stop disk arbitration
     QProcess::execute("killall", QStringList("disk_arbitration"));
 
     if(proc_disk_arb.state() == QProcess::Running)
@@ -72,7 +72,7 @@ void disk_manager::pub_stop_disk_arbitration()
 }
 
 void disk_manager::pub_start_disk_arbitration()
-{
+{ // start disk arbitration
     if(proc_disk_arb.state() == QProcess::Running)
     {
         bool_mount_blocker_process_running = true;
@@ -86,12 +86,12 @@ void disk_manager::pub_start_disk_arbitration()
 }
 
 bool disk_manager::pub_get_disk_arbitration_started_status()
-{
+{ // disk arbitration start status
     return bool_mount_blocker_process_running;
 }
 
 void disk_manager::pub_display_data()
-{
+{ // display data in tablewidget
 
     list_all_disk_info = recon_helper_standard_obj->extract_all_disk_identifier();
     //list_all_disk_info = recon_helper_singular_obj->pub_device_list();
@@ -205,7 +205,7 @@ void disk_manager::pub_display_data()
 }
 
 void disk_manager::pub_display_data_with_progress_message()
-{
+{ // display data on tablewidget and set show progress bar before and hide after
     display_dialog_box_obj_non_aborted->pub_set_label_message("Refreshing device list...");
     display_dialog_box_obj_non_aborted->show();
 
@@ -216,7 +216,7 @@ void disk_manager::pub_display_data_with_progress_message()
 
 
 void disk_manager::change_background_color_in_table()
-{
+{ // change background color in table widget accroding to status
     for(int row = 0; row < ui->tableWidget_disk_list->rowCount(); row++)
     {
         QString dev_node_text = ui->tableWidget_disk_list->item(row, enum_imager_device)->text().trimmed();
@@ -252,7 +252,7 @@ void disk_manager::change_background_color_in_table()
 }
 
 void disk_manager::change_background_color_in_each_column(int row , QString color_str)
-{
+{ // change background color on each column
     color_str = color_str.trimmed();
     if(color_str.isEmpty())
         return;
@@ -281,7 +281,7 @@ void disk_manager::change_background_color_in_each_column(int row , QString colo
 }
 
 void disk_manager::on_tableWidget_disk_list_cellClicked(int row, int column)
-{
+{ // on tableiwdget disk list cell clicked
     if(row < 0 || column < 0)
         return;
 
@@ -313,7 +313,7 @@ void disk_manager::on_tableWidget_disk_list_cellClicked(int row, int column)
 }
 
 void disk_manager::on_pushButton_unmount_clicked()
-{
+{ // unmount button clicked
     int row = ui->tableWidget_disk_list->currentRow();
 
     if(row < 0)
@@ -324,7 +324,7 @@ void disk_manager::on_pushButton_unmount_clicked()
 }
 
 void disk_manager::on_pushButton_refresh_clicked()
-{
+{ // refresh button clicked
     display_dialog_box_obj_non_aborted->pub_set_label_message("Refreshing device list...");
     display_dialog_box_obj_non_aborted->show();
 
@@ -336,7 +336,7 @@ void disk_manager::on_pushButton_refresh_clicked()
 }
 
 void disk_manager::on_pushButton_mount_read_clicked()
-{
+{ // mount in read only button clicked
     int row = ui->tableWidget_disk_list->currentRow();
 
     if(row < 0)
@@ -354,7 +354,7 @@ void disk_manager::on_pushButton_mount_read_clicked()
 }
 
 void disk_manager::refresh_display_with_existing_disklist()
-{
+{ // refresh and set progress bar while displaying
     display_dialog_box_obj_non_aborted->pub_set_label_message("Refreshing device list...");
     display_dialog_box_obj_non_aborted->show();
     pub_display_data();
@@ -363,7 +363,7 @@ void disk_manager::refresh_display_with_existing_disklist()
 }
 
 void disk_manager::on_pushButton_mount_read_write_clicked()
-{
+{ // mount in read write button clicked
     int row = ui->tableWidget_disk_list->currentRow();
 
     if(row < 0)
@@ -376,7 +376,7 @@ void disk_manager::on_pushButton_mount_read_write_clicked()
 }
 
 void disk_manager::on_pushButton_format_clicked()
-{
+{ // format button clicked
     int row = ui->tableWidget_disk_list->currentRow();
     if(row < 0)
         return;
@@ -409,7 +409,7 @@ void disk_manager::on_pushButton_format_clicked()
 }
 
 void disk_manager::slot_format_finished(bool status)
-{
+{ // format button finished
     disk_manager_format_disk_obj->hide();
     if(status)
     {
@@ -424,7 +424,7 @@ void disk_manager::slot_format_finished(bool status)
 }
 
 void disk_manager::on_pushButton_decrypt_clicked()
-{
+{ // decrypt button clicked
     int row = ui->tableWidget_disk_list->currentRow();
     if(row < 0)
         return;
@@ -444,7 +444,7 @@ void disk_manager::on_pushButton_decrypt_clicked()
 }
 
 void disk_manager::slot_decrypt_finished(bool status)
-{
+{ // decryption finished
     if(status)
     {
         /// check for TDM (if not decrypted try decrypt in background for 5 minutes)
@@ -560,7 +560,7 @@ void disk_manager::slot_decrypt_finished(bool status)
 }
 
 void disk_manager::slot_tdm_decrypt_timer_tick()
-{
+{ // set timer
     timer_tdm_total_seconds_elapsed += 1;
     timer_tdm_wait_seconds_elapsed  += 1;
 
@@ -570,7 +570,7 @@ void disk_manager::slot_tdm_decrypt_timer_tick()
 }
 
 void disk_manager::pub_mount_read_only(QString device_node)
-{
+{ // mount read only button
     if(device_node.trimmed().isEmpty())
         return;
 
@@ -778,7 +778,7 @@ void disk_manager::pub_mount_read_only(QString device_node)
 }
 
 void disk_manager::pub_mount_read_write(QString device_node)
-{
+{ // mount read write button code
     if(device_node.trimmed().isEmpty())
         return;
 
@@ -834,7 +834,7 @@ void disk_manager::pub_mount_read_write(QString device_node)
 }
 
 void disk_manager::pub_unmount_disk(QString device_node)
-{
+{ // unmount disk
     if(device_node.trimmed().isEmpty())
         return;
 
@@ -859,7 +859,7 @@ void disk_manager::pub_unmount_disk(QString device_node)
 }
 
 void disk_manager::display_filevaulted_message_with_disk_name()
-{
+{ // show file vaulted message with parallel of disk name
     QStringList filevalued_disk_list;
     for(int row = 0; row < ui->tableWidget_disk_list->rowCount(); row++)
     {
@@ -882,7 +882,7 @@ void disk_manager::display_filevaulted_message_with_disk_name()
 }
 
 void disk_manager::prepare_dialog_for_tdm_decryption_attempt()
-{
+{ // prepare dialog ui for tdm decryption
     dialog_tdm_decrypt = new QDialog(this);
     dialog_tdm_decrypt->setFixedSize(QSize(400, 125));
     dialog_tdm_decrypt->setWindowFlags(Qt::Window | Qt::WindowTitleHint | Qt::CustomizeWindowHint);
@@ -967,7 +967,7 @@ void disk_manager::prepare_dialog_for_tdm_decryption_attempt()
 }
 
 void disk_manager::slot_pushbutton_tdm_cancel_clicked(bool status)
-{
+{ // tdm cancel button clicked
     Q_UNUSED(status)
     bool_tdm_decrption_cancel_clicked = true;
 
@@ -976,7 +976,7 @@ void disk_manager::slot_pushbutton_tdm_cancel_clicked(bool status)
 }
 
 void disk_manager::on_pushButton_arbitration_clicked()
-{
+{ // arbitration button clicked turn on/off
     if(bool_mount_blocker_process_running)
     {
         pub_stop_disk_arbitration();
@@ -990,7 +990,7 @@ void disk_manager::on_pushButton_arbitration_clicked()
 }
 
 void disk_manager::pub_set_disk_arbitration_label_status(QString status_str)
-{
+{ // arbitration status
     ui->pushButton_arbitration->setText(status_str);
 }
 

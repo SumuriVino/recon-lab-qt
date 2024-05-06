@@ -35,7 +35,7 @@ void detach_window_manager::pub_set_plugin_name_table_record_no(QString plugin, 
 }
 
 void detach_window_manager::pub_open_in_detach_clicked(QString metadata_value, QString hex_file_path, QString preview_path, int preview_index,QString searched_keyword, QString source_count_name)
-{
+{ // most of detach function not in use
     recon_static_functions::app_debug(" :START",Q_FUNC_INFO);
 
     struct_detach_window_object_info struct_detach_info_obj;
@@ -256,7 +256,7 @@ void detach_window_manager::pub_open_in_detach_clicked(QString metadata_value, Q
 }
 
 void detach_window_manager::pub_detach_content_change(QString metadata_value, QString hex_file_path, QString preview_path, int preview_index,QString searched_keyword,QString source_count_name)
-{
+{ // not in use
     for(int i = 0; i < list_detach_window_list.size(); i++)
     {
         struct_detach_window_object_info struct_detach_info_obj;

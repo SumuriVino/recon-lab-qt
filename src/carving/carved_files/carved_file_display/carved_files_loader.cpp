@@ -36,7 +36,7 @@ void carved_files_loader::pub_set_carved_files_display_db_path(QString db_path)
 }
 
 void carved_files_loader::populate_data_in_table()
-{
+{ // populate data in tablewidget from database
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
@@ -151,7 +151,7 @@ void carved_files_loader::populate_data_in_table()
 
 
 void carved_files_loader::pub_create_custom_ui()
-{
+{ //create custom tab and header ui
     recon_static_functions::app_debug("Start " , Q_FUNC_INFO);
 
 
@@ -171,7 +171,7 @@ void carved_files_loader::pub_create_custom_ui()
 }
 
 int carved_files_loader::populate_data_in_tablewidget(QSqlDatabase &received_db_obj, QSqlQuery &query_index)
-{
+{ // load/populate data in table widget
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     if(display_header_name_list.isEmpty())
@@ -491,7 +491,7 @@ int carved_files_loader::populate_data_in_tablewidget(QSqlDatabase &received_db_
 }
 
 void carved_files_loader::contextMenuEvent(QContextMenuEvent *evt)
-{
+{ // create menu on reight click
     if(evt == NULL)
         return;
 
@@ -583,7 +583,7 @@ void carved_files_loader::contextMenuEvent(QContextMenuEvent *evt)
 }
 
 void carved_files_loader::tablewidget_general_clicked(int row,int column)
-{
+{ //generally clicked on tablewidget of any record
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     if(row < 0 || column < 0)
@@ -623,7 +623,7 @@ void carved_files_loader::tablewidget_general_clicked(int row,int column)
 }
 
 void carved_files_loader::update_tags_value(QString tag_data,QString colour)
-{
+{ //update tags/value
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int tag_coulumn_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_TAG_QString,0);
@@ -680,7 +680,7 @@ void carved_files_loader::update_tags_value(QString tag_data,QString colour)
 }
 
 void carved_files_loader::update_notes_value(QString text, int current_row)
-{
+{ // updates notes value in database
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     if(current_row < 0)
@@ -749,7 +749,7 @@ void carved_files_loader::update_notes_value(QString text, int current_row)
 }
 
 void carved_files_loader::action_remove_note_triggered()
-{
+{ // action remove notes clicked from menu
     QModelIndexList selection_model_list = m_tablewidget_obj->selectionModel()->selectedRows();
 
     int notes_column_index = display_column_data_type_list.indexOf(MACRO_CSV_TEMPLATE_DATATYPE_NOTES_ICON_QString,0);
@@ -792,7 +792,7 @@ void carved_files_loader::action_remove_note_triggered()
 
 
 void carved_files_loader::action_open_full_detailed_info_triggered()
-{
+{ // action open full detail info clicked
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     if(m_tablewidget_obj->currentRow() < 0)
@@ -829,7 +829,7 @@ void carved_files_loader::action_open_full_detailed_info_triggered()
 }
 
 void carved_files_loader::action_open_detach_detailed_info_triggered()
-{
+{ // not in use
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     //    if(m_tablewidget_obj->currentRow() < 0)
@@ -851,7 +851,7 @@ void carved_files_loader::action_open_detach_detailed_info_triggered()
 }
 
 void carved_files_loader::action_export_triggered()
-{
+{ // action export clicked from menu
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     export_rsync_obj->set_rsync_copy_essentials(Q_FUNC_INFO);
@@ -935,7 +935,7 @@ void carved_files_loader::action_export_triggered()
 }
 
 int carved_files_loader::insert_record_in_table_display(QString database_path , QString db_cmd , QStringList tab_list_from_csv, QStringList addbindvalue_list)
-{
+{ //insert records in table view
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     if(tab_list_from_csv.isEmpty())
@@ -1108,7 +1108,7 @@ int carved_files_loader::insert_record_in_table_display(QString database_path , 
 }
 
 void carved_files_loader::update_bookmark_value(QString status,int row, int column)
-{
+{ //update bookmarks value
     if(column != 0)
         return;
 
@@ -1167,7 +1167,7 @@ void carved_files_loader::update_bookmark_value(QString status,int row, int colu
 
 
 void carved_files_loader::slot_pushbutton_search_clicked()
-{
+{ // push button search clicked slot
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString keyword = lineEdit_search->text().trimmed();
@@ -1399,7 +1399,7 @@ void carved_files_loader::slot_pushbutton_search_clicked()
 }
 
 void carved_files_loader::add_applications_to_open_application_menu()
-{
+{ //application menu to open that record with any other system app
     QString config_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_RECON_Library_Version_Dir_Path_Recon_Configuration_QString).toString() + QString("recon_configuration.sqlite");
 
     QStringList application_list;
@@ -1458,7 +1458,7 @@ void carved_files_loader::add_applications_to_open_application_menu()
 }
 
 void carved_files_loader::action_add_note_triggered()
-{
+{ //action add notes clicked from right click menu
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     m_tablewidget_obj->blockSignals(true);
@@ -1473,7 +1473,7 @@ void carved_files_loader::action_add_note_triggered()
 }
 
 void carved_files_loader::slot_handle_bookmark_on_exif_or_apple_metdata_tree_item_clicked_from_open_in_detail(QString record_str, QString bookmark_status)
-{
+{ //book mark meta data info of exif and apple meta data handle
     if(bookmark_status == QString(MACRO_FALSE_VALUE_NUMERIC_QString))
     {
         pub_remove_main_record_bookmark_from_detailed_info_triggered(record_str);

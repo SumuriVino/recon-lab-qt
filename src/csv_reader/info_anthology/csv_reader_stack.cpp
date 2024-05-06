@@ -1,7 +1,7 @@
 #include "csv_reader/csv_reader.h"
 
 void csv_reader::generate_tableinfo_stack()
-{
+{ //
     for(int i = 0 ; i < master_list_stack.size() ; i++)
     {
         if(i % 10 == 0)

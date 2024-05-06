@@ -17,6 +17,6 @@ detach_detailed_information::~detach_detailed_information()
 }
 
 void detach_detailed_information::closeEvent(QCloseEvent *eve)
-{
+{ // close deattach window if deattach
     emit close_detach_window(this);
 }

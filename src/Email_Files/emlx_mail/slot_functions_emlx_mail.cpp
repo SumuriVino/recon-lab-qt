@@ -2,7 +2,7 @@
 #include "ui_emlx_mail.h"
 
 void emlx_mail::slot_file_system_menu_right_clicked(QAction* current_clicked_action)
-{
+{ // slot of right click actons
 
     if(current_clicked_action->text() == QString(MACRO_Generic_Right_Click_Add_Bookmark))
     {
@@ -54,7 +54,7 @@ void emlx_mail::slot_file_system_menu_right_clicked(QAction* current_clicked_act
 }
 
 void emlx_mail::action_bookmark_triggered()
-{
+{ // action add bookmark clicked
     QModelIndexList selection_model_list = ui->tableWidget_emails->selectionModel()->selectedRows();
 
     QStringList record_num_list;
@@ -123,7 +123,7 @@ void emlx_mail::action_bookmark_triggered()
 }
 
 void emlx_mail::action_remove_bookmarks_triggered()
-{
+{ // action remove bookmark clicked
     QModelIndexList selection_model_list = ui->tableWidget_emails->selectionModel()->selectedRows();
 
     QStringList record_num_list;
@@ -226,7 +226,7 @@ void emlx_mail::slot_act_create_tags()
 }
 
 void emlx_mail::create_tags_submenu()
-{
+{ // create tags submenu for tags adding/removing
     recon_static_functions::app_debug(" -Starts",Q_FUNC_INFO);
 
     if(sub_menu_tags == NULL)
@@ -294,7 +294,7 @@ void emlx_mail::create_tags_submenu()
 
 
 void emlx_mail::slot_add_tags(QString tag_data, QString colour)
-{
+{ // slot of add tags in right click
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QModelIndexList selection_model_list = ui->tableWidget_emails->selectionModel()->selectedRows();
@@ -340,7 +340,7 @@ void emlx_mail::slot_add_tags(QString tag_data, QString colour)
 }
 
 void emlx_mail::action_remove_tag_triggered()
-{
+{ // action remove tags clicking on right click
     QModelIndexList selection_model_list = ui->tableWidget_emails->selectionModel()->selectedRows();
 
     QStringList record_num_list;
@@ -425,7 +425,7 @@ void emlx_mail::slot_abouttoshow_tags_in_submenu()
 }
 
 void emlx_mail::slot_tablewidget_goto_record(QString record )
-{
+{ // slot of go to record action on tablewidget on right click
 
 
     if(record == "")
@@ -461,12 +461,12 @@ void emlx_mail::slot_tablewidget_goto_record(QString record )
 }
 
 void emlx_mail::slot_tags_submenu_clicked(QAction* current_clicked_action)
-{
+{ // tyags submenu clicked
     action_submenu_tag_triggered(current_clicked_action->text());
 }
 
 void emlx_mail::action_submenu_tag_triggered(QString tag_name)
-{
+{ // action submenu tags clicked on right click
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     tag_name = tag_name.trimmed();
@@ -491,7 +491,7 @@ void emlx_mail::action_submenu_tag_triggered(QString tag_name)
 }
 
 QMenu* emlx_mail::create_right_click_submenu(QString submenuStr ,QMenu *mainMenu , QMenu *subMenu)
-{
+{ // create right click submenu
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     subMenu = mainMenu->addMenu(tr(submenuStr.toLocal8Bit().data()));
@@ -506,7 +506,7 @@ QMenu* emlx_mail::create_right_click_submenu(QString submenuStr ,QMenu *mainMenu
 }
 
 void emlx_mail::update_tags_in_tag_serach(QStringList record_no_list , QString tag_data)
-{
+{ // update tags in tag search database
 
     recon_static_functions::app_debug(" -Start",Q_FUNC_INFO);
 
@@ -607,7 +607,7 @@ void emlx_mail::update_tags_in_tag_serach(QStringList record_no_list , QString t
 }
 
 void emlx_mail::update_bookmarks_in_bookmark_serach(QStringList record_no_list, QStringList tag_name_list)
-{
+{ // update bookmark in bookmarks database according to status
 
     recon_static_functions::app_debug(" -Start",Q_FUNC_INFO);
 
@@ -706,7 +706,7 @@ void emlx_mail::update_bookmarks_in_bookmark_serach(QStringList record_no_list, 
 
 
 void emlx_mail::delete_tags_from_tag_serach_other_than_current_tag_and_for_current_record(QString current_tag , QString record_no , QString plugin_name , QString tab_name)
-{
+{ // delete tags from database when this function calls
     QString current_tag_name = current_tag;
     QString tag_index_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Tag_Search_In_Result_QString).toString() + "index_tag_search.sqlite";
     QString command = "Select tag_db_name from tag_search_index";
@@ -738,7 +738,7 @@ void emlx_mail::delete_tags_from_tag_serach_other_than_current_tag_and_for_curre
 }
 
 void emlx_mail::slot_update_tags_submenu(bool status, QString new_tag, QString tag_colour)
-{
+{ // update tags submenu
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     if(new_tag == MACRO_Generic_Right_Click_Create_Tag)
@@ -763,7 +763,7 @@ void emlx_mail::slot_update_tags_submenu(bool status, QString new_tag, QString t
 
 
 void emlx_mail::slot_right_click_menu_raw_data_triggered(QAction* current_clicked_action)
-{
+{ // raw data clicked
     if(current_clicked_action->text() == QString("Select All"))
     {
         ui->textBrowser_raw_data->selectAll();
@@ -771,6 +771,6 @@ void emlx_mail::slot_right_click_menu_raw_data_triggered(QAction* current_clicke
 }
 
 void emlx_mail::slot_sub_menu_raw_data_tags_clicked(QAction *action)
-{
+{ // submenu raw data tags clicked
     action_submenu_raw_data_tag_triggered(action->text());
 }

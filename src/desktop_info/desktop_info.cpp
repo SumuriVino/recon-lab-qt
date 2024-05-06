@@ -22,7 +22,7 @@ struct_global_desktop_info desktop_info::pub_get_desktop_info(QString caller_fun
 
 
 void desktop_info::pub_update_desktop_password(bool mstatus, QString caller_func)
-{
+{ // update examiner desktop password in structure for our use
     recon_static_functions::app_debug(recon_static_functions::prepare_callerfun(caller_func) + " start " , Q_FUNC_INFO);
 
     recon_static_functions::clear_variables_desktop_password(st_desktop_info);
@@ -54,7 +54,7 @@ void desktop_info::pub_update_desktop_password(bool mstatus, QString caller_func
 }
 
 void desktop_info::update_python_info(struct_global_desktop_info &mobj)
-{
+{ // update python information
     mobj.python_info = QString("Python executable path could not be found by RECON.");
     mobj.lz4_info = QString("lz4 could not be found by RECON.");
     mobj.enum34_info = QString("enum34 could not be found by RECON.");
@@ -145,7 +145,7 @@ void desktop_info::update_python_info(struct_global_desktop_info &mobj)
 }
 
 void desktop_info::pub_fill_desktop_info_general(QString caller_func)
-{
+{ // Fill some of general desktop information in structure and database
     recon_static_functions::app_debug(recon_static_functions::prepare_callerfun(caller_func) + " Start " , Q_FUNC_INFO);
 
     recon_static_functions::clear_variables_desktop_general(st_desktop_info);
@@ -289,7 +289,7 @@ void desktop_info::pub_fill_desktop_info_general(QString caller_func)
 }
 
 bool desktop_info::bool_consistency_requirements_satisfied()
-{
+{ // packages needed to install requirement satisfied or not boolean
     consistency_requirements_failed_list.clear();
 
     QString osxfuse_info = st_desktop_info.osxfuse_info;
