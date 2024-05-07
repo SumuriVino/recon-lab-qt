@@ -51,7 +51,7 @@ void export_hashes_as_vic::pub_set_export_file_details(QList<struct_global_expor
 }
 
 void export_hashes_as_vic::prepare_essentials()
-{
+{ // prepare some essentials things
     application_name    = recon_static_functions::get_app_name();
     application_version = recon_static_functions::get_app_version();
 
@@ -72,7 +72,7 @@ void export_hashes_as_vic::prepare_essentials()
 }
 
 void export_hashes_as_vic::pub_start_vic_export_general()
-{
+{ // start vic export
     recon_static_functions::app_debug(" -Start", Q_FUNC_INFO);
 
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
@@ -263,7 +263,7 @@ void export_hashes_as_vic::pub_start_vic_export_general()
 }
 
 void export_hashes_as_vic::pub_start_vic_export_1_3()
-{
+{ // start vix export 1.3
     recon_static_functions::app_debug(" -Start", Q_FUNC_INFO);
     QStringList exported_file_path_list;
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
@@ -433,7 +433,7 @@ void export_hashes_as_vic::pub_start_vic_export_1_3()
 }
 
 void export_hashes_as_vic::pub_start_vic_export_2_0()
-{
+{ // start vic export 2.0
     recon_static_functions::app_debug(" -Start", Q_FUNC_INFO);
 
     QStringList exported_file_path_list;
@@ -616,7 +616,7 @@ void export_hashes_as_vic::pub_start_vic_export_2_0()
 }
 
 bool export_hashes_as_vic::create_dir_path(QString dir_path)
-{
+{ // create destination dir path
     if(dir_path.trimmed().isEmpty())
         return false;
 
@@ -633,7 +633,7 @@ bool export_hashes_as_vic::create_dir_path(QString dir_path)
 }
 
 export_hashes_as_vic::struct_file_hashes export_hashes_as_vic::calculate_hashes(QString file_path)
-{
+{ // calculate hashes
     struct_file_hashes hashes_obj;
 
     hashes_obj.filepath  = file_path;
@@ -698,7 +698,7 @@ export_hashes_as_vic::struct_file_hashes export_hashes_as_vic::calculate_hashes(
 }
 
 void export_hashes_as_vic::write_data_in_json_format_according_to_version(QString version_str)
-{
+{ // write data in json format according to vic version
     QString start_with_version_str;
     if(version_str == QString("1.1") || version_str == QString("1.2") || version_str == QString("1.3"))
     {
@@ -723,7 +723,7 @@ void export_hashes_as_vic::write_data_in_json_format_according_to_version(QStrin
 }
 
 void export_hashes_as_vic::export_hashes_for_vic_version_1_1()
-{
+{ // export hashes for vic 1.1
     QJsonArray json_media_array;
 
     int tmp_cnt = 0;
@@ -830,7 +830,7 @@ void export_hashes_as_vic::export_hashes_for_vic_version_1_1()
 }
 
 void export_hashes_as_vic::export_hashes_for_vic_version_1_2()
-{
+{ // export hashes for vic version 1.2
     QJsonArray json_media_array;
     int tmp_cnt = 0;
     for(int count = 0; count < hashes_struct_list.size(); count++)
@@ -968,7 +968,7 @@ void export_hashes_as_vic::export_hashes_for_vic_version_1_2()
 }
 
 void export_hashes_as_vic::export_hashes_for_vic_version_1_3()
-{
+{ // export hashes for vic version 1.3
     QJsonArray json_media_array;
     int tmp_cnt = 0;
     for(int count = 0; count < hashes_struct_list.size(); count++)
@@ -1112,7 +1112,7 @@ void export_hashes_as_vic::export_hashes_for_vic_version_1_3()
 }
 
 void export_hashes_as_vic::export_hashes_for_vic_version_2_0()
-{
+{ // export hashes for vic version 2.0
     QJsonArray json_media_array;
     int tmp_cnt = 0;
     for(int count = 0; count < hashes_struct_list.size(); count++)
@@ -1253,7 +1253,7 @@ void export_hashes_as_vic::export_hashes_for_vic_version_2_0()
 }
 
 void export_hashes_as_vic::slot_message_box_yes_no_clicked(bool yes_no_clicked)
-{
+{ // yes/no message during export
     bool_message_box_yes_button_clicked = yes_no_clicked;
 
     if(bool_message_box_yes_button_clicked)
@@ -1262,7 +1262,7 @@ void export_hashes_as_vic::slot_message_box_yes_no_clicked(bool yes_no_clicked)
     }
 }
 void export_hashes_as_vic::point_to_export_dir(QString path)
-{
+{ // point to export directory when export done
     QStringList arg;
     path.remove("Attachment/");
     arg << "-R" << path;
@@ -1271,7 +1271,7 @@ void export_hashes_as_vic::point_to_export_dir(QString path)
 }
 
 void export_hashes_as_vic::on_pushButton_export_clicked()
-{
+{ // export button clicked
     if(ui->lineEdit_file_path->text().isEmpty())
     {
         vic_export_dir_filepath = ui->lineEdit_file_path->placeholderText();
@@ -1283,12 +1283,12 @@ void export_hashes_as_vic::on_pushButton_export_clicked()
 }
 
 void export_hashes_as_vic::on_pushButton_cancel_clicked()
-{
+{ // hide when cancel button clicked
     hide();
 }
 
 void export_hashes_as_vic::on_pushButton_select_clicked()
-{
+{ // select button clicked
     file_dialog_obj.setFileMode(QFileDialog::Directory);
     if(file_dialog_obj.exec())
     {

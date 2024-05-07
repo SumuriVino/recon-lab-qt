@@ -18,7 +18,7 @@ thread_file_search::~thread_file_search()
 }
 
 void thread_file_search::run()
-{
+{ // thread of file search start from here, it will start searching and store that info in database. Also progress bar, counter for display we show from here
     recon_static_functions::app_debug("Start " , Q_FUNC_INFO);
 
     bool_cancel_extraction = false;
@@ -149,7 +149,7 @@ void thread_file_search::run()
 }
 
 void thread_file_search::fill_list_for_apple_metadata_filters_info(QString source_count_name)
-{
+{ // fill list for apple metadata filters into destination database
     recon_static_functions::app_debug("Start " , Q_FUNC_INFO);
 
     if(mdfind_condition_str.trimmed().isEmpty())
@@ -211,7 +211,7 @@ void thread_file_search::fill_list_for_apple_metadata_filters_info(QString sourc
 }
 
 void thread_file_search::insert_searched_info_into_file_search_db(QSqlQuery &query_insert)
-{
+{ // insert the searched data in file search database
     for(int i = 0; i < list_int_with_source_count_name.size(); i++)
     {
         if(bool_cancel_extraction)
@@ -244,7 +244,7 @@ void thread_file_search::insert_searched_info_into_file_search_db(QSqlQuery &que
 }
 
 void thread_file_search::fill_list_for_spotlight_filters_info(QSqlQuery &query_select, QString fs_extration_path)
-{
+{ // fill list for spotlight filters info
     recon_static_functions::app_debug("Start " , Q_FUNC_INFO);
 
     QString combined_path = recon_static_functions::get_complete_file_path(fs_extration_path, parent_dir_path, Q_FUNC_INFO);
@@ -529,7 +529,7 @@ void thread_file_search::fill_list_for_spotlight_filters_info(QSqlQuery &query_s
 //}
 
 void thread_file_search::update_total_records_extracted_in_file_search_index_db()
-{
+{ // update total records extracted in file search index db
     recon_static_functions::app_debug("Start  " + current_search_label_name,Q_FUNC_INFO);
 
     QString db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_File_Search_In_Result_QString).toString() + "index_file_search.sqlite";
@@ -544,7 +544,7 @@ void thread_file_search::update_total_records_extracted_in_file_search_index_db(
 }
 
 QString thread_file_search::get_query_for_date_search_in_db(QString date_val, QString colume_name)
-{
+{ // get query for date search in db
     recon_static_functions::app_debug("Start " , Q_FUNC_INFO);
 
     QString command;
@@ -602,9 +602,9 @@ QString thread_file_search::get_query_for_date_search_in_db(QString date_val, QS
 
     recon_static_functions::app_debug("End " , Q_FUNC_INFO);
 }
-
+// function name clearly tells below what's there work
 QString thread_file_search::get_additional_query_for_this_year_timestamp(QString colume_name)
-{
+{ // get additional query for this year timestamp
     QString command;
 
     QDate current_date = QDate::currentDate();

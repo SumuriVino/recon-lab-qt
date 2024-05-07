@@ -8,7 +8,7 @@ thread_exif_metadata_search::thread_exif_metadata_search(QWidget *parent)
 
 
 void thread_exif_metadata_search::run()
-{
+{ // exif metadata search start from here with all the filters and we also store those info in database
     recon_static_functions::app_debug(" Start" , Q_FUNC_INFO);
 
     bool_cancel_extraction = false;
@@ -139,7 +139,7 @@ void thread_exif_metadata_search::run()
 }
 
 void thread_exif_metadata_search::pub_set_search_command_sources_search_label(QString command,QString where_statement, QStringList src_list, QString srch_label)
-{
+{ // whatever we name to the search also create the db with the same name to store the info
     search_command = command;
     where_condition_command = where_statement;
 
@@ -164,7 +164,7 @@ void thread_exif_metadata_search::pub_cancel_extraction()
 }
 
 void thread_exif_metadata_search::insert_file_search_config_into_index_db()
-{
+{ // insert file search configuration and processed source into database
     recon_static_functions::app_debug("START ",Q_FUNC_INFO);
     QString file_search_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Exif_Metadata_Search_In_Result_QString).toString() + "index_exif_metadata_search.sqlite";
     QString command = "INSERT INTO exif_metadata_search_index(search_label_name, search_db_file_name,processed_sources) "
@@ -202,7 +202,7 @@ void thread_exif_metadata_search::insert_file_search_config_into_index_db()
 
 
 QString thread_exif_metadata_search::create_file_search_destination_db()
-{
+{ // create file search destination database
 
     QString db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Exif_Metadata_Search_In_Result_QString).toString() + search_db_name;
 
@@ -219,7 +219,7 @@ QString thread_exif_metadata_search::create_file_search_destination_db()
 }
 
 void thread_exif_metadata_search::update_total_records_extracted_in_file_search_index_db()
-{
+{ // update total records in database in file search index database
     recon_static_functions::app_debug("Start  " + search_label,Q_FUNC_INFO);
 
     QString db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Exif_Metadata_Search_In_Result_QString).toString() + "index_exif_metadata_search.sqlite";

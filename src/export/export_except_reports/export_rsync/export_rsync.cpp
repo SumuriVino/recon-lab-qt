@@ -22,7 +22,7 @@ void export_rsync::slot_proc_rsync_finished(int)
 }
 
 void export_rsync::pub_cancel_rsync_copy(QString caller_func)
-{
+{ // cancel rsync copy
     recon_static_functions::debug_intensive(recon_static_functions::prepare_callerfun(caller_func) + " start ", Q_FUNC_INFO);
 
     bool_cancel_rsync_copy = true;
@@ -34,7 +34,7 @@ void export_rsync::pub_cancel_rsync_copy(QString caller_func)
 
 
 void export_rsync::set_rsync_copy_essentials(QString caller_func)
-{
+{ // set rsync copy essentials
     recon_static_functions::debug_intensive(recon_static_functions::prepare_callerfun(caller_func) + " start " , Q_FUNC_INFO);
 
     bool_cancel_rsync_copy = false;
@@ -51,7 +51,7 @@ void export_rsync::set_rsync_copy_essentials(QString caller_func)
 }
 
 QString export_rsync::pub_copy_file_using_rsync(QString src_path, QString dest_path, int arg_status)
-{
+{ // copy file using rsync lib which is bit fast & don't give any warning or error as compare to manually copy
     recon_static_functions::app_debug("Start" , Q_FUNC_INFO);
 
     if(QFileInfo(dest_path).exists())
@@ -93,7 +93,7 @@ QString export_rsync::pub_copy_file_using_rsync(QString src_path, QString dest_p
 }
 
 QString export_rsync::pub_copy_file_using_rsync_for_export_as_folder(QString src_path, QString dest_location , QString displayed_file_name , QString caller_func)
-{
+{ // copy as a folder using rsync
     recon_static_functions::debug_intensive(recon_static_functions::prepare_callerfun(caller_func) + " start " , Q_FUNC_INFO);
 
     QString exported_file_path;
@@ -157,7 +157,7 @@ QString export_rsync::pub_copy_file_using_rsync_for_export_as_folder(QString src
 }
 
 QString export_rsync::pub_get_source_path_to_export_fs_record_by_dbreference(struct_global_export_file_system_record rcv_obj , QSqlDatabase &destination_db, QString caller_func)
-{
+{ // get complete source path to export from fs record
     recon_static_functions::debug_intensive(recon_static_functions::prepare_callerfun(caller_func) + " start ", Q_FUNC_INFO);
 
     QString filepath_to_export;
@@ -266,7 +266,7 @@ QString export_rsync::pub_get_source_path_to_export_fs_record_by_dbreference(str
 }
 
 QString export_rsync::pub_get_source_path_to_export_fs_record_by_dbpath(struct_global_export_file_system_record obj , QString caller_func)
-{
+{ // get complete source from fs record for exporting
     recon_static_functions::debug_intensive(recon_static_functions::prepare_callerfun(caller_func) + " start ", Q_FUNC_INFO);
 
     QString filepath_to_export;

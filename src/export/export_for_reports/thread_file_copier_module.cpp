@@ -10,7 +10,7 @@ thread_file_copier_module::thread_file_copier_module(QObject *parent) :
 }
 
 void thread_file_copier_module::run()
-{
+{ // run thread and file copy start here to export
     stop_thread = false;
 
     int copy_counter = 0;

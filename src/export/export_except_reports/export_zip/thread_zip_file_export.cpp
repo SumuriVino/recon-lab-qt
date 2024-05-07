@@ -6,7 +6,7 @@ thread_zip_file_export::thread_zip_file_export()
 }
 
 void thread_zip_file_export::run()
-{
+{ // run thread for exporting as a zip file
 
 
     QuaZip zip(zip_file_path);
@@ -34,7 +34,7 @@ void thread_zip_file_export::run()
 }
 
 void thread_zip_file_export::pub_set_essentials(QString zip_fpath, QList<struct_global_file_for_zip_export> list, bool bool_enc_zip, QString passwd_str)
-{
+{ // set essentials database paths
     zip_file_path = zip_fpath;
 
     st_file_export_list_obj = list;
@@ -54,7 +54,7 @@ void thread_zip_file_export::pub_cancel_export()
 
 
 bool thread_zip_file_export::compressFile(QuaZip* zip, QString fileName, QString fileDest)
-{
+{ // compress file or source in zip format
     if (!zip) return false;
     if (zip->getMode()!=QuaZip::mdCreate &&
             zip->getMode()!=QuaZip::mdAppend &&
@@ -94,7 +94,7 @@ bool thread_zip_file_export::compressFile(QuaZip* zip, QString fileName, QString
 
 
 bool thread_zip_file_export::copyData(QIODevice &inFile, QIODevice &outFile)
-{
+{ // copy data on destination folder
     qint64 counter = 0;
     while (!inFile.atEnd()) {
         char buf[4096];

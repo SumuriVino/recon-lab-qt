@@ -5,7 +5,7 @@
 
 
 QString exif_data_image_files::extract_exif_data_image_files(QString file_path , struct_global_exif_data_parsed_data &exif_data_parsed_obj)
-{
+{ // extract image files
 
     ///==========================================================================///
 
@@ -1058,7 +1058,7 @@ void exif_data_image_files::check_metadata_keys_exist_in_nsdictionary(void *ptr_
 
 
 QStringList exif_data_image_files::extract_all_available_exif_data_image_files(QString file_path)
-{
+{ // extract image files
 
     ///==========================================================================///
 
@@ -1282,7 +1282,7 @@ QStringList exif_data_image_files::extract_all_available_exif_data_image_files(Q
 
 }
 QMap<QString, QString> exif_data_image_files::pub_extract_specific_attributes(QString file_path, QStringList received_attr_list)
-{
+{ // extract exif data attributes
     NSString *target_file = file_path.toNSString();
 
 

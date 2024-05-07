@@ -74,7 +74,7 @@ void decompress_file_system::pub_set_record_no_for_decompression(QString record_
 }
 
 QString decompress_file_system::start_run()
-{
+{ // decompress file system compressed file when click on decompress button on right click, store those info in db
     recon_static_functions::app_debug(" start " ,Q_FUNC_INFO);
 
     if(!destination_db_obj.open())
@@ -305,7 +305,7 @@ QString decompress_file_system::start_run()
 }
 
 void decompress_file_system::check_for_other_sources(QString display_path, QString info_path)
-{
+{ // check for ios sources for decompression
     recon_static_functions::app_debug(" start " ,Q_FUNC_INFO);
 
     QString start_point = QString::number(enum_GLOBAL_COMMON_RECON_AND_ARTIFACT_FilePath_StartFrom_Result);
@@ -386,7 +386,7 @@ void decompress_file_system::check_for_other_sources(QString display_path, QStri
 
 }
 
-
+// update record count for case tree
 void decompress_file_system::update_record_count_for_file_system_in_case_tree()
 {
     recon_static_functions::app_debug(" start " ,Q_FUNC_INFO);

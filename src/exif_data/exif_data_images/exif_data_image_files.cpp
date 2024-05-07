@@ -10,7 +10,7 @@ exif_data_image_files::~exif_data_image_files()
 
 
 QString exif_data_image_files::pub_get_exif_data_images(QString filepath , struct_global_exif_data_parsed_data &exif_data_parsed_obj)
-{
+{ // extract images
     QString image_exif_with_xml = extract_exif_data_image_files(filepath , exif_data_parsed_obj);
 
    return image_exif_with_xml;
@@ -18,7 +18,7 @@ QString exif_data_image_files::pub_get_exif_data_images(QString filepath , struc
 }
 
 QStringList exif_data_image_files::pub_get_all_available_exif_data_images(QString filepath)
-{
+{ // extract images
     QStringList image_exif_list = extract_all_available_exif_data_image_files(filepath);
 
     return image_exif_list;

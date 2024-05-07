@@ -11,7 +11,7 @@ exif_data_document_files::~exif_data_document_files()
 }
 
 QStringList exif_data_document_files::pub_get_all_available_exif_data_documents(QString filepath)
-{
+{ // extract pdf files
     return extract_all_available_exif_data_pdf_files(filepath);
 }
 
@@ -21,7 +21,7 @@ QString exif_data_document_files::pub_get_exif_data_documents(QString filepath ,
 }
 
 QString exif_data_document_files::convert_numeric_timestamp_to_readable_for_display(QString epch_str)
-{
+{ // convert epoch timestamp to human readable mode
     QString display_str;
 
     if(epch_str.isEmpty())

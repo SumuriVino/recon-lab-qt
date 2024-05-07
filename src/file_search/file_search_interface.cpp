@@ -51,7 +51,7 @@ void file_search_interface::pub_set_file_system_source_count_name(QString source
 
 
 void file_search_interface::pub_create_ui()
-{
+{ // set search interface where we set multiple searches widgets on this interface like regular search, spotlight search, metadata etc.
     stack_widget_filters = new QStackedWidget(this);
 
     QVBoxLayout *vlayout_main = new QVBoxLayout(this);
@@ -87,7 +87,7 @@ void file_search_interface::pub_create_ui()
 
     setLayout(vlayout_main);
 }
-
+// below we have set ui for their searches section
 void file_search_interface::set_ui_for_regular_file_search()
 {
     regular_filters_obj = new regular_filters(this);

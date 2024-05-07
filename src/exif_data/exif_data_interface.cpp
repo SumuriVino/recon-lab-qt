@@ -22,7 +22,7 @@ void exif_data_interface::pub_set_result_dir(QString result_dir)
 }
 
 QString exif_data_interface::pub_extract_and_save_exif_data(QString mime_type, QString file_path, qint64 fs_record_no , QSqlDatabase &exif_data_db, struct_global_exif_data_parsed_data &exif_data_parsed_obj,QString display_file_path)
-{
+{ // extract exif data and save the info in database
     recon_static_functions::debug_intensive(" -Starts " , Q_FUNC_INFO);
 
     QString exif_data_str;
@@ -97,7 +97,7 @@ QString exif_data_interface::pub_extract_and_save_exif_data(QString mime_type, Q
 }
 
 void exif_data_interface::pub_set_exif_data_in_case_tree_display(QString file_path, QString record_no, QString db_path, m_treewidget *tree_exif_metadata_display, QString plugin_name, QString table_name, QString source_count_name,QString display_file_path)
-{
+{ // set exif data in case tree for display
     recon_static_functions::app_debug(" start " , Q_FUNC_INFO);
 
     QTreeWidgetItem* header = tree_exif_metadata_display->headerItem();
@@ -186,7 +186,7 @@ void exif_data_interface::pub_set_exif_data_in_case_tree_display(QString file_pa
 
 
 void exif_data_interface::slot_tree_metadata_exif_data_item_clicked(QTreeWidgetItem *item, int m_column)
-{
+{ // exif data cliked in metadata
     QString tablename = item->text(enum_global_exif_data_interface_exif_data_Plugin_Table_Name);
     QString db_path = item->text(enum_global_exif_data_interface_exif_data_Plugin_Db_Path);
     QString rec_no = item->text(enum_global_exif_data_interface_exif_data_Plugin_Record_no);
@@ -240,7 +240,7 @@ void exif_data_interface::slot_tree_metadata_exif_data_item_clicked(QTreeWidgetI
 
 
 bool exif_data_interface::check_exif_parent_already_exists(QString category_parent, QTreeWidget *tree_widget_obj)
-{
+{ // check aprent of exif exist or not
     QList<QTreeWidgetItem*> clist = tree_widget_obj->findItems(category_parent, Qt::MatchContains|Qt::MatchRecursive, 0);
 
     if(clist.isEmpty())
@@ -250,7 +250,7 @@ bool exif_data_interface::check_exif_parent_already_exists(QString category_pare
 }
 
 QStringList exif_data_interface::get_exif_metadata_key_value_for_file_system(QString record_no, QString source_count_name)
-{
+{ // get exif metadata values for file system to store in db and display in metadata
     recon_static_functions::app_debug("start" , Q_FUNC_INFO);
     QStringList ext_attribute_list;
 

@@ -7,7 +7,7 @@
 
 
 QString exif_data_audio_video::extract_exif_data_audio_video_files(QString filepath)
-{
+{ // extract audio video files
 
     ///==========================================================================///
 
@@ -327,7 +327,7 @@ QString exif_data_audio_video::extract_exif_data_audio_video_files(QString filep
 }
 
 QStringList exif_data_audio_video::extract_all_available_exif_data_audio_video_files(QString filepath)
-{
+{ // extract audio video files
 
     ///==========================================================================///
 

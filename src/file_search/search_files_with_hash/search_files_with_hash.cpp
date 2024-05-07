@@ -51,7 +51,7 @@ void search_files_with_hash::pub_refresh_tableWidget()
 }
 
 void search_files_with_hash::pub_search_files_having_same_hash(QString hash_md5, QString record, QString source_count_name, QString com_file_path)
-{
+{ // search files which has same hash value
     bool search_result_found = false;
 
     display_loading_progress_bar_obj->pub_set_label_messsge("Please wait....");
@@ -148,7 +148,7 @@ void search_files_with_hash::pub_search_files_having_same_hash(QString hash_md5,
 
 
 void search_files_with_hash::display_list_of_files_having_same_hash(QString record, QString file_name, QString file_path, QString source_name, QString hash_md5, QString source_c_name, QString os_scheme)
-{
+{ //  display list of files on tablewidget which has the same hash value
     int row  = ui->tableWidget_extract_files_with_same_hash->rowCount();
 
     if(row < 0)
@@ -193,7 +193,7 @@ void search_files_with_hash::display_list_of_files_having_same_hash(QString reco
 }
 
 void search_files_with_hash::slot_open_in_source_link_clicked(QString curr_row)
-{
+{ // action to open in source link clicked
     curr_row = curr_row.trimmed();
     if(curr_row.isEmpty())
         return;

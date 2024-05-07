@@ -42,7 +42,7 @@ exif_metadata_filters::~exif_metadata_filters()
 }
 
 void exif_metadata_filters::pub_load_defaults()
-{
+{ // load default settings of exif metadata
     ui->doubleSpinBox_latitude_from->clear();
     ui->doubleSpinBox_latitude_to->clear();
     ui->doubleSpinBox_longitude_from->clear();
@@ -79,7 +79,7 @@ void exif_metadata_filters::pub_load_defaults()
 }
 
 void exif_metadata_filters::pub_set_sources_in_ui()
-{
+{ // set ui
     QList<struct_GLOBAL_witness_info_source> sources_list =  global_witness_info_manager_class_obj->pub_get_source_structure_QList();
 
     int row = 0;
@@ -107,7 +107,7 @@ void exif_metadata_filters::pub_set_sources_in_ui()
 
 
 void exif_metadata_filters::on_checkBox_latitude_clicked(bool checked)
-{
+{ // checkbox latitude clicked
     ui->doubleSpinBox_latitude_from->setEnabled(checked);
     ui->doubleSpinBox_latitude_to->setEnabled(checked);
     ui->doubleSpinBox_latitude_from->setValue(40.0000);
@@ -116,7 +116,7 @@ void exif_metadata_filters::on_checkBox_latitude_clicked(bool checked)
 
 
 void exif_metadata_filters::on_checkBox_longitude_clicked(bool checked)
-{
+{ // checkbox longitude clicked
     ui->doubleSpinBox_longitude_from->setEnabled(checked);
     ui->doubleSpinBox_longitude_to->setEnabled(checked);
     ui->doubleSpinBox_longitude_from->setValue(-70.0000);
@@ -125,7 +125,7 @@ void exif_metadata_filters::on_checkBox_longitude_clicked(bool checked)
 
 
 void exif_metadata_filters::on_pushButton_search_clicked()
-{
+{ // search button clicked for metadata search
     QStringList where_items;
 
     if(ui->checkBox_latitude->isChecked())
@@ -239,7 +239,7 @@ void exif_metadata_filters::on_pushButton_search_clicked()
 }
 
 QString exif_metadata_filters::latitude_sql_predicate()
-{
+{ // prepare command for latitude filter
     if(ui->doubleSpinBox_latitude_from->text().trimmed().isEmpty() && ui->doubleSpinBox_latitude_to->text().trimmed().isEmpty())
         return QString("");
 
@@ -256,7 +256,7 @@ QString exif_metadata_filters::latitude_sql_predicate()
 
 
 QString exif_metadata_filters::longitude_sql_predicate()
-{
+{ // prepare command for longitude filter
 
     if(ui->doubleSpinBox_longitude_from->text().trimmed().isEmpty() && ui->doubleSpinBox_longitude_to->text().trimmed().isEmpty())
         return QString("");
@@ -273,7 +273,7 @@ QString exif_metadata_filters::longitude_sql_predicate()
 }
 
 QString exif_metadata_filters::author_sql_predicate()
-{
+{ // prepare author command for sql to display
 
     if(ui->lineEdit_author->text().trimmed().isEmpty())
         return QString("");
@@ -334,7 +334,7 @@ QString exif_metadata_filters::author_sql_predicate()
 }
 
 QString exif_metadata_filters::make_sql_predicate()
-{
+{ // prepare make command to display for filters
     if(ui->lineEdit_make->text().trimmed().isEmpty())
         return QString("");
 
@@ -388,7 +388,7 @@ QString exif_metadata_filters::make_sql_predicate()
 }
 
 QString exif_metadata_filters::model_sql_predicate()
-{
+{ // prepare model command to display
     if(ui->lineEdit_model->text().trimmed().isEmpty())
         return QString("");
 
@@ -442,7 +442,7 @@ QString exif_metadata_filters::model_sql_predicate()
 
 
 void exif_metadata_filters::on_radioButton_all_source_toggled(bool checked)
-{
+{ // radio button all source, search all sources
     recon_static_functions::app_debug(" -Start",Q_FUNC_INFO);
 
     if(!checked)
@@ -455,7 +455,7 @@ void exif_metadata_filters::on_radioButton_all_source_toggled(bool checked)
 }
 
 void exif_metadata_filters::on_radioButton_select_source_toggled(bool checked)
-{
+{ // radio button select source, search from single source
     recon_static_functions::app_debug(" -Start",Q_FUNC_INFO);
 
     if(!checked)
@@ -467,7 +467,7 @@ void exif_metadata_filters::on_radioButton_select_source_toggled(bool checked)
 }
 
 void exif_metadata_filters::on_pushButton_select_source_list_clicked()
-{
+{ // select source list, select any one source and search from them
     recon_static_functions::app_debug(" -Start",Q_FUNC_INFO);
 
     select_source_interface_obj->pub_put_prevoius_selected_source_list(prevoius_selected_source_cnt_nm_list);
@@ -480,7 +480,7 @@ void exif_metadata_filters::on_pushButton_select_source_list_clicked()
 }
 
 void exif_metadata_filters::slot_selected_source_list(QStringList selected_src_list)
-{
+{ // slot of selected source list for search filters
     selected_source_cnt_nm_list = selected_src_list;
     prevoius_selected_source_cnt_nm_list = selected_src_list;
 }

@@ -1,7 +1,7 @@
 #include "export_file.h"
 
 export_file_module::export_file_module(QObject *parent)
-{
+{ // export file
     recon_helper_standard_obj = new recon_helper_standard(this);
 
     bool_thread_copied_finished = false;
@@ -12,7 +12,7 @@ export_file_module::export_file_module(QObject *parent)
 
 }
 void export_file_module::pub_cancel_export()
-{
+{ // cancel while exporting
     bool_cancel_export = true;
     th_file_copier_module_popobj->pub_stop_thread();
 
@@ -32,7 +32,7 @@ void export_file_module::set_essentials()
 }
 
 void export_file_module::export_queried_files(QString command_select, QString table_name, QString db_path)
-{
+{ // export some selected files according to query
 
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
@@ -305,7 +305,7 @@ void export_file_module::export_queried_files(QString command_select, QString ta
 }
 
 void export_file_module::export_file(QString report_scope, QString tab_name,QStringList selected_tags_list)
-{
+{ // start the file export
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     export_rsync_obj->set_rsync_copy_essentials(Q_FUNC_INFO);
@@ -492,7 +492,7 @@ void export_file_module::export_file(QString report_scope, QString tab_name,QStr
 
 
 void export_file_module::fill_variable_from_narad_muni()
-{
+{ // file global class narad values
 
     table_name_list_tablewidget = narad_muni_for_report_obj->get_field(MACRO_NARAD_Report_Table_Name_Tablewidget_QStringList).toStringList();
 
@@ -529,7 +529,7 @@ void export_file_module::fill_variable_from_narad_muni()
 }
 
 void export_file_module::slot_thread_file_copier_finished()
-{
+{ // copy file finished
     recon_static_functions::app_debug(" Thread file copier finished!" , Q_FUNC_INFO);
 
     bool_thread_copied_finished = true;
@@ -537,7 +537,7 @@ void export_file_module::slot_thread_file_copier_finished()
 
 
 void export_file_module::set_export_entry_null()
-{
+{ // delete from database after export successsfully done
 
     for(int i = 0 ; i < destination_db_file_list.size() ; i++)
     {
@@ -580,7 +580,7 @@ void export_file_module::set_export_entry_null()
 }
 
 QString export_file_module::create_md5(QString file_path)
-{
+{ // it's md5 hash
     recon_static_functions::debug_intensive( " start " , Q_FUNC_INFO);
 
     unsigned char c[MD5_DIGEST_LENGTH];
@@ -627,7 +627,7 @@ QString export_file_module::create_md5(QString file_path)
 
 
 QString export_file_module::create_sha1(QString file_path)
-{
+{ // sha1 hash of that file
     recon_static_functions::debug_intensive( " start " , Q_FUNC_INFO);
 
     unsigned char c[SHA_DIGEST_LENGTH];

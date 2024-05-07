@@ -58,7 +58,7 @@ file_system_post_launcher::~file_system_post_launcher()
 }
 
 void file_system_post_launcher::pub_display_source_info()
-{
+{ // display source info, set file system features on post launcher ui
 
     ui->tableWidget_sources->setRowCount(0);
     QString source_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Sources_In_Result_QString).toString() + "sources_info.sqlite";
@@ -355,7 +355,7 @@ void file_system_post_launcher::pub_set_recon_case_obj(RECON_case  *obj)
 }
 
 void file_system_post_launcher::slot_verify_source_link_activated(QString src_cnt_name)
-{
+{ // verify source link on file system which will verify source weather it's still available or detelted
     root_source_name_str.clear();
     root_type_str.clear();
     struct_GLOBAL_witness_info_source struct_source_info = global_witness_info_manager_class_obj->pub_get_source_structure_according_source_count_name(src_cnt_name);
@@ -381,14 +381,14 @@ void file_system_post_launcher::slot_verify_source_link_activated(QString src_cn
 }
 
 void file_system_post_launcher::slot_source_verification_running_status(bool status , QString source_count_name_str)
-{
+{ // slot of source verification running status
     bool_source_is_verifying = status;
     struct_GLOBAL_witness_info_source struct_source_info = global_witness_info_manager_class_obj->pub_get_source_structure_according_source_count_name(source_count_name_str);
     current_verifying_root_name_str = struct_source_info.root_name;
 }
 
 void file_system_post_launcher::slot_source_verifed(QString data_str)
-{
+{ // slots of source verified link on post launcher ui
     QDialog *qdialog_verified_data = new QDialog(this);
     qdialog_verified_data->setWindowModality(Qt::ApplicationModal);
 
@@ -418,7 +418,7 @@ void file_system_post_launcher::slot_source_verifed(QString data_str)
 
 }
 void file_system_post_launcher::on_pushButton_start_clicked()
-{
+{ // start button clicked after selection of post launcher features checkboxes
     struct_global_file_system_post_launcher_job_info st_obj;
 
     for(int i = 0; i < ui->tableWidget_sources->rowCount(); i++)
@@ -468,7 +468,7 @@ void file_system_post_launcher::on_pushButton_cancel_clicked()
 
 
 void file_system_post_launcher::slot_remove_source_link_activated(QString src_cnt_name)
-{
+{ // remove source link activated
 
     struct_GLOBAL_witness_info_root struct_rt_info = global_witness_info_manager_class_obj->pub_get_root_structure_according_source_count_name(src_cnt_name);
     to_remove_root_count_name.clear();
@@ -518,7 +518,7 @@ void file_system_post_launcher::slot_remove_source_link_activated(QString src_cn
 }
 
 void file_system_post_launcher::slot_message_box_yes_no_recived(bool status)
-{
+{ // ask yes/ no on source verification
 
     if(!status)
     {
@@ -545,7 +545,7 @@ void file_system_post_launcher::slot_message_box_yes_no_recived(bool status)
 
 
 void file_system_post_launcher::remove_source_info_from_result_custom_paths_1()
-{
+{ // remove source info from everywhere once we click on source verification removal
 
     QString disk_images_db_path    = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Disk_Images_In_Result_QString).toString()   + "disk_images.sqlite";
     QString mobile_backups_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Mobile_Backup_In_Result_QString).toString() + "mobile_backup.sqlite";
@@ -624,7 +624,7 @@ void file_system_post_launcher::remove_source_info_from_result_custom_paths_1()
 }
 
 void file_system_post_launcher::remove_source_info_from_result_custom_paths_2()
-{
+{ // same remove source info from other databases
     QString rslt_path    = global_narad_muni_class_obj->get_field(MACRO_NARAD_RECON_Result_Dir_QString).toString();
 
     //============================ Android Backup Start ======================//
@@ -745,9 +745,9 @@ void file_system_post_launcher::remove_source_info_from_result_custom_paths_2()
     //===========================Temp Apple Timestamps End=======================//
 
 }
-
+// all the remove function to remove the source and it's data from everywhere in result directory output
 void file_system_post_launcher::remove_source_info_from_result_data()
-{
+{ // remove source info fromresult data
 
     QString result_dir_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_RECON_Result_Dir_QString).toString();
 
@@ -834,13 +834,13 @@ void file_system_post_launcher::remove_source_info_from_apfs_snapshots()
 
 
 void file_system_post_launcher::on_pushButton_refresh_clicked()
-{
+{ // recfresh button
     pub_display_source_info();
 
 }
 
 void file_system_post_launcher::remove_root_info_from_root_db_and_text_files()
-{
+{ //
     //==================================Remove entry from roots_info.sqlite_start============================
     QString root_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Sources_In_Result_QString).toString() + "roots_info.sqlite";
 

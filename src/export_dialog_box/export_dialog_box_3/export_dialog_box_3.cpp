@@ -59,13 +59,13 @@ void export_dialog_box_3::pub_set_export_as_type(QString type_str)
 }
 
 void export_dialog_box_3::pub_set_file_name_and_file_path(QString file_name,QString output_dir_path)
-{
+{ //  set saved file name and export file path
     ui->lineEdit_file_name->setPlaceholderText(file_name.trimmed());
     ui->lineEdit_selected_path->setPlaceholderText(output_dir_path.trimmed());
 }
 
 void export_dialog_box_3::on_pushButton_export_clicked()
-{
+{ // export button cliked to export
 
     QString csv_dir_path;
     if(ui->lineEdit_selected_path->text().trimmed().isEmpty())
@@ -114,7 +114,7 @@ void export_dialog_box_3::on_pushButton_export_clicked()
 }
 
 void export_dialog_box_3::on_pushButton_select_export_path_clicked()
-{
+{ // select export path
     QString export_path;// = QFileDialog::getExistingDirectory(this,"",getenv("HOME"));
 
     file_dialog_obj.setFileMode(QFileDialog::Directory);
@@ -138,7 +138,7 @@ void export_dialog_box_3::on_pushButton_select_export_path_clicked()
 
 
 void export_dialog_box_3::on_radioButton_current_dir_clicked()
-{
+{ // current directory or on screen clicked radio button
 
     if(ui->radioButton_screen_items->isChecked())
         ui->radioButton_screen_items->setDisabled(true);

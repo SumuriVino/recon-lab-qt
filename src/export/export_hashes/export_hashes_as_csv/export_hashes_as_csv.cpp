@@ -40,7 +40,7 @@ void export_hashes_as_csv::pub_set_export_file_details(QList<struct_global_expor
 }
 
 void export_hashes_as_csv::pub_start_export_hashes_as_csv()
-{
+{ // export hashes in the form of csv report
     recon_static_functions::app_debug("Start" ,Q_FUNC_INFO);
 
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
@@ -162,7 +162,7 @@ void export_hashes_as_csv::pub_start_export_hashes_as_csv()
 }
 
 void export_hashes_as_csv::write_data_in_csv_file()
-{
+{ // write data in csv file
     recon_static_functions::app_debug("Start" ,Q_FUNC_INFO);
 
 
@@ -308,7 +308,7 @@ void export_hashes_as_csv::write_data_in_csv_file()
 }
 
 export_hashes_as_csv::struct_file_hashes export_hashes_as_csv::calculate_hashes(QString file_path)
-{
+{ // calculate hashes
     struct_file_hashes hashes_obj;
 
     hashes_obj.filepath  = file_path;
@@ -373,7 +373,7 @@ export_hashes_as_csv::struct_file_hashes export_hashes_as_csv::calculate_hashes(
 }
 
 void export_hashes_as_csv::slot_message_box_yes_no_clicked(bool yes_no_clicked)
-{
+{ // yes/no clicked during export
     bool_message_box_yes_button_clicked = yes_no_clicked;
 
     if(bool_message_box_yes_button_clicked)
@@ -383,7 +383,7 @@ void export_hashes_as_csv::slot_message_box_yes_no_clicked(bool yes_no_clicked)
 }
 
 void export_hashes_as_csv::point_to_export_dir(QString path)
-{
+{ // point to export directory after export done
     QStringList arg;
     arg << "-R" << path;
     QProcess *myProcess = new QProcess(this);
@@ -391,7 +391,7 @@ void export_hashes_as_csv::point_to_export_dir(QString path)
 }
 
 void export_hashes_as_csv::on_pushButton_export_clicked()
-{
+{ // export button clicled
     if(ui->lineEdit_file_path->text().isEmpty())
     {
         obj_message_dialog->pub_set_message(MACRO_MSG_WARNING, "Select Output Directory");
@@ -404,12 +404,12 @@ void export_hashes_as_csv::on_pushButton_export_clicked()
 }
 
 void export_hashes_as_csv::on_pushButton_cancel_clicked()
-{
+{ // hide on cancel button
     hide();
 }
 
 void export_hashes_as_csv::on_pushButton_select_clicked()
-{
+{ // select button clicked
     file_dialog_obj.setFileMode(QFileDialog::Directory);
     if(file_dialog_obj.exec())
     {
@@ -428,7 +428,7 @@ void export_hashes_as_csv::on_pushButton_select_clicked()
 }
 
 void export_hashes_as_csv::slot_hide_loading_display_dialog_box(bool status)
-{
+{ // hide loading display after export
     recon_static_functions::app_debug("Start",Q_FUNC_INFO);
 
     bool_cancel_loading = status;

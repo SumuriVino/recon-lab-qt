@@ -22,7 +22,7 @@ cropped_image_display::~cropped_image_display()
 }
 
 void cropped_image_display::prepare_image_display(QString path)
-{
+{ // prepare image display for face search
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     map_found_face_info.clear();
@@ -100,7 +100,7 @@ void cropped_image_display::prepare_image_display(QString path)
 }
 
 void cropped_image_display::pub_clear_fields()
-{
+{ // clear by default settings or any previous images
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     ui->lineEdit_save_result_name->clear();
@@ -126,7 +126,7 @@ void cropped_image_display::pub_clear_fields()
 }
 
 void cropped_image_display::on_pushButton_prev_clicked()
-{
+{ // previous button clicked
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     int index = ui->stackedWidget->currentIndex();
@@ -140,7 +140,7 @@ void cropped_image_display::on_pushButton_prev_clicked()
 }
 
 void cropped_image_display::on_pushButton_next_clicked()
-{
+{ // next button clicked
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     int index = ui->stackedWidget->currentIndex();
@@ -154,7 +154,7 @@ void cropped_image_display::on_pushButton_next_clicked()
 }
 
 void cropped_image_display::on_pushButton_start_clicked()
-{
+{ // button start clicked to search face
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString val_file_path = map_found_face_info.value(ui->stackedWidget->currentIndex());
@@ -170,7 +170,7 @@ void cropped_image_display::on_pushButton_start_clicked()
 }
 
 void cropped_image_display::set_linedit_search_label_placeholder_text()
-{
+{ // set label name which will dsiplay the result in case tree
     QString index_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Face_Search_In_Result_QString).toString() + "index_face_search.sqlite";
     recon_helper_standard *recon_helper_standard_obj = new recon_helper_standard(this);
 
@@ -183,7 +183,7 @@ void cropped_image_display::set_linedit_search_label_placeholder_text()
 }
 
 void cropped_image_display::add_dummy_face_img()
-{
+{ // add dummy face image by default for face searching
     QString f_path = "../icons/person2.png";
 
     if(QFileInfo(f_path).isFile())

@@ -44,7 +44,7 @@ void recognize_face::pub_set_task_status_window(task_status_window *obj)
 }
 
 void recognize_face::slot_start_search_clicked(QString s_path,QString lbl_name)
-{
+{ // slot of connection made in the class where we clicked on search button to search the face
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     recon_helper_standard_obj = new recon_helper_standard;
@@ -91,7 +91,7 @@ void recognize_face::slot_start_search_clicked(QString s_path,QString lbl_name)
 }
 
 void recognize_face::pub_clear_fields()
-{
+{ // clear default values
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     ui->lineEdit_source_path->clear();
@@ -102,7 +102,7 @@ void recognize_face::pub_clear_fields()
 }
 
 void recognize_face::on_pushButton_import_clicked()
-{
+{ // import button clicked to import face for searching
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString file_path = QFileDialog::getOpenFileName(this, recon_static_functions::get_app_name(), "/Volumes" , ("*.jpg *.JPG *.png *.PNG *.jpeg *.JPEG *.bmp *.BMP *.dng *.DNG"));
@@ -114,7 +114,7 @@ void recognize_face::on_pushButton_import_clicked()
 }
 
 void recognize_face::on_pushButton_crop_faces_clicked()
-{
+{ // crop face clicked for face searcing
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     bool_status_face_found = false;

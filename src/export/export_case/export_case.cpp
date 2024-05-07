@@ -57,7 +57,7 @@ export_case::~export_case()
 }
 
 void export_case::pub_prepare_display()
-{
+{ // prepare display of ui of export case in both category like quick and expert mode
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     display_loading_progress_bar_obj->pub_set_label_messsge("Please wait...");
@@ -75,7 +75,7 @@ void export_case::pub_prepare_display()
 }
 
 void export_case::prepare_quick_mode_display()
-{
+{ // prepare display in quick mode export
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     ui->tableWidget_quick_mode_category->setRowCount(0);
@@ -142,7 +142,7 @@ void export_case::prepare_quick_mode_display()
 }
 
 void export_case::prepare_expert_mode_display()
-{
+{ // prepare display of expert mode export
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     /// get all updated tags list from tag search db
@@ -207,7 +207,7 @@ void export_case::prepare_expert_mode_display()
 }
 
 void export_case::prepare_tags_display(QStringList tag_list ,QStringList check_state_list)
-{
+{ // prepare tags display when we up export feature
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     ui->tableWidget_expert_mode_tag_list->setRowCount(0);
@@ -235,12 +235,12 @@ void export_case::prepare_tags_display(QStringList tag_list ,QStringList check_s
 }
 
 void export_case::pub_set_display_loading_progress_bar(display_loading_progress_bar *obj)
-{
+{ // loading progress bar object
     display_loading_progress_bar_obj = obj;
 }
 
 void export_case::on_pushButton_select_output_clicked()
-{
+{ // destination/ output button clicked
     QString destination_dir = QFileDialog::getExistingDirectory(this, MACRO_Export_Case_Parent);
 
     ui->lineEdit_destination->setText(destination_dir);
@@ -249,7 +249,7 @@ void export_case::on_pushButton_select_output_clicked()
 }
 
 void export_case::on_pushButton_export_clicked()
-{
+{ // export button clicked to export
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     struct_export_case_artifacts_info_QList.clear();
@@ -1031,7 +1031,7 @@ void export_case::slot_proc_copy_finished(int)
 }
 
 void export_case::prepare_internet_history_display_list()
-{
+{ // prepare internet history display
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QString export_status_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Case_Configuration_In_Result_QString).toString() + "export_case_status.sqlite";
@@ -1079,7 +1079,7 @@ void export_case::prepare_internet_history_display_list()
 }
 
 void export_case::prepare_messages_display_list()
-{
+{ // prepare message list to export
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
     QString export_status_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Case_Configuration_In_Result_QString).toString() + "export_case_status.sqlite";
 
@@ -1123,7 +1123,7 @@ void export_case::prepare_messages_display_list()
 }
 
 void export_case::prepare_emails_display_list()
-{
+{ // prepare emails list to export
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
     QString export_status_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Case_Configuration_In_Result_QString).toString() + "export_case_status.sqlite";
 
@@ -1168,7 +1168,7 @@ void export_case::prepare_emails_display_list()
 }
 
 void export_case::prepare_images_display_list()
-{
+{ // prepare images display to export
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
     QString export_status_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Case_Configuration_In_Result_QString).toString() + "export_case_status.sqlite";
 
@@ -1255,7 +1255,7 @@ void export_case::prepare_images_display_list()
 }
 
 void export_case::prepare_multimedia_display_list()
-{
+{ // prepare multimedia section to export
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
     QString export_status_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Case_Configuration_In_Result_QString).toString() + "export_case_status.sqlite";
 
@@ -1346,7 +1346,7 @@ void export_case::prepare_multimedia_display_list()
 }
 
 void export_case::prepare_documents_display_list()
-{
+{ // prepare document section to export
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
     QString export_status_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Case_Configuration_In_Result_QString).toString() + "export_case_status.sqlite";
 
@@ -1433,7 +1433,7 @@ void export_case::prepare_documents_display_list()
 }
 
 void export_case::prepare_other_plugins_display_list()
-{
+{ // prepare other plugins display to export
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
     QString export_status_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Case_Configuration_In_Result_QString).toString() + "export_case_status.sqlite";
 
@@ -1483,7 +1483,7 @@ void export_case::prepare_other_plugins_display_list()
 }
 
 void export_case::update_export_status_db_based_upon_quick_mode_category(QString str, int value)
-{
+{ // update export status in db if select quick mode
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
     QString export_status_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Case_Configuration_In_Result_QString).toString() + "export_case_status.sqlite";
 
@@ -1520,7 +1520,7 @@ void export_case::update_export_status_db_based_upon_quick_mode_category(QString
 }
 
 void export_case::update_export_status_db_based_upon_expert_mode_category_and_tag_str(QString category_str, QString tag_str,int value)
-{
+{ // update export status database if select exprt  mode and tags
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QString export_status_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Case_Configuration_In_Result_QString).toString() + "export_case_status.sqlite";
@@ -1558,7 +1558,7 @@ void export_case::update_export_status_db_based_upon_expert_mode_category_and_ta
 }
 
 void export_case::on_tableWidget_quick_mode_list_cellClicked(int row, int column)
-{
+{ // generally click on any cell in quick mode on tablewidget
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     if(row < 0 || column < 0)
@@ -1614,7 +1614,7 @@ void export_case::on_tableWidget_quick_mode_list_cellClicked(int row, int column
 }
 
 void export_case::on_tableWidget_quick_mode_category_cellClicked(int row, int column)
-{
+{ // generally clicked on quick mode category cell on tablewidget
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     if(row < 0 || column < 0)
@@ -1673,7 +1673,7 @@ void export_case::on_tableWidget_quick_mode_category_cellClicked(int row, int co
 
 
 void export_case::on_tableWidget_quick_mode_category_cellChanged(int row, int column)
-{
+{ // on tableiwdget quick mode category cell changed to get value
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QString category_str = ui->tableWidget_quick_mode_category->item(row,column)->text();
@@ -1691,7 +1691,7 @@ void export_case::on_tableWidget_quick_mode_category_cellChanged(int row, int co
 }
 
 void export_case::on_tableWidget_expert_mode_tag_list_cellChanged(int row, int column)
-{
+{ // expert mode tag list cell changed on table widget
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     QString tag_str = ui->tableWidget_expert_mode_tag_list->item(row,column)->text();
@@ -1708,7 +1708,7 @@ void export_case::on_tableWidget_expert_mode_tag_list_cellChanged(int row, int c
 }
 
 void export_case::on_radioButton_quick_mode_toggled(bool checked)
-{
+{ // select radio button quick mode
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     if(ui->radioButton_quick_mode->isChecked())
@@ -1724,7 +1724,7 @@ void export_case::on_radioButton_quick_mode_toggled(bool checked)
 }
 
 void export_case::export_case_with_blur_effect_on_image(QString file_path, QString dest_file_path, QString display_file_path)
-{
+{ // export case with blur effect checkbox feature
     QMimeDatabase mime_database_obj;
     QString file_mime_type = mime_database_obj.mimeTypeForFile(file_path).name();
 

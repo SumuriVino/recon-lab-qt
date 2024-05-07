@@ -37,25 +37,25 @@ export_dialog_box_2::~export_dialog_box_2()
 }
 
 void export_dialog_box_2::pub_set_export_type(QString exp_typ_str)
-{
+{ // set export type
     export_type_str = exp_typ_str;
 }
 
 void export_dialog_box_2::pub_set_exported_file_name_and_dir_path(QString file_name , QString outpur_dir_path)
-{
+{ // set exported saved file name and export path
     ui->lineEdit_saved_name->setPlaceholderText(file_name);
     ui->lineEdit_export_path->setPlaceholderText(outpur_dir_path);
 }
 
 void export_dialog_box_2::closeEvent(QCloseEvent *)
-{
+{ // close to not to export
     emit signal_cancel_export_results();
     ui->radioButton_screen_items->setChecked(true);
 }
 
 
 void export_dialog_box_2::on_pushButton_export_clicked()
-{
+{ // export button clicked to export
     QString filename = ui->lineEdit_saved_name->text().trimmed();
     QString output_dir_path = ui->lineEdit_export_path->text().trimmed();
 
@@ -71,7 +71,7 @@ void export_dialog_box_2::on_pushButton_export_clicked()
 }
 
 void export_dialog_box_2::on_pushButton_select_path_clicked()
-{
+{ // select destination where to export
     QString path;// = QFileDialog::getExistingDirectory(this,recon_static_functions::get_application_name(),getenv("HOME"));
 
     file_dialog_obj.setFileMode(QFileDialog::Directory);
@@ -92,7 +92,7 @@ void export_dialog_box_2::on_pushButton_select_path_clicked()
 }
 
 void export_dialog_box_2::on_radioButton_screen_items_toggled(bool checked)
-{
+{ // export screen item which are displaying on screen if selected this radio button
     if(ui->radioButton_screen_items->isChecked())
     {
         report_scope_str = QString(MACRO_REPORT_SCOPE_SCREEN_ITEMS_QString);

@@ -30,24 +30,24 @@ export_dialog_box_1::~export_dialog_box_1()
 }
 
 void export_dialog_box_1::pub_set_export_type(QString exp_typ_str)
-{
+{ // set export type
     export_type_str = exp_typ_str;
 }
 
 void export_dialog_box_1::pub_set_name_and_dir_path(QString given_name, QString output_dir_path)
-{
+{ // set saved name and export path directory
     ui->lineEdit_saved_name->setPlaceholderText(given_name);
     ui->lineEdit_export_path->setPlaceholderText(output_dir_path);
 }
 
 void export_dialog_box_1::closeEvent(QCloseEvent *)
-{
+{ // close to not to export
     emit signal_cancel_export_results();
 }
 
 
 void export_dialog_box_1::on_pushButton_OK_clicked()
-{
+{ // on button ok clicked
     QString filename = ui->lineEdit_saved_name->text().trimmed();
     QString filepath = ui->lineEdit_export_path->text().trimmed();
 
@@ -61,7 +61,7 @@ void export_dialog_box_1::on_pushButton_OK_clicked()
 }
 
 void export_dialog_box_1::on_pushButton_select_path_clicked()
-{
+{ // select destination path
     QString path;// = QFileDialog::getExistingDirectory(this,recon_static_functions::get_application_name(),getenv("HOME"));
 
     file_dialog_obj.setFileMode(QFileDialog::Directory);

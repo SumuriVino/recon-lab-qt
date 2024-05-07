@@ -50,7 +50,7 @@ file_search_regular_filters::~file_search_regular_filters()
 }
 
 void file_search_regular_filters::pub_load_defaults()
-{
+{ // load default settinfs and refresh the previous one
 
     ui->lineEdit_file_name->clear();
     ui->lineEdit_file_size_1->clear();
@@ -112,7 +112,7 @@ void file_search_regular_filters::pub_load_defaults()
 
 
 void file_search_regular_filters::pub_set_sources_in_ui()
-{
+{ // set sources in ui
     QList<struct_GLOBAL_witness_info_source> sources_list =  global_witness_info_manager_class_obj->pub_get_source_structure_QList();
 
     int row = 0;
@@ -142,7 +142,7 @@ void file_search_regular_filters::pub_set_sources_in_ui()
 }
 
 void file_search_regular_filters::on_pushButton_search_clicked()
-{
+{ // prepare search command when we click on search, it will prepare command accordingly and get data from database
     const QDateTime dateTime1 = QDateTime::currentDateTime();
     const QDateTime dateTime2 = QDateTime(dateTime1.date(), dateTime1.time(), Qt::UTC);
     current_machine_offset =   dateTime1.secsTo(dateTime2);
@@ -255,7 +255,7 @@ void file_search_regular_filters::on_pushButton_search_clicked()
 }
 
 QString file_search_regular_filters::file_name_sql_predicate()
-{
+{ // prepare file name search command
     if(ui->lineEdit_file_name->text().trimmed() == QString(""))
         return "";
 
@@ -333,7 +333,7 @@ QString file_search_regular_filters::file_name_sql_predicate()
 }
 
 QString file_search_regular_filters::file_size_sql_predicate()
-{
+{ // prepare file size search sql command
 
     QString sql_predicate;
 
@@ -382,7 +382,7 @@ QString file_search_regular_filters::file_size_sql_predicate()
 }
 
 QString file_search_regular_filters::ocr_text_sql_predicate()
-{
+{  // prepare ocr text search command
     if(ui->lineEdit_ocr_text->text().trimmed().isEmpty())
         return "";
 
@@ -406,7 +406,7 @@ QString file_search_regular_filters::ocr_text_sql_predicate()
 }
 
 QString file_search_regular_filters::date_change_sql_predicate()
-{
+{ //  prepare date change seaerch command
 
     QString sql_predicate;
 
@@ -435,7 +435,7 @@ QString file_search_regular_filters::date_change_sql_predicate()
 }
 
 QString file_search_regular_filters::date_modified_sql_predicate()
-{
+{ // prepare date modified search command
     QString sql_predicate;
 
     qint64 epch_1, epch_2;
@@ -463,7 +463,7 @@ QString file_search_regular_filters::date_modified_sql_predicate()
 }
 
 QString file_search_regular_filters::date_accessed_sql_predicate()
-{
+{ //  prepare date accessed search command
     QString sql_predicate;
 
     qint64 epch_1, epch_2;
@@ -491,7 +491,7 @@ QString file_search_regular_filters::date_accessed_sql_predicate()
 }
 
 QString file_search_regular_filters::date_created_sql_predicate()
-{
+{ // prepare date created search command
     QString sql_predicate;
 
     qint64 epch_1, epch_2;
@@ -518,7 +518,7 @@ QString file_search_regular_filters::date_created_sql_predicate()
 }
 
 QString file_search_regular_filters::date_content_creation_sql_predicate()
-{
+{ // prepare content creation date search command
     QString sql_predicate;
 
     qint64 epch_1, epch_2;
@@ -548,7 +548,7 @@ QString file_search_regular_filters::date_content_creation_sql_predicate()
 }
 
 QString file_search_regular_filters::date_content_modification_sql_predicate()
-{
+{ // prepare content modification date search command
     QString sql_predicate;
 
     qint64 epch_1, epch_2;
@@ -577,7 +577,7 @@ QString file_search_regular_filters::date_content_modification_sql_predicate()
 }
 
 QString file_search_regular_filters::date_added_sql_predicate()
-{
+{ // prepare added date search command
     QString sql_predicate;
 
     qint64 epch_1, epch_2;
@@ -606,7 +606,7 @@ QString file_search_regular_filters::date_added_sql_predicate()
 }
 
 QString file_search_regular_filters::date_last_used_sql_predicate()
-{
+{ // prepare last used date search command
     QString sql_predicate;
 
     qint64 epch_1, epch_2;
@@ -634,9 +634,9 @@ QString file_search_regular_filters::date_last_used_sql_predicate()
     return sql_predicate;
 
 }
-
+// These below are all the checkbox which we enable to apply as a filter according to our search
 void file_search_regular_filters::on_checkBox_date_change_clicked(bool checked)
-{
+{ // on checkbox date change clicked
 
     ui->comboBox_date_change_options->setEnabled(checked);
     ui->dateTimeEdit_date_change_1->setEnabled(checked);

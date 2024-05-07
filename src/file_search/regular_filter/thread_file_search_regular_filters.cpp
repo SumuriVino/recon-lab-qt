@@ -7,7 +7,7 @@ thread_file_search_regular_filters::thread_file_search_regular_filters(QWidget *
 }
 
 void thread_file_search_regular_filters::run()
-{
+{ // file search with regular filters starts from here, store in db and display counter things
     recon_static_functions::app_debug(" Start" , Q_FUNC_INFO);
 
     bool_cancel_extraction = false;
@@ -100,7 +100,7 @@ void thread_file_search_regular_filters::run()
 }
 
 void thread_file_search_regular_filters::pub_set_search_command_sources_search_label(QString command, QStringList src_list, QString srch_label)
-{
+{ // set search label name as search database name
     search_command = command;
     sources_list = src_list;
     search_label = srch_label;
@@ -116,7 +116,7 @@ void thread_file_search_regular_filters::pub_cancel_extraction()
 
 
 void thread_file_search_regular_filters::insert_file_search_config_into_index_db()
-{
+{ // insert file search config in search index db
     recon_static_functions::app_debug("START ",Q_FUNC_INFO);
 
     QString file_search_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_File_Search_In_Result_QString).toString() + "index_file_search.sqlite";

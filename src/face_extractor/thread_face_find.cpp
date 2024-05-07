@@ -219,7 +219,7 @@ void thread_face_find::run()
 }
 #else
 void thread_face_find::run()
-{
+{ // start thread and face search starts from here
     bool_cancel_extraction = false;
 
     emit signal_PBAR_thread_file_system_started(MACRO_JobType_Face_Search);

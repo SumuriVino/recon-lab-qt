@@ -25,7 +25,7 @@ export_as_KML::~export_as_KML()
 }
 
 void export_as_KML::pub_set_lable(QStringList filepath_list)
-{
+{ // set label weather file can be export in kml or not
 
     ui->textEdit_files->setReadOnly(true);
 
@@ -46,12 +46,12 @@ void export_as_KML::pub_set_lable(QStringList filepath_list)
 }
 
 void export_as_KML::on_pushButton_continue_clicked()
-{
+{ // continue to export as a kml
     emit signal_continue_export_as_kml();
 }
 
 void export_as_KML::on_pushButton_cancel_clicked()
-{
+{ // cancel button clicked to not to export as a kml
 
     emit signal_cancel_export_as_kml();
 }

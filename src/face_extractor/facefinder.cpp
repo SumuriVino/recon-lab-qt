@@ -7,7 +7,7 @@ facefinder::facefinder(QObject *parent) : QObject(parent)
 }
 
 void facefinder::pub_set_essentials()
-{
+{ // set essntionls things
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     cropped_image_display_obj = new cropped_image_display();
@@ -17,7 +17,7 @@ void facefinder::pub_set_essentials()
 }
 
 bool facefinder::check_is_image_have_face(QString file_path, QString fs_record_number, QString source_cnt_name)
-{
+{ // check if image have face or not for search
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     //    deserialize("Models/dlib/shape_predictor_68_face_landmarks.dat") >> shape_predictor_obj;
@@ -195,7 +195,7 @@ bool facefinder::check_is_image_have_face(QString file_path, QString fs_record_n
 }
 
 void facefinder::save_data_in_db(QString distinct_face_file_path, QString rec_number, QString source_count_name, bool bool_is_face_already_present, QString matched_face_path_str, QSqlDatabase *faces_db)
-{
+{ // save data in database
     QString unique_face_id;
 
     if(!distinct_face_file_path.startsWith("/"))
@@ -246,7 +246,7 @@ void facefinder::save_data_in_db(QString distinct_face_file_path, QString rec_nu
 }
 
 bool facefinder::extract_cropped_faces(QString file_path)
-{
+{ // extract cropped faces
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QMimeDatabase obj;
@@ -310,7 +310,7 @@ bool facefinder::extract_cropped_faces(QString file_path)
 }
 
 QString facefinder::pub_get_cropped_faces_dir_path()
-{
+{ // cropped face directory path
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     return cropped_faces_dir_path;
@@ -319,7 +319,7 @@ QString facefinder::pub_get_cropped_faces_dir_path()
 }
 
 void facefinder::pub_prepare_display()
-{
+{ // prepare display the face search result in table
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     if(cropped_faces_dir_path.isEmpty() || cropped_faces_dir_path.isNull())
@@ -334,7 +334,7 @@ void facefinder::pub_prepare_display()
 
 
 void facefinder::pub_set_display_loading_progress_bar_obj(display_loading_progress_bar *obj)
-{
+{ // progress bar
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     display_loading_progress_bar_obj = obj;
@@ -343,7 +343,7 @@ void facefinder::pub_set_display_loading_progress_bar_obj(display_loading_progre
 }
 
 void facefinder::pub_start_search_clicked(QString src_path, QString search_label_name)
-{
+{ // start search button clicked after importing any face image
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString searched_face_picture_path_adhoc = src_path;
@@ -488,7 +488,7 @@ void facefinder::pub_start_search_clicked(QString src_path, QString search_label
 }
 
 void facefinder::pub_clear_fields()
-{
+{ // clear previous values
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     cropped_image_display_obj->pub_clear_fields();
@@ -497,7 +497,7 @@ void facefinder::pub_clear_fields()
 }
 
 void facefinder::pub_set_task_status_window(task_status_window *obj)
-{
+{ // set task status for counter
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     task_status_window_obj = obj;
@@ -506,7 +506,7 @@ void facefinder::pub_set_task_status_window(task_status_window *obj)
 }
 
 void facefinder::pub_stop_face_finder_thread()
-{
+{ // stop face finder
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     if(thread_face_find_obj != NULL && !thread_face_find_obj->isRunning())
@@ -520,7 +520,7 @@ void facefinder::pub_stop_face_finder_thread()
 }
 
 void facefinder::slot_start_search_clicked(QString s_path, QString search_lbl_name)
-{
+{ // slot of start face search clicked
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     cropped_image_display_obj->hide();
@@ -531,7 +531,7 @@ void facefinder::slot_start_search_clicked(QString s_path, QString search_lbl_na
 }
 
 bool facefinder::open_and_create_face_search_db(QString path)
-{
+{ // open and create face search database
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QFile file(path);
@@ -577,7 +577,7 @@ bool facefinder::open_and_create_face_search_db(QString path)
 }
 
 void facefinder::copy_picture_searched_face_and_insert_filter_table(QString searched_face_picture_path_adhoc, QString searched_face_directory_path)
-{
+{ // copy picture searched face and insert the info in database
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString searched_face_picture_ext_type = recon_helper_standard_obj->mining_suffix(searched_face_picture_path_adhoc, Q_FUNC_INFO);
@@ -610,7 +610,7 @@ void facefinder::copy_picture_searched_face_and_insert_filter_table(QString sear
 }
 
 void facefinder::slot_face_found(QString path)
-{
+{ // slot of when face found while searching, store these all info in database also
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString cmd = "INSERT into files (fs_record_no, source_count_name) VALUES(?,?)";
@@ -672,7 +672,7 @@ void facefinder::slot_face_found(QString path)
 }
 
 void facefinder::slot_thread_face_find_finished()
-{
+{ // face finder finished
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString select_cmd = "SELECT COUNT(*) from files";
@@ -712,7 +712,7 @@ void facefinder::slot_thread_face_find_finished()
 }
 
 void facefinder::slot_add_all_matched_faces_to_case_tree()
-{
+{ // add matched faces to case tree to display
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     emit signal_add_matched_faces_to_case_tree(search_name);
@@ -721,7 +721,7 @@ void facefinder::slot_add_all_matched_faces_to_case_tree()
 }
 
 void facefinder::slot_face_search_cancelled(QString job_type)
-{
+{ // face search canceled
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     thread_face_find_obj->pub_set_bool_cancel_extraction(true);
@@ -732,7 +732,7 @@ void facefinder::slot_face_search_cancelled(QString job_type)
 }
 
 void facefinder::SaveCropImage(matrix<rgb_pixel>& matCrop, int nCropIndex,QString path)
-{
+{ // save crop images in desrtination dir
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     time_t now;

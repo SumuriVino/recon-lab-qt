@@ -33,18 +33,18 @@ file_indexing_display::~file_indexing_display()
 }
 
 void file_indexing_display::pub_set_essentials()
-{
+{ // set essentials database paths
     indexing_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_File_System_In_Result_QString).toString() + "file_indexing_queue.sqlite";
 }
 
 void file_indexing_display::pub_display_selected_files()
-{
+{ // display selected files which are going to be indexed
     prepare_selected_files_display();
 }
 
 
 void file_indexing_display::on_pushButton_remove_clicked()
-{
+{ // remove button clicked to remove files from text indexing queue
     QModelIndexList selection_model_list = ui->tableWidget->selectionModel()->selectedRows();
 
     for(int i = 0; i < selection_model_list.size(); i++)
@@ -77,12 +77,12 @@ void file_indexing_display::on_pushButton_remove_clicked()
 }
 
 void file_indexing_display::on_pushButton_done_clicked()
-{
+{ // done button clicked after text indexing done
     emit signal_done_clicked();
 }
 
 void file_indexing_display::prepare_selected_files_display()
-{
+{ // prepare selected file display in tablwidget from databse which are select for text indexing
     ui->checkBox_show_processed_files->setChecked(false);
     ui->tableWidget->setRowCount(0);
 
@@ -176,7 +176,7 @@ void file_indexing_display::prepare_selected_files_display()
 }
 
 void file_indexing_display::on_tableWidget_cellClicked(int row, int column)
-{
+{ // on tablewidget generally clicked on cells
     if(row < 0)
         return;
 
@@ -220,7 +220,8 @@ void file_indexing_display::on_tableWidget_cellClicked(int row, int column)
 }
 
 void file_indexing_display::on_checkBox_show_processed_files_clicked(bool checked)
-{
+{ // check show processod files clicked which will show those files which are already indexed
+
     for(int row = 0; row < ui->tableWidget->rowCount(); row++)
     {
         QTableWidgetItem *item = ui->tableWidget->item(row, enum_status_column_index);

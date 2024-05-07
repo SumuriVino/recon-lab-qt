@@ -40,7 +40,7 @@ void export_hashes_as_sqlite::pub_set_export_file_details(QList<struct_global_ex
 
 
 void export_hashes_as_sqlite::pub_start_export_hashes_as_sqlite()
-{
+{ // start export in the form of sqlite
     recon_static_functions::app_debug("Start" ,Q_FUNC_INFO);
 
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
@@ -172,7 +172,7 @@ void export_hashes_as_sqlite::pub_start_export_hashes_as_sqlite()
 }
 
 bool export_hashes_as_sqlite::create_tables_for_exported_sqlite()
-{
+{ // create tables in database for exported sqlite
     recon_static_functions::app_debug("Start" ,Q_FUNC_INFO);
 
     QString recon_case_dir_str = global_narad_muni_class_obj->get_field(MACRO_NARAD_Case_Name_QString).toString();
@@ -216,7 +216,7 @@ bool export_hashes_as_sqlite::create_tables_for_exported_sqlite()
 }
 
 void export_hashes_as_sqlite::write_data_in_sqlite()
-{
+{ // write data in tables
     recon_static_functions::app_debug("Start" ,Q_FUNC_INFO);
 
     QString connection_naam = QString::number(rand()) + QString::number(QDateTime::currentMSecsSinceEpoch());
@@ -319,7 +319,7 @@ void export_hashes_as_sqlite::write_data_in_sqlite()
 }
 
 export_hashes_as_sqlite::struct_file_hashes export_hashes_as_sqlite::calculate_hashes(QString file_path)
-{
+{ // calculate hashes
     struct_file_hashes hashes_obj;
 
     hashes_obj.filepath  = file_path;
@@ -384,7 +384,7 @@ export_hashes_as_sqlite::struct_file_hashes export_hashes_as_sqlite::calculate_h
 }
 
 void export_hashes_as_sqlite::slot_message_box_yes_no_clicked(bool yes_no_clicked)
-{
+{ // yes/no while exporting
     bool_message_box_yes_button_clicked = yes_no_clicked;
     if(bool_message_box_yes_button_clicked)
     {
@@ -394,7 +394,7 @@ void export_hashes_as_sqlite::slot_message_box_yes_no_clicked(bool yes_no_clicke
     }
 }
 void export_hashes_as_sqlite::point_to_export_dir(QString path)
-{
+{ // point to export directory after export done
     QStringList arg;
     arg << "-R" << path;
     QProcess *myProcess = new QProcess(this);
@@ -402,7 +402,7 @@ void export_hashes_as_sqlite::point_to_export_dir(QString path)
 }
 
 void export_hashes_as_sqlite::on_pushButton_export_clicked()
-{
+{ // export button clicked
     if(ui->lineEdit_file_path->text().isEmpty())
     {
         obj_message_dialog->pub_set_message(MACRO_MSG_WARNING, "Select Output Directory");
@@ -415,13 +415,13 @@ void export_hashes_as_sqlite::on_pushButton_export_clicked()
 }
 
 void export_hashes_as_sqlite::on_pushButton_cancel_clicked()
-{
+{ // hide on cancel buitton clicked
     hide();
 
 }
 
 void export_hashes_as_sqlite::on_pushButton_select_clicked()
-{
+{ // select button clicked
     file_dialog_obj.setFileMode(QFileDialog::Directory);
     if(file_dialog_obj.exec())
     {
@@ -443,7 +443,7 @@ void export_hashes_as_sqlite::on_pushButton_select_clicked()
 }
 
 void export_hashes_as_sqlite::slot_hide_loading_display_dialog_box(bool status)
-{
+{ // hide progress bar when it's done
     recon_static_functions::app_debug("Start",Q_FUNC_INFO);
 
     bool_cancel_loading = status;

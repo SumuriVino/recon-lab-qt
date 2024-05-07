@@ -5,7 +5,7 @@
 
 
 QString exif_data_document_files::extract_exif_data_pdf_files(QString filepath , struct_global_exif_data_parsed_data &exif_data_parsed_obj)
-{
+{ // extract pdf files
     ///==========================================================================///
 
     //
@@ -290,7 +290,7 @@ QString exif_data_document_files::extract_exif_data_pdf_files(QString filepath ,
 }
 
 QStringList exif_data_document_files::extract_all_available_exif_data_pdf_files(QString filepath)
-{
+{ // extract pdf files
     ///==========================================================================///
 
     //
