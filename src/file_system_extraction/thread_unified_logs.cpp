@@ -16,7 +16,9 @@ thread_unified_logs::thread_unified_logs(QObject *parent) : QObject(parent)
 }
 
 void thread_unified_logs::slot_extract_unified_logs()
-{
+{ // Here is the feature which extracts unified logs. We extract unified logs with the help of command (log show) and some arguments given below.
+    // We store those info in Source1_unified_logs_data.sqlite for source 1 and display on table widget
+
     emit signal_PBAR_thread_file_system_started(MACRO_JobType_Unified_Logs);
 
     list_target_source_info = global_witness_info_manager_class_obj->pub_get_source_structure_QList();
@@ -75,7 +77,8 @@ void thread_unified_logs::slot_extract_unified_logs()
 }
 
 void thread_unified_logs::create_and_insertion_in_logs_db(QString unified_logs_db_path,QString db_name1,QString index_unified_logs_db)
-{
+{ // create logs database and insert the data after parsing
+
     recon_static_functions::app_debug("Start" , Q_FUNC_INFO);
 
     QString log_tmp_dir_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Extracted_Content_Location_Apple_Logs_QString).toString()
@@ -305,7 +308,8 @@ void thread_unified_logs::create_and_insertion_in_logs_db(QString unified_logs_d
 }
 
 void thread_unified_logs::extract_log_macos_log_show()
-{
+{ // Here we are Finding the files which we are going to parse to display the logs
+
     recon_static_functions::app_debug("Start" , Q_FUNC_INFO);
 
     log_macos_log_json_file_path.clear();
@@ -377,7 +381,7 @@ void thread_unified_logs::extract_log_macos_log_show()
 }
 
 void thread_unified_logs::write_apple_macOS_log_archive_data_into_json_file(QString logarchive_file_path , QString file_path)
-{
+{ // run command on the log files if found. The command is log show
     recon_static_functions::app_debug("Start" , Q_FUNC_INFO);
 
     log_macos_log_show_qfile.setFileName(file_path);
@@ -487,7 +491,7 @@ void thread_unified_logs::write_apple_macOS_log_archive_data_into_json_file(QStr
 }
 
 void thread_unified_logs::slot_apple_macOS_log_show_proc_readyread()
-{
+{ // read read function of log show command to read the output
 
     QByteArray apple_macOS_log_show_data = prc_log_macos_log_show->readAll();
 

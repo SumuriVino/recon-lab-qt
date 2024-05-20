@@ -30,7 +30,7 @@ void thread_signature::pub_set_job_selected_source_count_name_list(QStringList m
 
 
 void thread_signature::slot_extract_signature()
-{
+{ // Here our Signature analysis feature runs and extract the signatures, we get the signture related info from case configuration db which we shows on post launcher
     list_target_source_info = global_witness_info_manager_class_obj->pub_get_source_structure_QList();
 
     bool_cancel_extraction = false;
@@ -116,7 +116,7 @@ void thread_signature::slot_extract_signature()
 }
 
 void thread_signature::extract_signatures(QString fs_db_path, QString signature_db_path, struct_GLOBAL_witness_info_source target_struct_obj, QStringList sign_db_path_list)
-{
+{ // extraction signature related code
     mutex_for_fs_main_db->lock();
     if(!open_fs_db(fs_db_path))
     {
@@ -583,7 +583,7 @@ void thread_signature::pub_set_mutex_for_fs_main_db(QMutex *mutex)
 }
 
 void thread_signature::prepare_signature_structure_list()
-{
+{ // prepare signature qlist where this case configuration database plays role
     all_signatures_list.clear();
     QString command_str = QString("Select header from tbl_signature_list Where signature_status = '1'");
     all_signatures_list = recon_helper_standard_obj->get_stringlist_from_db_by_dbreference(command_str , 0 , case_configuration_db, Q_FUNC_INFO);

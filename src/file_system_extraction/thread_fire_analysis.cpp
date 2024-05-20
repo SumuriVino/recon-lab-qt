@@ -10,7 +10,10 @@ thread_fire_analysis::~thread_fire_analysis()
 
 }
 void thread_fire_analysis::slot_fire_analysis_extraction()
-{
+{ // Here we run fire analysis feature from post launcher FS Features
+    // we run fire_analysis executable here created from python scripts and it's dependencies are yolo_weight_path, yolo_config and object
+    // we store extracted fire data in fire_analysis.sqlite and update run status of each record in file_system.sqlite
+
     emit signal_PBAR_thread_file_system_started(MACRO_JobType_Fire_Analysis);
 
     list_target_source_info = global_witness_info_manager_class_obj->pub_get_source_structure_QList();
@@ -171,7 +174,7 @@ void thread_fire_analysis::slot_fire_analysis_extraction()
 }
 
 void thread_fire_analysis::slot_process_fire_analysis_finished(int status)
-{
+{ // when fire_analysis executable stopped or after extraction all data, this function executes as it indicates that fire_analysis feature has been complete
     if(recon_case_runner_type == MACRO_RECON_CASE_RUNNER_TYPE_FS_MODULE)
     {
         if(cmd_update_fs_run_status.endsWith("OR "))
@@ -187,7 +190,8 @@ void thread_fire_analysis::slot_process_fire_analysis_finished(int status)
 }
 
 void thread_fire_analysis::slot_process_fire_analysis_readyread()
-{
+{ // ready read function, as while extraction this functions tells us how much data has been extracted and how much is left and show them in progress bar
+
     QByteArray byte_arr_proc_out = process_fire_analysis->readAll();
     QString str_proc_out = QString::fromLocal8Bit(byte_arr_proc_out);
     QStringList list = str_proc_out.split("\n");
@@ -282,7 +286,8 @@ void thread_fire_analysis::pub_set_fs_run_module_file_info_list(QList<struct_glo
 }
 
 void thread_fire_analysis::extract_fire_analysis_for_fs_run_module()
-{
+{ // fire analysis extraction from right click action on any file system records. Store data in fire_analysis.sqlite and update running status in file_system.sqlite
+    // Runs fire_analysis executable created using with the help fire_analysis.py script
     cmd_update_fs_run_status = "Update files set fs_module_fire_analysis_run_status = '1' WHERE ";
     bool_cancel_extraction_fire_analysis = false;
 
@@ -451,7 +456,7 @@ void thread_fire_analysis::extract_fire_analysis_for_fs_run_module()
 }
 
 void thread_fire_analysis::slot_timeout_to_update_estimated_time_for_fs_modules()
-{
+{ // calculate estimate time to complete fire_analysis
     double avg_image_per_sec = processed_file_count_qint64 / 5;
 
     qint64 new_ramining_file_count = remaining_file_count_for_req_time_qint64;

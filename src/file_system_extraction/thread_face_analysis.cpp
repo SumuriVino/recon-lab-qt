@@ -38,7 +38,9 @@ void thread_face_analysis::pub_set_fs_run_module_file_info_list(QList<struct_glo
 }
 
 void thread_face_analysis::slot_extract_faces()
-{
+{ // extract face from here
+    // we use dlib library and it's functions for face extraction
+    // here we run face extraction on records, save faces paths in the face_analysis.sqlite and update run status in main file_system.sqlite to avoid duplicacy
     bool_cancel_extraction = false;
 
     list_target_source_info = global_witness_info_manager_class_obj->pub_get_source_structure_QList();
@@ -378,7 +380,7 @@ bool thread_face_analysis::open_fs_db(QString db_path)
 }
 
 void thread_face_analysis::extract_face_analysis_for_fs_run_module()
-{
+{ // run face extraction from right click action on file system records
     struct struct_fs_db_update
     {
         QString record_no;

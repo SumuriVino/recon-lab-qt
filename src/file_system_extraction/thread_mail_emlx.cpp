@@ -11,7 +11,9 @@ thread_mail_emlx::~thread_mail_emlx()
 }
 
 void thread_mail_emlx::slot_extract_emlx_files_data()
-{
+{ // From here our Email feature works. In this we parse all the .emlx files if we found in the source and display all the necessary things in Email Viewer
+    // like subjects, username, to, cc , bcc, raw data etc. The ui of Email Viewer can be found in class emlx_mail.cpp
+
     list_target_source_info = global_witness_info_manager_class_obj->pub_get_source_structure_QList();
 
     QString featr_emails_parent_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Email_Parser_In_Result_QString).toString();
@@ -202,8 +204,8 @@ void thread_mail_emlx::slot_extract_emlx_files_data()
                     if(!emlx_path_split_list.isEmpty())
                     {
                         int root_index = -1;
-                        if(emlx_path_split_list.contains("V2"))
-                            root_index = emlx_path_split_list.indexOf("V2");
+                        if(emlx_path_split_list.contains("V2")) // These are the directories we found in the directory structure of emlx files
+                            root_index = emlx_path_split_list.indexOf("V2"); // we use these directories to get account id
                         else if(emlx_path_split_list.contains("V3"))
                             root_index = emlx_path_split_list.indexOf("V3");
                         else if(emlx_path_split_list.contains("V4"))
@@ -456,7 +458,8 @@ void thread_mail_emlx::slot_extract_emlx_files_data()
     emit finished();
 }
 void thread_mail_emlx::copy_data_from_tmp_mail_db_to_email_parser_db()
-{
+{// copy data from tmp mail db to main email parser db because we usually work with temporary_mail db but after finishing all the work of email parser,
+    // we tranfer everything from tmp_mail_emlx.sqlite db to main db email_data.sqlite
     mutex_for_email_parser_db->lock();
 
     QString featr_emails_parent_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Email_Parser_In_Result_QString).toString();
@@ -515,7 +518,7 @@ void thread_mail_emlx::copy_data_from_tmp_mail_db_to_email_parser_db()
 }
 
 QString thread_mail_emlx::get_account_id_str(QString filepath)
-{
+{ // get account id/user id of emails
     QString account_id_str;
 
     QDirIterator dir_account(filepath,QDir::AllDirs | QDir::NoDotAndDotDot, QDirIterator::NoIteratorFlags);
@@ -579,7 +582,7 @@ QString thread_mail_emlx::get_account_id_str(QString filepath)
 }
 
 bool thread_mail_emlx::open_and_create_email_parser_db(QString email_parser_db_path)
-{
+{ // open and create the main email parser database
     QFileInfo info_db(email_parser_db_path);
     if(info_db.exists())
     {
@@ -599,7 +602,7 @@ bool thread_mail_emlx::open_and_create_email_parser_db(QString email_parser_db_p
 }
 
 bool thread_mail_emlx::open_fs_db(QString fs_db)
-{
+{ // open main file system database
     bool db_status = false;
 
     QString connection_naam = Q_FUNC_INFO;
@@ -639,6 +642,7 @@ void thread_mail_emlx::pub_set_recon_case_runner_type(QString type)
     recon_case_runner_type = type;
 }
 
+// Below you can find the complete code of parsing email to, subject, from, cc etc. After parsing we store these info in database and display on email viewer
 void thread_mail_emlx::emlx_start_parsing(QString filepath)
 {
 

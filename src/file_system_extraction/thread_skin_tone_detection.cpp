@@ -6,7 +6,8 @@ thread_skin_tone_detection::thread_skin_tone_detection(QObject *parent) : QObjec
 }
 
 void thread_skin_tone_detection::slot_extract_skin_tone_detection()
-{
+{// Here Skin Tone Detection runs and we use skin_tone_detection executable for that which is created from python script of skin tone detecion.py.
+    // Get extrcted and store the info in skin_tone_detection.sqlite to display
     emit signal_PBAR_thread_file_system_started(MACRO_JobType_Skin_Tone_Detection);
 
     list_target_source_info = global_witness_info_manager_class_obj->pub_get_source_structure_QList();
@@ -238,7 +239,7 @@ void thread_skin_tone_detection::slot_extract_skin_tone_detection()
 }
 
 void thread_skin_tone_detection::slot_process_skin_tone_detection_finished(int status)
-{
+{ // After skin tone extraction finished
     if(recon_case_runner_type == MACRO_RECON_CASE_RUNNER_TYPE_FS_MODULE)
     {
         if(cmd_update_fs_run_status.endsWith("OR "))
@@ -254,7 +255,7 @@ void thread_skin_tone_detection::slot_process_skin_tone_detection_finished(int s
 }
 
 void thread_skin_tone_detection::slot_process_skin_tone_detection_readyread()
-{
+{ // ready read function, While running skin tone detection we get output here which we use to display the progress to the user
     QByteArray arr_proc_out = process_skin_tone_detection->readAll();
 
     QString str_proc_out = QString::fromLocal8Bit(arr_proc_out);
@@ -376,7 +377,7 @@ void thread_skin_tone_detection::pub_set_fs_run_module_file_info_list(QList<stru
 }
 
 void thread_skin_tone_detection::extract_skin_tone_detection_for_fs_run_module()
-{
+{ // Same functionality here as it runs from post launcher also
     cmd_update_fs_run_status = "Update files set fs_module_skin_tone_detection_run_status = '1' WHERE ";
     bool_cancel_extraction = false;
 

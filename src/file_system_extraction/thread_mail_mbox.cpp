@@ -11,7 +11,8 @@ thread_mail_mbox::~thread_mail_mbox()
 }
 
 void thread_mail_mbox::slot_extract_mbox_files_data()
-{
+{ // This is automated feature which extracts the email data from .mbox files, display the data on email viewer. Usually these files we found in google takeout sources
+
     list_target_source_info = global_witness_info_manager_class_obj->pub_get_source_structure_QList();
 
     QString featr_emails_parent_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Email_Parser_In_Result_QString).toString();
@@ -178,7 +179,7 @@ void thread_mail_mbox::slot_extract_mbox_files_data()
     emit finished();
 }
 
-
+// Here below the parsing code of mbox files which parses subject, to, from, cc etc and other email data, store these info in email_data.sqlite and display on email viewer
 void thread_mail_mbox::start_mbox_parsing_for_feature(QString mbox_file_path)
 {
 

@@ -30,7 +30,7 @@ void thread_hashes::pub_set_fs_run_module_file_info_list(QList<struct_global_run
 
 
 void thread_hashes::slot_hashset_extraction()
-{
+{ // from here hashes extraction starts, we support MD5 and SHA1 hashses and use QT's inbuild function like MD5_init and SHA1_init functions for hashes extraction
     list_target_source_info = global_witness_info_manager_class_obj->pub_get_source_structure_QList();
 
     emit signal_PBAR_thread_file_system_started(MACRO_JobType_Hashes);
@@ -596,7 +596,7 @@ bool thread_hashes::open_and_create_hashes_db(QString hashes_db_path)
 }
 
 thread_hashes::struct_hashes thread_hashes::create_md5_and_sha1_hashes(QString file_path)
-{
+{ // This is the function where we use inbuilt functions and variables for hashes extraction
     struct_hashes hashes_obj;
 
 
@@ -667,7 +667,7 @@ thread_hashes::struct_hashes thread_hashes::create_md5_and_sha1_hashes(QString f
 }
 
 void thread_hashes::extract_hashset_for_fs_run_module()
-{
+{ // right click action hashes extraction features which also use qt inbuilt MD5_inti and SHA1_init functions for hashes extraction
     emit signal_PBAR_thread_file_system_value(MACRO_JobType_Hashes, QString("Acquiring Files List..."), true, 0, 0, false);
 
     struct struct_fs_db_update

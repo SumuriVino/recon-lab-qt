@@ -14,7 +14,8 @@ thread_apple_metadata::~thread_apple_metadata()
 }
 
 void thread_apple_metadata::slot_extract_apple_metadata()
-{
+{ // From here the apple metadata extraction starts, we get apple metadata attributes from apple_attributes_list.csv and store them in the file_system.sqlite as a columns
+    // and configuration database. We extract all those apple metadata whose present in apple_attributes_list.csv and update the status(0/1) in file system database
     list_target_source_info = global_witness_info_manager_class_obj->pub_get_source_structure_QList();
 
     emit signal_PBAR_thread_file_system_started(MACRO_JobType_Apple_Metadata);
@@ -380,7 +381,7 @@ void thread_apple_metadata::slot_extract_apple_metadata()
 }
 
 void thread_apple_metadata::intermediate_save_data_to_apple_metadata_db(QString apple_metadata_database_path)
-{
+{ // function not in use
 
     QString db_attach_commmand = QString("ATTACH DATABASE '%1' AS filesystemDB")
             .arg(QDir::toNativeSeparators(apple_metadata_database_path));
@@ -428,7 +429,7 @@ void thread_apple_metadata::intermediate_save_data_to_apple_metadata_db(QString 
 
 
 bool thread_apple_metadata::open_and_create_apple_metadata_db(QString apple_metadata_db_path)
-{
+{ //create apple_metadata.sqlite database in result directory
     QString connection_naam = Q_FUNC_INFO;
     QSqlDatabase::removeDatabase(connection_naam);
     in_memory_apple_metadata_db = QSqlDatabase::addDatabase("QSQLITE", connection_naam);
@@ -531,7 +532,7 @@ bool thread_apple_metadata::open_and_create_apple_metadata_db(QString apple_meta
 }
 
 bool thread_apple_metadata::open_fs_db(QString fs_db_path)
-{
+{ // open file_system.sqlite database and set the open database in private object destination_db to use further database
     recon_static_functions::app_debug(" -Starts" ,Q_FUNC_INFO);
 
     bool db_status = false;
@@ -555,7 +556,7 @@ bool thread_apple_metadata::open_fs_db(QString fs_db_path)
 }
 
 QString thread_apple_metadata::create_in_memory_db_table_command()
-{
+{ // prepare command from apple attributes list csv to create columns in apple_metadata.sqlite database
     QString command_str = "CREATE TABLE files (filesystem_record INTEGER";
 
     QString apl_attributes_csv_path = QString("../Resources/apple_attributes/apple_attributes_list.csv");
@@ -689,7 +690,7 @@ void thread_apple_metadata::pub_set_apple_metadata_all_attributes_name_list(QStr
 }
 
 void thread_apple_metadata::set_all_attributes_list()
-{
+{ // prepare apple metadata attributes list
     QString config_db_path  = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Case_Configuration_In_Result_QString).toString() + "case_configuration.sqlite";
     QString attributes_command_str = QString("Select metadata_attribute_name From tbl_apple_attributes Where bookmark_filter = '1' or bookmark_report = '1'");
     attributes_name_list_examiner_selected = recon_helper_standard_obj->get_stringlist_from_db_by_dbpath(attributes_command_str, 0 ,config_db_path , Q_FUNC_INFO);
@@ -712,7 +713,11 @@ void thread_apple_metadata::pub_set_fs_run_module_file_info_list(QList<struct_gl
 }
 
 void thread_apple_metadata::extract_apple_metadata_for_fs_run_module()
-{
+{// run apple metadata from right click on file system
+    // There is 2-3 approaches we use to extract apple metadata like using script, metadata reader etc. This depends on image.
+    // we prepare text file and csv file with image file paths.
+    // There is store.db on path where image mounted inside hidden spotlight folder on root path. We match store.db data with our text and csv file paths and get apple metadata from there.
+
     //emit signal_PBAR_thread_file_system_value(MACRO_JobType_Apple_Metadata, QString("Initializing......"), true, 0, 0, true);
     struct struct_fs_db_update
     {
@@ -1129,7 +1134,7 @@ void thread_apple_metadata::extract_apple_metadata_for_fs_run_module()
 }
 
 void thread_apple_metadata::create_and_insert_processed_attributes_list(QString apple_metadata_db_path)
-{
+{ // create table and insert processed attributes data in the database
     QString connection_naam = Q_FUNC_INFO;
     QSqlDatabase::removeDatabase(connection_naam);
     QSqlDatabase destination_db = QSqlDatabase::addDatabase("QSQLITE", connection_naam);
@@ -1162,7 +1167,7 @@ void thread_apple_metadata::create_and_insert_processed_attributes_list(QString 
 }
 
 bool thread_apple_metadata::fill_apple_metadata_from_script(QString file_path, QStringList keys_list, struct_global_apple_metadata_parsed_data &extended_attr_parsed_data_obj)
-{
+{ // fill metadata values in map
     QMap <QString , QString > tmp_qmap;
     tmp_qmap =  map_apple_metadata_for_recon_logical_image.value(file_path);
     if(tmp_qmap.isEmpty())
@@ -1190,7 +1195,7 @@ bool thread_apple_metadata::fill_apple_metadata_from_script(QString file_path, Q
 }
 
 void thread_apple_metadata::extract_apple_metadata_from_apple_metadata_reader(QString file_paths_str, QString source_cnt_name,QString virtual_source_path,QString m_flag, int runner_type)
-{
+{ // This is another way to extract apple metadata using apple metadata reader but we stopped using it due to some past scenarios
 
     recon_static_functions::app_debug("Start",Q_FUNC_INFO);
 
@@ -1353,7 +1358,7 @@ void thread_apple_metadata::pub_set_apple_metadata_reader_process_for_left_click
 
 
 void thread_apple_metadata::slot_prc_apple_metadata_reader_for_full_source_readyread()
-{
+{ // run apple metadata reader using qprocess and this is ready read function to read output values
     recon_static_functions::app_debug("Start",Q_FUNC_INFO);
 
     QString prc_output = process_apple_metadata_reader_for_full_source->readAll();
@@ -1400,7 +1405,7 @@ void thread_apple_metadata::slot_prc_apple_metadata_reader_for_full_source_ready
 }
 
 void thread_apple_metadata::slot_prc_apple_metadata_reader_for_right_click_readyread()
-{
+{// This is same as above but for right click which run apple metadata reader using qprocess and get output values here
     recon_static_functions::app_debug("Start",Q_FUNC_INFO);
 
     QString prc_output = process_apple_metadata_reader_for_right_click->readAll();
@@ -1446,7 +1451,7 @@ void thread_apple_metadata::slot_prc_apple_metadata_reader_for_right_click_ready
 }
 
 void thread_apple_metadata::copy_tmp_apple_metadata_to_actual_apple_timestamps_db(QString tmp_db_path,QString actual_db_path)
-{
+{ // works in tmp apple metadata but at last copy that in file system directory but this is only use in apple metadata reader, not in use now
     recon_static_functions::app_debug("Start" ,Q_FUNC_INFO);
 
     //    QString connection_naam = Q_FUNC_INFO;
@@ -1517,7 +1522,7 @@ void thread_apple_metadata::copy_tmp_apple_metadata_to_actual_apple_timestamps_d
 
 
 void thread_apple_metadata::update_filesystem_db_for_fs_run_module_status(QString tmp_fs_db_path ,QString actual_fs_db_path)
-{
+{ // update file system database while running apple metadata and update running status in file_system.sqlite
 
     recon_static_functions::app_debug("Start" ,Q_FUNC_INFO);
 
@@ -1586,7 +1591,7 @@ void thread_apple_metadata::pub_extract_apple_metadata_from_apple_metadata_reade
 }
 
 void thread_apple_metadata::insert_source_info_in_apple_metadata_essential_db_for_right_click_extraction(QString fs_record_no,QString display_file_path,QString source_count_name)
-{
+{// insert source info of that particular record in apple_metadata_essentials.sqlite in temp directory, we use it for apple metadata reader
     QString tmp_dir_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Adhoc_Path_Location_Apple_Metadata_In_Result_QString).toString();
 
     QDir carve_dir(tmp_dir_path);
@@ -1627,7 +1632,7 @@ void thread_apple_metadata::insert_source_info_in_apple_metadata_essential_db_fo
 
 
 QString thread_apple_metadata::create_tmp_apple_metdata_essential_db_for_right_click()
-{
+{ // create tmp apple_metadata_essentials.sqlite database (for apple metadata reader)
     QString tmp_dir_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Adhoc_Path_Location_Apple_Metadata_In_Result_QString).toString();
 
     QDir tmp_dir(tmp_dir_path);
@@ -1670,7 +1675,7 @@ QString thread_apple_metadata::create_tmp_apple_metdata_essential_db_for_right_c
 }
 
 void thread_apple_metadata::slot_timeout_to_update_estimated_time_for_fs_modules()
-{
+{ // implement approach which can tell how long it gonna take to calculate the apple metadata on a particlar source
     double avg_image_per_sec = processed_file_count_for_proc_qint64 / 5;
 
     qint64 new_ramining_file_count = remain_file_count_for_req_time_for_proc_qint64;

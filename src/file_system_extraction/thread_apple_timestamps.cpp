@@ -31,7 +31,7 @@ void thread_apple_timestamps::pub_set_mutex_for_fs_main_db(QMutex *mutex)
 
 
 void thread_apple_timestamps::run()
-{
+{ // extract apple timestamps and generate file system timelines from here which runs from file system post launcher
     recon_static_functions::app_debug(" Start " , Q_FUNC_INFO);
 
     emit signal_PBAR_thread_apple_timestamp_started(MACRO_JobType_Extract_Apple_Timestamps);
@@ -218,7 +218,7 @@ void thread_apple_timestamps::run()
 }
 
 bool thread_apple_timestamps::open_and_create_apple_timestamp_db(QString apple_timestamp_db_path)
-{
+{ // open and create apple timestamps database
     QString connection_naam = Q_FUNC_INFO;
     QSqlDatabase::removeDatabase(connection_naam);
     in_memory_apple_timestamp_db = QSqlDatabase::addDatabase("QSQLITE", connection_naam);
@@ -305,7 +305,7 @@ void thread_apple_timestamps::pub_set_apple_metadata_all_attributes_name_list(QS
 }
 
 bool thread_apple_timestamps::open_fs_db(QString fs_db_path)
-{
+{ // open file system database here
     recon_static_functions::app_debug(" -Starts" ,Q_FUNC_INFO);
 
     bool db_status = false;
@@ -329,7 +329,7 @@ bool thread_apple_timestamps::open_fs_db(QString fs_db_path)
 }
 
 void thread_apple_timestamps::intermediate_save_data_to_apple_timestamp_db(QString apple_timestamp_database_path)
-{
+{ // save data in apple timestamps database
     QString db_attach_commmand = QString("ATTACH DATABASE '%1' AS filesystemDB")
             .arg(QDir::toNativeSeparators(apple_timestamp_database_path));
 
@@ -375,7 +375,7 @@ void thread_apple_timestamps::intermediate_save_data_to_apple_timestamp_db(QStri
 }
 
 void thread_apple_timestamps::copy_data_from_apple_timestamp_to_fs_db(QString source_count_name)
-{
+{ // copy all the timestmaps data from apple timestamos database to main file system database
 
     QString apple_timestamp_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_File_System_In_Result_QString).toString()
             + source_count_name + QString("/apple_timestamps.sqlite");
@@ -441,7 +441,7 @@ void thread_apple_timestamps::copy_data_from_apple_timestamp_to_fs_db(QString so
 }
 
 void thread_apple_timestamps::generate_filesystem_timeline(QString source_count_name)
-{
+{ // generate file system timelines here and save the info in tmp database and later transfer all the data in file system database
     recon_static_functions::app_debug(" Start " , Q_FUNC_INFO);
 
     QString fs_timeline_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Artifacts_Timeline_Full_In_Result_QString).toString() + "file_system_timeline_full_" + source_count_name + ".sqlite";
@@ -626,7 +626,7 @@ void thread_apple_timestamps::generate_filesystem_timeline(QString source_count_
 }
 
 bool thread_apple_timestamps::fill_apple_timestamps_from_script(QString file_path, QStringList keys_list, struct_global_apple_metadata_parsed_data &extended_attr_parsed_data_obj)
-{
+{ // file apple timestamps in structure from map
     QMap <QString , QString > tmp_qmap;
     tmp_qmap =  map_apple_metadata_for_recon_logical_image.value(file_path);
     if(tmp_qmap.isEmpty())
@@ -655,7 +655,7 @@ void thread_apple_timestamps::pub_set_apple_timestamps_reader_process(QProcess *
 }
 
 void thread_apple_timestamps::extract_apple_timestamps_from_apple_metadata_reader(QStringList file_path_list,QString source_cnt_name,QString virtual_source_path)
-{
+{ // extract apple timestammps from apple_metadata_reader but not in use right now
     recon_static_functions::app_debug("Start" ,Q_FUNC_INFO);
     QString file_system_apple_timestamps = global_narad_muni_class_obj->get_field(MACRO_NARAD_Extracted_Content_Location_Apple_Metadata_Reader_Apple_Timestamps_QString).toString();
 
@@ -748,7 +748,7 @@ void thread_apple_timestamps::extract_apple_timestamps_from_apple_metadata_reade
 }
 
 void thread_apple_timestamps::slot_prc_apple_timestamps_readyread()
-{
+{ // parent function not in use
     QString prc_output = process_apple_timestamps_reader->readAll();
     prc_output.remove("\"");
     QString record_str = QString(MACRO_GLOBAL_RECON_AND_APPLE_METADATA_READER_COMMON_Splitter_Record);
@@ -781,7 +781,7 @@ void thread_apple_timestamps::slot_prc_apple_timestamps_readyread()
 
 
 void thread_apple_timestamps::copy_tmp_apple_timestamps_to_actual_apple_timestamps_db(QString tmp_timestamps_db_path,QString actual_db_path)
-{
+{ // parent function not in use
     recon_static_functions::app_debug("Start" ,Q_FUNC_INFO);
 
     //    QString connection_naam = Q_FUNC_INFO;

@@ -13,7 +13,8 @@ thread_optical_character_recognition::~thread_optical_character_recognition()
 }
 
 void thread_optical_character_recognition::slot_extract_optical_character_recognition()
-{
+{ // This the feature where we extract OCR data. We use ocr_text_extractor binary for OCR data Extraction. We have seperate c++ code for ocr_text_extractor
+    // we run this ocr_text_extractor using QProcess with some arguments
 
     list_target_witness_info = global_witness_info_manager_class_obj->pub_get_source_structure_QList();
 
@@ -155,7 +156,7 @@ void thread_optical_character_recognition::slot_extract_optical_character_recogn
 }
 
 void thread_optical_character_recognition::slot_process_optical_character_recognition_readyread()
-{
+{ // while running ocr we get output here which we use that data to display the progress to user
 
     QByteArray byte_arr_proc_out = process_run_optical_character_recognition->readAll();
 
@@ -252,7 +253,7 @@ bool thread_optical_character_recognition::open_fs_db(QString fs_db_path)
 
 
 void thread_optical_character_recognition::slot_process_optical_character_recognition_finished(int status)
-{
+{ // When OCR Extraction finished we update run status in main file_system.sqlite database
     if(recon_case_runner_type == MACRO_RECON_CASE_RUNNER_TYPE_FS_MODULE)
     {
         if(cmd_update_fs_run_status.endsWith("OR "))
@@ -293,7 +294,8 @@ void thread_optical_character_recognition::pub_set_fs_run_module_file_info_list(
 }
 
 void thread_optical_character_recognition::extract_optical_character_recognition_for_fs_run_module()
-{
+{ // This is OCR Extraction feature on right click to run on the file system else approach is same as we run OCR from pre launcher
+
     cmd_update_fs_run_status = "Update files set fs_module_optical_character_recognition_run_status = '1' WHERE ";
     bool_cancel_extraction = false;
 
@@ -436,7 +438,7 @@ void thread_optical_character_recognition::extract_optical_character_recognition
 }
 
 void thread_optical_character_recognition::copy_data_from_ocr_to_fs_db(QString source_count_name)
-{
+{ // Here we copy the data from optical_character_recognition.sqlite to main file_system.sqlite database
 
     QString ocr_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_File_System_In_Result_QString).toString()
             + source_count_name + QString("/optical_character_recognition.sqlite");
@@ -513,7 +515,7 @@ void thread_optical_character_recognition::copy_data_from_ocr_to_fs_db(QString s
 }
 
 void thread_optical_character_recognition::slot_timeout_to_update_estimated_time_for_fs_modules()
-{
+{ // timer approach which tells the estimated completion time of OCR Extraction
     double avg_image_per_sec = processed_file_count_qint64 / 5;
 
     qint64 new_ramining_file_count = remaining_file_count_for_req_time_qint64;

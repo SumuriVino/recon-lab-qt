@@ -29,8 +29,7 @@ void decompress_file_system::slot_hide_loading_display_dialog_box(bool status)
 }
 
 void decompress_file_system::pub_set_db_essentials(QString db_path, QSqlDatabase destination_db)
-{
-
+{ // set file system database path
     if(destination_db.isOpen())
     {
         destination_db_obj = destination_db;
@@ -74,7 +73,9 @@ void decompress_file_system::pub_set_record_no_for_decompression(QString record_
 }
 
 QString decompress_file_system::start_run()
-{ // decompress file system compressed file when click on decompress button on right click, store those info in db
+{ // There is a feature on right click named as "decompress file" which functonality runs/starts from this function. This right click feature enables on any compressed and
+// when we hit this feature, this function will decompress that file and store the filepath, file info like timestamps etc into database. Here we decompress the file using unzip and tar
+    // commands. We extract the file parallel to file_system.sqlite and store those extracted file info in same file_system.sqlite database
     recon_static_functions::app_debug(" start " ,Q_FUNC_INFO);
 
     if(!destination_db_obj.open())
@@ -305,7 +306,8 @@ QString decompress_file_system::start_run()
 }
 
 void decompress_file_system::check_for_other_sources(QString display_path, QString info_path)
-{ // check for ios sources for decompression
+{ // Here we check for other sources like if found any ios backup in source then store that info in mobile_backup.sqlite OR if found any image than store that info in disk_images.sqlite
+    // so we can show those sources in case tree(mobile backup/disk image section)
     recon_static_functions::app_debug(" start " ,Q_FUNC_INFO);
 
     QString start_point = QString::number(enum_GLOBAL_COMMON_RECON_AND_ARTIFACT_FilePath_StartFrom_Result);
@@ -386,7 +388,7 @@ void decompress_file_system::check_for_other_sources(QString display_path, QStri
 
 }
 
-// update record count for case tree
+// get total record from file_system.sqlite and update total records display in case tree
 void decompress_file_system::update_record_count_for_file_system_in_case_tree()
 {
     recon_static_functions::app_debug(" start " ,Q_FUNC_INFO);
@@ -502,7 +504,7 @@ void decompress_file_system::update_record_count_for_file_system_in_case_tree()
     recon_static_functions::app_debug(" end " ,Q_FUNC_INFO);
 
 }
-
+// Get total number of mibile backups we found from source from mobile_backup.sqlite database and show in case tree (Mobile Backup section)
 void decompress_file_system::update_record_count_for_mobile_backup_in_case_tree()
 {
     recon_static_functions::app_debug(" end " ,Q_FUNC_INFO);
@@ -545,6 +547,7 @@ void decompress_file_system::update_record_count_for_mobile_backup_in_case_tree(
 
 }
 
+// Get total disk images number from disk_images.sqlite database and show that in case tree (Disk Images Section)
 void decompress_file_system::update_record_count_for_disk_images_in_case_tree()
 {
     recon_static_functions::app_debug(" end " ,Q_FUNC_INFO);

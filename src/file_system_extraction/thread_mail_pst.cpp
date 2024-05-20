@@ -11,7 +11,9 @@ thread_mail_pst::~thread_mail_pst()
 }
 
 void thread_mail_pst::slot_pst_mail_extraction()
-{
+{ // This is automated feature which extracts the email data from pst files from anywhere present in the source. Here we use readpst library to convert pst files into .eml files
+    // after conversion we parse the email data from .eml files, store in database and display in email viewer
+
     list_target_source_info = global_witness_info_manager_class_obj->pub_get_source_structure_QList();
 
     emit signal_PBAR_thread_file_system_started(MACRO_JobType_Email_Parser_Pst_Mail);
@@ -359,7 +361,8 @@ void thread_mail_pst::slot_pst_mail_extraction()
     emit finished();
 }
 void thread_mail_pst::copy_data_from_tmp_mail_db_to_email_parser_db()
-{
+{ // As most of the time we work in tmp database and copy that tmp database data into main database after finishing work
+
     mutext_for_mail_pst_main_db->lock();
 
     QString featr_emails_parent_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Email_Parser_In_Result_QString).toString();
@@ -436,6 +439,7 @@ void thread_mail_pst::pub_set_mutex_for_emlx_db(QMutex *mutex)
     mutext_for_mail_pst_main_db = mutex;
 }
 
+// Here below is the code of parsing .pst files. After conversion from .pst to .eml files, we parse data from .eml files using below functions, store in database to display in email viewer
 QString thread_mail_pst::pub_get_account_id_str(QString dir_path)
 {
     bool_account_id = false;

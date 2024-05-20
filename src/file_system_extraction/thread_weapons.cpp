@@ -10,7 +10,8 @@ thread_weapons::~thread_weapons()
 
 }
 void thread_weapons::slot_weapons_extraction()
-{
+{// Run weapon extraction from here. We run weapon executable for weapon extractions with it's dependencies weapon_fire_yolov3.weights, weapon_fire_yolov3.cfg, weapon_fire_obj.names
+
     emit signal_PBAR_thread_file_system_started(MACRO_JobType_Weapons);
 
     list_target_source_info = global_witness_info_manager_class_obj->pub_get_source_structure_QList();
@@ -168,7 +169,8 @@ void thread_weapons::slot_weapons_extraction()
 }
 
 void thread_weapons::slot_process_weapons_readyread()
-{
+{// ready read function to read the output while extraction to display the progress to user
+
     QByteArray byte_arr_proc_out = process_weapons->readAll();
     QString str_proc_out = QString::fromLocal8Bit(byte_arr_proc_out);
     QStringList list = str_proc_out.split("\n");
@@ -281,7 +283,7 @@ void thread_weapons::pub_set_fs_run_module_file_info_list(QList<struct_global_ru
 }
 
 void thread_weapons::extract_weapons_for_fs_run_module()
-{
+{ // This is for right click action Weapon extraction, Functionality and working is same as above for post launcher weapon extraction
     cmd_update_fs_run_status = "Update files set fs_module_weapons_run_status = '1' WHERE ";
     bool_cancel_extraction_weapons = false;
 

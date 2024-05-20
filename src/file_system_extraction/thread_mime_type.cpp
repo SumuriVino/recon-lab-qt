@@ -13,7 +13,10 @@ thread_mime_type::~thread_mime_type()
 }
 
 void thread_mime_type::slot_extract_mime_type()
-{
+{ // This is Automated feature and lot of other FS Features are dependent on mime type like face, guns ,skin extraction etc. After mime type extraction we run some of these features only.
+    // We use QT Inbuilt function to extract mime type which is QMimeDatabase
+
+
     list_target_source_info = global_witness_info_manager_class_obj->pub_get_source_structure_QList();
 
     emit signal_PBAR_thread_file_system_started(MACRO_JobType_Mime_Type);
@@ -377,7 +380,7 @@ void thread_mime_type::slot_extract_mime_type()
 }
 
 void thread_mime_type::copy_data_from_mime_to_fs_db(QString source_count_name)
-{
+{ // Here after mime type extraction, we transfer all the mime type data from mime.sqlite to main fs db file_system.sqlite
 
     QString mime_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_File_System_In_Result_QString).toString()
             + source_count_name + QString("/mime.sqlite");
@@ -660,7 +663,8 @@ void thread_mime_type::pub_set_mutex_for_fs_main_db(QMutex *mutex)
 }
 
 void thread_mime_type::extract_mime_type_for_fs_run_module()
-{
+{ // This is the function to extract mime type on right click action but we have hide it from right click as mime type is automated now and mandatory to run
+
     emit signal_PBAR_thread_file_system_value(MACRO_JobType_Mime_Type, QString("Acquiring Files List..."), true, 0, 0, false);
 
     struct struct_fs_db_update

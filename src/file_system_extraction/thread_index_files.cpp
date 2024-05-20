@@ -17,7 +17,8 @@ void thread_index_files::set_recon_case_runner_type(QString type)
 
 
 void thread_index_files::prepare_whitelist_and_blacklist()
-{
+{ // Here we are preparing extensions which needs to index
+    //whitelist inludes documents and blacklist includes disk images
 
     bool_whitelist_check_status = false;
     bool_blacklist_check_status = false;
@@ -73,7 +74,7 @@ void thread_index_files::pub_set_is_running_from_toolbar(bool status)
 
 
 void thread_index_files::slot_extract_dt_search_data()
-{
+{ // from here, Text indexing starts. we use dt search library for the text indexing which helps us in content search feature
     list_target_source_info = global_witness_info_manager_class_obj->pub_get_source_structure_QList();
 
     whitelist_extensions_list.clear();
@@ -109,7 +110,7 @@ void thread_index_files::pub_set_mutex_for_fs_main_db(QMutex *mutex)
 }
 
 bool thread_index_files::open_fs_db(QString fs_db_path)
-{
+{ // open main file_system.sqlite database
     bool db_status = false;
 
     QString connection_naam = Q_FUNC_INFO;
@@ -129,24 +130,24 @@ bool thread_index_files::open_fs_db(QString fs_db_path)
 }
 
 void thread_index_files::pub_create_dt_search_index_for_every_source(QString source_count_name)
-{
+{ // create dt search text indexing for the source
     create_dt_search_index_for_every_source(source_count_name);
 }
 
 bool thread_index_files::pub_dt_update_index(QString filepath_str)
-{
+{ // update dt search indexing when we try to hit content search, that time this function will get call.
     bool status = dt_search_interface_obj->updateIndex(0, filepath_str);
 
     return status;
 }
 
 void thread_index_files::pub_dt_search_index(QString keyword_str)
-{
+{ // when we search any keyword using content search, The keyword will be here in keyword_str variable and dt search will search that the index of it using below function
     dt_search_interface_obj->searchIndex(0,keyword_str);
 }
 
 void thread_index_files::create_dt_search_index_for_every_source(QString source_count_name)
-{
+{ // create dt search index for particular source/source_count_name
     QString path_of_index_dir = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_File_System_In_Result_QString).toString() + source_count_name + "/dt_search_index/";
     QFile file(path_of_index_dir);
     if(file.exists())
@@ -164,7 +165,7 @@ void thread_index_files::create_dt_search_index_for_every_source(QString source_
 }
 
 void thread_index_files::index_file_content_using_dt_search(QString file_path)
-{
+{ //index any particular file by file using dt search
     bool bool_update_index = dt_search_interface_obj->updateIndex(0 , "@", file_path);
 
     if(!bool_update_index)
@@ -174,7 +175,7 @@ void thread_index_files::index_file_content_using_dt_search(QString file_path)
 }
 
 void thread_index_files::open_and_create_index_files_db(QString index_files_db_path)
-{
+{ // function not in use
     QString connection_naam = Q_FUNC_INFO;
     QSqlDatabase::removeDatabase(connection_naam);
     in_memory_index_files_db = QSqlDatabase::addDatabase("QSQLITE", connection_naam);
@@ -235,7 +236,7 @@ void thread_index_files::open_and_create_index_files_db(QString index_files_db_p
 }
 
 void thread_index_files::intermediate_save_data_to_index_files_db(QString index_files_db_path)
-{
+{ // function not in use
     QString db_attach_commmand = QString("ATTACH DATABASE '%1' AS filesystemDB")
             .arg(QDir::toNativeSeparators(index_files_db_path));
 
@@ -792,7 +793,7 @@ void thread_index_files::intermediate_save_data_to_index_files_db(QString index_
 
 
 void thread_index_files::index_files_from_toolbar_selected_files()
-{
+{ // Run Text Indexing on those files which we have selected
 
     global_dt_indexing_processed_files_count = 0;
 
@@ -1464,7 +1465,7 @@ void thread_index_files::index_files_from_toolbar_selected_files()
 }
 
 void thread_index_files::slot_on_timer_tick()
-{
+{ // set timer to display that how much percentage of text indexing completed
     if(bool_cancel_extraction)
     {
         dt_search_interface_obj->pub_set_bool_cancel_extraction(bool_cancel_extraction);
@@ -1484,7 +1485,7 @@ void thread_index_files::slot_on_timer_tick()
 
 
 void thread_index_files::index_files_for_carved_files()
-{
+{ // Text Indexing runs on selected file for carved files extraction
     ///get source count from selected files
     QString indexing_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_File_System_In_Result_QString).toString() + "file_indexing_queue.sqlite";
 

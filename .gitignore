@@ -15,3 +15,5 @@ build-RECON_LAB-No_Frame-Debug/.qmake.stash
 build-RECON_LAB-Qt_6_2_4_for_macOS-Debug/.qmake.stash
 build-RECON_LAB-No_Frame-Debug/.qmake.stash
 src/RECON_LAB.pro.user
+src/RECON_LAB.pro.user
+*.user

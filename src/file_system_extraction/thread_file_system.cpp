@@ -47,7 +47,8 @@ void thread_file_system::pub_set_general_process(QProcess *mobj)
 }
 
 void thread_file_system::run()
-{
+{ // Here our file system thread works which prepare the main file_system.sqlite database to displays all the data on file system table widget
+    // mainly we prepare our file_system.sqlite database here for different different sources like images, zip, tar, ufdr, ios backup etc
     recon_static_functions::app_debug(" Start " , Q_FUNC_INFO);
 
     emit signal_PBAR_thread_file_system_started(MACRO_JobType_Adding_Source_To_Case);
@@ -256,7 +257,8 @@ void thread_file_system::slot_add_internal_sources_to_case_finished()
 }
 
 void thread_file_system::slot_process_tsk_fs_custom_status(QString custom_msg)
-{
+{ // tsk function of ready read which reads the output when image mounted and file system filling started.
+    // we use tsk/sleuthkit for some images to prepare main db file_system.sqlite
     // "\"Process_Start\""
     custom_msg.remove("\"");
 
@@ -313,7 +315,7 @@ void thread_file_system::slot_process_tsk_fs_custom_status(QString custom_msg)
 }
 
 void thread_file_system::update_fs_db_for_path_startfrom()
-{
+{ // update file_system.sqlite database for paths start from which means add initial path + FilePathFromDB
     recon_static_functions::app_debug("start " , Q_FUNC_INFO);
 
     QString prepend_path = struct_target_info_ptr.virtual_source_path;
@@ -428,7 +430,8 @@ void thread_file_system::update_fs_db_for_path_startfrom()
 }
 
 void thread_file_system::extract_file_system_tsk()
-{
+{ // fill file_system.sqlite main database using tsk library in case of HFS NTFS, LIFS, EXFAT file system type images
+
     recon_static_functions::app_debug("start " , Q_FUNC_INFO);
 
     bool_process_tsk_fs_finish_with_desired_output = false;
@@ -534,7 +537,7 @@ void thread_file_system::extract_file_system_tsk()
 }
 
 void thread_file_system::extract_file_system_regular()
-{
+{ // fill file_system.sqlite main database in case of image doesn't support by tsk or any other fuse. Then we use regular iterator to prepare the main file system database
     recon_static_functions::app_debug(" start " , Q_FUNC_INFO);
 
 
@@ -628,7 +631,7 @@ void thread_file_system::extract_file_system_regular()
 
 
 void thread_file_system::extract_window_registry_files()
-{
+{ // extract window registry files if find these below path in the image or file system database after prepared
     recon_static_functions::app_debug(" start", Q_FUNC_INFO);
 
     bool_registry_files_extraction_finished = false;
@@ -701,7 +704,7 @@ void thread_file_system::extract_window_registry_files()
 }
 
 void thread_file_system::extract_window_ram_images()
-{
+{ // extract window ram images if find in the image after preparation of file system database
     recon_static_functions::app_debug(" start", Q_FUNC_INFO);
 
     QString source_count_name = struct_target_info_ptr.source_count_name;
@@ -793,7 +796,7 @@ void thread_file_system::set_case_treewidget_obj(R_Treewidget *obj)
 
 
 void thread_file_system::retrieve_paths()
-{
+{ // set complete path in private variables to use further
 
     case_db_path  = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Case_Configuration_In_Result_QString).toString() + "case_configuration.sqlite";
 
@@ -845,7 +848,7 @@ void thread_file_system::retrieve_paths()
 
 
 void thread_file_system::extract_fs_info_and_fill_db_for_ios_uid(QSqlDatabase destination_db)
-{
+{ // extract fs info and prepare main file system database for ios backups
     recon_static_functions::debug_intensive("Start " , Q_FUNC_INFO);
 
 
@@ -865,7 +868,8 @@ void thread_file_system::extract_fs_info_and_fill_db_for_ios_uid(QSqlDatabase de
 }
 
 void thread_file_system::extract_fs_info_and_fill_db_for_regular_source(QSqlDatabase destination_db)
-{
+{ // prepare file system database for regular sources which are not supported by tsk nor ios, uid, xml type sources.
+    // Even if we add any unknown source or folder or some some images also in some cases, it's file system will be prepared by this function
     recon_static_functions::app_debug(" Start " , Q_FUNC_INFO);
 
     QString init_path = source_path;
@@ -905,7 +909,7 @@ void thread_file_system::extract_fs_info_and_fill_db_for_regular_source(QSqlData
 
 
 void thread_file_system::insert_regular_source_details_in_filesystem_db(QString file_path , QSqlQuery *query_insert)
-{
+{ // prepare file system for regular sources like any unknown source, folder, file etc or some images also in some cases
 
     QString fs_extraction_src_path = struct_target_info_ptr.fs_extraction_source_path;
     QString source_count_name = struct_target_info_ptr.source_count_name;
@@ -1101,7 +1105,8 @@ void thread_file_system::insert_regular_source_details_in_filesystem_db(QString 
 }
 
 void thread_file_system::extract_fs_info_and_fill_db_for_zip_source(QSqlDatabase destination_db)
-{
+{ // prepare file system database for zip sources like graykey ios backup and graykey android backup
+
     recon_static_functions::app_debug(" Start " , Q_FUNC_INFO);
 
     QString init_path = source_path;
@@ -1131,7 +1136,7 @@ void thread_file_system::extract_fs_info_and_fill_db_for_zip_source(QSqlDatabase
 }
 
 void thread_file_system::insert_zip_source_details_in_filesystem_db(QString file_path , QSqlQuery *query_insert)
-{
+{ // prepare file system databsae and run iterator on zip type sources like graykey
 
     QString fs_extraction_src_path = struct_target_info_ptr.fs_extraction_source_path;
     QString source_count_name = struct_target_info_ptr.source_count_name;
@@ -1265,7 +1270,7 @@ void thread_file_system::insert_zip_source_details_in_filesystem_db(QString file
 }
 
 void thread_file_system::fill_struct_dir_list_for_ios_xml_backup()
-{
+{ // fill structure directory list of backup information in case of xml backup sources like ufdr
     recon_static_functions::app_debug("Start ", Q_FUNC_INFO);
 
     QString ios_xml_bkup_path = struct_target_info_ptr.virtual_source_path;
@@ -1381,7 +1386,7 @@ void thread_file_system::fill_struct_dir_list_for_ios_xml_backup()
 }
 
 void thread_file_system::extract_fs_info_and_fill_db_for_ios_xml(QSqlDatabase destination_db)
-{
+{ // prepare file_system.sqlite main database for xml sources like cellebrite ufdr backup
     recon_static_functions::debug_intensive("Start " , Q_FUNC_INFO);
 
     //------------------------ Inserting root level files i.e. report.xml etc. - Starts ---------------------------//
@@ -1590,7 +1595,7 @@ void thread_file_system::extract_fs_info_and_fill_db_for_ios_xml(QSqlDatabase de
 }
 
 void thread_file_system::insert_ios_xml_details_in_filesystem_db(QSqlDatabase destination_db, QString id_path, QString display_file_path ,QString file_size, QString file_id, QString m_flag , struct_ios_xml_tagged_files_timestamp_info obj)
-{
+{ // insertion starts for xml backups in case of cellebrite ios ufdr backups
     recon_static_functions::debug_intensive("Start ", Q_FUNC_INFO);
 
     QSqlQuery insert_into_destination(destination_db);
@@ -1685,7 +1690,7 @@ void thread_file_system::insert_ios_xml_details_in_filesystem_db(QSqlDatabase de
 
 
 void thread_file_system::create_mime_signature_exif_apple_metadata_and_necessary_path()
-{
+{ // create some by default databases for file system modules featuees
 
     if(!QFileInfo(fs_database_path).exists())
     {
@@ -1798,7 +1803,7 @@ void thread_file_system::create_mime_signature_exif_apple_metadata_and_necessary
 }
 
 QString thread_file_system::create_apple_metadata_db_table_command()
-{
+{ // create by default apple metadata database table, it's columns we extracts from apple_attributes_list.csv and then prepare final command to create columns of apple metadata
     QString command_str = "CREATE TABLE files (filesystem_record INTEGER";
 
     QString apl_attributes_csv_path = QString("../Resources/apple_attributes/apple_attributes_list.csv");
@@ -1898,7 +1903,7 @@ QString thread_file_system::create_apple_metadata_db_table_command()
 
 
 void thread_file_system::extract_fs_info_and_fill_db_for_ios_uid_7_8_9(QSqlDatabase destination_db)
-{
+{ // extract and prepare main database file_system.sqlite in case of iOS backup 7,8,9
     recon_static_functions::debug_intensive(" start " , Q_FUNC_INFO);
 
     // inserting    "Info.plist", "Manifest.plist" etc. static files
@@ -1956,7 +1961,7 @@ void thread_file_system::extract_fs_info_and_fill_db_for_ios_uid_7_8_9(QSqlDatab
 }
 
 void thread_file_system::extract_fs_info_and_fill_db_for_ios_uid_10_11(QSqlDatabase destination_db)
-{
+{ // prepare file_system.sqlite main database for ios backup 10,11
     recon_static_functions::debug_intensive(" start " , Q_FUNC_INFO);
 
 
@@ -2007,7 +2012,7 @@ void thread_file_system::extract_fs_info_and_fill_db_for_ios_uid_10_11(QSqlDatab
 }
 
 void thread_file_system::insert_ios_uid_details_in_filesystem_db(QSqlDatabase destination_db, QString id_path, QString domain_path, QString file_id, QString m_flag)
-{
+{ // insertion ios uid details in file_system.sqlite in case of iOS backups
 
     recon_static_functions::debug_intensive("Start ", Q_FUNC_INFO);
 
@@ -2114,7 +2119,7 @@ void thread_file_system::insert_ios_uid_details_in_filesystem_db(QSqlDatabase de
 
 
 void thread_file_system::fill_struct_dir_list_for_ios_uid_backup()
-{
+{ // fill structure directory list for iOS backups
     recon_static_functions::debug_intensive("Start ", Q_FUNC_INFO);
 
     if(ios_uid_backup_parser_obj->os_version_stripped == "7" || ios_uid_backup_parser_obj->os_version_stripped == "8" || ios_uid_backup_parser_obj->os_version_stripped == "9")
@@ -2186,7 +2191,7 @@ void thread_file_system::fill_struct_dir_list_for_ios_uid_backup()
 }
 
 int thread_file_system::iterate_directory_recursively_and_make_dir_info_structure(QString source_path)
-{
+{// iterate directory recusrsivly for FS directory open function
     recon_static_functions::debug_intensive("Start " + source_path, Q_FUNC_INFO);
 
     if(source_path.size() > 1)
@@ -2249,7 +2254,7 @@ int thread_file_system::iterate_directory_recursively_and_make_dir_info_structur
 
 
 void thread_file_system::add_fs_dir_in_case_tree()
-{
+{ // Add File System directory in case tree to see and expand the directories and files in case tree
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     int enum_case_child_value = enum_global_case_tree_display_row_SOURCES;
@@ -2409,7 +2414,7 @@ void thread_file_system::add_fs_dir_in_case_tree()
 }
 
 void thread_file_system::initiate_dir_insertion_for_fs_in_case_tree(QTreeWidgetItem *item, QString dir_path, QSqlDatabase &filesystem_db)
-{
+{ // set fs directory in case tree with records
     recon_static_functions::app_debug(" start " , Q_FUNC_INFO);
 
     /// Because it will always be a file.No need to do the following work.
@@ -2512,7 +2517,7 @@ struct_global_fs_extracted_dir_info thread_file_system::get_struct_dir_info_from
 
 
 QList<struct_global_fs_extracted_dir_info> thread_file_system::get_list_extracted_struct_fs_dir_info_from_db()
-{
+{ // we return list_struct_fs_dir_info qlist which contains the file system info related to directory name and directory path
     QList<struct_global_fs_extracted_dir_info> list_struct_fs_dir_info;
 
     QString fs_extracted_dir_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_File_System_In_Result_QString).toString() + struct_target_info_ptr.source_count_name + "/file_system.sqlite";
@@ -2585,7 +2590,7 @@ QList<struct_global_fs_extracted_dir_info> thread_file_system::get_list_extracte
 
 
 QString thread_file_system::get_file_size_records_command(QString column_name , QString file_size_category)
-{
+{ // Prepare the file size commands to extract file size of each reocrds
 
     QString command_size = QString("SELECT COUNT(*) FROM files WHERE ") + column_name;
 
@@ -2751,7 +2756,7 @@ QString thread_file_system::get_file_size_records_command(QString column_name , 
 
 
 void thread_file_system::generate_filesystem_timeline(QString source_count_name)
-{
+{ // generate file system timelines
     recon_static_functions::app_debug(" Start " , Q_FUNC_INFO);
 
     QString fs_timeline_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Artifacts_Timeline_Full_In_Result_QString).toString() + "file_system_timeline_full_" + source_count_name + ".sqlite";
@@ -2942,7 +2947,8 @@ void thread_file_system::generate_filesystem_timeline(QString source_count_name)
 }
 
 void thread_file_system::check_for_other_sources(QString display_path, QString info_path)
-{
+{ // Here we check other sources if found in current source like any dmg or any ios backup. Later we display the dmg in Disk Images section in case tree and iOS backup in Mobile Backup
+    // section in case tree
     QString source_count_name = struct_target_info_ptr.source_count_name;
     QString root_count_name   = struct_target_info_ptr.root_count_name;
 
@@ -3031,7 +3037,7 @@ void thread_file_system::check_for_other_sources(QString display_path, QString i
 }
 
 void thread_file_system::extract_posix_timestamps_for_recon_logical_images()
-{
+{ // extract posix timestamps for recon logical images
     recon_static_functions::app_debug("Start" , Q_FUNC_INFO);
 
 
@@ -3148,7 +3154,8 @@ void thread_file_system::clear_variables_recon_logical_image_posix_timestamps(th
 }
 
 void thread_file_system::run_python_script_for_apple_metadata()
-{
+{ // Here we run python script/executable spotlight_parser which runs on store.db(present in paralled of mounted image in hidden folder on root location)
+    // using this we create two files in our result directory "spotlight-store_data.txt", "spotlight-store_fullpaths.csv" which we use to extract apple metadata
     recon_static_functions::app_debug("Start" ,Q_FUNC_INFO);
 
     // If this script run successfully then two files will create named as:
@@ -3260,7 +3267,7 @@ void thread_file_system::run_python_script_for_apple_metadata()
 }
 
 void thread_file_system::store_python_script_outputin_result_dir()
-{
+{ // store python script output(These two files "spotlight-store_fullpaths.csv", "spotlight-store_data.txt")  in result directory
     recon_static_functions::app_debug("Start", Q_FUNC_INFO);
     struct_global_desktop_info pwd_obj = global_desktop_info_class_obj->pub_get_desktop_info(Q_FUNC_INFO);
 

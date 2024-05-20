@@ -29,7 +29,9 @@ void thread_exif_metadata::pub_set_fs_run_module_file_info_list(QList<struct_glo
 }
 
 void thread_exif_metadata::slot_extract_exif_data()
-{
+{ // extract exif metadata from here from post launcher file system features
+    // we extract it using objective C classes and it's inbuilt library function which are different for audio,video,documents etc.
+
     //=================Command============///
     //SELECT filepath FROM files Where exif_data_update_status = '0' ORDER BY INT ASC LIMIT 10 offset 0
     //====================================///
@@ -375,7 +377,7 @@ void thread_exif_metadata::slot_extract_exif_data()
 }
 
 void thread_exif_metadata::intermediate_save_data_to_exif_db(QString exif_database_path)
-{
+{ // save the data into exif database
     QString db_attach_command = QString("ATTACH DATABASE '%1' AS filesystemDB")
             .arg(QDir::toNativeSeparators(exif_database_path));
 
@@ -436,7 +438,7 @@ void thread_exif_metadata::pub_set_mutex_for_fs_main_db(QMutex *mutex)
 }
 
 bool thread_exif_metadata::open_fs_db(QString fs_db_path)
-{
+{ // open file system database
     bool db_status = false;
 
     QString connection_naam = Q_FUNC_INFO;
@@ -456,7 +458,7 @@ bool thread_exif_metadata::open_fs_db(QString fs_db_path)
 }
 
 bool thread_exif_metadata::open_and_create_exif_db(QString exif_db_path)
-{
+{ // open and create exif database
 
     QString connection_naam = Q_FUNC_INFO;
     QSqlDatabase::removeDatabase(connection_naam);
@@ -562,7 +564,7 @@ bool thread_exif_metadata::open_and_create_exif_db(QString exif_db_path)
 }
 
 void thread_exif_metadata::extract_exif_metadata_for_fs_run_module()
-{
+{ // extract exif data using right click action on file sysetm
     emit signal_PBAR_thread_file_system_value(MACRO_JobType_Exif_Metadata, QString("Acquiring Files List..."), true, 0, 0, false);
 
     struct struct_fs_db_update
