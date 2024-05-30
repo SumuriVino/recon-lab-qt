@@ -1,7 +1,7 @@
 #include "file_types/filetypes_loader.h"
 
 void filetypes_loader::slot_tableWidget_doubleClicked(int row, int column)
-{
+{ // double click on any record, if record is decompressed we can open it in same table widget by double clicking on it
 
     //- On last column due to crash returned from below lines.
     if(column == (m_tablewidget_obj->columnCount() - 1))
@@ -40,7 +40,7 @@ void filetypes_loader::slot_tableWidget_doubleClicked(int row, int column)
 }
 
 void filetypes_loader::slot_right_click_main_menu_triggered(QAction* current_clicked_action)
-{
+{ // right click menu actions
     if(current_clicked_action->text() == QString(MACRO_Generic_Right_Click_Add_Bookmark))
     {
         action_bookmark_triggered();
@@ -120,7 +120,7 @@ void filetypes_loader::slot_right_click_main_menu_triggered(QAction* current_cli
 
 
 void filetypes_loader::slot_link_label_searched_filters(QString value)
-{
+{ // show/hide the search filters from header
     if(value == "Show")
     {
         label_text_edit_show_link->setText("<a href = "+ QString("Hide") + " > " + QString("Searched Filters") + " </a>");
@@ -134,7 +134,7 @@ void filetypes_loader::slot_link_label_searched_filters(QString value)
 }
 
 void filetypes_loader::slot_link_label_apple_metadata_searched_filters(QString value)
-{
+{ // show/hide the meradata searched filters
     if(value == "Show")
     {
         label_searched_apple_metadata_filters_show_link->setText("<a href = "+ QString("Hide") + " > " + QString("Searched Filters") + " </a>");
@@ -149,7 +149,7 @@ void filetypes_loader::slot_link_label_apple_metadata_searched_filters(QString v
 
 
 void filetypes_loader::slot_hide_loading_display_dialog_box(bool cancel_status)
-{
+{ // hide loading dialog function
     bool_cancel_loading = cancel_status;
     display_loading_progress_bar_obj->hide();
 
@@ -158,7 +158,7 @@ void filetypes_loader::slot_hide_loading_display_dialog_box(bool cancel_status)
     thread_zip_file_export_obj->pub_cancel_export();
 }
 
-
+//same right click actions defined below like adding/removing bookmaks,tags,notes and other right click features
 void filetypes_loader::action_bookmark_triggered()
 {
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
@@ -2441,7 +2441,7 @@ void filetypes_loader::slot_gallery_view_invalid_tem_clicked()
 
 
 void filetypes_loader::slot_table_widget_header_item_clicked(int column_index)
-{
+{ // tabelwidget header item clicked to get the value and index of columns
     recon_static_functions::app_debug("Start " , Q_FUNC_INFO);
 
     if(column_index < 0)
@@ -2504,7 +2504,7 @@ void filetypes_loader::slot_table_widget_header_item_clicked(int column_index)
 
 
 void filetypes_loader::slot_main_table_widget_item_clicked(QTableWidgetItem * item)
-{
+{ // click on main tablewidget item or on any record to get the bookmakr value and update accordingly in bookmark database
     recon_static_functions::app_debug("Start " , Q_FUNC_INFO);
     if(item == NULL)
         return;
@@ -2539,7 +2539,7 @@ void filetypes_loader::slot_main_table_widget_item_clicked(QTableWidgetItem * it
 }
 
 void filetypes_loader::slot_export_file_dialog_work_done(bool bool_keep_directory_structure, QString export_dir_path)
-{
+{ // export file from right click
     recon_static_functions::app_debug(" -Start " , Q_FUNC_INFO);
 
     file_export_dialog_obj->hide();
@@ -2624,7 +2624,7 @@ void filetypes_loader::slot_export_file_dialog_work_done(bool bool_keep_director
 }
 
 void filetypes_loader::slot_export_file_dialog_work_done_for_zip(QString export_zip_file_path,bool bool_is_enc_zip,QString password_enc_zip)
-{
+{ // export file or any record as a zip file
     recon_static_functions::app_debug(" -Ends " , Q_FUNC_INFO);
 
     file_export_dialog_obj->hide();
@@ -2742,7 +2742,7 @@ void filetypes_loader::slot_export_file_dialog_work_done_for_zip(QString export_
 }
 
 void filetypes_loader::slot_export_file_dialog_work_done_for_dmg(bool bool_keep_directory_structure, QString export_dmg_file_path)
-{
+{ // export file or any reocrd as a dmg file
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     file_export_dialog_obj->hide();
@@ -2891,7 +2891,7 @@ void filetypes_loader::slot_export_file_dialog_work_done_for_dmg(bool bool_keep_
 }
 
 void filetypes_loader::slot_thread_zip_file_export_finished()
-{
+{ // zip file exported successfully
     display_loading_progress_bar_obj->hide();
 
     if(bool_cancel_loading)
@@ -2904,7 +2904,7 @@ void filetypes_loader::slot_thread_zip_file_export_finished()
 }
 
 void filetypes_loader::slot_message_box_yes_no_clicked(bool yes_no_clicked)
-{
+{ // open or locate the exported directory path pop window appear, go to that directory path on yes clicked to see exported file
     bool_message_box_yes_button_clicked = yes_no_clicked;
     bool_message_box_clicked = true;
 
@@ -2924,7 +2924,7 @@ void filetypes_loader::slot_message_box_yes_no_clicked(bool yes_no_clicked)
 }
 
 void filetypes_loader::point_to_export_dir(QString path)
-{
+{ // point to destination path where file exported
     QStringList arg;
     arg << "-R" << path;
     QProcess *myProcess = new QProcess(this);
@@ -2932,7 +2932,7 @@ void filetypes_loader::point_to_export_dir(QString path)
 }
 
 void filetypes_loader::slot_sub_menu_open_file_with_other_app_clicked(QAction* current_clicked_action)
-{
+{ // open file with any other application
 
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -2987,7 +2987,7 @@ void filetypes_loader::slot_table_header_customContextMenuRequested(const QPoint
 
 
 void filetypes_loader::slot_action_manage_column_clicked(QAction* current_clicked_action)
-{
+{ // manage column clicked to manage the columns like which one is to hide or which one to show on table widget header
     current_clicked_action->setChecked(false);
 
     QString manage_column_db_path;
@@ -3084,7 +3084,7 @@ void filetypes_loader::slot_action_manage_column_clicked(QAction* current_clicke
 }
 
 QList<filetypes_loader::struct_manage_column_info> filetypes_loader::get_hidden_column_from_manage_column_db()
-{
+{ // get hidden columns from database
     QList<struct_manage_column_info> hidden_col_lst;
     QString manage_column_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Manage_Column_In_Result_QString).toString() + "manage_columns.sqlite";
 
@@ -3494,7 +3494,7 @@ void filetypes_loader::slot_r_case_skin_tone_detection_running_status(bool statu
 }
 
 void filetypes_loader::pub_bookmark_main_record_from_detailed_info_triggered(QString record_no_str)
-{
+{ // add bookmark from meta data information
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
 
@@ -3601,7 +3601,7 @@ void filetypes_loader::pub_bookmark_main_record_from_detailed_info_triggered(QSt
 }
 
 void filetypes_loader::pub_remove_main_record_bookmark_from_detailed_info_triggered(QString record_no_str)
-{
+{ // remove the bookmark from metadata information
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
 
@@ -3706,7 +3706,7 @@ void filetypes_loader::pub_remove_main_record_bookmark_from_detailed_info_trigge
     recon_static_functions::app_debug(" -Ends " , Q_FUNC_INFO);
 }
 void filetypes_loader::slot_export_hashes_as_sqlite_clicked()
-{
+{ // export hashes as a sqlite database clicked from right click
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait, Preparing Files List...");
     display_loading_progress_bar_non_cancelable_obj->pub_set_progress_bar_indefinite_value();
     display_loading_progress_bar_non_cancelable_obj->show();
@@ -3769,7 +3769,7 @@ void filetypes_loader::slot_export_hashes_as_sqlite_clicked()
 }
 
 void filetypes_loader::slot_export_hashes_as_csv_clicked()
-{
+{ // export hashes as a csv report clicked
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait, Preparing Files List...");
     display_loading_progress_bar_non_cancelable_obj->pub_set_progress_bar_indefinite_value();
     display_loading_progress_bar_non_cancelable_obj->show();
@@ -3834,7 +3834,7 @@ void filetypes_loader::slot_export_hashes_as_csv_clicked()
 }
 
 void filetypes_loader::slot_export_hashes_as_vic_clicked()
-{
+{ // export hashes in the form of vic
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait, Preparing Files List...");
     display_loading_progress_bar_non_cancelable_obj->pub_set_progress_bar_indefinite_value();
     display_loading_progress_bar_non_cancelable_obj->show();
@@ -3937,7 +3937,7 @@ void filetypes_loader::slot_export_hashes_as_vic_clicked()
 
 
 void filetypes_loader::slot_custom_table_header_widget_search_field_return_pressed()
-{
+{ // search anything from cusetom search header by pressing enter
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     bool_stop_sorting_tags_bookmark_notes_after_search = false;
@@ -3983,7 +3983,7 @@ void filetypes_loader::slot_custom_table_header_widget_search_field_return_press
 }
 
 void filetypes_loader::slot_custom_table_header_widget_search_field_text_changed()
-{
+{ // search on text change automatic without ptessing anything
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     slot_custom_table_header_widget_search_field_return_pressed();
@@ -3994,7 +3994,7 @@ void filetypes_loader::slot_custom_table_header_widget_search_field_text_changed
 }
 
 void filetypes_loader::slot_custom_table_header_widget_sorting_clicked(int column, int column_sort_order)
-{
+{ // sorting clicked from custom tableiwidget header
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     m_tablewidget *current_widget = NULL;
@@ -4140,7 +4140,7 @@ void filetypes_loader::slot_custom_table_header_widget_sorting_clicked(int colum
 }
 
 void filetypes_loader::all_column_text_search(QList<struct_search_column_text_for_file_type_loader> search_text_all_column_list)
-{
+{ // text search from all columns
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     st_gallery_view_file_info_list.clear();

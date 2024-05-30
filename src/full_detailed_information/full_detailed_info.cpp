@@ -60,7 +60,7 @@ void full_detail_information::pub_set_hex_viewer_block_db_path(QString db_path)
 }
 
 void full_detail_information::pub_show_full_detail_info(QString metadata_value, QString preview_path55, int preview_index,QString searched_keyword, QString source_count_name, QString record_number, QString plugin_name, QString table_name55)
-{
+{ // show full details info metadata of any records
     QString meta_file_path = st_globl_recon_file_info_obj.complete_file_path;
     QString preview_path = st_globl_recon_file_info_obj.complete_file_path;
     QString table_name = st_globl_recon_file_info_obj.db_table_name;
@@ -379,7 +379,7 @@ void full_detail_information::pub_show_full_detail_info(QString metadata_value, 
 }
 
 QString full_detail_information::create_link_path_for_preview(QString extension_str, QString file_path)
-{
+{ // create link path for preview to view any vieweable file from metadata
     QString link_file_path;
     QString link_dir_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Adhoc_Path_Location_Preview_Links_In_Result_QString).toString();
 
@@ -408,7 +408,7 @@ QString full_detail_information::create_link_path_for_preview(QString extension_
 }
 
 void full_detail_information::set_exif_data_in_full_window(m_treewidget *tree_exif_metadata_display, QString source_count_name, QString filepath, QString plugin_name, QString table_name , QString record_no_str,QString display_file_path)
-{
+{ // set exif data in full window
     if(filepath.trimmed().isEmpty())
         return ;
 
@@ -426,7 +426,7 @@ void full_detail_information::set_exif_data_in_full_window(m_treewidget *tree_ex
 
 
 void full_detail_information::slot_tree_apple_metadata_item_clicked(QTreeWidgetItem *item, int column)
-{
+{ // tree of apple metadata item clicked from metadata
     QString tablename = item->text(enum_full_detail_information_apple_metadata_Plugin_Table_Name);
     QString db_path = item->text(enum_full_detail_information_apple_metadata_Plugin_Db_Path);
     QString rec_no = item->text(enum_full_detail_information_apple_metadata_Plugin_Record_no);
@@ -491,7 +491,7 @@ void full_detail_information::slot_tree_apple_metadata_item_clicked(QTreeWidgetI
 }
 
 void full_detail_information::slot_tabwidget_metadata_viewer_full_current_Changed(int index)
-{
+{ // metadata viewer like OCR data
     recon_static_functions::app_debug("Start", Q_FUNC_INFO);
 
     if(tabwidget_metadata_viewer_full->tabText(index) == MACRO_Metadata_TabName_Optical_Character_Recognition)
@@ -524,7 +524,7 @@ void full_detail_information::slot_tabwidget_metadata_viewer_full_current_Change
 }
 
 void full_detail_information::change_apple_metadata_content_on_row_click(QStringList file_path_list, QString source_count_name,QString record_no, QString table_name, QString plugin_name, m_treewidget *tree_metadata_apple_metadata)
-{
+{ // change metadata tab on cclicked and get the index of it
     recon_static_functions::app_debug("---Starts----",Q_FUNC_INFO);
 
 
@@ -695,7 +695,7 @@ void full_detail_information::change_apple_metadata_content_on_row_click(QString
 
 
 bool full_detail_information::check_any_exif_or_apple_metadata_item_selected()
-{
+{ // exif or apple metadata clicked to get the proper index of or position of it for further use
     bool check_status = false;
 
     if(tree_exif_metadata_display != nullptr)
@@ -746,7 +746,7 @@ bool full_detail_information::check_any_exif_or_apple_metadata_item_selected()
 }
 
 QStringList full_detail_information::get_apple_metadata_key_value_list_from_fs_db(QString file_path, QString source_count_name)
-{
+{ // apple metadata attributes list fron main file system database to set them on metadata viewer
     QStringList ext_attribute_list;
 
     QString case_config_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Case_Configuration_In_Result_QString).toString() + "case_configuration.sqlite";
@@ -816,7 +816,7 @@ QStringList full_detail_information::get_apple_metadata_key_value_list_from_fs_d
 }
 
 void full_detail_information::slot_tree_exif_metadata_item_clicked(QTreeWidgetItem *item, int m_column)
-{
+{ // exif metadata item clicked and set there exif necessary things
 
     Q_UNUSED(m_column);
 
@@ -889,7 +889,7 @@ void full_detail_information::slot_tree_exif_metadata_item_clicked(QTreeWidgetIt
 }
 
 void full_detail_information::extract_apple_metadata_from_apple_metadata_reader(QString file_paths_str, QString source_cnt_name,QString virtual_source_path)
-{
+{ //  extract apple metadata from metadata reader which we aren't using any more
     QString config_db_path  = global_narad_muni_class_obj->get_field(MACRO_NARAD_Conf_Path_Location_Case_Configuration_In_Result_QString).toString() + "case_configuration.sqlite";
     QString all_apple_attributes_command_str = QString("Select metadata_attribute_name From tbl_apple_attributes");
     QStringList attributes_name_list_all = recon_helper_standard_obj->get_stringlist_from_db_by_dbpath(all_apple_attributes_command_str, 0, config_db_path, Q_FUNC_INFO);

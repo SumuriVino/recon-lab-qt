@@ -27,7 +27,7 @@ void log_viewer::pub_set_source_count_name(QString name)
 }
 
 void log_viewer::pub_set_log_viewer_name(QString log_viewer_tbl_name)
-{
+{ // parse and set log viewer name from log viewer table name
     QStringList list_value = log_viewer_tbl_name.split(MACRO_RECON_Splitter_1_multiple, Qt::SkipEmptyParts);
 
     if(list_value.size() > 0)
@@ -45,7 +45,7 @@ void log_viewer::pub_set_log_viewer_name(QString log_viewer_tbl_name)
 }
 
 void log_viewer::pub_set_essentials()
-{
+{ // set essentials table name and file name
     QString file_name = log_file_name + " [" + log_plugin_name +" "+ log_plugin_record_no + "]" + " [" + source_count_name + "]";
 
     //- Display name..
@@ -63,7 +63,7 @@ void log_viewer::pub_set_essentials()
 
 
 void log_viewer::pub_start_log_extraction()
-{
+{ // start log view extraction
     set_source_file_path();
     entry_in_log_viewer_db_index_table();
     create_log_viewer_table();
@@ -75,7 +75,7 @@ void log_viewer::pub_set_recon_file_info(struct_global_recon_file_info obj)
 }
 
 int log_viewer::create_log_viewer_table()
-{
+{ // create log viewer table
     recon_static_functions::app_debug("Start " , Q_FUNC_INFO);
 
     QString command = "CREATE TABLE '" + log_view_db_table_name + "'"+
@@ -95,7 +95,7 @@ int log_viewer::create_log_viewer_table()
 }
 
 void log_viewer::entry_in_log_viewer_db_index_table()
-{
+{ // insert data in log viewer index table also while extraction
     recon_static_functions::app_debug("Start " , Q_FUNC_INFO);
 
     QFile myFile(destination_log_file_path);

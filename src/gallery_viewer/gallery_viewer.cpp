@@ -7,7 +7,7 @@ gallery_viewer::gallery_viewer(QWidget *parent)
 }
 
 void gallery_viewer::pub_create_ui()
-{
+{ // create ui of gallery view
     recon_static_functions::app_debug("Starts ",Q_FUNC_INFO);
 
     m_slider = new QSlider(Qt::Horizontal, this);
@@ -74,7 +74,7 @@ void gallery_viewer::pub_set_file_type_parent_type(QString type)
 }
 
 void gallery_viewer::prepare_list_view_display()
-{
+{ // prepare list view to display
     recon_static_functions::app_debug("Starts ",Q_FUNC_INFO);
     QString rslt_dir_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_RECON_Result_Dir_QString).toString();
 
@@ -135,7 +135,7 @@ void gallery_viewer::prepare_list_view_display()
 }
 
 void gallery_viewer::slot_list_view_item_clicked(QModelIndex index)
-{
+{ // prepare list view item clicked to get the metadata info of the record
     recon_static_functions::app_debug("Starts ",Q_FUNC_INFO);
 
     int row = index.row();
@@ -206,7 +206,7 @@ void gallery_viewer::slot_list_view_item_clicked(QModelIndex index)
 }
 
 QPixmap gallery_viewer::get_pixmap(QString crop_image_path)
-{
+{ // get pix map of the record to make it visible on gallery viewer
     recon_static_functions::app_debug("Starts ",Q_FUNC_INFO);
 
     QPixmap target = QPixmap(140,140);
@@ -233,7 +233,7 @@ QPixmap gallery_viewer::get_pixmap(QString crop_image_path)
 }
 
 void gallery_viewer::pub_set_file_list(QList<struct_global_gallery_view_file_info> *llist)
-{
+{ // set file list on gallery view
     recon_static_functions::app_debug("Starts ",Q_FUNC_INFO);
 
     file_QList = llist;
@@ -274,12 +274,12 @@ void gallery_viewer::pub_set_file_list(QList<struct_global_gallery_view_file_inf
 }
 
 void gallery_viewer::scroll_value_changed(int value)
-{
+{ // update thumbnails on scrollview
     m_list->setThumbnailSize(value);
 }
 
 void gallery_viewer::slot_item_clicked(qint64 index)
-{
+{ // any item clicked randomly on click
     recon_static_functions::app_debug("Starts ",Q_FUNC_INFO);
 
     index_file_bookmark = index;
@@ -293,7 +293,7 @@ void gallery_viewer::slot_item_clicked(qint64 index)
 }
 
 void gallery_viewer::slot_item_double_clicked(qint64 index)
-{
+{ // double clicked on any item which can open the record using system other application
     recon_static_functions::app_debug("Starts ",Q_FUNC_INFO);
 
     index_file_bookmark = index;
@@ -307,7 +307,7 @@ void gallery_viewer::slot_item_double_clicked(qint64 index)
 }
 
 void gallery_viewer::slot_bookmark_value_changed(struct_global_gallery_view_file_info file_info)
-{
+{ // update bookmark value
     recon_static_functions::app_debug("Starts ",Q_FUNC_INFO);
 
     if(file_type_parent == QString(MACRO_CASE_TREE_Face_Analysis_PARENT))
@@ -332,7 +332,7 @@ void gallery_viewer::slot_bookmark_value_changed(struct_global_gallery_view_file
 }
 
 void gallery_viewer::slot_spacebar_pressed(qint64 index)
-{
+{ // quicklook using space bar button
     recon_static_functions::app_debug("Starts ",Q_FUNC_INFO);
 
     emit signal_gallery_view_spacebar_pressed(file_QList->at(index));
@@ -341,7 +341,7 @@ void gallery_viewer::slot_spacebar_pressed(qint64 index)
 }
 
 void gallery_viewer::slot_control_e_key_pressed(qint64 index)
-{
+{ // export the file usng ctrl + e button clicked
     recon_static_functions::app_debug("Starts ",Q_FUNC_INFO);
 
     emit signal_gallery_view_control_e_key_pressed(file_QList->at(index));
@@ -350,7 +350,7 @@ void gallery_viewer::slot_control_e_key_pressed(qint64 index)
 }
 
 void gallery_viewer::slot_set_bookmark_status_to_gallery_view(bool checked)
-{
+{ // set bookmark
     recon_static_functions::app_debug("Starts ",Q_FUNC_INFO);
 
     emit  signal_imageList_model_bookmark_value_changed(checked , index_file_bookmark);

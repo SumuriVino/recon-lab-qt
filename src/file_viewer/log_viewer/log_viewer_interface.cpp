@@ -77,7 +77,7 @@ void log_viewer_interface::set_initialisation()
 }
 
 void log_viewer_interface::display_logs_view()
-{
+{ // display log view on the tablewidget
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     //Log_Viewer_Display
@@ -149,7 +149,7 @@ void log_viewer_interface::keyPressEvent(QKeyEvent *event)
 }
 
 void log_viewer_interface::get_info_from_log_index_table()
-{
+{ // get all the info of log index table from log_viewer.sqlite database
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     QString connection_naam = QString(Q_FUNC_INFO);
@@ -193,7 +193,7 @@ void log_viewer_interface::get_info_from_log_index_table()
 }
 
 void log_viewer_interface::on_lineEdit_search_textChanged(const QString &arg1)
-{
+{ // search on line edit text changed directly without changing anything
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     if(ui->lineEdit_search->text().isEmpty())
@@ -213,7 +213,7 @@ void log_viewer_interface::on_lineEdit_search_textChanged(const QString &arg1)
 }
 
 void log_viewer_interface::fetch_metadata_for_log_viewer()
-{
+{ // fetch metadata of log viewer to display the data in metadata section
     recon_static_functions::debug_intensive(" Starts " , Q_FUNC_INFO);
 
     QString metadata_str;
@@ -256,12 +256,12 @@ void log_viewer_interface::fetch_metadata_for_log_viewer()
 }
 
 void log_viewer_interface::slot_abouttoshow_tags_in_submenu()
-{
+{ // display tags submenu
     display_tags_submenu();
 }
 
 void log_viewer_interface::on_pushButton_search_clicked()
-{
+{ // search button clicked to search anything
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     ui->textBrowser_log_viewer->blockSignals(true);
@@ -331,7 +331,7 @@ void log_viewer_interface::on_pushButton_search_clicked()
 }
 
 void log_viewer_interface::create_table_log_export_content()
-{
+{ // create table of log export content
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     QString exported_content_info_db = global_narad_muni_class_obj->get_field(MACRO_NARAD_Exported_Content_Location_Log_Viewer_QString).toString() + "log_viewer_content_info.sqlite";
@@ -376,7 +376,7 @@ void log_viewer_interface::on_textBrowser_log_viewer_selectionChanged()
 }
 
 void log_viewer_interface::on_pushButton_refresh_clicked()
-{
+{ // refresh button clicked to display unfiltered data
     QTextCharFormat txt_chr_frmt;
     ui->lineEdit_search->clear();
     ui->textBrowser_log_viewer->blockSignals(true);
@@ -387,7 +387,7 @@ void log_viewer_interface::on_pushButton_refresh_clicked()
 }
 
 void log_viewer_interface::on_pushButton_search_previous_clicked()
-{
+{ // search previous button clicked to see the searched keyword previous
     current_search_index--;
 
     if(current_search_index < 0)
@@ -409,7 +409,7 @@ void log_viewer_interface::on_pushButton_search_previous_clicked()
 }
 
 void log_viewer_interface::on_pushButton_search_next_clicked()
-{
+{ // next button clicked to locate search keyword on displayed data
     current_search_index++;
 
     if(current_search_index > list_highlight_cursor.size())
@@ -430,6 +430,6 @@ void log_viewer_interface::on_pushButton_search_next_clicked()
 }
 
 void log_viewer_interface::on_lineEdit_search_returnPressed()
-{
+{ // search on enter clicked
     on_pushButton_search_clicked();
 }

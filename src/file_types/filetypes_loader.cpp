@@ -72,7 +72,7 @@ filetypes_loader::~filetypes_loader()
 
 
 void filetypes_loader::configure_filetypes_loader(QString result_dir_path , QString filetype , QString case_tree_type_dsply_name, qint64 records_count, QTreeWidgetItem *currentItem)
-{
+{ // create the custom ui if file type loader
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     file_type_child   = filetype.trimmed();
@@ -187,7 +187,7 @@ void filetypes_loader::set_display_db_path(QString db_dir_path)
 
 
 void filetypes_loader::pub_populate_data_in_table()
-{
+{ // populate data in file types tables
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     record_no_index   = enum_Record_No_Index ;
@@ -464,7 +464,7 @@ void filetypes_loader::pub_populate_data_in_table()
 }
 
 void filetypes_loader::slot_act_quick_look_triggered()
-{
+{ // quick look the data on space bar pressed or from right click action
     //    int row = m_tablewidget_obj->currentRow();
 
     //    if(row < 0)
@@ -475,7 +475,7 @@ void filetypes_loader::slot_act_quick_look_triggered()
 }
 
 void filetypes_loader::slot_act_face_search_triggered(bool status)
-{
+{ // face search action from right click triggered to run face search feature on file type records
     int selected_row_no = m_tablewidget_obj->currentRow();
 
     if(selected_row_no < 0 && selected_row_no >= m_tablewidget_obj->rowCount())
@@ -506,7 +506,7 @@ void filetypes_loader::slot_act_face_search_triggered(bool status)
 }
 
 void filetypes_loader::slot_action_right_click_remove_record()
-{
+{ // remove record from file type feature, it will remove any particular record from tablwidget which we don't want to see
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
 
@@ -679,7 +679,7 @@ void filetypes_loader::slot_action_right_click_remove_record()
 }
 
 void filetypes_loader::contextMenuEvent(QContextMenuEvent *evt)
-{
+{ // create right click actions and menu here
     if(evt == NULL)
         return;
 
@@ -953,7 +953,7 @@ void filetypes_loader::contextMenuEvent(QContextMenuEvent *evt)
 }
 
 void filetypes_loader::display_data()
-{
+{ // prepare data here to display it on tablewidget from database
     recon_static_functions::app_debug(" -Starts filetype - " + file_type_child + ", source type - " + file_type_parent , Q_FUNC_INFO);
 
     if(db_columns_list.isEmpty() || table_name_list.isEmpty())
@@ -2152,7 +2152,7 @@ void filetypes_loader::set_apple_metadata_searched_filters_in_textedit()
 }
 
 void filetypes_loader::tablewidget_general_clicked(int row,int column)
-{
+{ // randomly clicked on any record of tablewidget to get the record number or any other info about the records
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     if(row < 0 || column < 0)
@@ -2226,7 +2226,7 @@ QString filetypes_loader::get_source_count_name_from_selected_row(int selected_r
 
 
 void filetypes_loader::update_bookmark_value(QString status,int row, int column)
-{
+{ // update bookmark value according to add/remove
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     if(row < 0 || column < 0)
@@ -2296,7 +2296,7 @@ void filetypes_loader::update_bookmark_value(QString status,int row, int column)
 
 
 void filetypes_loader::update_notes_value_in_bookmark_for_filetypes(QString notes_text , bool is_remove_note)
-{
+{ // update notes value on bookmarked record for file types loader
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     notes_text = notes_text.trimmed();
@@ -2389,7 +2389,7 @@ void filetypes_loader::update_notes_value_in_bookmark_for_filetypes(QString note
 
 
 void filetypes_loader::action_open_with_plist_viewer_triggered()
-{
+{ // open with plist viewer for plist viewer analysis of any record
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
 
@@ -2457,9 +2457,9 @@ void filetypes_loader::action_open_with_plist_viewer_triggered()
 
     recon_static_functions::app_debug(" -Ends " , Q_FUNC_INFO);
 }
-
+// same right click actions are given which are all right click action features which we usually create in any loader, easily understand with function name
 void filetypes_loader::action_open_with_hex_viewer_triggered()
-{
+{ // open with hex view clicked from right click menu
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString sqlite_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Adhoc_Path_Database_Hex_viewer_In_Result_QString).toString();
@@ -3358,7 +3358,7 @@ void filetypes_loader::action_open_with_registry_viewer_triggered()
 }
 
 void filetypes_loader::update_tags_value(QString tag_data,QString colour)
-{
+{ // update tags value in database weather tags is added or removed pr if added what color is it
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
@@ -3580,7 +3580,7 @@ void filetypes_loader::action_open_detach_detailed_info_triggered()
 
 
 QStringList filetypes_loader::get_applied_tags_name_on_current_record(QString record_no , QString fs_db_path)
-{
+{ // get tag value from current selected record from tablewidget
 
     QStringList tag_name_list;
 
@@ -3604,7 +3604,7 @@ QStringList filetypes_loader::get_applied_tags_name_on_current_record(QString re
 }
 
 void filetypes_loader::prepare_display_for_filetypes(QSqlDatabase &destination_db , QString fs_db_path, QString received_cmd, QString source_count_name, QString m_caller)
-{
+{ // prepare display for file types from database and set everything on tablewidget and tablewidget header
 
     recon_static_functions::app_debug(" -Starts ", Q_FUNC_INFO);
 
@@ -4322,7 +4322,7 @@ void filetypes_loader::prepare_display_for_filetypes(QSqlDatabase &destination_d
 }
 
 void filetypes_loader::adjust_important_columns_according_to_feature_in_table_display()
-{
+{ // we can adjust columns series acoording to us by moving them first to last or anywhere else and update them in the  database also
     if(file_type_parent == QString(MACRO_CASE_TREE_Exif_Parent))
     {
 
@@ -4446,7 +4446,7 @@ qint64 filetypes_loader::get_header_column_index(QString header)
 }
 
 QString filetypes_loader::get_file_size_display_command(QString file_size_category)
-{
+{ // prepare file size display command to display file size of any record on tablewidget
 
     QString command_size = QString(" Where file_size ") ;
 
@@ -4660,7 +4660,7 @@ bool filetypes_loader::attach_fs_db_in_memory(QString fs_db_path)
 }
 
 qint64 filetypes_loader::extract_record_count_from_case_tree_display(int feature_position, QString feature_name, QString sub_feature_name)
-{
+{ // extract the record counts when we expand or click on case tree data which displays the data names and records with it's numbers
 
     qint64 record_count = 0;
 
@@ -4697,7 +4697,7 @@ qint64 filetypes_loader::extract_record_count_from_case_tree_display(int feature
 }
 
 void filetypes_loader::set_data_in_text_edit_searched_filter(QString clicked_text)
-{
+{ // set by default data in text edit search filter so we can search accordingly
     recon_static_functions::app_debug("Start " , Q_FUNC_INFO);
 
     QString file_search_index_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_File_Search_In_Result_QString).toString() + "index_file_search.sqlite";

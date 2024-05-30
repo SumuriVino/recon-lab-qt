@@ -25,7 +25,7 @@ int ImageListModel::columnCount(const QModelIndex& parent) const
 }
 
 QVariant ImageListModel::data(const QModelIndex& index, int role) const
-{
+{ // set dislay role checkable or uncheckable
 
     if (index.isValid())
     {
@@ -46,7 +46,7 @@ QVariant ImageListModel::data(const QModelIndex& index, int role) const
 }
 
 bool ImageListModel::setData(const QModelIndex &index, const QVariant &value, int role)
-{
+{ // create checkable boookmark for adding/removing bookmark
     if (index.isValid())
     {
         if (role == Qt::CheckStateRole)
@@ -67,7 +67,7 @@ bool ImageListModel::setData(const QModelIndex &index, const QVariant &value, in
 }
 
 void ImageListModel::slot_imageList_model_bookmark_value_changed(bool bookmark_status , qint64 index_file_bookmark)
-{
+{ // bookmark value changed
     QModelIndex model_index = index(index_file_bookmark , 0);
 
     QVariant state = data(model_index,Qt::CheckStateRole);

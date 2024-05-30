@@ -1,8 +1,9 @@
 #include "log_viewer_interface.h"
 #include "ui_log_viewer_interface.h"
 
+// all the right click actions are given which we have created for log viewer
 void log_viewer_interface::slot_sub_menu_tags_clicked(QAction *action)
-{
+{ // tags submenu right click action
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     action_submenu_tag_triggered(action->text());
@@ -11,7 +12,7 @@ void log_viewer_interface::slot_sub_menu_tags_clicked(QAction *action)
 }
 
 void log_viewer_interface::action_submenu_tag_triggered(QString tag_name)
-{
+{ // actions on right click submenu
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     if(tag_name == QString(MACRO_Generic_Right_Click_Create_Tag))
@@ -25,7 +26,7 @@ void log_viewer_interface::action_submenu_tag_triggered(QString tag_name)
 }
 
 void log_viewer_interface::display_tags_submenu()
-{
+{ // display tags submenu with by default colors and actions
     recon_static_functions::app_debug("Starts ",Q_FUNC_INFO);
 
     sub_menu_tags->clear();
@@ -87,12 +88,12 @@ void log_viewer_interface::display_tags_submenu()
 }
 
 void log_viewer_interface::slot_action_create_tag_triggered()
-{
+{ // create tags on submenu clicked
     add_tags_module_obj->show();
 }
 
 void log_viewer_interface::slot_update_tags_in_actions_menu(bool status, QString new_tag, QString tag_colour)
-{
+{ // update tags in action menu
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     if(new_tag == MACRO_Generic_Right_Click_Create_Tag)
@@ -115,7 +116,7 @@ void log_viewer_interface::slot_update_tags_in_actions_menu(bool status, QString
 }
 
 void log_viewer_interface::slot_update_tags_value(QString tag_data, QString colour)
-{
+{ // slot of update tags value in database according to tags add/remove pressed
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     QTextCursor cursor = ui->textBrowser_log_viewer->textCursor();

@@ -148,7 +148,7 @@ void filetypes_loader::prepare_indexed_carved_files_tab_display()
 }
 
 void filetypes_loader::slot_right_click_carved_index_files_main_menu_triggered(QAction *action)
-{
+{ // right click actions on content search loader
     if(action->text().trimmed() == QString(MACRO_Generic_Right_Click_Bookmark))
     {
         action_carved_index_files_bookmark_clicked();
@@ -184,7 +184,7 @@ void filetypes_loader::slot_right_click_carved_index_files_main_menu_triggered(Q
 
 
 void filetypes_loader::prepare_display_for_carved_files_content_search(QSqlDatabase &destination_db)
-{
+{ // display all the data on tablewidget after carved files on content search
     recon_static_functions::app_debug(" -Starts ", Q_FUNC_INFO);
 
     m_table_carved_index_files->setRowCount(0);
@@ -399,7 +399,7 @@ void filetypes_loader::slot_tablewidget_indexed_carved_files_current_cell_change
 }
 
 void filetypes_loader::tablewidget_indexed_carved_files_general_clicked(int row, int column)
-{
+{ // randomly clicked on any record of carved files data to get the index of data or their column data
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     if(row < 0 || column < 0)
@@ -448,7 +448,7 @@ void filetypes_loader::tablewidget_indexed_carved_files_general_clicked(int row,
 
 
 void filetypes_loader::slot_sub_menu_carved_index_files_open_file_with_other_app_clicked(QAction* current_clicked_action)
-{
+{ // right click action and open any other record with other system app
 
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
@@ -487,7 +487,7 @@ void filetypes_loader::slot_sub_menu_carved_index_files_open_file_with_other_app
 }
 
 void filetypes_loader::add_applications_to_open_application_menu_for_carved_index_files()
-{
+{ // function not in use
 
     QString config_db_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_RECON_Library_Version_Dir_Path_Recon_Configuration_QString).toString() + QString("recon_configuration.sqlite");
 
@@ -548,7 +548,7 @@ void filetypes_loader::add_applications_to_open_application_menu_for_carved_inde
 }
 
 void filetypes_loader::action_carved_index_files_bookmark_clicked()
-{
+{ // add bookmark on carved data
     QModelIndexList selection_model_list = m_table_carved_index_files->selectionModel()->selectedRows();
 
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
@@ -599,7 +599,7 @@ void filetypes_loader::action_carved_index_files_bookmark_clicked()
 }
 
 void filetypes_loader::action_carved_index_files_remove_bookmark_clicked()
-{
+{ // remove bookmark on carved data
     QModelIndexList selection_model_list = m_table_carved_index_files->selectionModel()->selectedRows();
 
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
@@ -647,7 +647,7 @@ void filetypes_loader::action_carved_index_files_remove_bookmark_clicked()
 }
 
 void filetypes_loader::action_carved_index_files_add_note_clicked(QString note_text)
-{
+{ // add note clicked from right click action menu
     QModelIndexList selection_model_list = m_table_carved_index_files->selectionModel()->selectedRows();
 
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
@@ -696,7 +696,7 @@ void filetypes_loader::action_carved_index_files_add_note_clicked(QString note_t
 }
 
 void filetypes_loader::action_carved_index_files_remove_note_clicked()
-{
+{ // remove note clicked from right click action
     QModelIndexList selection_model_list = m_table_carved_index_files->selectionModel()->selectedRows();
 
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
@@ -738,7 +738,7 @@ void filetypes_loader::action_carved_index_files_remove_note_clicked()
 }
 
 void filetypes_loader::action_open_with_plist_viewer_carved_index_files_triggered()
-{
+{ // open the record with plist viewer for further analysis
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString sqlite_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Adhoc_Path_Database_Plist_viewer_In_Result_QString).toString();
@@ -806,7 +806,7 @@ void filetypes_loader::action_open_with_plist_viewer_carved_index_files_triggere
 }
 
 void filetypes_loader::action_open_with_hex_viewer_carved_index_files_triggered()
-{
+{ // open the particular record with hex viewer for hex view analysis
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString sqlite_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Adhoc_Path_Database_Hex_viewer_In_Result_QString).toString();
@@ -883,7 +883,7 @@ void filetypes_loader::action_open_with_hex_viewer_carved_index_files_triggered(
 }
 
 void filetypes_loader::action_open_with_sqlite_viewer_carved_index_files_triggered()
-{
+{ // open the particular record with sqlite viewer for sqlite viewer annalysis
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString result_dir_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_RECON_Result_Dir_QString).toString();
@@ -952,7 +952,7 @@ void filetypes_loader::action_open_with_sqlite_viewer_carved_index_files_trigger
 }
 
 void filetypes_loader::action_sendToBucket_plist_viewer_carved_index_files_triggered()
-{
+{ // send bucket submenu on right click action and select plist viewer for further analysis
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString sqlite_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Plist_viewer_In_Result_QString).toString() + "plist_viewer.sqlite";
@@ -1053,7 +1053,7 @@ void filetypes_loader::action_sendToBucket_plist_viewer_carved_index_files_trigg
 }
 
 void filetypes_loader::action_sendToBucket_hex_viewer_carved_index_files_triggered()
-{
+{ // send to bucket as a hex viewer for further analysis
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString sqlite_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_Hex_viewer_In_Result_QString).toString() + "hex_viewer.sqlite";
@@ -1158,7 +1158,7 @@ void filetypes_loader::action_sendToBucket_hex_viewer_carved_index_files_trigger
 }
 
 void filetypes_loader::action_sendToBucket_sqlite_viewer_carved_index_files_triggered()
-{
+{ // send to bucket from submenu and select sqlite viewer for sqlite analysis
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString sqlite_path = global_narad_muni_class_obj->get_field(MACRO_NARAD_Feature_Path_Location_SQlite_Viewer_In_Result_QString).toString() + "sqlite_viewer.sqlite";
@@ -1256,12 +1256,12 @@ void filetypes_loader::action_sendToBucket_sqlite_viewer_carved_index_files_trig
 }
 
 void filetypes_loader::slot_export_carved_index_files_triggered()
-{
+{ // export any particular record
     action_export_carved_index_files_triggered();
 }
 
 void filetypes_loader::action_export_carved_index_files_triggered()
-{
+{ // export any particlar record file action triggered
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     export_rsync_obj->set_rsync_copy_essentials(Q_FUNC_INFO);
@@ -1347,7 +1347,7 @@ void filetypes_loader::action_export_carved_index_files_triggered()
 }
 
 void filetypes_loader::create_tags_submenu_for_carved_index_files()
-{
+{ // create tags from right click action to create our own color tag
     recon_static_functions::app_debug(" -Starts",Q_FUNC_INFO);
 
     if(sub_carved_index_files_menu_tags == NULL)
@@ -1422,7 +1422,7 @@ void filetypes_loader::slot_act_create_tags_carved_index_files()
 }
 
 void filetypes_loader::slot_act_remove_tags_carved_index_files()
-{
+{ // remove tags clicked from right click menu
     QModelIndexList selection_model_list = m_table_carved_index_files->selectionModel()->selectedRows();
 
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
@@ -1469,7 +1469,7 @@ void filetypes_loader::slot_act_remove_tags_carved_index_files()
 }
 
 void filetypes_loader::slot_update_tags_submenu_carved_index_files(bool status, QString new_tag, QString tag_colour)
-{
+{ // create our own color tags and  set it on submenu
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     if(new_tag == MACRO_Generic_Right_Click_Create_Tag)
@@ -1492,12 +1492,12 @@ void filetypes_loader::slot_update_tags_submenu_carved_index_files(bool status, 
 }
 
 void filetypes_loader::slot_add_tags_carved_index_files(QString tag_data , QString colour)
-{
+{ // update tags submenu and update in database accordingly we perform action using tags
     update_tags_value_carved_index_files(tag_data,colour);
 }
 
 void filetypes_loader::update_tags_value_carved_index_files(QString tag_data,QString colour)
-{
+{ // update tags value in database when we add/remove tag on any record
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QModelIndexList selection_model_list = m_table_carved_index_files->selectionModel()->selectedRows();
@@ -1562,7 +1562,7 @@ void filetypes_loader::slot_abouttoshow_tags_in_submenu_for_carved_index_files_c
 }
 
 void filetypes_loader::action_submenu_tag_carved_index_files_triggered(QString tag_name)
-{
+{ // display default color tags on submenu of right click tags action
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     if(tag_name == QString(MACRO_Generic_Right_Click_Remove_Tag) || tag_name == QString(MACRO_Generic_Right_Click_Create_Tag))
@@ -1581,7 +1581,7 @@ void filetypes_loader::action_submenu_tag_carved_index_files_triggered(QString t
 }
 
 void filetypes_loader::action_copy_to_clipboard_carved_index_files()
-{
+{ // copy to clipboard feature on right click
     recon_static_functions::app_debug("--Starts---", Q_FUNC_INFO);
 
     recon_static_functions::copy_tablewidget_data_to_clipboard(m_table_carved_index_files, Q_FUNC_INFO);
@@ -1590,7 +1590,7 @@ void filetypes_loader::action_copy_to_clipboard_carved_index_files()
 }
 
 void filetypes_loader::action_open_full_detailed_info_carved_index_files_triggered()
-{
+{ // open full detail info metadata of any record to get the more info about it
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     int selected_row_no = m_table_carved_index_files->currentRow();
@@ -1631,7 +1631,7 @@ void filetypes_loader::action_open_full_detailed_info_carved_index_files_trigger
 
 
 void filetypes_loader::action_pushbutton_search_carved_index_files_clicked()
-{
+{ // search any file from display data loader
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QList<QAction *> menu_actions_list = menu_carved_index_files_search_filters->actions();
@@ -1721,7 +1721,7 @@ void filetypes_loader::action_pushbutton_search_carved_index_files_clicked()
 }
 
 void filetypes_loader::action_pushbutton_show_all_carved_index_files_clicked()
-{
+{ // show all/ refresh button clicked for by default filter selection and display the data on tablewidget
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     QString db_name = file_type_child;
@@ -1748,7 +1748,7 @@ void filetypes_loader::action_pushbutton_show_all_carved_index_files_clicked()
 }
 
 QString filetypes_loader::get_carver_label_from_filepath(QString file_path)
-{
+{ // get carver laber which we give name while searching in line edit
     QStringList filepath_split_list  = file_path.split("/");
     QString carved_files_label ;
 
@@ -1763,7 +1763,7 @@ QString filetypes_loader::get_carver_label_from_filepath(QString file_path)
 }
 
 QString filetypes_loader::get_carver_record_no_from_filepath(QString file_path)
-{
+{ // get carver record number from file path
     QString carver_db_path = get_carver_db_path_from_file_path(file_path);
 
     QString command = QString("Select INT from files Where item1 = ?");
@@ -1773,7 +1773,7 @@ QString filetypes_loader::get_carver_record_no_from_filepath(QString file_path)
 }
 
 QString filetypes_loader::get_carver_db_path_from_file_path(QString file_path)
-{
+{ // get the complete database path of carver from filepath
     QStringList filepath_split_list  = file_path.split("/");
     QString carved_files_db_dir_path ;
 
@@ -1792,7 +1792,7 @@ QString filetypes_loader::get_carver_db_path_from_file_path(QString file_path)
 }
 
 bool filetypes_loader::check_is_carved_files_content_search_record(QString record_str)
-{
+{ // checking if if carve file has content search record
     bool bool_is_carved_files_record = false;
 
     if(file_type_parent == QString(MACRO_CASE_TREE_Content_Search))

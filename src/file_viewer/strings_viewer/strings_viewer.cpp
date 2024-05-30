@@ -125,7 +125,7 @@ void strings_viewer::pub_set_essentials()
 }
 
 void strings_viewer::pub_show_file_data(QString file_path , QString record_no)
-{
+{ // show file data of any type of file which data can be seen if we run string command on it
 
     current_filepath  = file_path;
     current_record_no = record_no;
@@ -165,7 +165,7 @@ void strings_viewer::pub_show_file_data(QString file_path , QString record_no)
 }
 
 void strings_viewer::pub_highlight_keyword_hit(QString keyword_str)
-{
+{ // highlight keyword on searching
     keyword_str = keyword_str.trimmed();
 
     if(keyword_str.isEmpty())
@@ -224,7 +224,7 @@ void strings_viewer::pub_highlight_keyword_hit(QString keyword_str)
 
 
 void strings_viewer::create_tags_submenu()
-{
+{ // create tags submenu
     recon_static_functions::app_debug(" -Starts",Q_FUNC_INFO);
 
     if(sub_menu_tags == NULL)
@@ -312,7 +312,7 @@ void strings_viewer::slot_sub_menu_tags_clicked(QAction* current_clicked_action)
 }
 
 void strings_viewer::action_submenu_tag_triggered(QString tag_name)
-{
+{ // action submenu of tags clicked
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     if(tag_name == QString(MACRO_Generic_Right_Click_Remove_Tag) || tag_name == QString(MACRO_Generic_Right_Click_Create_Tag))
@@ -327,7 +327,7 @@ void strings_viewer::action_submenu_tag_triggered(QString tag_name)
 }
 
 void strings_viewer::slot_update_tags_submenu(bool status, QString new_tag, QString tag_colour)
-{
+{ // update tags submenu if added any new color from database
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     if(new_tag == MACRO_Generic_Right_Click_Create_Tag)
@@ -349,7 +349,7 @@ void strings_viewer::slot_update_tags_submenu(bool status, QString new_tag, QStr
 }
 
 void strings_viewer::slot_abouttoshow_tags_in_submenu()
-{
+{ // create tags from submenu clicked to create new tag
     create_tags_submenu();
 }
 
@@ -359,7 +359,7 @@ void strings_viewer::slot_add_tags(QString tag_data , QString colour)
 }
 
 void strings_viewer::update_tags_value(QString tag_name,QString hex_colour)
-{
+{ // update tag value in database according to add/remove on records
 
     QTextCursor cursor = ui->textBrowser_strings->textCursor();
     QString selected_text = cursor.selectedText();
@@ -441,7 +441,7 @@ void strings_viewer::update_tags_value(QString tag_name,QString hex_colour)
 
 
 void strings_viewer::on_pushButton_search_clicked()
-{
+{ // search anything from string viewer using search bar
     QString searchString = ui->lineEdit_search->text().trimmed();
 
     if(searchString.isEmpty())
@@ -501,12 +501,12 @@ void strings_viewer::on_pushButton_search_clicked()
 
 
 void strings_viewer::on_lineEdit_search_returnPressed()
-{
+{ // search on enter pressed
     on_pushButton_search_clicked();
 }
 
 void strings_viewer::on_pushButton_prev_clicked()
-{
+{// locate keyword from string viewer using previous button
     current_search_index--;
 
     if(current_search_index < 0)
@@ -526,7 +526,7 @@ void strings_viewer::on_pushButton_prev_clicked()
 }
 
 void strings_viewer::on_pushButton_next_clicked()
-{
+{ // locate searched keyword using next button
     current_search_index++;
 
     if(current_search_index > list_highlight_cursor.size())
@@ -546,7 +546,7 @@ void strings_viewer::on_pushButton_next_clicked()
 
 
 void strings_viewer::create_table_export_content()
-{
+{ // create table of export content
 
     QString exported_content_info_db = global_narad_muni_class_obj->get_field(MACRO_NARAD_Exported_Content_Location_Strings_Viewer_QString).toString() + "string_viewer_content_info.sqlite";
     QFileInfo info(exported_content_info_db);
