@@ -30,7 +30,7 @@ void ios_uid_backup_parser::pub_parse_backup()
     }
     else if(os_version_stripped == "10" || os_version_stripped == "11" || os_version_stripped == "12" || os_version_stripped == "13"
 
-            || os_version_stripped == "14" || os_version_stripped == "15"  || os_version_stripped == "16")
+            || os_version_stripped == "14" || os_version_stripped == "15"  || os_version_stripped == "16" || os_version_stripped == "17")
     {
         list_node_entry_for_ios_10_11.clear();
         start_extraction_10_11();
@@ -72,7 +72,7 @@ QString ios_uid_backup_parser::pub_get_artifact_source_file_uid_path(QString fil
         }
     }
     else if(os_version_stripped == "10" || os_version_stripped == "11" || os_version_stripped == "12" || os_version_stripped == "13"
-            || os_version_stripped == "14" || os_version_stripped == "15" || os_version_stripped == "16")
+            || os_version_stripped == "14" || os_version_stripped == "15" || os_version_stripped == "16" || os_version_stripped == "17")
     {
         for(int i = 0; i < list_node_entry_for_ios_10_11.size(); i++)
         {
@@ -441,7 +441,7 @@ void ios_uid_backup_parser::insert_into_root_node(struct struct_mbdb_data data_c
         }
     }
     else if(os_version_stripped == "10" || os_version_stripped == "11" || os_version_stripped == "12" || os_version_stripped == "13"
-            || os_version_stripped == "14" || os_version_stripped == "15" || os_version_stripped == "16")
+            || os_version_stripped == "14" || os_version_stripped == "15" || os_version_stripped == "16" || os_version_stripped == "17")
     {
         node_entry_for_ios_10_11.domain_name = data_contnr.domain;
         node_entry_for_ios_10_11.file_absolutepath_without_domain = data_contnr.filename;
@@ -483,7 +483,7 @@ QStringList ios_uid_backup_parser::pub_get_artifact_source_file_from_directory_s
         }
     }
     else if(os_version_stripped == "10" || os_version_stripped == "11" || os_version_stripped == "12" || os_version_stripped == "13"
-            || os_version_stripped == "14" || os_version_stripped == "15" || os_version_stripped == "16")
+            || os_version_stripped == "14" || os_version_stripped == "15" || os_version_stripped == "16" || os_version_stripped == "17")
     {
         recon_static_functions::app_debug("START ", Q_FUNC_INFO);
 

@@ -21,7 +21,7 @@ void ios_uid_backup_extractor::pub_extract_backup(QString source, QString destin
         prepare_structure_and_database_7_8_9();
     }
     else if(os_version_stripped == "10" || os_version_stripped == "11"|| os_version_stripped == "12" || os_version_stripped == "13"
-            || os_version_stripped == "14" || os_version_stripped == "15" || os_version_stripped == "16")
+            || os_version_stripped == "14" || os_version_stripped == "15" || os_version_stripped == "16" || os_version_stripped == "17")
     {
         create_database_table_10_11();
         prepare_structure_and_database_10_11();

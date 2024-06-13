@@ -859,7 +859,7 @@ void thread_file_system::extract_fs_info_and_fill_db_for_ios_uid(QSqlDatabase de
     else if(ios_uid_backup_parser_obj->os_version_stripped == "10" || ios_uid_backup_parser_obj->os_version_stripped == "11"
             || ios_uid_backup_parser_obj->os_version_stripped == "12" || ios_uid_backup_parser_obj->os_version_stripped == "13"
             || ios_uid_backup_parser_obj->os_version_stripped == "14" || ios_uid_backup_parser_obj->os_version_stripped == "15"
-            || ios_uid_backup_parser_obj->os_version_stripped == "16")
+            || ios_uid_backup_parser_obj->os_version_stripped == "16" || ios_uid_backup_parser_obj->os_version_stripped == "17")
     {
         extract_fs_info_and_fill_db_for_ios_uid_10_11(destination_db);
     }
