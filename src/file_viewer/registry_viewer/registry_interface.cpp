@@ -182,7 +182,7 @@ void registry_interface::pub_draw_registry_tree()
 
 
 void registry_interface::draw_registry_tree()
-{
+{ // create the tree of registry viewer
     recon_static_functions::app_debug(" -Start " , Q_FUNC_INFO);
 
     display_loading_progress_bar_non_cancelable_obj->pub_set_label_messsge("Please Wait...");
@@ -299,7 +299,7 @@ QString registry_interface::get_node_name(QString recevied_path)
 
 void registry_interface::create_registry_viewer_right_click_menu()
 {
-    ///--------creation of right click menu list
+    //--------creation of right click menu list
     mainMenu = new QMenu(this);
     QFont m_font;
     m_font.setPointSize(MACRO_QMenu_Font_Size_int);
@@ -343,7 +343,7 @@ void registry_interface::create_registry_viewer_right_click_menu()
 }
 
 void registry_interface::set_table_items(QTreeWidgetItem *item)
-{
+{ // all the table items for header columns
     recon_static_functions::app_debug(" -Start " , Q_FUNC_INFO);
 
     QSqlDatabase destination_db;
@@ -529,9 +529,9 @@ QTreeWidgetItem *registry_interface::get_currentptr_on_tree_iteration(QString pa
 
     return child;
 }
-
+// below given functions are related to right click actions like adding removing bookmarks, tags, notes etc.
 void registry_interface::action_submenu_tag_triggered(QString tag_name)
-{
+{ // tags submenu on right click actions
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     tag_name = tag_name.trimmed();
@@ -936,7 +936,7 @@ void registry_interface::action_copy_to_clopboard_triggered()
 }
 
 void registry_interface::on_treeWidget_registry_itemExpanded(QTreeWidgetItem *item)
-{
+{ // expand the registry viewer on tree widget
     recon_static_functions::app_debug(" -Start " , Q_FUNC_INFO);
 
 
@@ -1056,7 +1056,7 @@ void registry_interface::on_tableWidget_registry_itemClicked(QTableWidgetItem *i
 }
 
 void registry_interface::set_metadata_on_treewidget_click(QTreeWidgetItem *item)
-{
+{ // metadata of tree widget on click
     recon_static_functions::app_debug(" -Start " , Q_FUNC_INFO);
 
     emit signal_clear_all_metadata();

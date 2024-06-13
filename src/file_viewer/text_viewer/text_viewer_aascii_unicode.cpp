@@ -84,7 +84,7 @@ void text_viewer_aascii_unicode::pub_set_global_manager_obj(global_connection_ma
 
 
 void text_viewer_aascii_unicode::pub_load_file_in_text_view(QString filepath , QString record_no)
-{
+{ // public fubction which load any file data in text view section
 
     current_filepath  = filepath;
     current_record_no = record_no;
@@ -137,7 +137,7 @@ void text_viewer_aascii_unicode::pub_load_file_in_text_view(QString filepath , Q
 }
 
 void text_viewer_aascii_unicode::pub_highlight_keyword_hit(QString keyword_str)
-{
+{ // highlight keyword hit after searching from text view
 
     keyword_str = keyword_str.trimmed();
 
@@ -220,7 +220,7 @@ void text_viewer_aascii_unicode::pub_set_source_count_name(QString str)
 }
 
 void text_viewer_aascii_unicode::on_comboBox_text_type_currentTextChanged(const QString &arg1)
-{
+{ // change data type from combobox like ascii, unicode, html. we can see the data in text view in the form of these types.
 
     if(global_variable_macOS_appearance_light_mode_bool)
     {
@@ -244,7 +244,7 @@ void text_viewer_aascii_unicode::on_comboBox_text_type_currentTextChanged(const 
 }
 
 void text_viewer_aascii_unicode::on_pushButton_search_clicked()
-{
+{ // search button to search any keyword from text view
     QString searchString = ui->lineEdit_search->text().trimmed();
 
     if(searchString.isEmpty())
@@ -301,7 +301,7 @@ void text_viewer_aascii_unicode::on_pushButton_search_clicked()
 
 
 void text_viewer_aascii_unicode::shot_data_in_ascii()
-{
+{ // show data in ascii format in text view
     file_data_ascii.clear();
 
     for(int i = 0; i < file_data_bytearray.size(); i++)
@@ -326,7 +326,7 @@ void text_viewer_aascii_unicode::shot_data_in_ascii()
 }
 
 void text_viewer_aascii_unicode::show_data_in_unicode()
-{
+{ // show data in unicode format in text view
     //file_data_unicode = QString::fromLocal8Bit(file_data_bytearray);
     QByteArray data_arr = file_data_bytearray;
     data_arr.replace('\0' , "");
@@ -354,7 +354,7 @@ void text_viewer_aascii_unicode::show_data_in_html()
 
 
 void text_viewer_aascii_unicode::create_tags_submenu()
-{
+{ // create tags submenu for text viewer
     recon_static_functions::app_debug(" -Starts",Q_FUNC_INFO);
 
     if(sub_menu_tags == NULL)
@@ -448,7 +448,7 @@ void text_viewer_aascii_unicode::slot_sub_menu_tags_clicked(QAction* current_cli
 }
 
 void text_viewer_aascii_unicode::action_submenu_tag_triggered(QString tag_name)
-{
+{ // submenu tags to update tags in database also
     recon_static_functions::app_debug(" Starts " , Q_FUNC_INFO);
 
     if(tag_name == QString(MACRO_Generic_Right_Click_Remove_Tag) || tag_name == QString(MACRO_Generic_Right_Click_Create_Tag))
@@ -463,7 +463,7 @@ void text_viewer_aascii_unicode::action_submenu_tag_triggered(QString tag_name)
 }
 
 void text_viewer_aascii_unicode::slot_update_tags_submenu(bool status, QString new_tag, QString tag_colour)
-{
+{ // update tags submenu
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
     if(new_tag == MACRO_Generic_Right_Click_Create_Tag)
@@ -491,7 +491,7 @@ void text_viewer_aascii_unicode::slot_add_tags(QString tag_data , QString colour
 
 
 void text_viewer_aascii_unicode::update_tags_value(QString tag_data,QString colour)
-{
+{ // update tags value in text view and database
 
     QTextCursor cursor = ui->textBrowser_text->textCursor();
     QString selected_text = cursor.selectedText();
@@ -577,7 +577,7 @@ void text_viewer_aascii_unicode::update_tags_value(QString tag_data,QString colo
 
 
 void text_viewer_aascii_unicode::on_pushButton_prev_clicked()
-{
+{ // locate the keyword after search using previous button
     current_search_index--;
 
     if(current_search_index < 0)
@@ -598,7 +598,7 @@ void text_viewer_aascii_unicode::on_pushButton_prev_clicked()
 }
 
 void text_viewer_aascii_unicode::on_pushButton_next_clicked()
-{
+{ // locate the keyword on text view after searching using next button
     current_search_index++;
 
     if(current_search_index > list_highlight_cursor.size())
@@ -618,13 +618,13 @@ void text_viewer_aascii_unicode::on_pushButton_next_clicked()
 }
 
 void text_viewer_aascii_unicode::on_lineEdit_search_returnPressed()
-{
+{ // search any keyword using enter after writing in line edit
     on_pushButton_search_clicked();
 }
 
 
 void text_viewer_aascii_unicode::create_table_export_content()
-{
+{ // export content and save in database as well
 
     QString exported_content_info_db = global_narad_muni_class_obj->get_field(MACRO_NARAD_Exported_Content_Location_Text_Viewer_QString).toString() + "text_viewer_content_info.sqlite";
     QFileInfo info(exported_content_info_db);

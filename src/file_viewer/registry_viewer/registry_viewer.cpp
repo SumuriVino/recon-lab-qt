@@ -67,7 +67,7 @@ void registry_viewer::pub_set_registry_destination_path(QString index_db_path)
 }
 
 void registry_viewer::pub_parse_windows_registry()
-{
+{ // public function which parse the windows registry files
     recon_static_functions::app_debug("Start " , Q_FUNC_INFO);
 
     set_essentials();
@@ -227,7 +227,7 @@ void registry_viewer::set_essentials()
 }
 
 void registry_viewer::create_db_destination_file()
-{
+{ // create registry destination database to store the info and select the info to display
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     QString command;
@@ -310,7 +310,7 @@ void registry_viewer::create_db_destination_file()
 }
 
 void registry_viewer::registry_info_in_index_db(QString index_db_path)
-{
+{ // registry info in index database
 
     QString command = "INSERT INTO 'tbl_registry_viewer_index'(display_tab_name,relative_db_path,source_file_name,source_file_path,source_count_name,recon_filefrom,recon_file_infopath) VALUES (?,?,?,?,?,?,?)";
     QStringList arg_list;
@@ -335,7 +335,7 @@ void registry_viewer::registry_info_in_index_db(QString index_db_path)
 }
 
 void registry_viewer::get_next_node(hive_h *hive_opened, hive_node_h node , QSqlDatabase destination_db , QString node_name_str , QString arg_complete_node_path)
-{
+{ // get the node while parsing registry files
     int jj = 0;
 
     hive_node_h *sub_child_node = hivex_node_children(hive_opened,node);
@@ -421,7 +421,7 @@ void registry_viewer::get_next_node(hive_h *hive_opened, hive_node_h node , QSql
 }
 
 void registry_viewer::insert_data_in_db(QSqlDatabase destination_db , QString sub_parent_path , size_t have_child_size_t, qint64 epch_time , QString child_node_name , QString arg_compelete_node_path_str)
-{
+{ // insert information in database after parsing registry and node
 
     QString insert_cmd = "insert into tbl_registry_tree(bookmark ,child_name , sub_parent_path,key_name,"
                          "parent_path,k_values,hex_values,types ,registry_name ,plugin_name , tab_name,node_name , node_path,file_path,"

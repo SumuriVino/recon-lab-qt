@@ -6,7 +6,7 @@ void sqlite_viewer::slot_abouttoshow_tags_in_submenu()
 {
     display_tags_submenu_for_sqlite_viewer();
 }
-
+// functions not in use
 void sqlite_viewer::slot_export_as_plugin(struct_global_sqlite_viewer_plugin_info obj_info)
 {
     recon_static_functions::app_debug("START",Q_FUNC_INFO);

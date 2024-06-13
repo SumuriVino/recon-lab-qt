@@ -3,7 +3,7 @@
 #include "ui_registry_interface.h"
 
 void registry_interface::on_pushButton_search_clicked()
-{
+{ // search any registry file on registry viewer table widget
     recon_static_functions::app_debug(" -Start " , Q_FUNC_INFO);
 
 
@@ -15,7 +15,7 @@ void registry_interface::on_pushButton_search_clicked()
 }
 
 void registry_interface::on_tableWidget_searched_items_cellClicked(int row, int column)
-{
+{ // click on particular record for directly adding bookmark on it without right click menu
     recon_static_functions::app_debug(" -Start " , Q_FUNC_INFO);
 
     if(row < 0 || column < 0)
@@ -30,22 +30,22 @@ void registry_interface::on_tableWidget_searched_items_cellClicked(int row, int 
 }
 
 void registry_interface::on_tableWidget_searched_items_itemClicked(QTableWidgetItem *item)
-{
+{ // set metadata of searched item clicked
     set_metadata_on_table_widget_click();
 }
 
 void registry_interface::on_tableWidget_registry_itemSelectionChanged()
-{
+{ // set metadata of that record which we select on tablewidget
     set_metadata_on_table_widget_click();
 }
 
 void registry_interface::on_tableWidget_searched_items_itemSelectionChanged()
-{
+{ // set metadata of that particluar record which we select after searching
     set_metadata_on_table_widget_click();
 }
 
 void registry_interface::on_pushButton_refresh_clicked()
-{
+{ // refresh button to refresh the records
     emit signal_clear_all_metadata();
 
     ui->lineEdit_searched_text->clear();
@@ -67,7 +67,7 @@ void registry_interface::slot_registry_viewer_db_path_changed(QString dest_db_pa
 
 
 void registry_interface::on_treeWidget_registry_itemClicked(QTreeWidgetItem *item, int column)
-{
+{ // registry item clicked on tree widget
     recon_static_functions::app_debug(" -Start " , Q_FUNC_INFO);
 
     emit signal_clear_all_metadata();
@@ -79,7 +79,7 @@ void registry_interface::on_treeWidget_registry_itemClicked(QTreeWidgetItem *ite
 
 
 void registry_interface::on_tableWidget_registry_cellClicked(int row, int column)
-{
+{ // add bookmark on click directly
 
     recon_static_functions::app_debug(" -Start " , Q_FUNC_INFO);
 
@@ -98,7 +98,7 @@ void registry_interface::on_tableWidget_registry_cellClicked(int row, int column
 
 
 void registry_interface::slot_update_tags_submenu(bool status, QString new_tag, QString tag_colour)
-{
+{ // update tags on widget and in database
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
 
 
@@ -123,7 +123,7 @@ void registry_interface::slot_update_tags_submenu(bool status, QString new_tag, 
 
 
 void registry_interface::slot_registry_viewer_menu_right_clicked(QAction* current_clicked_action)
-{
+{ // right click actions as given below
     if(current_clicked_action->text() == QString(MACRO_Generic_Right_Click_Add_Bookmark))
     {
         action_bookmark_triggered();
@@ -162,7 +162,7 @@ void registry_interface::slot_act_create_tags()
     add_tags_module_obj->show();
 }
 
-
+// all the right click action functions of registry viewer window
 void registry_interface::slot_add_tags(QString tag_data, QString colour)
 {
     recon_static_functions::app_debug(" -Starts " , Q_FUNC_INFO);
@@ -324,7 +324,7 @@ void registry_interface::slot_add_notes_pushbutton_clicked(QString note_text)
 }
 
 bool registry_interface::eventFilter(QObject *obj, QEvent *event)
-{
+{ // create right click event
     if(event == NULL)
         return false;
 
@@ -365,7 +365,7 @@ void registry_interface::slot_abouttoshow_tags_in_submenu()
 }
 
 void registry_interface::slot_sort_tablewidget_display(int column_index)
-{
+{ // display and sort the tablewidget data records
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
 

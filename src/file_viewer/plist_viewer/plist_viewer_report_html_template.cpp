@@ -10,7 +10,7 @@ plist_viewer_report_html_template::~plist_viewer_report_html_template()
 
 }
 
-
+// This class has the html template(header, main title, sidebar etc) of creating HTML report of plist viewer records
 QString plist_viewer_report_html_template::html_header1()
 {
     QString header1 = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">  <html xmlns=\"http://www.w3.org/1999/xhtml\"> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />";

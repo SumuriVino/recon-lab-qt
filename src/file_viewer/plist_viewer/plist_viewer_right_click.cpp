@@ -2,7 +2,7 @@
 #include "ui_plist_viewer_interface.h"
 
 void plist_viewer_interface::contextMenuEvent(QContextMenuEvent *)
-{
+{ // create right click actions
     QList <QTreeWidgetItem *> list = ui->treeWidget_plist->selectedItems();
     if(list.size() < 1)
         return;
@@ -12,9 +12,9 @@ void plist_viewer_interface::contextMenuEvent(QContextMenuEvent *)
     context_menu.addMenu(menu_plist);
     menu_plist->exec(QCursor::pos());
 }
-
+// This class contains all the right click actions created for plist viewer records like add remove notes, bookmarks, tags etc.
 void plist_viewer_interface::slot_plist_menu_clicked(QAction *action)
-{
+{ // create menu on right click and add actions
     recon_static_functions::app_debug("Starts ", Q_FUNC_INFO);
 
     if(action->text() == QString(MACRO_Generic_Right_Click_Bookmark_all))

@@ -12,7 +12,7 @@ registry_parse::~registry_parse()
 
 
 void registry_parse::values_of_current_node(hive_h *hive_opened, hive_node_h p_node)
-{
+{ // get the values of current node of registry record
     keys_name_list.clear();
     values_list.clear();
     hex_value_list.clear();
@@ -44,7 +44,7 @@ void registry_parse::values_of_current_node(hive_h *hive_opened, hive_node_h p_n
 }
 
 void registry_parse::find_attached_node_data(hive_h *hive_opened,hive_value_h p_keys ,QString key_name_str)
-{
+{ // find attached node data
 
     hive_set_value *val;
     val = new hive_set_value;

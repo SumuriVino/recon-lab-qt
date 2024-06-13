@@ -42,7 +42,7 @@ void text_viewer::pub_set_essentials()
 }
 
 void text_viewer::pub_load_file_in_text_view(QString filepath)
-{
+{ // load file in text view
     qint64 pref_min_file_size =  global_narad_muni_class_obj->get_field(MACRO_NARAD_Prefrences_Text_View_Maximum_File_Size_Bytes_qint64).toLongLong();
 
     if(QFileInfo(filepath).size() > pref_min_file_size)
@@ -56,7 +56,7 @@ void text_viewer::pub_load_file_in_text_view(QString filepath)
 
 
 void text_viewer::loadFile(const QString &fileName)
-{
+{ // load the file in text view section to display the internal data
     current_file_path = fileName;
 
     file.setFileName(fileName);
@@ -81,7 +81,7 @@ void text_viewer::pub_set_source_count_name(QString str)
 
 
 void text_viewer::insert_exported_content_info_in_db(QString tag_name, QString color_hex, qint64 start_index, qint64 end_index, QByteArray file_contents_arr)
-{
+{ // insert exported content in database from text view
 
 
     QString exported_content_info_db = global_narad_muni_class_obj->get_field(MACRO_NARAD_Exported_Content_Location_Text_Viewer_QString).toString() + "text_viewer_content_info.sqlite";

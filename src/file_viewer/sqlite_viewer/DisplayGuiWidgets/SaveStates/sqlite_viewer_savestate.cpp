@@ -25,7 +25,7 @@ void sqlite_viewer_savestate::get_dbtable_list(QStringList tableList)
 }
 
 struct_global_sqlite_viewer_plugin_info sqlite_viewer_savestate::insert_selected_table_list_and_custom_path()
-{
+{ // insert selected table list and custom paths in database
     listSelectedTable.clear();
 
     //- Get the list from the user for the plugins in the page.
@@ -47,7 +47,7 @@ struct_global_sqlite_viewer_plugin_info sqlite_viewer_savestate::insert_selected
 }
 
 void sqlite_viewer_savestate::display_table_data()
-{
+{ // display table data on tablewidget
     recon_static_functions::app_debug("START",Q_FUNC_INFO);
 
     QStringList hdrs_list;
@@ -83,7 +83,7 @@ void sqlite_viewer_savestate::display_table_data()
 }
 
 void sqlite_viewer_savestate::on_pushButton_save_clicked()
-{
+{ // save button clicked to save the data in database
     if(destination_dir_path.endsWith("SavedStateSqlite"))
     {
         QMessageBox msgBox;
@@ -132,7 +132,7 @@ void sqlite_viewer_savestate::on_checkBox_customPath_toggled(bool checked)
 }
 
 void sqlite_viewer_savestate::on_pushButton_custom_path_open_clicked()
-{
+{// custom path select output directory
     QString home_dir = getenv("HOME");
 
     QString path = QFileDialog::getExistingDirectory(this, "Output Directory", home_dir, QFileDialog::ShowDirsOnly);
@@ -144,7 +144,7 @@ void sqlite_viewer_savestate::on_pushButton_custom_path_open_clicked()
 }
 
 void sqlite_viewer_savestate::slot_tableWidget_horizontal_header_clicked(int column)
-{
+{ // horizontal header
     if(column == 0)
     {
         if(ui->tableWidget_dbTableList->horizontalHeaderItem(0)->checkState())

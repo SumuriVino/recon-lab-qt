@@ -433,7 +433,7 @@ QTreeWidgetItem *plist_viewer_interface::get_currentptr_on_tree_iteration(QStrin
 }
 
 void plist_viewer_interface::keyPressEvent(QKeyEvent *event)
-{
+{ // alt key press boolean true
     if(event->key() == Qt::Key_Alt )
     {
         bool_alt_keypress = true;
@@ -441,7 +441,7 @@ void plist_viewer_interface::keyPressEvent(QKeyEvent *event)
 }
 
 void plist_viewer_interface::treeitem_expand_recursively(QTreeWidgetItem *item)
-{
+{ // tree expand recursively
     ui->treeWidget_plist->expandItem(item);
 
     for (int i = 0; i < item->childCount(); ++i)
@@ -490,7 +490,7 @@ void plist_viewer_interface::get_info_from_index_table()
 }
 
 void plist_viewer_interface::on_pushButton_report_clicked()
-{
+{ // report button for local reporting
     recon_static_functions::app_debug("Starts" , Q_FUNC_INFO);
 
     QDateTime time;
@@ -563,7 +563,7 @@ void plist_viewer_interface::on_pushButton_report_clicked()
 }
 
 void plist_viewer_interface::write_Index_Entry_bookmarks(QXmlStreamWriter *xmlWriter, QTreeWidgetItem *item)
-{
+{ // function is to create reports of bookmarks records on plist window
     if(item->checkState(enum_plist_viewer_interface_TREE_KEY) == 2 || !item->text(enum_plist_viewer_interface_TREE_TAG_NAMES).trimmed().isEmpty())
     {
         xmlWriter->writeStartElement(item->text(enum_plist_viewer_interface_TREE_KEY).replace(" ", "_"));
@@ -600,7 +600,7 @@ void plist_viewer_interface::write_Index_Entry_bookmarks(QXmlStreamWriter *xmlWr
 }
 
 void plist_viewer_interface::write_Index_Entry_full(QXmlStreamWriter *xmlWriter, QTreeWidgetItem *item)
-{
+{ // function is to create full report of plist viewer when we click on report button on plist tabelwidget
     xmlWriter->writeStartElement(item->text(enum_plist_viewer_interface_TREE_KEY).replace(" ", "_"));
     xmlWriter->writeTextElement("Type", item->text(enum_plist_viewer_interface_TREE_TYPE));
     xmlWriter->writeTextElement("Value", item->text(enum_plist_viewer_interface_TREE_VALUE));
@@ -633,7 +633,7 @@ void plist_viewer_interface::write_Index_Entry_full(QXmlStreamWriter *xmlWriter,
 
 
 void plist_viewer_interface::on_treeWidget_plist_itemClicked(QTreeWidgetItem *item, int column)
-{
+{ //when we click on any record of plist to get the metadata of that particular record
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     if(item == NULL)
@@ -647,7 +647,7 @@ void plist_viewer_interface::on_treeWidget_plist_itemClicked(QTreeWidgetItem *it
 }
 
 void plist_viewer_interface::on_treeWidget_plist_itemChanged(QTreeWidgetItem *item, int column)
-{
+{ // function is to when we change current focus from widget on plist viewer tablewidget
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     ui->treeWidget_plist->blockSignals(true);
@@ -762,7 +762,7 @@ void plist_viewer_interface::on_treeWidget_plist_itemChanged(QTreeWidgetItem *it
 }
 
 void plist_viewer_interface::on_lineEdit_search_textChanged(const QString &arg1)
-{
+{ // function performs when we search anything in text edit for searching any record, it will display the data directly when we start writing in line edit search
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
     return;
     recon_static_functions::app_debug("Ends " , Q_FUNC_INFO);
@@ -833,7 +833,7 @@ void plist_viewer_interface::on_lineEdit_search_textChanged(const QString &arg1)
 }
 
 void plist_viewer_interface::create_html_reports()
-{
+{ // create html report of records for plist viewer records
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     QString connection_naam = QString(Q_FUNC_INFO);
@@ -1032,7 +1032,7 @@ void plist_viewer_interface::create_html_reports()
 }
 
 void plist_viewer_interface::on_treeWidget_plist_itemExpanded(QTreeWidgetItem *item)
-{
+{ // expand the tree widget of plist while pressing alt button
     if(bool_alt_keypress)
     {
         treeitem_expand_recursively(item);
@@ -1041,7 +1041,7 @@ void plist_viewer_interface::on_treeWidget_plist_itemExpanded(QTreeWidgetItem *i
 }
 
 void plist_viewer_interface::fetch_metadata_for_plist_viewer(QTreeWidgetItem *item)
-{
+{ // fetch metadata of plist viewer reocrds to display the metadata info of each record in detaild info
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     QString metadata_str;
@@ -1126,7 +1126,7 @@ void plist_viewer_interface::slot_abouttoshow_tags_in_submenu()
 }
 
 void plist_viewer_interface::on_pushButton_search_clicked()
-{
+{ // search function to search locally anything
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     ui->treeWidget_plist->blockSignals(true);
@@ -1215,7 +1215,7 @@ void plist_viewer_interface::on_pushButton_search_clicked()
 }
 
 void plist_viewer_interface::on_pushButton_refresh_treewidget_data_clicked()
-{
+{ // refresh tablewidget button
     emit signal_plist_item_clicked("", "", "", "");
     ui->lineEdit_search->clear();
     ui->label_search->clear();
@@ -1223,7 +1223,7 @@ void plist_viewer_interface::on_pushButton_refresh_treewidget_data_clicked()
 }
 
 void plist_viewer_interface::create_table_export_content()
-{
+{ // create the table of export content and export the record and later add the exported content info table of database
 
     QString exported_content_info_db = global_narad_muni_class_obj->get_field(MACRO_NARAD_Exported_Content_Location_Plist_Viewer_QString).toString() + "plist_viewer_content_info.sqlite";
 
@@ -1246,7 +1246,7 @@ void plist_viewer_interface::create_table_export_content()
 }
 
 QString plist_viewer_interface::converted_data(QString value_str, QString current_key)
-{
+{ // convert different different timestamps into readable form
     recon_static_functions::app_debug("Starts" , Q_FUNC_INFO);
 
     bool_for_the_unicode_conversion = false;

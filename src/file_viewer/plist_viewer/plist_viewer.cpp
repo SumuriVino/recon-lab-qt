@@ -27,7 +27,7 @@ void plist_viewer::pub_set_source_count_name(QString name)
 }
 
 void plist_viewer::pub_set_plist_viewer_name(QString name)
-{
+{ // set plist viewer names like file name, plugin name, category and record no
     QStringList list_value = name.split(MACRO_RECON_Splitter_1_multiple, Qt::SkipEmptyParts);
 
     if(list_value.size() > 0)
@@ -64,7 +64,7 @@ void plist_viewer::pub_set_essentials()
 
 
 void plist_viewer::pub_start_plist_extraction()
-{
+{ // start plist extraction
     set_source_file_path();
     entry_in_index_table();
     create_destination_database();
@@ -77,7 +77,7 @@ void plist_viewer::pub_set_recon_file_info(struct_global_recon_file_info obj)
 }
 
 int plist_viewer::create_destination_database()
-{
+{ // create destination database of plist viewer
     recon_static_functions::app_debug("Start " , Q_FUNC_INFO);
 
     QString command = "CREATE TABLE '" + plist_view_db_table_name + "'"+
@@ -101,7 +101,7 @@ int plist_viewer::create_destination_database()
 }
 
 void plist_viewer::entry_in_index_table()
-{
+{ // entery in index table database while plist extraction
     QString command = "INSERT INTO 'plist_viewer_index'(viewer_display_name,db_table_name,file_name,file_path,"
                       "plugin_name,category_name,record_no,creation_timestamp, source_count_name,"
                       "recon_filefrom , recon_file_infopath) VALUES (?,?,?,?,?, ?,?,?,?,?,?)";
@@ -122,7 +122,7 @@ void plist_viewer::set_source_file_path()
 }
 
 void plist_viewer::extract_selected_file()
-{
+{ // extract selected plist files for plist extraction
     recon_static_functions::app_debug("Start " , Q_FUNC_INFO);
 
     ///Main Parsing Occurs Here.....
@@ -151,7 +151,7 @@ void plist_viewer::extract_selected_file()
 }
 
 void plist_viewer::update_tree_for_measure_levels(QSqlQuery select_query,QSqlQuery insert_query)
-{
+{ // function not in use
     recon_static_functions::app_debug("Starts " , Q_FUNC_INFO);
 
     select_query.prepare("SELECT key,type,value,keypath, INT FROM '" + plist_view_db_table_name + "'");

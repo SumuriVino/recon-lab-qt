@@ -21,7 +21,7 @@ void sqlite_viewer_plugin_savestate::get_dbtable_list(QStringList tableList)
 }
 
 struct_global_sqlite_viewer_plugin_info sqlite_viewer_plugin_savestate::insertSelectedTableList_AND_CustomPath()
-{
+{ // insert selected table list and custom paths in database
     listSelectedTable.clear();
 
     //- Get the list from the user for the plugins in the page.
@@ -41,7 +41,7 @@ struct_global_sqlite_viewer_plugin_info sqlite_viewer_plugin_savestate::insertSe
 
 
 void sqlite_viewer_plugin_savestate::displayTableData()
-{
+{ // display table data on tablewidget
     recon_static_functions::app_debug("START",Q_FUNC_INFO);
 
 
@@ -72,7 +72,7 @@ void sqlite_viewer_plugin_savestate::displayTableData()
 }
 
 void sqlite_viewer_plugin_savestate::on_pushButton_save_clicked()
-{
+{ // save button clicked into database
     struct_global_sqlite_viewer_plugin_info obj_Info = insertSelectedTableList_AND_CustomPath();
 
     emit signal_export_as_plugin(obj_Info);
